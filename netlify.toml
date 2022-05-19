@@ -4,6 +4,7 @@
 	functions = "functions"
 
 [[plugins]]
+  # Installs the Lighthouse Build Plugin for all deploy contexts
   package = "@netlify/plugin-lighthouse"
 
 [[edge_functions]]
