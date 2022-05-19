@@ -1,0 +1,7 @@
+# Add files here to ignore them from prettier formatting
+.yarn
+CHANGELOG.md
+dist
+.svelte-kit
+public
+.devops

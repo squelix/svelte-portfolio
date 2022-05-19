@@ -1,0 +1,85 @@
+{
+	// Ensure correct version of TypeScript is used
+	"typescript.tsdk": "node_modules/typescript/lib",
+
+	// Format on save for all files by default
+	"editor.formatOnSave": true,
+	"explorer.autoReveal": true,
+	"editor.codeActionsOnSave": {
+		"source.fixAll.eslint": true
+	},
+
+	// Disable built-in validators and formatters (let extensions do it)
+	"scss.validate": false,
+	"typescript.format.enable": false,
+	"json.format.enable": false,
+	"files.insertFinalNewline": false,
+	"files.trimFinalNewlines": false,
+
+	"[html]": {
+		"editor.defaultFormatter": "esbenp.prettier-vscode",
+		// Disable Prettier formatting for HTML files
+		"editor.formatOnSave": true
+	},
+	"html.format.enable": true,
+	"html.format.wrapAttributes": "aligned-multiple",
+
+	"[yaml]": {
+		// Disable Prettier formatting for YML files
+		"editor.formatOnSave": false
+	},
+
+	"[typescript]": {
+		"editor.defaultFormatter": "esbenp.prettier-vscode",
+		// Fix and organise imports on save
+		"editor.codeActionsOnSave": {
+			"source.fixAll.eslint": true
+		}
+	},
+	"[svelte]": {
+		"editor.defaultFormatter": "svelte.svelte-vscode",
+		// Fix and organise imports on save
+		"editor.codeActionsOnSave": {
+			"source.fixAll.eslint": true,
+			"source.fixAll.stylelint": true
+		}
+	},
+
+	"[javascript]": {
+		"editor.defaultFormatter": "esbenp.prettier-vscode",
+		// Fix and organise imports on save
+		"editor.codeActionsOnSave": {
+			"source.fixAll.eslint": true
+		}
+	},
+
+	"[scss]": {
+		"editor.defaultFormatter": "esbenp.prettier-vscode",
+		// Fix and organise imports on save
+		"editor.codeActionsOnSave": {
+			"source.fixAll.stylelint": true
+		}
+	},
+
+	"task.slowProviderWarning": ["gradle"],
+
+	// Configure import sorting
+	// Enable Wizbii stylelint rule
+	"stylelint.enable": true,
+	"stylelint.configFile": ".stylelintrc.json",
+	"importSorter.generalConfiguration.sortOnBeforeSave": true,
+	"importSorter.generalConfiguration.exclude": [".*server\\.ts", ".*test\\.ts"],
+	"importSorter.importStringConfiguration.maximumNumberOfImportExpressionsPerLine.type": "newLineEachExpressionAfterCountLimitExceptIfOnlyOne",
+	"importSorter.importStringConfiguration.maximumNumberOfImportExpressionsPerLine.count": 120,
+	"importSorter.importStringConfiguration.tabSize": 2,
+	"importSorter.importStringConfiguration.trailingComma": "multiLine",
+	"importSorter.importStringConfiguration.quoteMark": "single",
+	"importSorter.sortConfiguration.removeUnusedImports": true,
+	"importSorter.sortConfiguration.removeUnusedDefaultImports": true,
+	"importSorter.sortConfiguration.customOrderingRules.rules": [],
+	"workbench.colorCustomizations": {
+		"tab.unfocusedActiveBorder": "#fff0"
+	},
+	"unicode-bom": ["error", "never"],
+	"explorer.compactFolders": false
+}
