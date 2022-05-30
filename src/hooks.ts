@@ -1,51 +1,33 @@
-import { defaultLocale, locales } from '$translations';
+import { locales } from '$translations';
 import * as Sentry from '@sentry/browser';
 
 import type { Handle, HandleError } from '@sveltejs/kit';
 
-const routeRegex = new RegExp(/^\/[^.]*([?#].*)?$/);
-
 export const handle: Handle = async ({ event, resolve }) => {
-	const { url, request } = event;
+	const { url } = event;
 	const { pathname } = url;
 
+	const response = await resolve(event);
+
 	// If this request is a route request
-	if (routeRegex.test(pathname)) {
+	if (pathname.startsWith('/fr') || pathname.startsWith('/en')) {
 		// Get defined locales
 		const supportedLocales = locales.get();
 
-		// Try to get locale from `pathname`.
-		let locale = supportedLocales.find(
-			(l) => `${l}`.toLowerCase() === `${pathname.match(/[^/]+?(?=\/|$)/)}`.toLowerCase()
-		);
+		// Get locale from `pathname`.
+		const locale = supportedLocales.find((l) => pathname.startsWith(`/${l}`));
 
-		// If route locale is not supported
-		if (!locale) {
-			// Get user preferred locale
-			locale = `${`${request.headers.get('accept-language')}`.match(
-				/[a-zA-Z]+?(?=-|_|,|;)/
-			)}`.toLowerCase();
-
-			// Set default locale if user preferred locale does not match
-			if (!supportedLocales.includes(locale)) {
-				locale = defaultLocale;
-			}
-
-			// 301 redirect
-			return new Response(undefined, {
-				headers: { location: `/${locale}${pathname}` },
-				status: 301
-			});
+		try {
+			// Add html `lang` attribute
+			const body = await response.text();
+			return new Response(body.replace(/<html.*>/, `<html lang="${locale}">`), response);
+		} catch (error) {
+			Sentry.captureException(error);
+			return response;
 		}
-
-		// Add html `lang` attribute
-		const response = await resolve(event);
-		const body = await response.text();
-
-		return new Response(`${body}`.replace(/<html.*>/, `<html lang="${locale}">`), response);
 	}
 
-	return resolve(event);
+	return response;
 };
 
 export const handleError: HandleError = async ({ error }) => {
