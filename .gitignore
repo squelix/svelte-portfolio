@@ -9,6 +9,7 @@ node_modules
 .env
 .env.*
 !.env.example
+!.env.production
 !.env.development
 !.env.runtime.local
 dist
