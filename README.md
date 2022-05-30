@@ -36,3 +36,9 @@ npm run build
 You can preview the production build with `npm run preview`.
 
 > To deploy your app, you may need to install an [adapter](https://kit.svelte.dev/docs/adapters) for your target environment.
+
+Fira Code:
+https://fonts.google.com/specimen/Fira+Code?query=fir
+
+Remix Icon:
+https://remixicon.com/
