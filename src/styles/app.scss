@@ -1,5 +1,7 @@
-@use 'lib/sanitize';
+@use 'lib/variables';
 
-:root {
-	--blue: 0 209 255;
+html,
+body {
+	font-family: var(--font-family);
+	scroll-behavior: smooth;
 }
