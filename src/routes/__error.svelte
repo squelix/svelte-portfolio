@@ -26,7 +26,7 @@
 <main>
 	<h1>{$t('error.shit.happens')} ({status})</h1>
 	<p>{$t(`error.${status}`, { default: $t('error.default') })}</p>
-	<p>{error}</p>
+	<p>{JSON.stringify(error)}</p>
 	<br />
 	<br />
 
