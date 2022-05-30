@@ -10,11 +10,19 @@
 	import { client } from '$stores/graphql';
 	import { profile } from '$stores/profile';
 	import { GET_PROFILE_QUERY } from '$graphql/profile';
+	import * as Sentry from '@sentry/browser';
+	import { BrowserTracing } from '@sentry/tracing';
 
 	import type { Load, LoadInput, LoadOutput } from '@sveltejs/kit';
 	import type { GetProfileQuery, GetProfileQueryVariables } from '$models/graphql-generated';
 
 	export const load: Load = async ({ url }: LoadInput): Promise<LoadOutput> => {
+		Sentry.init({
+			dsn: import.meta.env.VITE_SENTRY_DSN,
+			integrations: [new BrowserTracing()],
+			tracesSampleRate: 1.0
+		});
+
 		const { pathname } = url;
 		const lang = `${pathname.match(/[^/]+?(?=\/|$)/) || ''}`;
 		const route = pathname.replace(new RegExp(`^/${lang}`), '');
@@ -30,8 +38,14 @@
 				}
 			});
 			profile.set(data);
-		} catch (err: any) {
-			console.error(err);
+		} catch (error: any) {
+			console.log(error.networkError.result.errors[0]);
+
+			Sentry.captureException(error, {
+				extra: {
+					networkError0: error.networkError.result.errors[0]
+				}
+			});
 		}
 
 		await loadTranslations(lang, route);

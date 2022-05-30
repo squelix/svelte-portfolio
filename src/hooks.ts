@@ -1,4 +1,5 @@
 import { defaultLocale, locales } from '$translations';
+import * as Sentry from '@sentry/browser';
 
 import type { Handle, HandleError } from '@sveltejs/kit';
 
@@ -49,4 +50,5 @@ export const handle: Handle = async ({ event, resolve }) => {
 
 export const handleError: HandleError = async ({ error, event }) => {
 	console.error(error, event);
+	Sentry.captureException(error);
 };
