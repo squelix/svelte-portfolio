@@ -18,9 +18,10 @@
 
 	export const load: Load = async ({ url }: LoadInput): Promise<LoadOutput> => {
 		Sentry.init({
-			dsn: import.meta.env.VITE_SENTRY_DSN,
+			dsn: 'https://9b035a47c2c34b4f9fc01b5d1b2f0013@o1267809.ingest.sentry.io/6454590',
 			integrations: [new BrowserTracing()],
-			tracesSampleRate: 1.0
+			tracesSampleRate: 1.0,
+			environment: import.meta.env.VITE_PLATFORM
 		});
 
 		const { pathname } = url;
