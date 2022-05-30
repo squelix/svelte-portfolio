@@ -2,6 +2,7 @@
 	import 'dayjs/locale/en.js';
 	import 'dayjs/locale/fr.js';
 
+	import Bugsnag from '@bugsnag/js';
 	import dayjs from 'dayjs';
 	import localeData from 'dayjs/plugin/localeData.js';
 	import { LangEnum } from '$models/langs.enum';
@@ -15,6 +16,15 @@
 	import type { GetProfileQuery, GetProfileQueryVariables } from '$models/graphql-generated';
 
 	export const load: Load = async ({ url }: LoadInput): Promise<LoadOutput> => {
+		if (!get(bugsnagStarted)) {
+			Bugsnag.start({
+				apiKey: import.meta.env.VITE_BUGSNAG_ID,
+				autoTrackSessions: false,
+				releaseStage: import.meta.env.VITE_PLATFORM
+			});
+			bugsnagStarted.set(true);
+		}
+
 		const { pathname } = url;
 		const lang = `${pathname.match(/[^/]+?(?=\/|$)/) || ''}`;
 		const route = pathname.replace(new RegExp(`^/${lang}`), '');
@@ -22,13 +32,17 @@
 		dayjs.extend(localeData);
 		dayjs.locale(lang);
 
-		const { data } = await get(client).query<GetProfileQuery, GetProfileQueryVariables>({
-			query: GET_PROFILE_QUERY,
-			variables: {
-				locale: lang
-			}
-		});
-		profile.set(data);
+		try {
+			const { data } = await get(client).query<GetProfileQuery, GetProfileQueryVariables>({
+				query: GET_PROFILE_QUERY,
+				variables: {
+					locale: lang
+				}
+			});
+			profile.set(data);
+		} catch (err: any) {
+			Bugsnag.notify(err);
+		}
 
 		await loadTranslations(lang, route);
 		return { stuff: { route, lang } };
@@ -44,6 +58,7 @@
 
 	import { page } from '$app/stores';
 	import { getRoute, RoutesEnum } from '$lib/routing';
+	import { bugsnagStarted } from '$stores/global';
 </script>
 
 <svelte:head>

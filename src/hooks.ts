@@ -1,6 +1,7 @@
 import { defaultLocale, locales } from '$translations';
+import Bugsnag from '@bugsnag/js';
 
-import type { Handle } from '@sveltejs/kit';
+import type { Handle, HandleError } from '@sveltejs/kit';
 
 const routeRegex = new RegExp(/^\/[^.]*([?#].*)?$/);
 
@@ -45,4 +46,10 @@ export const handle: Handle = async ({ event, resolve }) => {
 	}
 
 	return resolve(event);
+};
+
+export const handleError: HandleError = async ({ error, event }) => {
+	Bugsnag.notify(error, (evt) => {
+		evt.addMetadata('request', event);
+	});
 };
