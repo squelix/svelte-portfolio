@@ -39,12 +39,11 @@
 			});
 			profile.set(data);
 		} catch (error: any) {
-			console.log(error.networkError.result.errors[0]);
-
-			Sentry.captureException(error, {
-				extra: {
-					networkError0: error.networkError.result.errors[0]
-				}
+			Sentry.captureException(error, (scope) => {
+				scope.setExtra('networkError0', error.networkError.result.errors[0]);
+				scope.setExtra('error', error);
+				scope.setTag('error_type', 'graphql');
+				return scope;
 			});
 		}
 

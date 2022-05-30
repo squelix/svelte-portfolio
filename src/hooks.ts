@@ -48,7 +48,10 @@ export const handle: Handle = async ({ event, resolve }) => {
 	return resolve(event);
 };
 
-export const handleError: HandleError = async ({ error, event }) => {
-	console.error(error, event);
-	Sentry.captureException(error);
+export const handleError: HandleError = async ({ error }) => {
+	Sentry.captureException(error, (scope) => {
+		scope.setExtra('error', error);
+		scope.setTag('error_type', 'hook');
+		return scope;
+	});
 };
