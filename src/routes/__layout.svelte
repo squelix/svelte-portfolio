@@ -13,10 +13,10 @@
 	import * as Sentry from '@sentry/browser';
 	import { BrowserTracing } from '@sentry/tracing';
 
-	import type { Load, LoadInput, LoadOutput } from '@sveltejs/kit';
+	import type { Load } from '@sveltejs/kit';
 	import type { GetProfileQuery, GetProfileQueryVariables } from '$models/graphql-generated';
 
-	export const load: Load = async ({ url }: LoadInput): Promise<LoadOutput> => {
+	export const load: Load = async ({ url }) => {
 		Sentry.init({
 			dsn: 'https://9b035a47c2c34b4f9fc01b5d1b2f0013@o1267809.ingest.sentry.io/6454590',
 			integrations: [new BrowserTracing()],
@@ -62,6 +62,12 @@
 
 	import { page } from '$app/stores';
 	import { getRoute, RoutesEnum } from '$lib/routing';
+	import { dashedName } from '$stores/profile';
+	import Icon from '$lib/SvgIcon.svelte';
+	import Burger from '$icons/burger.svg?raw';
+	import Cross from '$icons/cross.svg?raw';
+
+	let open = false;
 </script>
 
 <svelte:head>
@@ -98,10 +104,82 @@
 	<link rel="canonical" href="{$page.url.origin}{$page.url.pathname}" />
 </svelte:head>
 
-<slot />
+<header class="header">
+	<p class="header__name">{$dashedName}</p>
+
+	<nav class="nav">
+		<button class="btn-clean nav__btn" aria-expanded={open} on:click={() => (open = !open)}>
+			<Icon data={open ? Cross : Burger} />
+		</button>
+
+		<ul class="nav__links" class:nav__links--visible={open}>
+			<li>
+				<a href="/">Home</a>
+			</li>
+		</ul>
+	</nav>
+</header>
+
+<main class="main">
+	<slot />
+</main>
 
 <style lang="scss">
 	:global {
 		@import 'app.scss';
+	}
+
+	.header {
+		position: relative;
+		background-color: var(--primary-2);
+		box-shadow: 0 4px 4px rgb(0 0 0 / 25%);
+		border-radius: var(--border-radius) var(--border-radius) 0 0;
+		border-right: 1px solid var(--lines);
+		border-left: 1px solid var(--lines);
+		border-top: 1px solid var(--lines);
+		padding: 1.0625rem;
+		display: flex;
+		align-items: center;
+		justify-content: space-between;
+		height: var(--mobile-nav-height);
+
+		&__name {
+			font-weight: 450;
+			font-size: 1rem;
+			line-height: 1.3125;
+		}
+	}
+
+	.nav {
+		&__links {
+			position: absolute;
+			margin: 0;
+			overflow: hidden;
+			max-height: 0;
+			height: 100vh;
+			top: 55px;
+			left: -1px;
+			right: -1px;
+			opacity: 0;
+			background-color: var(--primary-2);
+			border-radius: 0 0 var(--border-radius) var(--border-radius);
+			border: 1px solid var(--lines);
+			box-shadow: 0 4px 4px rgb(0 0 0 / 25%);
+			transition: max-height 150ms ease-in-out, opacity 150ms ease-in-out, z-index 150ms ease-in-out;
+
+			&--visible {
+				z-index: 1;
+				opacity: 1;
+				max-height: calc(100vh - (var(--mobile-main-padding) * 2) - var(--mobile-nav-height));
+			}
+		}
+	}
+
+	.main {
+		background: var(--primary-2) url('/svg/bg-blur.svg') no-repeat;
+		background-size: cover;
+		border: 1px solid var(--lines);
+		box-shadow: 0 4px 4px rgb(0 0 0 / 25%);
+		border-radius: 0 0 var(--border-radius) var(--border-radius);
 	}
 </style>

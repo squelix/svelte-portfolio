@@ -1,0 +1,6 @@
+{
+	"title": {
+		"first": "Hi all ! I am"
+	},
+	"nav": ["_hello", "_about-me", "_projects", "_contact-me"]
+}

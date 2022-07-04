@@ -5,30 +5,48 @@ import parser from '@sveltekit-i18n/parser-default';
 
 import type { Config } from '@sveltekit-i18n/parser-default';
 
-const files = [
-	{
-		key: 'common'
-	},
-	{
-		key: 'error',
-		routes: ['error']
-	}
-];
-
 export const config: Config = {
 	translations: {
 		en: { lang },
 		fr: { lang }
 	},
 	parser: parser(),
-	loaders: [LangEnum.fr_FR, LangEnum.en_GB].flatMap((langEnum) =>
-		files.map(({ key, routes }) => ({
-			locale: langEnum,
-			key,
-			...(routes ? { routes } : {}),
-			loader: async () => (await import(`./${langEnum}/${key}.json`)).default
-		}))
-	)
+	loaders: [
+		{
+			locale: LangEnum.fr_FR,
+			key: 'common',
+			loader: async () => (await import('./fr/common.json')).default
+		},
+		{
+			locale: LangEnum.en_GB,
+			key: 'common',
+			loader: async () => (await import('./en/common.json')).default
+		},
+		{
+			locale: LangEnum.fr_FR,
+			key: 'error',
+			routes: ['error'],
+			loader: async () => (await import('./fr/error.json')).default
+		},
+		{
+			locale: LangEnum.en_GB,
+			key: 'error',
+			routes: ['error'],
+			loader: async () => (await import('./en/error.json')).default
+		},
+		{
+			locale: LangEnum.fr_FR,
+			key: 'home',
+			routes: [''],
+			loader: async () => (await import('./fr/home.json')).default
+		},
+		{
+			locale: LangEnum.en_GB,
+			key: 'home',
+			routes: [''],
+			loader: async () => (await import('./en/home.json')).default
+		}
+	]
 };
 
 export const defaultLocale = LangEnum.fr_FR;

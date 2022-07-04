@@ -1,0 +1,6 @@
+{
+	"title": {
+		"first": "Bonjour ! Je suis"
+	},
+	"nav": ["_bonjour", "_a-propos", "_projets", "_me-contacter"]
+}
