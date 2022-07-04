@@ -20,10 +20,10 @@ export const dashedName = derived([firstname, lastname], ([$firstname, $lastname
 	$firstname && $lastname ? `${$firstname.toLowerCase()}-${$lastname.toLowerCase()}` : undefined
 );
 
-export const picture = derived(
-	[profile, strapiUri],
-	([$profile, $strapiUri]) =>
-		`${$strapiUri}${$profile.profile?.data?.attributes?.picture.data?.attributes?.url}`
+export const picture = derived([profile, strapiUri], ([$profile, $strapiUri]) =>
+	$profile && $strapiUri
+		? `${$strapiUri}${$profile?.profile?.data?.attributes?.picture.data?.attributes?.url}`
+		: undefined
 );
 
 export const job = derived(profile, ($profile) => $profile?.profile?.data?.attributes?.job);
