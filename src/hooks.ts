@@ -1,7 +1,6 @@
 import { locales } from '$translations';
-import * as Sentry from '@sentry/browser';
 
-import type { Handle, HandleError } from '@sveltejs/kit';
+import type { Handle } from '@sveltejs/kit';
 
 export const handle: Handle = async ({ event, resolve }) => {
 	const { url } = event;
@@ -22,18 +21,9 @@ export const handle: Handle = async ({ event, resolve }) => {
 			const body = await response.text();
 			return new Response(body.replace(/<html.*>/, `<html lang="${locale}">`), response);
 		} catch (error) {
-			Sentry.captureException(error);
 			return response;
 		}
 	}
 
 	return response;
-};
-
-export const handleError: HandleError = async ({ error }) => {
-	Sentry.captureException(error, (scope) => {
-		scope.setExtra('error', error);
-		scope.setTag('error_type', 'hook');
-		return scope;
-	});
 };

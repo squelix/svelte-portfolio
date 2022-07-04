@@ -10,20 +10,11 @@
 	import { client } from '$stores/graphql';
 	import { profile } from '$stores/profile';
 	import { GET_PROFILE_QUERY } from '$graphql/profile';
-	import * as Sentry from '@sentry/browser';
-	import { BrowserTracing } from '@sentry/tracing';
 
 	import type { Load } from '@sveltejs/kit';
 	import type { GetProfileQuery, GetProfileQueryVariables } from '$models/graphql-generated';
 
 	export const load: Load = async ({ url }) => {
-		Sentry.init({
-			dsn: 'https://9b035a47c2c34b4f9fc01b5d1b2f0013@o1267809.ingest.sentry.io/6454590',
-			integrations: [new BrowserTracing()],
-			tracesSampleRate: 1.0,
-			environment: import.meta.env.VITE_PLATFORM
-		});
-
 		const { pathname } = url;
 		const lang = `${pathname.match(/[^/]+?(?=\/|$)/) || ''}`;
 		const route = pathname.replace(new RegExp(`^/${lang}`), '');
@@ -40,12 +31,7 @@
 			});
 			profile.set(data);
 		} catch (error: any) {
-			Sentry.captureException(error, (scope) => {
-				scope.setExtra('networkError0', error.networkError.result.errors[0]);
-				scope.setExtra('error', error);
-				scope.setTag('error_type', 'graphql');
-				return scope;
-			});
+			console.error(error);
 		}
 
 		await loadTranslations(lang, route);
