@@ -26,4 +26,21 @@ export const picture = derived([profile, strapiUri], ([$profile, $strapiUri]) =>
 		: undefined
 );
 
+export const socialNetworks = derived(
+	profile,
+	($profile) => $profile?.profile?.data?.attributes?.socialNetworks?.data
+);
+
+export const facebook = derived(socialNetworks, ($socialNetworks) =>
+	$socialNetworks?.find((social) => social.attributes?.title.toLowerCase().includes('facebook'))
+);
+
+export const twitter = derived(socialNetworks, ($socialNetworks) =>
+	$socialNetworks?.find((social) => social.attributes?.title.toLowerCase().includes('twitter'))
+);
+
+export const github = derived(socialNetworks, ($socialNetworks) =>
+	$socialNetworks?.find((social) => social.attributes?.title.toLowerCase().includes('github'))
+);
+
 export const job = derived(profile, ($profile) => $profile?.profile?.data?.attributes?.job);
