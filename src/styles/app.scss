@@ -1,4 +1,9 @@
 @use 'lib/variables';
+@use 'lib/reset';
+
+:where(:root) {
+	cursor: auto;
+}
 
 html,
 body {

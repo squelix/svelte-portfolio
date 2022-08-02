@@ -1,0 +1,44 @@
+@mixin link($color, $bottom) {
+	position: relative;
+	font-style: unset;
+	text-decoration: none;
+
+	&::after {
+		content: '';
+		transition: width 0.3s ease-in-out;
+		position: absolute;
+		bottom: $bottom;
+		left: 0;
+		width: 0;
+		height: 0.125rem;
+		background-color: $color;
+	}
+
+	&:hover,
+	&:focus {
+		color: $color;
+
+		&::after {
+			width: 100%;
+		}
+	}
+}
+
+@mixin linkSelected($color, $bottom) {
+	position: relative;
+	font-style: unset;
+	text-decoration: none;
+
+	&::after {
+		content: '';
+		transition: width 0.3s ease-in-out;
+		position: absolute;
+		bottom: $bottom;
+		left: 0;
+		width: 0;
+		height: 0.125rem;
+		background-color: $color;
+		color: $color;
+		width: 100%;
+	}
+}
