@@ -1,6 +1,14 @@
 {
+	"page": { "title": "Mickaël Depardon - Home", "description": "DESC" },
 	"title": {
 		"first": "Hi all ! I am"
 	},
-	"nav": ["_hello", "_about-me", "_projects", "_contact-me"]
+	"nav": {
+		"home": "_hello",
+		"about": "_about-me",
+		"projects": "_projects",
+		"contact": "_contact-me",
+		"footer": "find me in:"
+	},
+	"githubText": "find my profile on Github:"
 }

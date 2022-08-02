@@ -1,6 +1,14 @@
 {
+	"page": { "title": "Mickaël Depardon - Accueil", "description": "DESC" },
 	"title": {
 		"first": "Bonjour ! Je suis"
 	},
-	"nav": ["_bonjour", "_a-propos", "_projets", "_me-contacter"]
+	"nav": {
+		"home": "_bonjour",
+		"about": "_a-propos",
+		"projects": "_projets",
+		"contact": "_me-contacter",
+		"footer": "trouvez moi&nbsp;:"
+	},
+	"githubText": "retrouvez mon profil Github&nbsp;:"
 }
