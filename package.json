@@ -19,7 +19,7 @@
 		"@kitql/graphql-codegen": "^0.5.4",
 		"@playwright/test": "^1.23.2",
 		"@sveltejs/adapter-netlify": "1.0.0-next.71",
-		"@sveltejs/kit": "1.0.0-next.399",
+		"@sveltejs/kit": "1.0.0-next.397",
 		"@types/cookie": "^0.5.1",
 		"@typescript-eslint/eslint-plugin": "^5.31.0",
 		"@typescript-eslint/parser": "^5.31.0",
@@ -34,8 +34,8 @@
 		"svelte-preprocess": "^4.10.7",
 		"sveltekit-i18n": "^2.2.2",
 		"tslib": "^2.3.1",
-		"typescript": "~4.6.2",
-		"vite": "^3.0.2"
+		"typescript": "~4.7.4",
+		"vite": "^3.0.4"
 	},
 	"engines": {
 		"node": "16",
