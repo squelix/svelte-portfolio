@@ -4,6 +4,7 @@
 	import { getRoute, RoutesEnum } from '$lib/routing';
 	import { page } from '$app/stores';
 	import { LangEnum } from '$models/langs.enum';
+	import { locale } from '$translations';
 </script>
 
 <svelte:head>
@@ -13,6 +14,7 @@
 	<meta property="og:description" content={$t('home.page.description')} />
 	<meta name="twitter:title" content={$t('home.page.title')} />
 	<meta name="twitter:description" content={$t('home.page.description')} />
+	<link rel="canonical" href="{$page.url.origin}{getRoute($locale, RoutesEnum.Home)}" />
 	<link
 		rel="alternate"
 		hreflang="fr"
