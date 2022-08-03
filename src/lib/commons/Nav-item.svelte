@@ -1,12 +1,23 @@
 <script lang="ts">
+	import { createEventDispatcher } from 'svelte';
+	import { page } from '$app/stores';
+
 	export let label: string;
 	export let link: string;
 	export let last: boolean;
 	export let beforeLast: boolean;
+
+	const dispatch = createEventDispatcher();
+
+	const closeMenu = (): void => {
+		dispatch('closeMenu');
+	};
 </script>
 
-<li class="item" class:item--last={last} class:item--before-last={beforeLast}>
-	<a class="item__link" href={link}>{label}</a>
+<li class="item" class:item--last={last} class:item--before-last={beforeLast} on:click={closeMenu}>
+	<a class="item__link" href={link} class:item__link--selected={$page.url.pathname === link}
+		>{label}</a
+	>
 </li>
 
 <style lang="scss">

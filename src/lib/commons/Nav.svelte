@@ -30,6 +30,7 @@
 				link={getRoute($locale, routeKey)}
 				last={index === Object.keys(Routes).length - 1}
 				beforeLast={index === Object.keys(Routes).length - 2}
+				on:closeMenu={() => (open = !open)}
 			/>
 		{/each}
 
