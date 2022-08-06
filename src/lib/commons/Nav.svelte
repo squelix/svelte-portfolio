@@ -6,7 +6,7 @@
 	import Twitter from '$icons/twitter.svg?raw';
 	import Github from '$icons/github.svg?raw';
 	import NavItem from '$lib/commons/Nav-item.svelte';
-	import { getRoute, MainRoutes, Routes } from '$lib/routing';
+	import { getRoute, MainRoutes } from '$lib/routing';
 	import { t, locale } from '$translations';
 	import { facebook, twitter, github } from '$stores/profile';
 
@@ -28,8 +28,8 @@
 			<NavItem
 				label={$t(`common.nav.${routeKey}`)}
 				link={getRoute($locale, routeKey)}
-				last={index === Object.keys(Routes).length - 1}
-				beforeLast={index === Object.keys(Routes).length - 2}
+				last={index === Object.keys(MainRoutes).length - 1}
+				beforeLast={index === Object.keys(MainRoutes).length - 2}
 				on:closeMenu={() => (open = !open)}
 			/>
 		{/each}
