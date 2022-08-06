@@ -19,7 +19,7 @@ body {
 
 .btn-clean {
 	padding: 0;
-	background: transparent;
+	background: none;
 	border: none;
 	color: inherit;
 	text-align: center;
@@ -28,4 +28,6 @@ body {
 	overflow: hidden;
 	cursor: pointer;
 	appearance: none;
+	font: inherit;
+	outline: inherit;
 }
