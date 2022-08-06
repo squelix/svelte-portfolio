@@ -1,11 +1,11 @@
-@mixin link($color, $bottom) {
+@mixin link($color, $bottom, $text-color: $color) {
 	position: relative;
 	font-style: unset;
 	text-decoration: none;
 
 	&::after {
 		content: '';
-		transition: width 0.3s ease-in-out;
+		transition: width calc(2 * var(--transition-duration)) var(--transition-easing);
 		position: absolute;
 		bottom: $bottom;
 		left: 0;
@@ -16,7 +16,7 @@
 
 	&:hover,
 	&:focus {
-		color: $color;
+		color: $text-color;
 
 		&::after {
 			width: 100%;
@@ -24,7 +24,7 @@
 	}
 }
 
-@mixin linkSelected($color, $bottom) {
+@mixin linkSelected($color, $bottom, $text-color: $color) {
 	position: relative;
 	font-style: unset;
 	text-decoration: none;
@@ -38,7 +38,7 @@
 		width: 0;
 		height: 0.125rem;
 		background-color: $color;
-		color: $color;
+		color: $text-color;
 		width: 100%;
 	}
 }
