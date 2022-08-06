@@ -6,7 +6,7 @@
 	import Twitter from '$icons/twitter.svg?raw';
 	import Github from '$icons/github.svg?raw';
 	import NavItem from '$lib/commons/Nav-item.svelte';
-	import { getRoute, Routes } from '$lib/routing';
+	import { getRoute, MainRoutes, Routes } from '$lib/routing';
 	import { t, locale } from '$translations';
 	import { facebook, twitter, github } from '$stores/profile';
 
@@ -24,9 +24,9 @@
 	</button>
 
 	<ul class="nav__links" class:nav__links--visible={open}>
-		{#each Object.keys(Routes) as routeKey, index}
+		{#each Object.keys(MainRoutes) as routeKey, index}
 			<NavItem
-				label={$t(`home.nav.${routeKey}`)}
+				label={$t(`common.nav.${routeKey}`)}
 				link={getRoute($locale, routeKey)}
 				last={index === Object.keys(Routes).length - 1}
 				beforeLast={index === Object.keys(Routes).length - 2}
@@ -35,7 +35,7 @@
 		{/each}
 
 		<li class="nav__footer">
-			<p class="nav__footer__text">{@html $t('home.nav.footer')}</p>
+			<p class="nav__footer__text">{@html $t('common.nav.footer')}</p>
 
 			<ul class="nav__footer__socials">
 				{#if $twitter?.attributes?.url}
@@ -93,7 +93,8 @@
 			border-radius: 0 0 var(--border-radius) var(--border-radius);
 			border: 1px solid var(--lines);
 			box-shadow: 0 4px 4px rgb(0 0 0 / 25%);
-			transition: height 150ms ease-in-out, opacity 150ms ease-in-out;
+			transition: height var(--transition-duration) var(--transition-easing),
+				opacity var(--transition-duration) var(--transition-easing);
 			z-index: 10;
 
 			&--visible {

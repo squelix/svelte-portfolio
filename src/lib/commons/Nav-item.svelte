@@ -31,10 +31,10 @@
 			border-bottom: 1px solid var(--lines);
 			color: var(--secondary-4);
 
-			@include link.link(var(--secondary-4), 0);
+			@include link.link(var(--accent-1), 0, white);
 
 			&--selected {
-				@include link.linkSelected(var(--secondary-4), 0);
+				@include link.linkSelected(var(--accent-1), 0, white);
 			}
 		}
 
