@@ -3,12 +3,5 @@
 	"title": {
 		"first": "Hi all ! I am"
 	},
-	"nav": {
-		"home": "_hello",
-		"about": "_about-me",
-		"projects": "_projects",
-		"contact": "_contact-me",
-		"footer": "find me in:"
-	},
 	"githubText": "find my profile on Github:"
 }

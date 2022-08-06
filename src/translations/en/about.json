@@ -1,0 +1,12 @@
+{
+	"page": { "title": "Mickaël Depardon - About me", "description": "DESC" },
+	"title": "_about-me",
+	"aria": {
+		"nav": "Navigation of about me page"
+	},
+	"nav": ["personal-info", "professional-info", "hobbies"],
+	"personal-info-subnav": ["bio", "education"],
+	"personal-info-subnav-bio": ["biography", "looking-for"],
+	"personal-info-subnav-education": ["schools", "projects"],
+	"professional-info-subnav": ["skills", "languages", "experiences"]
+}

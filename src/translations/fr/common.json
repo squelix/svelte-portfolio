@@ -1,3 +1,10 @@
 {
-	"page": { "title": "Faire de chaque avenir une réussite" }
+	"page": { "title": "Faire de chaque avenir une réussite" },
+	"nav": {
+		"home": "_bonjour",
+		"about": "_à-propos",
+		"projects": "_projets",
+		"contact": "_me-contacter",
+		"footer": "trouvez moi&nbsp;:"
+	}
 }
