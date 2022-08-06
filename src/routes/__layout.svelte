@@ -4,7 +4,7 @@
 
 	import dayjs from 'dayjs';
 	import localeData from 'dayjs/plugin/localeData.js';
-	import { loadTranslations, t } from '$translations';
+	import { loadTranslations, locale } from '$translations';
 	import { get } from 'svelte/store';
 	import { client } from '$stores/graphql';
 	import { profile } from '$stores/profile';
@@ -44,11 +44,12 @@
 	import 'sanitize.css/assets.css';
 	import 'sanitize.css/typography.css';
 	import 'sanitize.css/reduce-motion.css';
+	import '../styles/app.scss';
 
 	import { page } from '$app/stores';
 	import { picture } from '$stores/profile';
-
 	import Header from '$lib/commons/Header.svelte';
+	import { isRouteActive, RoutesEnum } from '$lib/routing';
 </script>
 
 <svelte:head>
@@ -69,21 +70,24 @@
 
 <Header />
 
-<main class="main">
+<main
+	class="main"
+	class:main--home={isRouteActive($page.url.pathname, { route: RoutesEnum.Home, lang: $locale })}
+>
 	<slot />
 </main>
 
 <style lang="scss">
-	:global {
-		@import 'app.scss';
-	}
-
 	.main {
-		background: var(--primary-2) url('/svg/bg-blur.svg') no-repeat;
-		background-size: cover;
+		background-color: var(--primary-2);
 		border: 1px solid var(--lines);
 		box-shadow: 0 4px 4px rgb(0 0 0 / 25%);
 		border-radius: 0 0 var(--border-radius) var(--border-radius);
 		height: calc(100vh - (var(--mobile-main-padding) * 2) - var(--mobile-nav-height));
+
+		&--home {
+			background: var(--primary-2) url('/svg/bg-blur.svg') no-repeat;
+			background-size: cover;
+		}
 	}
 </style>
