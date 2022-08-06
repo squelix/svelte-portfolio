@@ -48,3 +48,15 @@ export const isRouteActive = (
 	currentPath: string,
 	{ lang, route, params }: { lang: string; route: string; params?: Record<string, string> }
 ): boolean => getRoute(lang, route, params) === currentPath;
+
+export const isBaseRouteActive = (
+	currentPath: string,
+	{ lang, route, params }: { lang: string; route: string; params?: Record<string, string> }
+): boolean => {
+	const routePath = getRoute(lang, route, params);
+
+	if (routePath === getRoute(lang, RoutesEnum.Home, params)) {
+		return routePath === currentPath;
+	}
+	return currentPath.startsWith(routePath);
+};

@@ -1,6 +1,8 @@
 <script lang="ts">
 	import { createEventDispatcher } from 'svelte';
 	import { page } from '$app/stores';
+	import { getRoute, isBaseRouteActive } from '$lib/routing';
+	import { locale } from '$translations';
 
 	export let label: string;
 	export let link: string;
@@ -15,8 +17,13 @@
 </script>
 
 <li class="item" class:item--last={last} class:item--before-last={beforeLast} on:click={closeMenu}>
-	<a class="item__link" href={link} class:item__link--selected={$page.url.pathname === link}
-		>{label}</a
+	<a
+		class="item__link"
+		href={getRoute($locale, link)}
+		class:item__link--selected={isBaseRouteActive($page.url.pathname, {
+			lang: $locale,
+			route: link
+		})}>{label}</a
 	>
 </li>
 
