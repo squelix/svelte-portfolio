@@ -5,3 +5,6 @@ dist
 .svelte-kit
 public
 .devops
+.github
+build
+.netlify
