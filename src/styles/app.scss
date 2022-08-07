@@ -1,5 +1,6 @@
 @use 'lib/variables';
 @use 'lib/reset';
+@use 'lib/breakpoints' as br;
 
 :where(:root) {
 	cursor: auto;
@@ -15,6 +16,10 @@ body {
 
 body {
 	padding: var(--mobile-main-padding);
+
+	@include br.desktop {
+		padding: var(--desktop-main-padding);
+	}
 }
 
 .btn-clean {

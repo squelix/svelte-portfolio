@@ -2,13 +2,9 @@
 	import Icon from '$lib/SvgIcon.svelte';
 	import Burger from '$icons/burger.svg?raw';
 	import Cross from '$icons/cross.svg?raw';
-	import Facebook from '$icons/facebook.svg?raw';
-	import Twitter from '$icons/twitter.svg?raw';
-	import Github from '$icons/github.svg?raw';
 	import NavItem from '$lib/commons/Nav-item.svelte';
 	import { MainRoutes } from '$lib/routing';
 	import { t } from '$translations';
-	import { facebook, twitter, github } from '$stores/profile';
 
 	let open = false;
 </script>
@@ -33,46 +29,6 @@
 				on:closeMenu={() => (open = !open)}
 			/>
 		{/each}
-
-		<li class="nav__footer">
-			<p class="nav__footer__text">{@html $t('common.nav.footer')}</p>
-
-			<ul class="nav__footer__socials">
-				{#if $twitter?.attributes?.url}
-					<li class="nav__footer__socials__item">
-						<a
-							class="nav__footer__socials__item__link"
-							href={$twitter?.attributes?.url}
-							target="_blank"
-						>
-							<Icon data={Twitter} width="24px" />
-						</a>
-					</li>
-				{/if}
-				{#if $facebook?.attributes?.url}
-					<li class="nav__footer__socials__item">
-						<a
-							class="nav__footer__socials__item__link"
-							href={$facebook?.attributes?.url}
-							target="_blank"
-						>
-							<Icon data={Facebook} width="24px" />
-						</a>
-					</li>
-				{/if}
-				{#if $github?.attributes?.url}
-					<li class="nav__footer__socials__item">
-						<a
-							class="nav__footer__socials__item__link"
-							href={$github?.attributes?.url}
-							target="_blank"
-						>
-							<Icon data={Github} width="24px" />
-						</a>
-					</li>
-				{/if}
-			</ul>
-		</li>
 	</ul>
 </nav>
 
@@ -99,51 +55,7 @@
 
 			&--visible {
 				opacity: 1;
-				height: calc(100vh - (var(--mobile-main-padding) * 2) - var(--mobile-nav-height));
-			}
-		}
-
-		&__footer {
-			position: absolute;
-			bottom: 0;
-			left: 0;
-			right: 0;
-			font-weight: 400;
-			font-size: 1rem;
-			line-height: 1.5;
-			color: var(--secondary-1);
-			height: 3.0625rem;
-			border-top: 1px solid var(--lines);
-			display: grid;
-			align-items: center;
-			grid-template-columns: repeat(2, minmax(0, 1fr));
-
-			&__text {
-				padding: 0.8125rem 0 0.9375rem 1.125rem;
-				grid-column: 1;
-			}
-
-			&__socials {
-				display: grid;
-				align-items: center;
-				justify-items: center;
-				align-self: baseline;
-				grid-template-columns: repeat(3, minmax(0, 1fr));
-				grid-column: 2;
-
-				&__item {
-					width: 100%;
-					align-self: baseline;
-					padding: 0.75rem 0.875rem;
-					border-left: 1px solid var(--lines);
-
-					&__link {
-						display: block;
-						width: 1.5rem;
-						height: 1.5rem;
-						margin: auto;
-					}
-				}
+				height: calc(100vh - (var(--mobile-main-padding) * 2) - var(--nav-height));
 			}
 		}
 
@@ -169,10 +81,6 @@
 				border-radius: 0;
 				border: none;
 				box-shadow: none;
-			}
-
-			&__footer {
-				display: none;
 			}
 		}
 	}

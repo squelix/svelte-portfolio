@@ -23,7 +23,7 @@
 		display: flex;
 		align-items: center;
 		justify-content: space-between;
-		height: var(--mobile-nav-height);
+		height: var(--nav-height);
 		color: var(--secondary-1);
 
 		&__name {

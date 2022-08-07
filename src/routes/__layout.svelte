@@ -50,6 +50,7 @@
 	import { picture } from '$stores/profile';
 	import Header from '$lib/commons/Header.svelte';
 	import { isRouteActive, RoutesEnum } from '$lib/routing';
+	import Footer from '$lib/commons/Footer.svelte';
 </script>
 
 <svelte:head>
@@ -77,17 +78,25 @@
 	<slot />
 </main>
 
+<Footer />
+
 <style lang="scss">
+	@use 'lib/breakpoints' as br;
+
 	.main {
 		background-color: var(--primary-2);
 		border: 1px solid var(--lines);
 		box-shadow: 0 4px 4px rgb(0 0 0 / 25%);
 		border-radius: 0 0 var(--border-radius) var(--border-radius);
-		height: calc(100vh - (var(--mobile-main-padding) * 2) - var(--mobile-nav-height));
+		height: calc(100vh - (var(--mobile-main-padding) * 2) - var(--nav-height));
 
 		&--home {
 			background: var(--primary-2) url('/svg/bg-blur.svg') no-repeat;
 			background-size: cover;
+		}
+
+		@include br.desktop {
+			height: calc(100vh - (var(--desktop-main-padding) * 2) - var(--nav-height));
 		}
 	}
 </style>
