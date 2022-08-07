@@ -6,3 +6,5 @@ dist
 public
 .devops
 .github
+build
+.netlify
