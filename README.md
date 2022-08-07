@@ -1,5 +1,7 @@
 # Portfolio
 
+![Lint](https://github.com/squelix/svelte-portfolio/actions/workflows/lint.yml/badge.svg)
+![Build](https://github.com/squelix/svelte-portfolio/actions/workflows/build.yml/badge.svg)
 [![Better Uptime Badge](https://betteruptime.com/status-badges/v1/monitor/fn60.svg)](https://betteruptime.com/?utm_source=status_badge)
 
 ## Developing
