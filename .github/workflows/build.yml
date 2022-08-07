@@ -8,6 +8,7 @@ on:
 
 jobs:
   build:
+		name: Build
     runs-on: ubuntu-latest
 
     steps:
@@ -20,7 +21,7 @@ jobs:
           node-version: 16
           cache: 'npm'
 
-			- name: Install dependencies
+      - name: Install dependencies
         run: npm ci
 
       - name: Build
