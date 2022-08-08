@@ -22,6 +22,20 @@ body {
 	}
 }
 
+.display-only-mobile {
+	@include br.desktop {
+		display: none;
+	}
+}
+
+.display-only-desktop {
+	display: none;
+
+	@include br.desktop {
+		display: block;
+	}
+}
+
 .btn-clean {
 	padding: 0;
 	background: none;
@@ -35,4 +49,9 @@ body {
 	appearance: none;
 	font: inherit;
 	outline: inherit;
+}
+
+.page-content {
+	grid-row: 2;
+	grid-column: 2/4;
 }

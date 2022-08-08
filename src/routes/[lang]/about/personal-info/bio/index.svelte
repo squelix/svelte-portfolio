@@ -1,3 +1,9 @@
+<script lang="ts" context="module">
+	import { itemSelected } from '$stores/page-sub-nav';
+
+	itemSelected.set('personal-info-bio');
+</script>
+
 <script lang="ts">
 	import { t } from '$translations';
 	import { getRoute, RoutesEnum } from '$lib/routing';
@@ -29,7 +35,7 @@
 	/>
 </svelte:head>
 
-<p>BIO</p>
+<p class="page-content">BIO</p>
 
 <style lang="scss">
 </style>

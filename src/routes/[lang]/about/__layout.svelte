@@ -1,9 +1,19 @@
+<script lang="ts" context="module">
+	import { aboutTitle } from '$stores/title';
+	import { itemSelected } from '$stores/page-nav';
+
+	aboutTitle.set('personal-info');
+	itemSelected.set('personal-info');
+</script>
+
 <script lang="ts">
+	import { aboutTitleItem } from '$stores/title';
 	import { t } from '$translations';
 	import { getRoute, RoutesEnum } from '$lib/routing';
 	import { page } from '$app/stores';
 	import { LangEnum } from '$models/langs.enum';
 	import PageNav from '$lib/commons/PageNav.svelte';
+	import PageTitle from '$lib/commons/PageTitle.svelte';
 
 	import type { PageNavItemInterface } from '$models/page-nav-item.interface';
 
@@ -67,6 +77,8 @@
 		},
 		{ id: 'hobbies', label: $t('about.nav.2') }
 	];
+
+	const item = aboutTitleItem(pageNavItems);
 </script>
 
 <svelte:head>
@@ -88,14 +100,25 @@
 	/>
 </svelte:head>
 
-<h1 class="title">{$t('about.title')}</h1>
+<PageTitle item={$item} text={$t('about.title')} />
+
+<span class="border-bottom" />
 
 <PageNav ariaLabel={$t('about.aria.nav')} items={pageNavItems} />
 
 <slot />
 
 <style lang="scss">
-	.title {
-		padding: 1.3125rem 0 1.8125rem 1.6875rem;
+	@use 'lib/breakpoints' as br;
+
+	.border-bottom {
+		display: none;
+
+		@include br.desktop {
+			display: block;
+			grid-column: 3;
+			grid-row: 1;
+			border-bottom: 1px solid var(--lines);
+		}
 	}
 </style>

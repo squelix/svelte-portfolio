@@ -89,6 +89,7 @@
 		box-shadow: 0 4px 4px rgb(0 0 0 / 25%);
 		border-radius: 0 0 var(--border-radius) var(--border-radius);
 		height: calc(100vh - (var(--mobile-main-padding) * 2) - var(--nav-height));
+		padding-bottom: 3.0625rem;
 
 		&--home {
 			background: var(--primary-2) url('/svg/bg-blur.svg') no-repeat;
@@ -96,6 +97,9 @@
 		}
 
 		@include br.desktop {
+			display: grid;
+			grid-template-columns: 340px fit-content(100%) minmax(0, 1fr);
+			grid-template-rows: 40px minmax(0, 1fr);
 			height: calc(100vh - (var(--desktop-main-padding) * 2) - var(--nav-height));
 		}
 	}

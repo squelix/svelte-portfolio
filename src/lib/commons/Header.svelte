@@ -33,9 +33,9 @@
 		}
 
 		@include br.desktop {
-			padding: 1.0625rem 0 1.0625rem 1.375rem;
-			justify-content: flex-start;
-			gap: 9.625rem;
+			display: grid;
+			grid-template-columns: minmax(0, 317px) minmax(0, 1fr);
+			padding: 0 0 0 1.375rem;
 		}
 	}
 </style>
