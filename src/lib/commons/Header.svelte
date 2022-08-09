@@ -34,7 +34,7 @@
 
 		@include br.desktop {
 			display: grid;
-			grid-template-columns: minmax(0, 317px) minmax(0, 1fr);
+			grid-template-columns: minmax(0, 288px) minmax(0, 1fr);
 			padding: 0 0 0 1.375rem;
 		}
 	}

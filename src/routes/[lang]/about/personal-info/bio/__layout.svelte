@@ -4,4 +4,32 @@
 	itemSelected.set('personal-info-bio');
 </script>
 
-<slot />
+<script lang="ts">
+	import { aboutSubTitleItem, aboutTitleItem } from '$stores/title';
+	import { pageNavItems, personalInfoNavItems } from '$lib/menu/nav';
+	import { t } from '$translations';
+
+	const item = aboutTitleItem(pageNavItems);
+	const subItem = aboutSubTitleItem(personalInfoNavItems);
+</script>
+
+<section class="page-content">
+	<h2 class="display-only-mobile title">
+		// {$t($item.labelKey)} <span class="title--gray">/ {$t($subItem.labelKey)}</span>
+	</h2>
+
+	<slot />
+</section>
+
+<style lang="scss">
+	.title {
+		padding: 2.375rem 1.6875rem 0 1.6875rem;
+		font-weight: 450;
+		font-size: 1rem;
+		line-height: 1.4;
+
+		&--gray {
+			color: var(--secondary-1);
+		}
+	}
+</style>

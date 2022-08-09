@@ -44,3 +44,17 @@ export const github = derived(socialNetworks, ($socialNetworks) =>
 );
 
 export const job = derived(profile, ($profile) => $profile?.profile?.data?.attributes?.job);
+
+const biography = derived(profile, ($profile) => $profile?.profile?.data?.attributes?.description);
+
+export const formattedDesktopBiography = derived(biography, ($biography) => {
+	const lines = ($biography?.split(/\r\n|\r|\n/) ?? [])
+		.map((line) => `<span class="count-line"></span><code> * ${line}</code>\n`)
+		.join('');
+
+	return `<span class="count-line"></span><code>/**</code>\n${lines}\n<span class="count-line"></span><code> */</code>`;
+});
+
+export const formattedMobileBiography = derived(biography, ($biography) =>
+	$biography?.replace(/\n/g, ' ')
+);

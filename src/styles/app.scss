@@ -55,3 +55,12 @@ body {
 	grid-row: 2;
 	grid-column: 2/4;
 }
+
+span.count-line {
+	counter-increment: line;
+
+	&:before {
+		content: counter(line);
+		user-select: none;
+	}
+}

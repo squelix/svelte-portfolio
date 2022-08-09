@@ -2,6 +2,7 @@
 	import { t } from '$translations';
 	import { getRoute, RoutesEnum } from '$lib/routing';
 	import { page } from '$app/stores';
+	import { formattedDesktopBiography, formattedMobileBiography } from '$stores/profile';
 	import { LangEnum } from '$models/langs.enum';
 	import { locale } from '$translations';
 </script>
@@ -29,7 +30,37 @@
 	/>
 </svelte:head>
 
-<p class="page-content">BIO</p>
+<div class="content">
+	<pre class="bio bio--desktop display-only-desktop">
+		{@html $formattedDesktopBiography}
+	</pre>
+
+	<p class="bio bio--mobile display-only-mobile">
+		{@html $formattedMobileBiography}
+	</p>
+</div>
 
 <style lang="scss">
+	@use 'lib/breakpoints' as br;
+
+	.bio {
+		@include br.desktop {
+			&--desktop {
+				margin: 0;
+				counter-reset: line;
+				display: grid;
+				column-gap: 2.5rem;
+				grid-template-columns: fit-content(100%) minmax(0, 1fr);
+			}
+		}
+	}
+
+	.content {
+		color: var(--secondary-1);
+		padding: 1.0625rem 1.6875rem 0 1.6875rem;
+
+		@include br.desktop {
+			padding: 1.0625rem 2.375rem 0 2.375rem;
+		}
+	}
 </style>
