@@ -6,6 +6,7 @@ export enum RoutesEnum {
 	AboutPersonalInfoBioLookingFor = 'looking-for',
 	AboutPersonalInfoEducation = 'education',
 	AboutPersonalInfoEducationSchools = 'schools',
+	AboutPersonalInfoEducationProjects = 'education-projects',
 	Projects = 'projects',
 	Contact = 'contact'
 }
@@ -25,6 +26,7 @@ export const Routes: Record<RoutesEnum, string> = {
 	[RoutesEnum.AboutPersonalInfoBioLookingFor]: '/about/personal-info/bio/looking-for',
 	[RoutesEnum.AboutPersonalInfoEducation]: '/about/personal-info/education',
 	[RoutesEnum.AboutPersonalInfoEducationSchools]: '/about/personal-info/education/schools',
+	[RoutesEnum.AboutPersonalInfoEducationProjects]: '/about/personal-info/education/projects',
 	[RoutesEnum.Projects]: '/projects',
 	[RoutesEnum.Contact]: '/contact'
 };

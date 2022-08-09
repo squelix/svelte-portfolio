@@ -7,6 +7,11 @@ export const educationNavItems: PageNavItemInterface[] = [
 		id: 'personal-info-education-schools',
 		labelKey: 'about.personal-info-subnav-education.0',
 		link: RoutesEnum.AboutPersonalInfoEducationSchools
+	},
+	{
+		id: 'personal-info-education-projects',
+		labelKey: 'about.personal-info-subnav-education.1',
+		link: RoutesEnum.AboutPersonalInfoEducationProjects
 	}
 ];
 
