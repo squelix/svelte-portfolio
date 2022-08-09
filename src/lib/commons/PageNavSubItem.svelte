@@ -4,6 +4,7 @@
 	import Chevron from '$icons/list-chevron-2.svg?raw';
 	import Folder from '$icons/folder.svg?raw';
 	import PageNavSubItemItem from './PageNavSubItemItem.svelte';
+	import { t } from '$translations';
 
 	import type { PageNavItemInterface } from '$models/page-nav-item.interface';
 
@@ -38,7 +39,7 @@
 			>
 				<Icon data={Folder} width="100%" />
 			</span>
-			<span class="page-nav-sub-item__button__text">{item.label}</span>
+			<span class="page-nav-sub-item__button__text">{$t(item.labelKey)}</span>
 		</button>
 		<ul class="page-nav-sub-item__sub-items" aria-hidden={$itemSelected !== item.id}>
 			{#each item.items || [] as item}
@@ -46,7 +47,7 @@
 			{/each}
 		</ul>
 	{:else}
-		<a class="page-nav-sub-item__text" href={item.link}>{item.label}</a>
+		<a class="page-nav-sub-item__text" href={item.link}>{$t(item.labelKey)}</a>
 	{/if}
 </li>
 

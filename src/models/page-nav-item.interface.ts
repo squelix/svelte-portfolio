@@ -2,7 +2,7 @@ import type { RoutesEnum } from '$lib/routing';
 
 export interface PageNavItemInterface {
 	id: string;
-	label: string;
+	labelKey: string;
 	link?: RoutesEnum;
 	items?: PageNavItemInterface[];
 }

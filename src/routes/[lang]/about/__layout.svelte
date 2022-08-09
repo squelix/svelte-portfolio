@@ -1,8 +1,6 @@
 <script lang="ts" context="module">
-	import { aboutTitle } from '$stores/title';
 	import { itemSelected } from '$stores/page-nav';
 
-	aboutTitle.set('personal-info');
 	itemSelected.set('personal-info');
 </script>
 
@@ -14,69 +12,7 @@
 	import { LangEnum } from '$models/langs.enum';
 	import PageNav from '$lib/commons/PageNav.svelte';
 	import PageTitle from '$lib/commons/PageTitle.svelte';
-
-	import type { PageNavItemInterface } from '$models/page-nav-item.interface';
-
-	const pageNavItems: PageNavItemInterface[] = [
-		{
-			// Personal infos
-			id: 'personal-info',
-			label: $t('about.nav.0'),
-			items: [
-				{
-					id: 'personal-info-bio',
-					label: $t('about.personal-info-subnav.0'),
-					items: [
-						{
-							id: 'personal-info-bio-biography',
-							label: $t('about.personal-info-subnav-bio.0'),
-							link: RoutesEnum.AboutPersonalInfoBio
-						},
-						{
-							id: 'personal-info-bio-looking-for',
-							label: $t('about.personal-info-subnav-bio.1'),
-							link: RoutesEnum.AboutPersonalInfoBioLookingFor
-						}
-					]
-				},
-				{
-					id: 'personal-info-education',
-					label: $t('about.personal-info-subnav.1'),
-					items: [
-						{
-							id: 'personal-info-education-schools',
-							label: $t('about.personal-info-subnav-education.0'),
-							link: RoutesEnum.AboutPersonalInfoEducationSchools
-						},
-						{
-							id: 'personal-info-education-projects',
-							label: $t('about.personal-info-subnav-education.1'),
-							link: RoutesEnum.AboutPersonalInfoEducationProjects
-						}
-					]
-				}
-			]
-		},
-		// Professional infos
-		{
-			id: 'professional-info',
-			label: $t('about.nav.1'),
-			items: [
-				{ id: 'professional-info-skills', label: $t('about.professional-info-subnav.0') },
-				{
-					id: 'professional-info-languages',
-					label: $t('about.professional-info-subnav.1')
-					// link: ''
-				},
-				{
-					id: 'professional-info-projects',
-					label: $t('about.professional-info-subnav.2')
-					// link: ''
-				}
-			]
-		},
-		{ id: 'hobbies', label: $t('about.nav.2') }
-	];
+	import { pageNavItems } from '$lib/menu/nav';
 
 	const item = aboutTitleItem(pageNavItems);
 </script>

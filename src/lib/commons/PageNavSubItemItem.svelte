@@ -4,6 +4,7 @@
 	import { getRoute, isRouteActive } from '$lib/routing';
 	import { locale } from '$translations';
 	import { page } from '$app/stores';
+	import { t } from '$translations';
 
 	import type { PageNavItemInterface } from '$models/page-nav-item.interface';
 
@@ -23,11 +24,11 @@
 			<span class="page-nav-sub-item-item__link__icon">
 				<Icon data={Mardown} width="100%" />
 			</span>
-			{item.label}
+			{$t(item.labelKey)}
 		</a>
 	{:else}
 		<p>
-			{item.label}
+			{$t(item.labelKey)}
 		</p>
 	{/if}
 </li>

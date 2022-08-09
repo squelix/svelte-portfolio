@@ -4,6 +4,7 @@
 	import Chevron from '$icons/list-chevron.svg?raw';
 	import { itemSelected } from '$stores/page-nav';
 	import { itemSelected as subItemSelected } from '$stores/page-sub-nav';
+	import { t } from '$translations';
 
 	import type { PageNavItemInterface } from '$models/page-nav-item.interface';
 
@@ -33,7 +34,7 @@
 			>
 				<Icon data={Chevron} width="100%" />
 			</span>
-			<span class="page-nav-item__button__text">{item.label}</span>
+			<span class="page-nav-item__button__text">{$t(item.labelKey)}</span>
 		</button>
 		<ul class="page-nav-item__sub-items" aria-hidden={$itemSelected !== item.id}>
 			{#each item.items || [] as item, index}
@@ -41,7 +42,7 @@
 			{/each}
 		</ul>
 	{:else}
-		<a class="page-nav-item__text" href={item.link}>{item.label}</a>
+		<a class="page-nav-item__text" href={item.link}>{$t(item.labelKey)}</a>
 	{/if}
 </li>
 

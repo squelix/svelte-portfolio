@@ -1,6 +1,7 @@
 <script lang="ts">
 	import Icon from '$lib/SvgIcon.svelte';
 	import Close from '$icons/close.svg?raw';
+	import { t } from '$translations';
 
 	import type { PageNavItemInterface } from '$models/page-nav-item.interface';
 
@@ -10,7 +11,7 @@
 
 <h1 class="title">
 	<span class="display-only-mobile">{text}</span>
-	<span class="display-only-desktop">{item?.label}</span>
+	<span class="display-only-desktop">{$t(item?.labelKey)}</span>
 
 	<Icon class="display-only-desktop" data={Close} />
 </h1>
