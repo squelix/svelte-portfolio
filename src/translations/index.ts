@@ -55,8 +55,7 @@ export const config: Config = {
 				Routes[RoutesEnum.AboutPersonalInfoBio],
 				Routes[RoutesEnum.AboutPersonalInfoBioLookingFor],
 				Routes[RoutesEnum.AboutPersonalInfoEducation],
-				Routes[RoutesEnum.AboutPersonalInfoEducationSchools],
-				Routes[RoutesEnum.AboutPersonalInfoEducationProjects]
+				Routes[RoutesEnum.AboutPersonalInfoEducationSchools]
 			],
 			loader: async () => (await import('./fr/about.json')).default
 		},
@@ -69,8 +68,7 @@ export const config: Config = {
 				Routes[RoutesEnum.AboutPersonalInfoBio],
 				Routes[RoutesEnum.AboutPersonalInfoBioLookingFor],
 				Routes[RoutesEnum.AboutPersonalInfoEducation],
-				Routes[RoutesEnum.AboutPersonalInfoEducationSchools],
-				Routes[RoutesEnum.AboutPersonalInfoEducationProjects]
+				Routes[RoutesEnum.AboutPersonalInfoEducationSchools]
 			],
 			loader: async () => (await import('./en/about.json')).default
 		},
@@ -109,18 +107,6 @@ export const config: Config = {
 			key: 'schools',
 			routes: [Routes[RoutesEnum.AboutPersonalInfoEducationSchools]],
 			loader: async () => (await import('./en/schools.json')).default
-		},
-		{
-			locale: LangEnum.fr_FR,
-			key: 'education-projects',
-			routes: [Routes[RoutesEnum.AboutPersonalInfoEducationProjects]],
-			loader: async () => (await import('./fr/education-projects.json')).default
-		},
-		{
-			locale: LangEnum.en_GB,
-			key: 'education-projects',
-			routes: [Routes[RoutesEnum.AboutPersonalInfoEducationSchools]],
-			loader: async () => (await import('./en/education-projects.json')).default
 		}
 	]
 };
