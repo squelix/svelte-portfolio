@@ -8,12 +8,12 @@
 
 @@ -1,41 +0,0 @@
 <svelte:head>
-	<title>{$t('projects.page.title')}</title>
-	<meta name="description" content={$t('projects.page.description')} />
-	<meta property="og:title" content={$t('projects.page.title')} />
-	<meta property="og:description" content={$t('projects.page.description')} />
-	<meta name="twitter:title" content={$t('projects.page.title')} />
-	<meta name="twitter:description" content={$t('projects.page.description')} />
+	<title>{$t('education-projects.page.title')}</title>
+	<meta name="description" content={$t('education-projects.page.description')} />
+	<meta property="og:title" content={$t('education-projects.page.title')} />
+	<meta property="og:description" content={$t('education-projects.page.description')} />
+	<meta name="twitter:title" content={$t('education-projects.page.title')} />
+	<meta name="twitter:description" content={$t('education-projects.page.description')} />
 	<link
 		rel="canonical"
 		href="{$page.url.origin}{getRoute($locale, RoutesEnum.AboutPersonalInfoEducationProjects)}"
