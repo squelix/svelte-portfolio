@@ -97,10 +97,13 @@
 		}
 
 		@include br.desktop {
-			display: grid;
-			grid-template-columns: 311px fit-content(100%) minmax(0, 1fr);
-			grid-template-rows: 40px minmax(0, 1fr);
 			height: calc(100vh - (var(--desktop-main-padding) * 2) - var(--nav-height));
+
+			&:not(.main--home) {
+				display: grid;
+				grid-template-columns: 311px fit-content(100%) minmax(0, 1fr);
+				grid-template-rows: 40px minmax(0, 1fr);
+			}
 		}
 	}
 </style>
