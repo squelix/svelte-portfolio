@@ -92,12 +92,18 @@
 		padding-bottom: 3.0625rem;
 
 		&--home {
-			background: var(--primary-2) url('/svg/bg-blur.svg') no-repeat;
+			background: var(--primary-2) url('/svg/bg-blur-mobile.svg') no-repeat;
 			background-size: cover;
 		}
 
 		@include br.desktop {
 			height: calc(100vh - (var(--desktop-main-padding) * 2) - var(--nav-height));
+
+			&--home {
+				background: var(--primary-2) url('/svg/bg-blur-desktop.svg') no-repeat;
+				background-position: 82% center;
+				background-size: 780px;
+			}
 
 			&:not(.main--home) {
 				display: grid;
