@@ -11,6 +11,8 @@ body {
 	background-color: var(--background);
 	color: var(--secondary-4);
 	font-family: var(--font-family);
+	font-feature-settings: 'calt' 1; /* Enable ligatures for IE 10+, Edge */
+	text-rendering: optimizeLegibility; /* Force ligatures for Webkit, Blink, Gecko */
 	scroll-behavior: smooth;
 }
 

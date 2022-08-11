@@ -1,0 +1,31 @@
+@use 'sass:math';
+
+@mixin fontWeight($fontWeight) {
+	@supports not (font-variation-settings: normal) {
+		font-weight: math.floor(math.div($fontWeight, 100)) * 100;
+	}
+
+	@supports (font-variation-settings: normal) {
+		font-variation-settings: 'wght' $fontWeight;
+	}
+}
+
+@mixin fontWeight300() {
+	@include fontWeight(300);
+}
+
+@mixin fontWeight400() {
+	@include fontWeight(400);
+}
+
+@mixin fontWeight500() {
+	@include fontWeight(500);
+}
+
+@mixin fontWeight600() {
+	@include fontWeight(600);
+}
+
+@mixin fontWeight700() {
+	@include fontWeight(700);
+}

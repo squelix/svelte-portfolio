@@ -6,7 +6,6 @@
 	import { locale } from '$translations';
 </script>
 
-@@ -1,41 +0,0 @@
 <svelte:head>
 	<title>{$t('education-projects.page.title')}</title>
 	<meta name="description" content={$t('education-projects.page.description')} />

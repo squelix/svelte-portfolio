@@ -47,8 +47,11 @@
 </li>
 
 <style lang="scss">
+	@use 'lib/font' as font;
+
 	.page-nav-item {
-		font-weight: normal;
+		@include font.fontWeight(400);
+
 		font-size: 1rem;
 		line-height: 1.3125;
 

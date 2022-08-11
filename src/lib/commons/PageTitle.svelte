@@ -18,18 +18,21 @@
 
 <style lang="scss">
 	@use 'lib/breakpoints' as br;
+	@use 'lib/font' as font;
 
 	.title {
-		font-weight: 450;
+		@include font.fontWeight(450);
+
 		font-size: 0.875rem;
 		line-height: 1.4;
 		padding: 1.3125rem 0 1.8125rem 1.6875rem;
 
 		@include br.desktop {
+			@include font.fontWeight(400);
+
 			padding: 0.625rem 0.75rem 0.625rem 0.875rem;
 			grid-row: 1;
 			grid-column: 2;
-			font-weight: 400;
 			font-size: 1rem;
 			line-height: 1.3125;
 			display: flex;

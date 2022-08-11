@@ -11,6 +11,7 @@
 
 <style lang="scss">
 	@use 'lib/breakpoints' as br;
+	@use 'lib/font' as font;
 
 	.header {
 		position: relative;
@@ -27,7 +28,8 @@
 		color: var(--secondary-1);
 
 		&__name {
-			font-weight: 400;
+			@include font.fontWeight(400);
+
 			font-size: 1rem;
 			line-height: 1.3125;
 		}

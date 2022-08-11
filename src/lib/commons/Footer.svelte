@@ -38,13 +38,15 @@
 
 <style lang="scss">
 	@use 'lib/breakpoints' as br;
+	@use 'lib/font' as font;
 
 	.footer {
+		@include font.fontWeight(400);
+
 		position: absolute;
 		bottom: var(--mobile-main-padding);
 		left: var(--mobile-main-padding);
 		right: var(--mobile-main-padding);
-		font-weight: 400;
 		font-size: 1rem;
 		line-height: 1.5;
 		color: var(--secondary-1);

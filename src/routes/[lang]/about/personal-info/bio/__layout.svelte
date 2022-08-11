@@ -22,9 +22,11 @@
 </section>
 
 <style lang="scss">
+	@use 'lib/font' as font;
 	.title {
+		@include font.fontWeight(450);
+
 		padding: 2.375rem 1.6875rem 0 1.6875rem;
-		font-weight: 450;
 		font-size: 1rem;
 		line-height: 1.4;
 
