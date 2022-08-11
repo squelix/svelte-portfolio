@@ -79,6 +79,10 @@
 
 			&__right {
 				display: block;
+
+				@media (max-width: 1299px) {
+					width: fit-content;
+				}
 			}
 		}
 	}

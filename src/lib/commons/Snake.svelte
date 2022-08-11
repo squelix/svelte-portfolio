@@ -415,7 +415,7 @@
 		box-shadow: inset 0px 2px 0px rgb(255 255 255 / 0.3);
 		backdrop-filter: blur(64px);
 		border-radius: 8px;
-		width: 31.875rem;
+		max-width: 31.875rem;
 		padding: 2.1875rem 2.1875rem 2.1875rem 1.875rem;
 
 		&__canvas-container {
@@ -490,6 +490,10 @@
 					}
 				}
 			}
+
+			@media (max-width: 1299px) {
+				display: none;
+			}
 		}
 
 		&__bolt {
@@ -531,6 +535,10 @@
 			&--bottom-right {
 				right: var(--right);
 			}
+		}
+
+		@media (max-width: 1299px) {
+			gap: 0;
 		}
 
 		@include br.mobile {
