@@ -31,9 +31,9 @@
 </svelte:head>
 
 <div class="content">
-	<pre class="bio bio--desktop display-only-desktop">
+	<p class="bio bio--desktop display-only-desktop">
 		{@html $formattedDesktopBiography}
-	</pre>
+	</p>
 
 	<p class="bio bio--mobile display-only-mobile">
 		{@html $formattedMobileBiography}
