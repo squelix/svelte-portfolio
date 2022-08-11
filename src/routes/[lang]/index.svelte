@@ -1,10 +1,11 @@
 <script lang="ts">
-	import { name, job } from '$stores/profile';
+	import { name, job, github } from '$stores/profile';
 	import { t } from '$translations';
 	import { getRoute, RoutesEnum } from '$lib/routing';
 	import { page } from '$app/stores';
 	import { LangEnum } from '$models/langs.enum';
 	import { locale } from '$translations';
+	import Snake from '$lib/commons/Snake.svelte';
 </script>
 
 <svelte:head>
@@ -27,23 +28,60 @@
 	/>
 </svelte:head>
 
-<h1 class="title">
-	<span class="title__first">{$t('home.title.first')}</span>
-	<span class="title__name">{$name}</span>
-	<span class="title__job">>&nbsp;{$job}</span>
-</h1>
+<div class="page">
+	<div class="page__left">
+		<h1 class="title">
+			<span class="title__first">{$t('home.title.first')}</span>
+			<span class="title__name">{$name}</span>
+			<span class="title__job">>&nbsp;{$job}</span>
+		</h1>
 
-<p class="github-text">//&nbsp;{@html $t('home.githubText')}</p>
+		<p class="github-text">//&nbsp;{@html $t('home.githubText')}</p>
 
-<p class="github-link">
-	<span class="github-link__const">const</span> <span class="github-link__var">githubLink</span> =
-	<span class="github-link__link"
-		>&quot;<a href="https://github.com/squelix" target="_blank">https://github.com/squelix</a
-		>&quot;</span
-	>
-</p>
+		{#if $github?.attributes?.url}
+			<p class="github-link">
+				<span class="github-link__const">const</span>
+				<span class="github-link__var">githubLink</span>
+				=
+				<span class="github-link__link"
+					>&quot;<a href={$github?.attributes?.url} target="_blank">{$github?.attributes?.url}</a
+					>&quot;</span
+				>
+			</p>
+		{/if}
+	</div>
+
+	<div class="page__right">
+		<Snake />
+	</div>
+</div>
 
 <style lang="scss">
+	@use 'lib/font' as font;
+	@use 'lib/breakpoints' as br;
+
+	.page {
+		&__right {
+			display: none;
+		}
+
+		@include br.desktop {
+			display: grid;
+			align-items: center;
+			gap: 4.6875rem;
+			grid-template-columns: repeat(2, minmax(0, 1fr));
+			grid-template-rows: minmax(0, 1fr);
+			height: -webkit-fill-available;
+
+			&__left {
+				justify-self: end;
+			}
+
+			&__right {
+				display: block;
+			}
+		}
+	}
 	.title {
 		display: flex;
 		flex-direction: column;
@@ -52,7 +90,8 @@
 		margin: 6rem 0 12.1875rem 0;
 
 		&__first {
-			font-weight: 400;
+			@include font.fontWeight(400);
+
 			font-size: 1.125rem;
 			line-height: 1.3333;
 			color: var(--grey);
@@ -60,7 +99,8 @@
 		}
 
 		&__name {
-			font-weight: 400;
+			@include font.fontWeight(400);
+
 			font-size: 3.875rem;
 			line-height: 1;
 			color: var(--grey);
@@ -69,26 +109,58 @@
 		}
 
 		&__job {
-			font-weight: 400;
+			@include font.fontWeight(400);
+
 			font-size: 1.25rem;
 			line-height: 1.3;
 			color: var(--accent-2);
 			margin-top: 0.3125rem;
 		}
+
+		@include br.desktop {
+			padding-right: 0;
+			margin-top: 0;
+			margin-bottom: 5.0625rem;
+
+			&__first {
+				@include font.fontWeight(450);
+
+				font-size: 1.125rem;
+				line-height: 1.3333;
+			}
+
+			&__name {
+				line-height: 1.3065;
+			}
+
+			&__job {
+				@include font.fontWeight(450);
+
+				color: var(--secondary-3);
+				font-size: 2rem;
+				line-height: 1.3125;
+			}
+		}
 	}
 
 	.github-text {
+		@include font.fontWeight(450);
+
 		padding: 0 1.6875rem;
-		font-weight: 450;
 		font-size: 0.875rem;
 		line-height: 1.4;
 		color: var(--secondary-1);
 		margin-bottom: 1rem;
+
+		@include br.desktop {
+			padding-right: 0;
+		}
 	}
 
 	.github-link {
+		@include font.fontWeight(500);
+
 		padding: 0 1.6875rem;
-		font-weight: 500;
 		font-size: 0.875rem;
 		line-height: 1.4;
 		color: var(--secondary-4);
@@ -104,6 +176,10 @@
 
 		&__link {
 			color: var(--accent-3);
+		}
+
+		@include br.desktop {
+			padding-right: 0;
 		}
 	}
 </style>
