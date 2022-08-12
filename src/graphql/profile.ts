@@ -13,6 +13,7 @@ export const GET_PROFILE_QUERY = gql`
 					description
 					job
 					birthYear
+					jobSearch
 					picture {
 						data {
 							attributes {

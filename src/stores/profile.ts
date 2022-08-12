@@ -58,3 +58,17 @@ export const formattedDesktopBiography = derived(biography, ($biography) => {
 export const formattedMobileBiography = derived(biography, ($biography) =>
 	$biography?.replace(/\n/g, ' ')
 );
+
+const jobSearch = derived(profile, ($profile) => $profile?.profile?.data?.attributes?.jobSearch);
+
+export const formattedDesktopJobSearch = derived(jobSearch, ($jobSearch) => {
+	const lines = ($jobSearch?.split(/\r\n|\r|\n/) ?? [])
+		.map((line) => `<span class="count-line"></span><span> * ${line}</span>\n`)
+		.join('');
+
+	return `<span class="count-line"></span><span>/**</span>\n${lines}\n<span class="count-line"></span><span> */</span>`;
+});
+
+export const formattedMobileJobSearch = derived(jobSearch, ($jobSearch) =>
+	$jobSearch?.replace(/\n/g, ' ')
+);

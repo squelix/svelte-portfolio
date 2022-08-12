@@ -1868,6 +1868,7 @@ export type GetProfileQuery = {
 				description: string;
 				job: string;
 				birthYear: number;
+				jobSearch: string;
 				picture: {
 					__typename?: 'UploadFileEntityResponse';
 					data?: {
