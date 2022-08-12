@@ -23,6 +23,7 @@
 
 <style lang="scss">
 	@use 'lib/font' as font;
+
 	.title {
 		@include font.fontWeight(450);
 
