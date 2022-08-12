@@ -10,15 +10,10 @@ export type Scalars = {
 	Boolean: boolean;
 	Int: number;
 	Float: number;
-	/** A date string, such as 2007-12-03, compliant with the `full-date` format outlined in section 5.6 of the RFC 3339 profile of the ISO 8601 standard for representation of dates and times using the Gregorian calendar. */
 	Date: any;
-	/** A date-time string at UTC, such as 2007-12-03T10:15:30Z, compliant with the `date-time` format outlined in section 5.6 of the RFC 3339 profile of the ISO 8601 standard for representation of dates and times using the Gregorian calendar. */
 	DateTime: any;
-	/** A string used to identify an i18n locale */
 	I18NLocaleCode: any;
-	/** The `JSON` scalar type represents JSON values as specified by [ECMA-404](http://www.ecma-international.org/publications/files/ECMA-ST/ECMA-404.pdf). */
 	JSON: any;
-	/** The `Upload` scalar type represents a file upload. */
 	Upload: any;
 };
 
@@ -29,6 +24,7 @@ export type BooleanFilterInput = {
 	containsi?: InputMaybe<Scalars['Boolean']>;
 	endsWith?: InputMaybe<Scalars['Boolean']>;
 	eq?: InputMaybe<Scalars['Boolean']>;
+	eqi?: InputMaybe<Scalars['Boolean']>;
 	gt?: InputMaybe<Scalars['Boolean']>;
 	gte?: InputMaybe<Scalars['Boolean']>;
 	in?: InputMaybe<Array<InputMaybe<Scalars['Boolean']>>>;
@@ -52,6 +48,7 @@ export type DateFilterInput = {
 	containsi?: InputMaybe<Scalars['Date']>;
 	endsWith?: InputMaybe<Scalars['Date']>;
 	eq?: InputMaybe<Scalars['Date']>;
+	eqi?: InputMaybe<Scalars['Date']>;
 	gt?: InputMaybe<Scalars['Date']>;
 	gte?: InputMaybe<Scalars['Date']>;
 	in?: InputMaybe<Array<InputMaybe<Scalars['Date']>>>;
@@ -75,6 +72,7 @@ export type DateTimeFilterInput = {
 	containsi?: InputMaybe<Scalars['DateTime']>;
 	endsWith?: InputMaybe<Scalars['DateTime']>;
 	eq?: InputMaybe<Scalars['DateTime']>;
+	eqi?: InputMaybe<Scalars['DateTime']>;
 	gt?: InputMaybe<Scalars['DateTime']>;
 	gte?: InputMaybe<Scalars['DateTime']>;
 	in?: InputMaybe<Array<InputMaybe<Scalars['DateTime']>>>;
@@ -104,6 +102,7 @@ export type FloatFilterInput = {
 	containsi?: InputMaybe<Scalars['Float']>;
 	endsWith?: InputMaybe<Scalars['Float']>;
 	eq?: InputMaybe<Scalars['Float']>;
+	eqi?: InputMaybe<Scalars['Float']>;
 	gt?: InputMaybe<Scalars['Float']>;
 	gte?: InputMaybe<Scalars['Float']>;
 	in?: InputMaybe<Array<InputMaybe<Scalars['Float']>>>;
@@ -134,6 +133,7 @@ export type GenericMorph =
 	| Skill
 	| SocialNetwork
 	| UploadFile
+	| UploadFolder
 	| UsersPermissionsPermission
 	| UsersPermissionsRole
 	| UsersPermissionsUser;
@@ -181,6 +181,7 @@ export type IdFilterInput = {
 	containsi?: InputMaybe<Scalars['ID']>;
 	endsWith?: InputMaybe<Scalars['ID']>;
 	eq?: InputMaybe<Scalars['ID']>;
+	eqi?: InputMaybe<Scalars['ID']>;
 	gt?: InputMaybe<Scalars['ID']>;
 	gte?: InputMaybe<Scalars['ID']>;
 	in?: InputMaybe<Array<InputMaybe<Scalars['ID']>>>;
@@ -271,6 +272,7 @@ export type IntFilterInput = {
 	containsi?: InputMaybe<Scalars['Int']>;
 	endsWith?: InputMaybe<Scalars['Int']>;
 	eq?: InputMaybe<Scalars['Int']>;
+	eqi?: InputMaybe<Scalars['Int']>;
 	gt?: InputMaybe<Scalars['Int']>;
 	gte?: InputMaybe<Scalars['Int']>;
 	in?: InputMaybe<Array<InputMaybe<Scalars['Int']>>>;
@@ -358,6 +360,7 @@ export type JsonFilterInput = {
 	containsi?: InputMaybe<Scalars['JSON']>;
 	endsWith?: InputMaybe<Scalars['JSON']>;
 	eq?: InputMaybe<Scalars['JSON']>;
+	eqi?: InputMaybe<Scalars['JSON']>;
 	gt?: InputMaybe<Scalars['JSON']>;
 	gte?: InputMaybe<Scalars['JSON']>;
 	in?: InputMaybe<Array<InputMaybe<Scalars['JSON']>>>;
@@ -670,46 +673,29 @@ export type LanguageRelationResponseCollection = {
 
 export type Mutation = {
 	__typename?: 'Mutation';
-	createIcon?: Maybe<IconEntityResponse>;
+	/** Change user password. Confirm with the current password. */
+	changePassword?: Maybe<UsersPermissionsLoginPayload>;
 	createIconLocalization?: Maybe<IconEntityResponse>;
-	createInterest?: Maybe<InterestEntityResponse>;
 	createInterestLocalization?: Maybe<InterestEntityResponse>;
-	createJob?: Maybe<JobEntityResponse>;
 	createJobLocalization?: Maybe<JobEntityResponse>;
-	createJobMission?: Maybe<JobMissionEntityResponse>;
 	createJobMissionLocalization?: Maybe<JobMissionEntityResponse>;
-	createJobSkill?: Maybe<JobSkillEntityResponse>;
 	createJobSkillLocalization?: Maybe<JobSkillEntityResponse>;
-	createLanguage?: Maybe<LanguageEntityResponse>;
 	createLanguageLocalization?: Maybe<LanguageEntityResponse>;
 	createProfileLocalization?: Maybe<ProfileEntityResponse>;
-	createSchool?: Maybe<SchoolEntityResponse>;
 	createSchoolLocalization?: Maybe<SchoolEntityResponse>;
-	createSchoolProject?: Maybe<SchoolProjectEntityResponse>;
 	createSchoolProjectLocalization?: Maybe<SchoolProjectEntityResponse>;
-	createSkill?: Maybe<SkillEntityResponse>;
 	createSkillLocalization?: Maybe<SkillEntityResponse>;
-	createSocialNetwork?: Maybe<SocialNetworkEntityResponse>;
 	createUploadFile?: Maybe<UploadFileEntityResponse>;
+	createUploadFolder?: Maybe<UploadFolderEntityResponse>;
 	/** Create a new role */
 	createUsersPermissionsRole?: Maybe<UsersPermissionsCreateRolePayload>;
 	/** Create a new user */
 	createUsersPermissionsUser: UsersPermissionsUserEntityResponse;
-	deleteIcon?: Maybe<IconEntityResponse>;
-	deleteInterest?: Maybe<InterestEntityResponse>;
-	deleteJob?: Maybe<JobEntityResponse>;
-	deleteJobMission?: Maybe<JobMissionEntityResponse>;
-	deleteJobSkill?: Maybe<JobSkillEntityResponse>;
-	deleteLanguage?: Maybe<LanguageEntityResponse>;
-	deleteProfile?: Maybe<ProfileEntityResponse>;
-	deleteSchool?: Maybe<SchoolEntityResponse>;
-	deleteSchoolProject?: Maybe<SchoolProjectEntityResponse>;
-	deleteSkill?: Maybe<SkillEntityResponse>;
-	deleteSocialNetwork?: Maybe<SocialNetworkEntityResponse>;
 	deleteUploadFile?: Maybe<UploadFileEntityResponse>;
+	deleteUploadFolder?: Maybe<UploadFolderEntityResponse>;
 	/** Delete an existing role */
 	deleteUsersPermissionsRole?: Maybe<UsersPermissionsDeleteRolePayload>;
-	/** Update an existing user */
+	/** Delete an existing user */
 	deleteUsersPermissionsUser: UsersPermissionsUserEntityResponse;
 	/** Confirm an email users email address */
 	emailConfirmation?: Maybe<UsersPermissionsLoginPayload>;
@@ -723,18 +709,8 @@ export type Mutation = {
 	/** Reset user password. Confirm with a code (resetToken from forgotPassword) */
 	resetPassword?: Maybe<UsersPermissionsLoginPayload>;
 	updateFileInfo: UploadFileEntityResponse;
-	updateIcon?: Maybe<IconEntityResponse>;
-	updateInterest?: Maybe<InterestEntityResponse>;
-	updateJob?: Maybe<JobEntityResponse>;
-	updateJobMission?: Maybe<JobMissionEntityResponse>;
-	updateJobSkill?: Maybe<JobSkillEntityResponse>;
-	updateLanguage?: Maybe<LanguageEntityResponse>;
-	updateProfile?: Maybe<ProfileEntityResponse>;
-	updateSchool?: Maybe<SchoolEntityResponse>;
-	updateSchoolProject?: Maybe<SchoolProjectEntityResponse>;
-	updateSkill?: Maybe<SkillEntityResponse>;
-	updateSocialNetwork?: Maybe<SocialNetworkEntityResponse>;
 	updateUploadFile?: Maybe<UploadFileEntityResponse>;
+	updateUploadFolder?: Maybe<UploadFolderEntityResponse>;
 	/** Update an existing role */
 	updateUsersPermissionsRole?: Maybe<UsersPermissionsUpdateRolePayload>;
 	/** Update an existing user */
@@ -742,19 +718,15 @@ export type Mutation = {
 	upload: UploadFileEntityResponse;
 };
 
-export type MutationCreateIconArgs = {
-	data: IconInput;
-	locale?: InputMaybe<Scalars['I18NLocaleCode']>;
+export type MutationChangePasswordArgs = {
+	currentPassword: Scalars['String'];
+	password: Scalars['String'];
+	passwordConfirmation: Scalars['String'];
 };
 
 export type MutationCreateIconLocalizationArgs = {
 	data?: InputMaybe<IconInput>;
 	id?: InputMaybe<Scalars['ID']>;
-	locale?: InputMaybe<Scalars['I18NLocaleCode']>;
-};
-
-export type MutationCreateInterestArgs = {
-	data: InterestInput;
 	locale?: InputMaybe<Scalars['I18NLocaleCode']>;
 };
 
@@ -764,19 +736,9 @@ export type MutationCreateInterestLocalizationArgs = {
 	locale?: InputMaybe<Scalars['I18NLocaleCode']>;
 };
 
-export type MutationCreateJobArgs = {
-	data: JobInput;
-	locale?: InputMaybe<Scalars['I18NLocaleCode']>;
-};
-
 export type MutationCreateJobLocalizationArgs = {
 	data?: InputMaybe<JobInput>;
 	id?: InputMaybe<Scalars['ID']>;
-	locale?: InputMaybe<Scalars['I18NLocaleCode']>;
-};
-
-export type MutationCreateJobMissionArgs = {
-	data: JobMissionInput;
 	locale?: InputMaybe<Scalars['I18NLocaleCode']>;
 };
 
@@ -786,19 +748,9 @@ export type MutationCreateJobMissionLocalizationArgs = {
 	locale?: InputMaybe<Scalars['I18NLocaleCode']>;
 };
 
-export type MutationCreateJobSkillArgs = {
-	data: JobSkillInput;
-	locale?: InputMaybe<Scalars['I18NLocaleCode']>;
-};
-
 export type MutationCreateJobSkillLocalizationArgs = {
 	data?: InputMaybe<JobSkillInput>;
 	id?: InputMaybe<Scalars['ID']>;
-	locale?: InputMaybe<Scalars['I18NLocaleCode']>;
-};
-
-export type MutationCreateLanguageArgs = {
-	data: LanguageInput;
 	locale?: InputMaybe<Scalars['I18NLocaleCode']>;
 };
 
@@ -814,19 +766,9 @@ export type MutationCreateProfileLocalizationArgs = {
 	locale?: InputMaybe<Scalars['I18NLocaleCode']>;
 };
 
-export type MutationCreateSchoolArgs = {
-	data: SchoolInput;
-	locale?: InputMaybe<Scalars['I18NLocaleCode']>;
-};
-
 export type MutationCreateSchoolLocalizationArgs = {
 	data?: InputMaybe<SchoolInput>;
 	id?: InputMaybe<Scalars['ID']>;
-	locale?: InputMaybe<Scalars['I18NLocaleCode']>;
-};
-
-export type MutationCreateSchoolProjectArgs = {
-	data: SchoolProjectInput;
 	locale?: InputMaybe<Scalars['I18NLocaleCode']>;
 };
 
@@ -836,23 +778,18 @@ export type MutationCreateSchoolProjectLocalizationArgs = {
 	locale?: InputMaybe<Scalars['I18NLocaleCode']>;
 };
 
-export type MutationCreateSkillArgs = {
-	data: SkillInput;
-	locale?: InputMaybe<Scalars['I18NLocaleCode']>;
-};
-
 export type MutationCreateSkillLocalizationArgs = {
 	data?: InputMaybe<SkillInput>;
 	id?: InputMaybe<Scalars['ID']>;
 	locale?: InputMaybe<Scalars['I18NLocaleCode']>;
 };
 
-export type MutationCreateSocialNetworkArgs = {
-	data: SocialNetworkInput;
-};
-
 export type MutationCreateUploadFileArgs = {
 	data: UploadFileInput;
+};
+
+export type MutationCreateUploadFolderArgs = {
+	data: UploadFolderInput;
 };
 
 export type MutationCreateUsersPermissionsRoleArgs = {
@@ -863,60 +800,11 @@ export type MutationCreateUsersPermissionsUserArgs = {
 	data: UsersPermissionsUserInput;
 };
 
-export type MutationDeleteIconArgs = {
-	id: Scalars['ID'];
-	locale?: InputMaybe<Scalars['I18NLocaleCode']>;
-};
-
-export type MutationDeleteInterestArgs = {
-	id: Scalars['ID'];
-	locale?: InputMaybe<Scalars['I18NLocaleCode']>;
-};
-
-export type MutationDeleteJobArgs = {
-	id: Scalars['ID'];
-	locale?: InputMaybe<Scalars['I18NLocaleCode']>;
-};
-
-export type MutationDeleteJobMissionArgs = {
-	id: Scalars['ID'];
-	locale?: InputMaybe<Scalars['I18NLocaleCode']>;
-};
-
-export type MutationDeleteJobSkillArgs = {
-	id: Scalars['ID'];
-	locale?: InputMaybe<Scalars['I18NLocaleCode']>;
-};
-
-export type MutationDeleteLanguageArgs = {
-	id: Scalars['ID'];
-	locale?: InputMaybe<Scalars['I18NLocaleCode']>;
-};
-
-export type MutationDeleteProfileArgs = {
-	locale?: InputMaybe<Scalars['I18NLocaleCode']>;
-};
-
-export type MutationDeleteSchoolArgs = {
-	id: Scalars['ID'];
-	locale?: InputMaybe<Scalars['I18NLocaleCode']>;
-};
-
-export type MutationDeleteSchoolProjectArgs = {
-	id: Scalars['ID'];
-	locale?: InputMaybe<Scalars['I18NLocaleCode']>;
-};
-
-export type MutationDeleteSkillArgs = {
-	id: Scalars['ID'];
-	locale?: InputMaybe<Scalars['I18NLocaleCode']>;
-};
-
-export type MutationDeleteSocialNetworkArgs = {
-	id: Scalars['ID'];
-};
-
 export type MutationDeleteUploadFileArgs = {
+	id: Scalars['ID'];
+};
+
+export type MutationDeleteUploadFolderArgs = {
 	id: Scalars['ID'];
 };
 
@@ -966,72 +854,13 @@ export type MutationUpdateFileInfoArgs = {
 	info?: InputMaybe<FileInfoInput>;
 };
 
-export type MutationUpdateIconArgs = {
-	data: IconInput;
-	id: Scalars['ID'];
-	locale?: InputMaybe<Scalars['I18NLocaleCode']>;
-};
-
-export type MutationUpdateInterestArgs = {
-	data: InterestInput;
-	id: Scalars['ID'];
-	locale?: InputMaybe<Scalars['I18NLocaleCode']>;
-};
-
-export type MutationUpdateJobArgs = {
-	data: JobInput;
-	id: Scalars['ID'];
-	locale?: InputMaybe<Scalars['I18NLocaleCode']>;
-};
-
-export type MutationUpdateJobMissionArgs = {
-	data: JobMissionInput;
-	id: Scalars['ID'];
-	locale?: InputMaybe<Scalars['I18NLocaleCode']>;
-};
-
-export type MutationUpdateJobSkillArgs = {
-	data: JobSkillInput;
-	id: Scalars['ID'];
-	locale?: InputMaybe<Scalars['I18NLocaleCode']>;
-};
-
-export type MutationUpdateLanguageArgs = {
-	data: LanguageInput;
-	id: Scalars['ID'];
-	locale?: InputMaybe<Scalars['I18NLocaleCode']>;
-};
-
-export type MutationUpdateProfileArgs = {
-	data: ProfileInput;
-	locale?: InputMaybe<Scalars['I18NLocaleCode']>;
-};
-
-export type MutationUpdateSchoolArgs = {
-	data: SchoolInput;
-	id: Scalars['ID'];
-	locale?: InputMaybe<Scalars['I18NLocaleCode']>;
-};
-
-export type MutationUpdateSchoolProjectArgs = {
-	data: SchoolProjectInput;
-	id: Scalars['ID'];
-	locale?: InputMaybe<Scalars['I18NLocaleCode']>;
-};
-
-export type MutationUpdateSkillArgs = {
-	data: SkillInput;
-	id: Scalars['ID'];
-	locale?: InputMaybe<Scalars['I18NLocaleCode']>;
-};
-
-export type MutationUpdateSocialNetworkArgs = {
-	data: SocialNetworkInput;
-	id: Scalars['ID'];
-};
-
 export type MutationUpdateUploadFileArgs = {
 	data: UploadFileInput;
+	id: Scalars['ID'];
+};
+
+export type MutationUpdateUploadFolderArgs = {
+	data: UploadFolderInput;
 	id: Scalars['ID'];
 };
 
@@ -1078,6 +907,7 @@ export type Profile = {
 	email: Scalars['String'];
 	firstname: Scalars['String'];
 	job: Scalars['String'];
+	jobSearch: Scalars['String'];
 	lastname: Scalars['String'];
 	locale?: Maybe<Scalars['String']>;
 	localizations?: Maybe<ProfileRelationResponseCollection>;
@@ -1119,6 +949,7 @@ export type ProfileInput = {
 	email?: InputMaybe<Scalars['String']>;
 	firstname?: InputMaybe<Scalars['String']>;
 	job?: InputMaybe<Scalars['String']>;
+	jobSearch?: InputMaybe<Scalars['String']>;
 	lastname?: InputMaybe<Scalars['String']>;
 	phone?: InputMaybe<Scalars['String']>;
 	picture?: InputMaybe<Scalars['ID']>;
@@ -1166,6 +997,8 @@ export type Query = {
 	socialNetworks?: Maybe<SocialNetworkEntityResponseCollection>;
 	uploadFile?: Maybe<UploadFileEntityResponse>;
 	uploadFiles?: Maybe<UploadFileEntityResponseCollection>;
+	uploadFolder?: Maybe<UploadFolderEntityResponse>;
+	uploadFolders?: Maybe<UploadFolderEntityResponseCollection>;
 	usersPermissionsRole?: Maybe<UsersPermissionsRoleEntityResponse>;
 	usersPermissionsRoles?: Maybe<UsersPermissionsRoleEntityResponseCollection>;
 	usersPermissionsUser?: Maybe<UsersPermissionsUserEntityResponse>;
@@ -1321,6 +1154,16 @@ export type QueryUploadFileArgs = {
 
 export type QueryUploadFilesArgs = {
 	filters?: InputMaybe<UploadFileFiltersInput>;
+	pagination?: InputMaybe<PaginationArg>;
+	sort?: InputMaybe<Array<InputMaybe<Scalars['String']>>>;
+};
+
+export type QueryUploadFolderArgs = {
+	id?: InputMaybe<Scalars['ID']>;
+};
+
+export type QueryUploadFoldersArgs = {
+	filters?: InputMaybe<UploadFolderFiltersInput>;
 	pagination?: InputMaybe<PaginationArg>;
 	sort?: InputMaybe<Array<InputMaybe<Scalars['String']>>>;
 };
@@ -1601,15 +1444,6 @@ export type SocialNetworkFiltersInput = {
 	url?: InputMaybe<StringFilterInput>;
 };
 
-export type SocialNetworkInput = {
-	icon?: InputMaybe<Scalars['ID']>;
-	publishedAt?: InputMaybe<Scalars['DateTime']>;
-	sitemap_exclude?: InputMaybe<Scalars['Boolean']>;
-	slug?: InputMaybe<Scalars['String']>;
-	title?: InputMaybe<Scalars['String']>;
-	url?: InputMaybe<Scalars['String']>;
-};
-
 export type SocialNetworkRelationResponseCollection = {
 	__typename?: 'SocialNetworkRelationResponseCollection';
 	data: Array<SocialNetworkEntity>;
@@ -1622,6 +1456,7 @@ export type StringFilterInput = {
 	containsi?: InputMaybe<Scalars['String']>;
 	endsWith?: InputMaybe<Scalars['String']>;
 	eq?: InputMaybe<Scalars['String']>;
+	eqi?: InputMaybe<Scalars['String']>;
 	gt?: InputMaybe<Scalars['String']>;
 	gte?: InputMaybe<Scalars['String']>;
 	in?: InputMaybe<Array<InputMaybe<Scalars['String']>>>;
@@ -1682,6 +1517,8 @@ export type UploadFileFiltersInput = {
 	caption?: InputMaybe<StringFilterInput>;
 	createdAt?: InputMaybe<DateTimeFilterInput>;
 	ext?: InputMaybe<StringFilterInput>;
+	folder?: InputMaybe<UploadFolderFiltersInput>;
+	folderPath?: InputMaybe<StringFilterInput>;
 	formats?: InputMaybe<JsonFilterInput>;
 	hash?: InputMaybe<StringFilterInput>;
 	height?: InputMaybe<IntFilterInput>;
@@ -1704,6 +1541,8 @@ export type UploadFileInput = {
 	alternativeText?: InputMaybe<Scalars['String']>;
 	caption?: InputMaybe<Scalars['String']>;
 	ext?: InputMaybe<Scalars['String']>;
+	folder?: InputMaybe<Scalars['ID']>;
+	folderPath?: InputMaybe<Scalars['String']>;
 	formats?: InputMaybe<Scalars['JSON']>;
 	hash?: InputMaybe<Scalars['String']>;
 	height?: InputMaybe<Scalars['Int']>;
@@ -1716,6 +1555,83 @@ export type UploadFileInput = {
 	size?: InputMaybe<Scalars['Float']>;
 	url?: InputMaybe<Scalars['String']>;
 	width?: InputMaybe<Scalars['Int']>;
+};
+
+export type UploadFileRelationResponseCollection = {
+	__typename?: 'UploadFileRelationResponseCollection';
+	data: Array<UploadFileEntity>;
+};
+
+export type UploadFolder = {
+	__typename?: 'UploadFolder';
+	children?: Maybe<UploadFolderRelationResponseCollection>;
+	createdAt?: Maybe<Scalars['DateTime']>;
+	files?: Maybe<UploadFileRelationResponseCollection>;
+	name: Scalars['String'];
+	parent?: Maybe<UploadFolderEntityResponse>;
+	path: Scalars['String'];
+	pathId: Scalars['Int'];
+	updatedAt?: Maybe<Scalars['DateTime']>;
+};
+
+export type UploadFolderChildrenArgs = {
+	filters?: InputMaybe<UploadFolderFiltersInput>;
+	pagination?: InputMaybe<PaginationArg>;
+	sort?: InputMaybe<Array<InputMaybe<Scalars['String']>>>;
+};
+
+export type UploadFolderFilesArgs = {
+	filters?: InputMaybe<UploadFileFiltersInput>;
+	pagination?: InputMaybe<PaginationArg>;
+	sort?: InputMaybe<Array<InputMaybe<Scalars['String']>>>;
+};
+
+export type UploadFolderEntity = {
+	__typename?: 'UploadFolderEntity';
+	attributes?: Maybe<UploadFolder>;
+	id?: Maybe<Scalars['ID']>;
+};
+
+export type UploadFolderEntityResponse = {
+	__typename?: 'UploadFolderEntityResponse';
+	data?: Maybe<UploadFolderEntity>;
+};
+
+export type UploadFolderEntityResponseCollection = {
+	__typename?: 'UploadFolderEntityResponseCollection';
+	data: Array<UploadFolderEntity>;
+	meta: ResponseCollectionMeta;
+};
+
+export type UploadFolderFiltersInput = {
+	and?: InputMaybe<Array<InputMaybe<UploadFolderFiltersInput>>>;
+	children?: InputMaybe<UploadFolderFiltersInput>;
+	createdAt?: InputMaybe<DateTimeFilterInput>;
+	files?: InputMaybe<UploadFileFiltersInput>;
+	id?: InputMaybe<IdFilterInput>;
+	name?: InputMaybe<StringFilterInput>;
+	not?: InputMaybe<UploadFolderFiltersInput>;
+	or?: InputMaybe<Array<InputMaybe<UploadFolderFiltersInput>>>;
+	parent?: InputMaybe<UploadFolderFiltersInput>;
+	path?: InputMaybe<StringFilterInput>;
+	pathId?: InputMaybe<IntFilterInput>;
+	sitemap_exclude?: InputMaybe<BooleanFilterInput>;
+	updatedAt?: InputMaybe<DateTimeFilterInput>;
+};
+
+export type UploadFolderInput = {
+	children?: InputMaybe<Array<InputMaybe<Scalars['ID']>>>;
+	files?: InputMaybe<Array<InputMaybe<Scalars['ID']>>>;
+	name?: InputMaybe<Scalars['String']>;
+	parent?: InputMaybe<Scalars['ID']>;
+	path?: InputMaybe<Scalars['String']>;
+	pathId?: InputMaybe<Scalars['Int']>;
+	sitemap_exclude?: InputMaybe<Scalars['Boolean']>;
+};
+
+export type UploadFolderRelationResponseCollection = {
+	__typename?: 'UploadFolderRelationResponseCollection';
+	data: Array<UploadFolderEntity>;
 };
 
 export type UsersPermissionsCreateRolePayload = {
