@@ -48,7 +48,13 @@ export const job = derived(profile, ($profile) => $profile?.profile?.data?.attri
 const biography = derived(profile, ($profile) => $profile?.profile?.data?.attributes?.description);
 
 export const formattedDesktopBiography = derived(biography, ($biography) => {
-	const lines = ($biography?.split(/\r\n|\r|\n/) ?? [])
+	const linesTab = $biography?.split(/\r\n|\r|\n/) ?? [];
+
+	if (linesTab.length === 0) {
+		return undefined;
+	}
+
+	const lines = linesTab
 		.map((line) => `<span class="count-line"></span><span> * ${line}</span>\n`)
 		.join('');
 
