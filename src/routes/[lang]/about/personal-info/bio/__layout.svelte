@@ -1,7 +1,7 @@
 <script lang="ts" context="module">
-	import { itemSelected } from '$stores/page-sub-nav';
+	import { setItem } from '$stores/page-sub-nav';
 
-	itemSelected.set('personal-info-bio');
+	setItem('personal-info-bio');
 </script>
 
 <script lang="ts">

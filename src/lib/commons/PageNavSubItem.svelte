@@ -1,5 +1,5 @@
 <script lang="ts">
-	import { itemSelected } from '$stores/page-sub-nav';
+	import { itemSelected, itemOpened } from '$stores/page-sub-nav';
 	import Icon from '$lib/SvgIcon.svelte';
 	import Chevron from '$icons/list-chevron-2.svg?raw';
 	import Folder from '$icons/folder.svg?raw';
@@ -12,10 +12,14 @@
 	export let index: number;
 
 	const setSeletedItem = (itemId: string) => {
-		if (itemId === $itemSelected) {
-			itemSelected.set(undefined);
-		} else {
+		if (itemId !== $itemSelected) {
 			itemSelected.set(itemId);
+		}
+
+		if (itemId === $itemOpened) {
+			itemOpened.set(undefined);
+		} else {
+			itemOpened.set(itemId);
 		}
 	};
 </script>
@@ -25,12 +29,12 @@
 		<button
 			type="button"
 			class="btn-clean page-nav-sub-item__button"
-			aria-expanded={$itemSelected === item.id}
+			aria-expanded={$itemOpened === item.id}
 			on:click={() => setSeletedItem(item.id)}
 		>
 			<span
 				class="page-nav-sub-item__button__icon-chevron"
-				class:page-nav-sub-item__button__icon-chevron--expanded={$itemSelected === item.id}
+				class:page-nav-sub-item__button__icon-chevron--expanded={$itemOpened === item.id}
 			>
 				<Icon data={Chevron} width="100%" />
 			</span>
@@ -41,7 +45,7 @@
 			</span>
 			<span class="page-nav-sub-item__button__text">{$t(item.labelKey)}</span>
 		</button>
-		<ul class="page-nav-sub-item__sub-items" aria-hidden={$itemSelected !== item.id}>
+		<ul class="page-nav-sub-item__sub-items" aria-hidden={$itemOpened !== item.id}>
 			{#each item.items || [] as item}
 				<PageNavSubItemItem {item} />
 			{/each}

@@ -2,8 +2,8 @@
 	import PageNavSubItem from './PageNavSubItem.svelte';
 	import Icon from '$lib/SvgIcon.svelte';
 	import Chevron from '$icons/list-chevron.svg?raw';
-	import { itemSelected } from '$stores/page-nav';
-	import { itemSelected as subItemSelected } from '$stores/page-sub-nav';
+	import { itemSelected, itemOpened } from '$stores/page-nav';
+	import { itemOpened as subItemOpened } from '$stores/page-sub-nav';
 	import { t } from '$translations';
 
 	import type { PageNavItemInterface } from '$models/page-nav-item.interface';
@@ -11,12 +11,16 @@
 	export let item: PageNavItemInterface;
 
 	const setSeletedItem = (itemId: string) => {
-		if (itemId === $itemSelected) {
-			itemSelected.set(undefined);
-		} else {
+		if (itemId !== $itemSelected) {
 			itemSelected.set(itemId);
 		}
-		subItemSelected.set(undefined);
+
+		if (itemId === $itemOpened) {
+			itemOpened.set(undefined);
+		} else {
+			itemOpened.set(itemId);
+		}
+		subItemOpened.set(undefined);
 	};
 </script>
 
@@ -25,18 +29,18 @@
 		<button
 			type="button"
 			class="btn-clean page-nav-item__button"
-			aria-expanded={$itemSelected === item.id}
+			aria-expanded={$itemOpened === item.id}
 			on:click={() => setSeletedItem(item.id)}
 		>
 			<span
 				class="page-nav-item__button__icon"
-				class:page-nav-item__button__icon--expanded={$itemSelected === item.id}
+				class:page-nav-item__button__icon--expanded={$itemOpened === item.id}
 			>
 				<Icon data={Chevron} width="100%" />
 			</span>
 			<span class="page-nav-item__button__text">{$t(item.labelKey)}</span>
 		</button>
-		<ul class="page-nav-item__sub-items" aria-hidden={$itemSelected !== item.id}>
+		<ul class="page-nav-item__sub-items" aria-hidden={$itemOpened !== item.id}>
 			{#each item.items || [] as item, index}
 				<PageNavSubItem {item} {index} />
 			{/each}
