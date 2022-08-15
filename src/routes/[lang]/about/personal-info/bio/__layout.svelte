@@ -6,10 +6,10 @@
 
 <script lang="ts">
 	import { aboutSubTitleItem, aboutTitleItem } from '$stores/title';
-	import { pageNavItems, personalInfoNavItems } from '$lib/menu/nav';
+	import { aboutPageNavItems, personalInfoNavItems } from '$lib/menu/nav';
 	import { t } from '$translations';
 
-	const item = aboutTitleItem(pageNavItems);
+	const item = aboutTitleItem(aboutPageNavItems);
 	const subItem = aboutSubTitleItem(personalInfoNavItems);
 </script>
 

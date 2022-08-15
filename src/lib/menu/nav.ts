@@ -41,7 +41,7 @@ export const personalInfoNavItems: PageNavItemInterface[] = [
 	}
 ];
 
-export const pageNavItems: PageNavItemInterface[] = [
+export const aboutPageNavItems: PageNavItemInterface[] = [
 	{
 		// Personal infos
 		id: 'personal-info',
@@ -67,4 +67,19 @@ export const pageNavItems: PageNavItemInterface[] = [
 		]
 	},
 	{ id: 'hobbies', labelKey: 'about.nav.2' }
+];
+
+export const contactPageNavItems: PageNavItemInterface[] = [
+	{
+		// Personal infos
+		id: 'contacts',
+		labelKey: 'contact.nav.0'
+		// items: personalInfoNavItems
+	},
+	{
+		// Personal infos
+		id: 'find-me-also-in',
+		labelKey: 'contact.nav.1'
+		// items: personalInfoNavItems
+	}
 ];
