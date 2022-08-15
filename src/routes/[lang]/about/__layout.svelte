@@ -12,9 +12,10 @@
 	import { LangEnum } from '$models/langs.enum';
 	import PageNav from '$lib/commons/PageNav.svelte';
 	import PageTitle from '$lib/commons/PageTitle.svelte';
-	import { pageNavItems } from '$lib/menu/nav';
+	import { aboutPageNavItems } from '$lib/menu/nav';
+	import BorderBottom from '$lib/commons/BorderBottom.svelte';
 
-	const item = aboutTitleItem(pageNavItems);
+	const item = aboutTitleItem(aboutPageNavItems);
 </script>
 
 <svelte:head>
@@ -36,25 +37,12 @@
 	/>
 </svelte:head>
 
-<PageTitle item={$item} text={$t('about.title')} />
+<PageTitle textDesktop={$t($item?.labelKey)} textMobile={$t('about.title')} />
 
-<span class="border-bottom" />
+<BorderBottom />
 
-<PageNav ariaLabel={$t('about.aria.nav')} items={pageNavItems} />
+<PageNav ariaLabel={$t('about.aria.nav')} items={aboutPageNavItems} />
 
 <slot />
 
-<style lang="scss">
-	@use 'lib/breakpoints' as br;
-
-	.border-bottom {
-		display: none;
-
-		@include br.desktop {
-			display: block;
-			grid-column: 3;
-			grid-row: 1;
-			border-bottom: 1px solid var(--lines);
-		}
-	}
-</style>
+<style lang="scss"></style>

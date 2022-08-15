@@ -1,17 +1,14 @@
 <script lang="ts">
 	import Icon from '$lib/SvgIcon.svelte';
 	import Close from '$icons/close.svg?raw';
-	import { t } from '$translations';
 
-	import type { PageNavItemInterface } from '$models/page-nav-item.interface';
-
-	export let item: PageNavItemInterface;
-	export let text: string;
+	export let textDesktop: string;
+	export let textMobile: string;
 </script>
 
 <h1 class="title">
-	<span class="display-only-mobile">{text}</span>
-	<span class="display-only-desktop">{$t(item?.labelKey)}</span>
+	<span class="display-only-mobile">{textMobile}</span>
+	<span class="display-only-desktop">{textDesktop}</span>
 
 	<Icon class="display-only-desktop" data={Close} />
 </h1>
@@ -30,6 +27,7 @@
 		@include br.desktop {
 			@include font.fontWeight(400);
 
+			width: fit-content;
 			padding: 0.625rem 0.75rem 0.625rem 0.875rem;
 			grid-row: 1;
 			grid-column: 2;
