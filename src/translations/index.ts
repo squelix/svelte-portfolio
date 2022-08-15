@@ -121,6 +121,18 @@ export const config: Config = {
 			key: 'education-projects',
 			routes: [Routes[RoutesEnum.AboutPersonalInfoEducationProjects]],
 			loader: async () => (await import('./en/education-projects.json')).default
+		},
+		{
+			locale: LangEnum.fr_FR,
+			key: 'contact',
+			routes: [Routes[RoutesEnum.Contact]],
+			loader: async () => (await import('./fr/contact.json')).default
+		},
+		{
+			locale: LangEnum.en_GB,
+			key: 'contact',
+			routes: [Routes[RoutesEnum.Contact]],
+			loader: async () => (await import('./en/contact.json')).default
 		}
 	]
 };

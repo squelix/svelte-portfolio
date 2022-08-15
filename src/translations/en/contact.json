@@ -1,0 +1,18 @@
+{
+	"page": { "title": "Mickaël Depardon - Contact", "description": "DESC" },
+	"aria": {
+		"nav": "Navigation of contact page"
+	},
+	"nav": ["contacts", "find-me-also-in"],
+	"form": {
+		"name": "name",
+		"email": "email",
+		"message": "message",
+		"submit": "submit-message",
+		"errors": {
+			"captcha": "Captcha error",
+			"email": "Invalid mail"
+		}
+	},
+	"title": "_contact-me"
+}

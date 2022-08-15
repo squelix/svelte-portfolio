@@ -1,0 +1,18 @@
+{
+	"page": { "title": "Mickaël Depardon - Contact", "description": "DESC" },
+	"aria": {
+		"nav": "Navigation de la page de contact"
+	},
+	"nav": ["contacts", "retrouvez-moi"],
+	"form": {
+		"name": "nom",
+		"email": "email",
+		"message": "message",
+		"submit": "envoi-message",
+		"errors": {
+			"captcha": "Erreur de captcha",
+			"email": "Email invalide"
+		}
+	},
+	"title": "_me-contacter"
+}
