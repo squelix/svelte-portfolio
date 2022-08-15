@@ -48,9 +48,20 @@
 
 	import { page } from '$app/stores';
 	import { picture } from '$stores/profile';
+	import { strapiUri } from '$stores/env';
 	import Header from '$lib/commons/Header.svelte';
 	import { isRouteActive, RoutesEnum } from '$lib/routing';
 	import Footer from '$lib/commons/Footer.svelte';
+
+	const TAB_KEY = 'Tab';
+
+	const toggleOutline = (value: boolean) => {
+		if (!value) {
+			document.body.classList.add('focus-off');
+		} else {
+			document.body.classList.remove('focus-off');
+		}
+	};
 </script>
 
 <svelte:head>
@@ -67,7 +78,20 @@
 	<meta name="twitter:creator" content="@squelix" />
 	<meta property="twitter:url" content="{$page.url.origin}{$page.url.pathname}" />
 	<meta name="twitter:image" content={$picture} />
+
+	{#if !!$strapiUri}
+		<link rel="preconnect" href={$strapiUri} />
+	{/if}
 </svelte:head>
+
+<svelte:window
+	on:mousedown={() => toggleOutline(false)}
+	on:keydown={(event) => {
+		if (event.code === TAB_KEY) {
+			toggleOutline(false);
+		}
+	}}
+/>
 
 <Header />
 

@@ -66,3 +66,7 @@ span.count-line {
 		user-select: none;
 	}
 }
+
+.focus-off *:focus {
+	outline: none;
+}
