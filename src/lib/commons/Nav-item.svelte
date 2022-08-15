@@ -38,10 +38,10 @@
 			border-bottom: 1px solid var(--lines);
 			color: var(--secondary-4);
 
-			@include link.link(var(--accent-1), 0, white);
+			@include link.link(var(--accent-1), 0, var(--secondary-4));
 
 			&--selected {
-				@include link.linkSelected(var(--accent-1), 0, white);
+				@include link.linkSelected(var(--accent-1), 0, var(--secondary-4));
 			}
 		}
 

@@ -44,10 +44,10 @@
 		line-height: 1.3125;
 
 		&__link {
-			@include link.link(var(--accent-1), 0, white);
+			@include link.link(var(--accent-1), 0, var(--secondary-4));
 
 			&--active {
-				@include link.linkSelected(var(--accent-1), 0, white);
+				@include link.linkSelected(var(--accent-1), 0, var(--secondary-4));
 			}
 
 			&__icon {

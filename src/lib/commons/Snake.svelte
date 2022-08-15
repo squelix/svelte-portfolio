@@ -414,13 +414,13 @@
 		border: 1px solid #0c1616;
 		box-shadow: inset 0px 2px 0px rgb(255 255 255 / 0.3);
 		backdrop-filter: blur(64px);
-		border-radius: 8px;
+		border-radius: var(--border-radius);
 		max-width: 31.875rem;
 		padding: 2.1875rem 2.1875rem 2.1875rem 1.875rem;
 
 		&__canvas-container {
-			border-radius: 8px;
-			background: rgb(1 22 39 / 0.84);
+			border-radius: var(--border-radius);
+			background-color: rgb(1 22 39 / 0.84);
 			box-shadow: inset 1px 5px 11px rgb(2 18 27 / 0.71);
 		}
 
@@ -431,8 +431,8 @@
 				font-size: 0.875rem;
 				line-height: 1.2857;
 				padding: 0.8125rem;
-				background: rgb(1 20 35 / 0.19);
-				border-radius: 8px;
+				background-color: rgb(1 20 35 / 0.19);
+				border-radius: var(--border-radius);
 
 				&__list {
 					display: grid;
@@ -447,7 +447,7 @@
 						justify-content: center;
 						background-color: var(--background);
 						border: 1px solid var(--lines);
-						border-radius: 8px;
+						border-radius: var(--border-radius);
 
 						&--up {
 							grid-column: 2;
