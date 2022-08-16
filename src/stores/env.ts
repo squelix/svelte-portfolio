@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-unsafe-assignment */
 import { derived, writable } from 'svelte/store';
 
 export const env = writable<Record<string, string>>({

@@ -1,15 +1,13 @@
 <script lang="ts">
 	import { aboutTitleItem } from '$stores/title';
+	import { nav } from '$stores/nav';
 	import { t } from '$translations';
-	import { getRoute, RoutesEnum } from '$lib/routing';
+	import { RoutesEnum, getRoute } from '$lib/routing';
 	import { page } from '$app/stores';
 	import { LangEnum } from '$models/langs.enum';
 	import PageNav from '$lib/commons/PageNav.svelte';
 	import PageTitle from '$lib/commons/PageTitle.svelte';
-	import { aboutPageNavItems } from '$lib/menu/nav';
 	import BorderBottom from '$lib/commons/BorderBottom.svelte';
-
-	const item = aboutTitleItem(aboutPageNavItems);
 </script>
 
 <svelte:head>
@@ -31,11 +29,11 @@
 	/>
 </svelte:head>
 
-<PageTitle textDesktop={$t($item?.labelKey)} textMobile={$t('about.title')} />
+<PageTitle textDesktop={$t($aboutTitleItem?.labelKey)} textMobile={$t('about.title')} />
 
 <BorderBottom />
 
-<PageNav ariaLabel={$t('about.aria.nav')} items={aboutPageNavItems} />
+<PageNav ariaLabel={$t('about.aria.nav')} items={$nav} />
 
 <slot />
 

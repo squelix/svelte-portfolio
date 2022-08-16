@@ -1,4 +1,5 @@
 <script lang="ts">
+	/* eslint-disable @typescript-eslint/no-unsafe-member-access */
 	import 'sanitize.css';
 	import 'sanitize.css/forms.css';
 	import 'sanitize.css/assets.css';
@@ -23,6 +24,15 @@
 			document.body.classList.remove('focus-off');
 		}
 	};
+
+	const keyDownEvent = (event: any) => {
+		if (event.code === TAB_KEY) {
+			toggleOutline(false);
+		}
+	};
+	const mouseDownEvent = () => {
+		toggleOutline(false);
+	};
 </script>
 
 <svelte:head>
@@ -45,14 +55,7 @@
 	{/if}
 </svelte:head>
 
-<svelte:window
-	on:mousedown={() => toggleOutline(false)}
-	on:keydown={(event) => {
-		if (event.code === TAB_KEY) {
-			toggleOutline(false);
-		}
-	}}
-/>
+<svelte:window on:mousedown={mouseDownEvent} on:keydown={keyDownEvent} />
 
 <Header />
 

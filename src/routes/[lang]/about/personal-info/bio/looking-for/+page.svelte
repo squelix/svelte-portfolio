@@ -1,6 +1,6 @@
 <script lang="ts">
 	import { t } from '$translations';
-	import { getRoute, RoutesEnum } from '$lib/routing';
+	import { RoutesEnum, getRoute } from '$lib/routing';
 	import { page } from '$app/stores';
 	import { LangEnum } from '$models/langs.enum';
 	import { locale } from '$translations';

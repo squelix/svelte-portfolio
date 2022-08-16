@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-non-null-assertion */
 import { locales } from '$translations';
 
 import type { Handle } from '@sveltejs/kit';
@@ -14,7 +15,7 @@ export const handle: Handle = async ({ event, resolve }) => {
 		const supportedLocales = locales.get();
 
 		// Get locale from `pathname`.
-		const locale = supportedLocales.find((l) => pathname.startsWith(`/${l}`));
+		const locale: string = supportedLocales.find((l) => pathname.startsWith(`/${l}`))!;
 
 		try {
 			// Add html `lang` attribute

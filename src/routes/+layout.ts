@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/restrict-template-expressions */
 import { GET_PROFILE_QUERY } from '$graphql/profile';
 import { client } from '$stores/graphql';
 import { profile } from '$stores/profile';

@@ -22,7 +22,7 @@ export const dashedName = derived([firstname, lastname], ([$firstname, $lastname
 
 export const picture = derived([profile, strapiUri], ([$profile, $strapiUri]) =>
 	$profile && $strapiUri
-		? `${$strapiUri}${$profile?.profile?.data?.attributes?.picture.data?.attributes?.url}`
+		? `${$strapiUri}${$profile?.profile?.data?.attributes?.picture.data?.attributes?.url ?? ''}`
 		: undefined
 );
 

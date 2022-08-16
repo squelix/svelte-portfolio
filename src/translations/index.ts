@@ -5,6 +5,7 @@ import i18n from '@sveltekit-i18n/base';
 import parser from '@sveltekit-i18n/parser-default';
 
 import type { Config } from '@sveltekit-i18n/parser-default';
+
 export const config: Config = {
 	translations: {
 		en: { lang },

@@ -1,4 +1,5 @@
 <script lang="ts">
+	/* eslint-disable @typescript-eslint/restrict-template-expressions, @typescript-eslint/no-unsafe-member-access, @typescript-eslint/no-unsafe-assignment, @typescript-eslint/no-unsafe-argument, @typescript-eslint/no-unsafe-call, @typescript-eslint/no-floating-promises */
 	import Input from '$lib/commons/Input.svelte';
 	import { t } from '$translations';
 	import { getRoute, RoutesEnum } from '$lib/routing';
@@ -11,18 +12,18 @@
 	import Button from '$lib/commons/Button.svelte';
 	import Textarea from '$lib/commons/Textarea.svelte';
 	import PageNav from '$lib/commons/PageNav.svelte';
-	import { contactPageNavItems } from '$lib/menu/nav';
 	import PageTitle from '$lib/commons/PageTitle.svelte';
 	import BorderBottom from '$lib/commons/BorderBottom.svelte';
+	import { nav } from '$stores/nav';
 
 	let intervalLoading: any;
 	let intervalLoaded: any;
 	let loaded = false;
 	let token: string | undefined;
 
-	let name: string = '';
-	let email: string = '';
-	let message: string = '';
+	let name = '';
+	let email = '';
+	let message = '';
 
 	let errorMessage: string | undefined;
 
@@ -116,7 +117,7 @@
 
 <BorderBottom />
 
-<PageNav ariaLabel={$t('contact.aria.nav')} items={contactPageNavItems} />
+<PageNav ariaLabel={$t('contact.aria.nav')} items={$nav} />
 
 <form on:submit|preventDefault={onSubmit}>
 	<Input label={`_${$t('contact.form.name')}`} bind:value={name} />

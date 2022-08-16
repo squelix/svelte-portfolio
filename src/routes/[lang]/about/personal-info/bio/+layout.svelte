@@ -1,15 +1,12 @@
 <script lang="ts">
 	import { aboutSubTitleItem, aboutTitleItem } from '$stores/title';
-	import { aboutPageNavItems, personalInfoNavItems } from '$lib/menu/nav';
 	import { t } from '$translations';
-
-	const item = aboutTitleItem(aboutPageNavItems);
-	const subItem = aboutSubTitleItem(personalInfoNavItems);
 </script>
 
 <section class="page-content">
 	<h2 class="display-only-mobile title">
-		//&nbsp;{$t($item.labelKey)} <span class="title--gray">/&nbsp;{$t($subItem.labelKey)}</span>
+		//&nbsp;{$t($aboutTitleItem?.labelKey)}
+		<span class="title--gray">/&nbsp;{$t($aboutSubTitleItem?.labelKey)}</span>
 	</h2>
 
 	<slot />

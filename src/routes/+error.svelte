@@ -1,9 +1,10 @@
 <script lang="ts">
+	/* eslint-disable @typescript-eslint/restrict-template-expressions, @typescript-eslint/no-unsafe-assignment */
 	import { page } from '$app/stores';
 	import { t, locale } from '$translations';
 
-	export let status = $page.status;
-	export let error = $page.error;
+	export let status: any = $page.status;
+	export let error: any = $page.error;
 </script>
 
 <main>

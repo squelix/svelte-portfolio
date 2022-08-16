@@ -1,4 +1,5 @@
 <script lang="ts">
+	/* eslint-disable @typescript-eslint/restrict-template-expressions, @typescript-eslint/no-unsafe-member-access, @typescript-eslint/no-unsafe-argument, @typescript-eslint/restrict-plus-operands */
 	import { onDestroy, onMount } from 'svelte';
 	import Icon from '$lib/SvgIcon.svelte';
 	import ChevronUpKey from '$icons/chevron-up-key.svg?raw';

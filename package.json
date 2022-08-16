@@ -11,7 +11,7 @@
 		"check:watch": "svelte-check --tsconfig ./tsconfig.json --watch",
 		"lint": "npm run eslint && npm run prettier",
 		"format": "prettier --ignore-path .prettierignore --write --plugin-search-dir=. .",
-		"eslint": "eslint --ignore-path .eslintignore .",
+		"eslint": "eslint --ignore-path .eslintignore ./src",
 		"prettier": "prettier --ignore-path .prettierignore --check --plugin-search-dir=. .",
 		"generate": "graphql-codegen"
 	},
