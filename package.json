@@ -20,23 +20,23 @@
 		"@graphql-codegen/typescript-operations": "^2.5.3",
 		"@playwright/test": "^1.23.2",
 		"@sveltejs/adapter-netlify": "1.0.0-next.71",
-		"@sveltejs/kit": "1.0.0-next.405",
+		"@sveltejs/kit": "1.0.0-next.408",
 		"@types/cookie": "^0.5.1",
-		"@typescript-eslint/eslint-plugin": "^5.31.0",
-		"@typescript-eslint/parser": "^5.31.0",
-		"eslint": "^8.21.0",
+		"@typescript-eslint/eslint-plugin": "^5.33.1",
+		"@typescript-eslint/parser": "^5.33.1",
+		"eslint": "^8.22.0",
 		"eslint-config-prettier": "^8.5.0",
 		"eslint-plugin-svelte3": "^4.0.0",
 		"prettier": "^2.7.1",
 		"prettier-plugin-svelte": "^2.7.0",
-		"sass": "^1.54.3",
+		"sass": "^1.54.4",
 		"svelte": "^3.49.0",
 		"svelte-check": "^2.8.0",
 		"svelte-preprocess": "^4.10.7",
 		"sveltekit-i18n": "^2.2.2",
 		"tslib": "^2.3.1",
 		"typescript": "~4.7.4",
-		"vite": "^3.0.4"
+		"vite": "^3.0.7"
 	},
 	"engines": {
 		"node": "16",
@@ -46,7 +46,7 @@
 	"dependencies": {
 		"@apollo/client": "^3.6.9",
 		"cookie": "^0.5.0",
-		"dayjs": "^1.11.4",
+		"dayjs": "^1.11.5",
 		"graphql": "^16.5.0",
 		"query-string": "^7.1.1",
 		"sanitize.css": "^13.0.0"

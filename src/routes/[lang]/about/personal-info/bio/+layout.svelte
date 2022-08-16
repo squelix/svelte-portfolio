@@ -1,9 +1,3 @@
-<script lang="ts" context="module">
-	import { setItem } from '$stores/page-sub-nav';
-
-	setItem('personal-info-bio');
-</script>
-
 <script lang="ts">
 	import { aboutSubTitleItem, aboutTitleItem } from '$stores/title';
 	import { aboutPageNavItems, personalInfoNavItems } from '$lib/menu/nav';
@@ -15,7 +9,7 @@
 
 <section class="page-content">
 	<h2 class="display-only-mobile title">
-		// {$t($item.labelKey)} <span class="title--gray">/ {$t($subItem.labelKey)}</span>
+		//&nbsp;{$t($item.labelKey)} <span class="title--gray">/&nbsp;{$t($subItem.labelKey)}</span>
 	</h2>
 
 	<slot />

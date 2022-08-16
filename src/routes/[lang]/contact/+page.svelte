@@ -18,7 +18,7 @@
 	let intervalLoading: any;
 	let intervalLoaded: any;
 	let loaded = false;
-	let token: string;
+	let token: string | undefined;
 
 	let name: string = '';
 	let email: string = '';
@@ -56,9 +56,33 @@
 	});
 
 	const onSubmit = () => {
-		$mailService.sendMail('', '', token, '', $mailAccessToken).then(() => {
-			console.log('email SENT');
+		if (!token) {
+			errorMessage = $t('contact.form.errors.captcha');
+			return;
+		}
+
+		if (
+			!email ||
+			email.length === 0 ||
+			!name ||
+			name.length === 0 ||
+			!message ||
+			message.length === 0
+		) {
+			errorMessage = $t('contact.form.errors.fields');
+			return;
+		}
+
+		$mailService.sendMail(email, message, name, token, $mailAccessToken).then(() => {
+			resetForm();
 		});
+	};
+
+	const resetForm = (): void => {
+		name = '';
+		email = '';
+		message = '';
+		errorMessage = undefined;
 	};
 </script>
 
@@ -121,7 +145,7 @@
 		padding: 2.625rem 1.6875rem 0 1.6875rem;
 
 		@include br.desktop {
-			width: 23.25rem;
+			width: 28rem;
 		}
 	}
 

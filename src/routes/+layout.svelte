@@ -1,43 +1,3 @@
-<script context="module" lang="ts">
-	import 'dayjs/locale/en.js';
-	import 'dayjs/locale/fr.js';
-
-	import dayjs from 'dayjs';
-	import localeData from 'dayjs/plugin/localeData.js';
-	import { loadTranslations, locale } from '$translations';
-	import { get } from 'svelte/store';
-	import { client } from '$stores/graphql';
-	import { profile } from '$stores/profile';
-	import { GET_PROFILE_QUERY } from '$graphql/profile';
-
-	import type { Load } from '@sveltejs/kit';
-	import type { GetProfileQuery, GetProfileQueryVariables } from '$models/graphql-generated';
-
-	export const load: Load = async ({ url }) => {
-		const { pathname } = url;
-		const lang = `${pathname.match(/[^/]+?(?=\/|$)/) || ''}`;
-		const route = pathname.replace(new RegExp(`^/${lang}`), '');
-
-		dayjs.extend(localeData);
-		dayjs.locale(lang);
-
-		try {
-			const { data } = await get(client).query<GetProfileQuery, GetProfileQueryVariables>({
-				query: GET_PROFILE_QUERY,
-				variables: {
-					locale: lang
-				}
-			});
-			profile.set(data);
-		} catch (error: any) {
-			console.error(error);
-		}
-
-		await loadTranslations(lang, route);
-		return { stuff: { route, lang } };
-	};
-</script>
-
 <script lang="ts">
 	import 'sanitize.css';
 	import 'sanitize.css/forms.css';
@@ -46,6 +6,7 @@
 	import 'sanitize.css/reduce-motion.css';
 	import '../styles/app.scss';
 
+	import { locale } from '$translations';
 	import { page } from '$app/stores';
 	import { picture } from '$stores/profile';
 	import { strapiUri } from '$stores/env';

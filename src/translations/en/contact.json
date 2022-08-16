@@ -10,8 +10,8 @@
 		"message": "message",
 		"submit": "submit-message",
 		"errors": {
-			"captcha": "Captcha error",
-			"email": "Invalid mail"
+			"captcha": "Please verify that you are not a robot",
+			"fields": "Please fill all the fields"
 		}
 	},
 	"title": "_contact-me"

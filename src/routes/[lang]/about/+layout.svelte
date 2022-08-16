@@ -1,9 +1,3 @@
-<script lang="ts" context="module">
-	import { setItem } from '$stores/page-nav';
-
-	setItem('personal-info');
-</script>
-
 <script lang="ts">
 	import { aboutTitleItem } from '$stores/title';
 	import { t } from '$translations';

@@ -1,16 +1,6 @@
-<script context="module" lang="ts">
-	import { t, locale, loadTranslations } from '$translations';
-
-	export const load: Load = async ({ stuff }) => {
-		await loadTranslations((stuff as any).lang, 'error');
-		return {};
-	};
-</script>
-
 <script lang="ts">
 	import { page } from '$app/stores';
-
-	import type { Load } from '@sveltejs/kit';
+	import { t, locale } from '$translations';
 
 	export let status = $page.status;
 	export let error = $page.error;
