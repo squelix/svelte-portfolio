@@ -8,8 +8,8 @@ export class MailService {
 	sendMail = async (
 		email: string,
 		text: string,
-		token: string,
 		name: string,
+		token: string,
 		accessToken: string
 	) => {
 		const response = await fetch(`${this.mailUrl}/api/mail/send`, {
