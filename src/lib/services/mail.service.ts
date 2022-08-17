@@ -12,7 +12,7 @@ export class MailService {
 		token: string,
 		accessToken: string
 	) => {
-		const response = await fetch(`${this.mailUrl}/api/mail/send`, {
+		const response = await fetch(`${this.mailUrl}/send`, {
 			method: 'post',
 			headers: {
 				'Content-Type': 'application/json',
@@ -20,6 +20,7 @@ export class MailService {
 			},
 			body: JSON.stringify({
 				subject: `Contact from ${name} - ${email}`,
+				email,
 				html: `<p>${text}</p>`,
 				text,
 				token
