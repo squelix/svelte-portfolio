@@ -15,6 +15,7 @@
 	import PageTitle from '$lib/commons/PageTitle.svelte';
 	import BorderBottom from '$lib/commons/BorderBottom.svelte';
 	import { nav } from '$stores/nav';
+	import { validateEmail } from '$lib/validators';
 
 	let intervalLoading: any;
 	let intervalLoaded: any;
@@ -26,6 +27,7 @@
 	let message = '';
 
 	let errorMessage: string | undefined;
+	let sending = false;
 
 	onMount(() => {
 		intervalLoading = setInterval(() => {
@@ -56,27 +58,43 @@
 		});
 	});
 
-	const onSubmit = () => {
-		if (!token) {
-			errorMessage = $t('contact.form.errors.captcha');
-			return;
-		}
+	const onSubmit = async () => {
+		const finalEmail = email.trim();
+		const finalMessage = message.trim();
+		const finalName = name.trim();
 
 		if (
-			!email ||
-			email.length === 0 ||
-			!name ||
-			name.length === 0 ||
-			!message ||
-			message.length === 0
+			!finalEmail ||
+			finalEmail.length === 0 ||
+			!finalName ||
+			finalName.length === 0 ||
+			!finalMessage ||
+			finalMessage.length === 0
 		) {
 			errorMessage = $t('contact.form.errors.fields');
 			return;
 		}
 
-		$mailService.sendMail(email, message, name, token, $mailAccessToken).then(() => {
-			resetForm();
-		});
+		if (!validateEmail(finalEmail)) {
+			errorMessage = $t('contact.form.errors.email');
+			return;
+		}
+
+		if (!token) {
+			errorMessage = $t('contact.form.errors.captcha');
+			return;
+		}
+
+		sending = true;
+
+		$mailService
+			.sendMail(finalEmail, finalMessage, finalName, token, $mailAccessToken)
+			.then(() => {
+				resetForm();
+			})
+			.finally(() => {
+				sending = false;
+			});
 	};
 
 	const resetForm = (): void => {
@@ -84,6 +102,12 @@
 		email = '';
 		message = '';
 		errorMessage = undefined;
+	};
+
+	const clearErrorMessage = (): void => {
+		if (!!errorMessage) {
+			errorMessage = undefined;
+		}
 	};
 </script>
 
@@ -120,17 +144,35 @@
 <PageNav ariaLabel={$t('contact.aria.nav')} items={$nav} />
 
 <form on:submit|preventDefault={onSubmit}>
-	<Input label={`_${$t('contact.form.name')}`} bind:value={name} />
-	<Input label={`_${$t('contact.form.email')}`} bind:value={email} />
-	<Textarea label={`_${$t('contact.form.message')}`} bind:value={message} rows={6} />
+	<Input
+		label={`_${$t('contact.form.name')}`}
+		disabled={sending}
+		bind:value={name}
+		on:input={clearErrorMessage}
+	/>
+	<Input
+		label={`_${$t('contact.form.email')}`}
+		disabled={sending}
+		bind:value={email}
+		on:input={clearErrorMessage}
+	/>
+	<Textarea
+		label={`_${$t('contact.form.message')}`}
+		rows={6}
+		disabled={sending}
+		bind:value={message}
+		on:input={clearErrorMessage}
+	/>
 
-	<div id="reCaptcha" />
+	<div id="reCaptcha" class="reCaptcha" class:reCaptcha--disabled={sending} />
 
 	{#if !!errorMessage}
 		<p class="error">{errorMessage}</p>
 	{/if}
 
-	<Button type="submit">{$t('contact.form.submit')}</Button>
+	<Button type="submit" disabled={sending} isLoading={sending}>
+		{$t('contact.form.submit')}
+	</Button>
 </form>
 
 <style lang="scss">
@@ -150,7 +192,19 @@
 		}
 	}
 
+	.reCaptcha {
+		&--disabled {
+			opacity: 0.3;
+			pointer-events: none;
+			cursor: default;
+		}
+	}
+
 	.error {
 		color: var(--accent-3);
+	}
+
+	.loader {
+		opacity: 1;
 	}
 </style>

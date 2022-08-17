@@ -11,7 +11,8 @@
 		"submit": "envoi-message",
 		"errors": {
 			"captcha": "Veuillez vérifier que vous n'êtes pas un robot",
-			"fields": "Veuillez remplir tous les champs"
+			"fields": "Veuillez remplir tous les champs",
+			"email": "L'adresse email n'est pas valide"
 		}
 	},
 	"title": "_me-contacter"
