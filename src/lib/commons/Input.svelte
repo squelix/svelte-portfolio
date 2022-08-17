@@ -38,9 +38,16 @@
 		margin-top: 0.625rem;
 		padding: 0.625rem 0.9594rem;
 
-		&:focus,
-		&:hover {
-			box-shadow: 0 0 0 2px rgb(96 123 150 / 0.3);
+		&:disabled {
+			opacity: 0.3;
+			cursor: default;
+		}
+
+		&:not(:disabled) {
+			&:focus,
+			&:hover {
+				box-shadow: 0 0 0 2px rgb(96 123 150 / 0.3);
+			}
 		}
 	}
 </style>
