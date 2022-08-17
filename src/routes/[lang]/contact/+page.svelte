@@ -58,7 +58,7 @@
 		});
 	});
 
-	const onSubmit = async () => {
+	const onSubmit = () => {
 		const finalEmail = email.trim();
 		const finalMessage = message.trim();
 		const finalName = name.trim();
@@ -105,7 +105,7 @@
 	};
 
 	const clearErrorMessage = (): void => {
-		if (!!errorMessage) {
+		if (errorMessage) {
 			errorMessage = undefined;
 		}
 	};
@@ -130,7 +130,7 @@
 		href="{$page.url.origin}{getRoute(LangEnum.en_GB, RoutesEnum.Contact)}"
 	/>
 
-	{#if !!$reCaptchaKey}
+	{#if $reCaptchaKey}
 		<link rel="preconnect" href="https://www.google.com" />
 		<link rel="preconnect" href="https://www.gstatic.com" crossorigin="anonymous" />
 		<script src="https://www.google.com/recaptcha/api.js?render=explicit" async defer></script>
