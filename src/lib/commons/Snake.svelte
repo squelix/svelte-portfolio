@@ -60,12 +60,12 @@
 			return;
 		}
 
-		if (boardBackgroundColor.a) {
+		if (boardBackgroundColor.a !== undefined) {
 			context.fillStyle = `rgb(${boardBackgroundColor.r} ${boardBackgroundColor.g} ${boardBackgroundColor.b} / ${boardBackgroundColor.a}%)`;
 		} else {
 			context.fillStyle = `rgb(${boardBackgroundColor.r} ${boardBackgroundColor.g} ${boardBackgroundColor.b})`;
 		}
-		if (boardBorderColor.a) {
+		if (boardBorderColor.a !== undefined) {
 			context.strokeStyle = `rgb(${boardBorderColor.r} ${boardBorderColor.g} ${boardBorderColor.b} / ${boardBorderColor.a}%)`;
 		} else {
 			context.strokeStyle = `rgb(${boardBorderColor.r} ${boardBorderColor.g} ${boardBorderColor.b})`;
@@ -320,10 +320,10 @@
 		}, baseCornerRadius);
 
 		if (
-			cornerRadius.lowerLeft &&
-			cornerRadius.lowerRight &&
-			cornerRadius.upperLeft &&
-			cornerRadius.upperRight
+			cornerRadius.lowerLeft !== undefined &&
+			cornerRadius.lowerRight !== undefined &&
+			cornerRadius.upperLeft !== undefined &&
+			cornerRadius.upperRight !== undefined
 		) {
 			context.beginPath();
 			context.moveTo(x + cornerRadius.upperLeft, y);
