@@ -8,9 +8,10 @@
 	"editor.codeActionsOnSave": {
 		"source.fixAll.eslint": true
 	},
+	"eslint.validate": ["javascript", "svelte", "typescript"],
 
 	// Disable built-in validators and formatters (let extensions do it)
-	"scss.validate": false,
+	"scss.validate": true,
 	"typescript.format.enable": false,
 	"json.format.enable": false,
 	"files.insertFinalNewline": false,
