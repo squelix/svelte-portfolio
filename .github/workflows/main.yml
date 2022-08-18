@@ -1,4 +1,4 @@
-name: Main Workflow
+name: "Workflow"
 
 on:
   push:
@@ -8,12 +8,12 @@ on:
 
 jobs:
   lint:
-    name: Lint
-    runs-on: ubuntu-latest
+    name: "Lint"
+    runs-on: "ubuntu-latest"
 
     steps:
-      - name: Checkout and Install
-        uses: ./.github/workflows/checkout-install.yml
+      - name: "Checkout and Install"
+        uses: "./.github/workflows/checkout-install.yml"
 
       - name: Lint
         uses: wearerequired/lint-action@v2
@@ -22,13 +22,13 @@ jobs:
           prettier: true
 
   build:
-    name: Build
-    needs: lint
-    runs-on: ubuntu-latest
+    name: "Build"
+    needs: "lint"
+    runs-on: "ubuntu-latest"
 
     steps:
-      - name: Checkout and Install
-        uses: ./.github/workflows/checkout-install.yml
+      - name: "Checkout and Install"
+        uses: "./.github/workflows/checkout-install.yml"
 
-      - name: Build
-        run: npm run build --if-present
+      - name: "Build"
+        run: "npm run build --if-present"
