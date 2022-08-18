@@ -3,6 +3,9 @@
   publish = "build"
 	functions = "functions"
 
+[build.processing]
+  skip_processing = true
+
 [[edge_functions]]
   path = "/*"
   function = "render"
