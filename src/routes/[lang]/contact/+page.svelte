@@ -203,8 +203,4 @@
 	.error {
 		color: var(--accent-3);
 	}
-
-	.loader {
-		opacity: 1;
-	}
 </style>
