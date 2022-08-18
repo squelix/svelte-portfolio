@@ -1,5 +1,5 @@
 <script lang="ts">
-	/* eslint-disable @typescript-eslint/restrict-template-expressions, @typescript-eslint/no-unsafe-member-access, @typescript-eslint/no-unsafe-argument, @typescript-eslint/restrict-plus-operands */
+	/* eslint-disable @typescript-eslint/no-non-null-assertion */
 	import { onDestroy, onMount } from 'svelte';
 	import Icon from '$lib/SvgIcon.svelte';
 	import ChevronUpKey from '$icons/chevron-up-key.svg?raw';
@@ -19,7 +19,7 @@
 	let context: CanvasRenderingContext2D | null;
 	let gameStarted = false;
 	let pause = false;
-	let game: any;
+	let game: number;
 
 	const LEFT_KEY = 'ArrowLeft';
 	const RIGHT_KEY = 'ArrowRight';
@@ -60,8 +60,17 @@
 			return;
 		}
 
-		context.fillStyle = `rgb(${boardBackgroundColor.r} ${boardBackgroundColor.g} ${boardBackgroundColor.b} / ${boardBackgroundColor.a}%)`;
-		context.strokeStyle = `rgb(${boardBorderColor.r} ${boardBorderColor.g} ${boardBorderColor.b} / ${boardBorderColor.a}%)`;
+		if (boardBackgroundColor.a) {
+			context.fillStyle = `rgb(${boardBackgroundColor.r} ${boardBackgroundColor.g} ${boardBackgroundColor.b} / ${boardBackgroundColor.a}%)`;
+		} else {
+			context.fillStyle = `rgb(${boardBackgroundColor.r} ${boardBackgroundColor.g} ${boardBackgroundColor.b})`;
+		}
+		if (boardBorderColor.a) {
+			context.strokeStyle = `rgb(${boardBorderColor.r} ${boardBorderColor.g} ${boardBorderColor.b} / ${boardBorderColor.a}%)`;
+		} else {
+			context.strokeStyle = `rgb(${boardBorderColor.r} ${boardBorderColor.g} ${boardBorderColor.b})`;
+		}
+
 		context.clearRect(0, 0, board.width, board.height);
 		context.fillRect(0, 0, board.width, board.height);
 		roundRect(0, 0, board.width, board.height, 8);
@@ -95,7 +104,11 @@
 		);
 
 		context.fillStyle = gradient;
-		context.strokeStyle = `rgb(${snakeBorderColor.r} ${snakeBorderColor.g} ${snakeBorderColor.b} / ${snakeBorderColor.a}%)`;
+		if (snakeBorderColor.a) {
+			context.strokeStyle = `rgb(${snakeBorderColor.r} ${snakeBorderColor.g} ${snakeBorderColor.b} / ${snakeBorderColor.a}%)`;
+		} else {
+			context.strokeStyle = `rgb(${snakeBorderColor.r} ${snakeBorderColor.g} ${snakeBorderColor.b})`;
+		}
 
 		context.fillRect(
 			snakePart.x - snakeSquareSize / 2,
@@ -135,7 +148,7 @@
 		context.clearRect(snakePart.x, snakePart.y, snakeSquareSize, snakeSquareSize);
 	};
 
-	const handleKey = (event: any): void => {
+	const handleKey = (event: KeyboardEvent): void => {
 		if (event.code === SPACE_KEY && !gameStarted) {
 			startGame();
 		} else if ((event.code === SPACE_KEY && gameStarted) || (event.code === P_KEY && gameStarted)) {
@@ -230,7 +243,7 @@
 	};
 
 	const main = (): void => {
-		game = setInterval(() => {
+		game = window.setInterval(() => {
 			if (pause) {
 				return;
 			}
@@ -241,7 +254,7 @@
 				dy = 0;
 
 				if (game) {
-					clearInterval(game);
+					window.clearInterval(game);
 				}
 
 				return;
@@ -299,29 +312,36 @@
 			lowerRight: 0
 		};
 
-		const cornerRadius: any = Object.keys(baseCornerRadius).reduce((acc, key) => {
+		const cornerRadius: RadiusInterface = Object.keys(baseCornerRadius).reduce((acc, key) => {
 			return {
 				...acc,
 				[key]: typeof radius === 'object' ? radius[key as keyof RadiusInterface] : radius
 			};
 		}, baseCornerRadius);
 
-		context.beginPath();
-		context.moveTo(x + cornerRadius.upperLeft, y);
-		context.lineTo(x + width - cornerRadius.upperRight, y);
-		context.quadraticCurveTo(x + width, y, x + width, y + cornerRadius.upperRight);
-		context.lineTo(x + width, y + height - cornerRadius.lowerRight);
-		context.quadraticCurveTo(
-			x + width,
-			y + height,
-			x + width - cornerRadius.lowerRight,
-			y + height
-		);
-		context.lineTo(x + cornerRadius.lowerLeft, y + height);
-		context.quadraticCurveTo(x, y + height, x, y + height - cornerRadius.lowerLeft);
-		context.lineTo(x, y + cornerRadius.upperLeft);
-		context.quadraticCurveTo(x, y, x + cornerRadius.upperLeft, y);
-		context.closePath();
+		if (
+			cornerRadius.lowerLeft &&
+			cornerRadius.lowerRight &&
+			cornerRadius.upperLeft &&
+			cornerRadius.upperRight
+		) {
+			context.beginPath();
+			context.moveTo(x + cornerRadius.upperLeft, y);
+			context.lineTo(x + width - cornerRadius.upperRight, y);
+			context.quadraticCurveTo(x + width, y, x + width, y + cornerRadius.upperRight);
+			context.lineTo(x + width, y + height - cornerRadius.lowerRight);
+			context.quadraticCurveTo(
+				x + width,
+				y + height,
+				x + width - cornerRadius.lowerRight,
+				y + height
+			);
+			context.lineTo(x + cornerRadius.lowerLeft, y + height);
+			context.quadraticCurveTo(x, y + height, x, y + height - cornerRadius.lowerLeft);
+			context.lineTo(x, y + cornerRadius.upperLeft);
+			context.quadraticCurveTo(x, y, x + cornerRadius.upperLeft, y);
+			context.closePath();
+		}
 
 		context.lineJoin = 'round';
 
