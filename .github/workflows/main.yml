@@ -7,8 +7,8 @@ on:
     branches: [ "main" ]
 
 jobs:
-  lint:
-    name: "Lint"
+  eslint:
+    name: "Eslint"
     runs-on: "ubuntu-latest"
 
     steps:
@@ -24,15 +24,32 @@ jobs:
       - name: "Install dependencies"
         run: "npm ci"
 
-      - name: "Lint"
-        uses: "wearerequired/lint-action@v2"
+      - name: "Eslint"
+        run: "npm run eslint"
+
+  prettier:
+    name: "Prettier"
+    runs-on: "ubuntu-latest"
+
+    steps:
+      - name: "Check out Git repository"
+        uses: "actions/checkout@v3"
+
+      - name: "Use Node.js 16"
+        uses: "actions/setup-node@v3"
         with:
-          eslint: true
-          prettier: true
+          node-version: 16
+          cache: 'npm'
+
+      - name: "Install dependencies"
+        run: "npm ci"
+
+      - name: "Prettier"
+        run: "npm run prettier"
 
   build:
     name: "Build"
-    needs: "lint"
+    needs: ["eslint", "prettier"]
     runs-on: "ubuntu-latest"
 
     steps:
