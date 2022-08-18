@@ -17,3 +17,5 @@ package-lock.json
 yarn.lock
 .github
 .netlify
+
+graphql-generated
