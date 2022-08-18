@@ -3,8 +3,8 @@
 	import { page } from '$app/stores';
 	import { t, locale } from '$translations';
 
-	export let status: any = $page.status;
-	export let error: any = $page.error;
+	export let status = $page.status;
+	export let error = $page.error;
 </script>
 
 <main>
