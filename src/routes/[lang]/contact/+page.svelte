@@ -1,5 +1,5 @@
 <script lang="ts">
-	/* eslint-disable @typescript-eslint/restrict-template-expressions, @typescript-eslint/no-unsafe-member-access, @typescript-eslint/no-unsafe-assignment, @typescript-eslint/no-unsafe-argument, @typescript-eslint/no-unsafe-call, @typescript-eslint/no-floating-promises */
+	/* eslint-disable @typescript-eslint/restrict-template-expressions */
 	import Input from '$lib/commons/Input.svelte';
 	import { t } from '$translations';
 	import { getRoute, RoutesEnum } from '$lib/routing';
@@ -17,8 +17,8 @@
 	import { nav } from '$stores/nav';
 	import { validateEmail } from '$lib/validators';
 
-	let intervalLoading: any;
-	let intervalLoaded: any;
+	let intervalLoading: number;
+	let intervalLoaded: number;
 	let loaded = false;
 	let token: string | undefined;
 
@@ -30,31 +30,31 @@
 	let sending = false;
 
 	onMount(() => {
-		intervalLoading = setInterval(() => {
-			if (!(window as any).grecaptcha?.render) {
+		intervalLoading = window.setInterval(() => {
+			if (!window.grecaptcha?.render) {
 				return;
 			}
 			loaded = true;
-			clearInterval(intervalLoading);
+			window.clearInterval(intervalLoading);
 		}, 100);
 
-		intervalLoaded = setInterval(() => {
+		intervalLoaded = window.setInterval(() => {
 			if (!loaded) {
 				return;
 			}
 
 			const theme = window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
 
-			(window as any).grecaptcha.render('reCaptcha', {
+			window.grecaptcha.render('reCaptcha', {
 				sitekey: $reCaptchaKey,
 				theme,
 				hl: $locale,
-				callback: (t: any) => {
+				callback: (t: string) => {
 					token = t;
 				}
 			});
 
-			clearInterval(intervalLoaded);
+			window.clearInterval(intervalLoaded);
 		});
 	});
 
@@ -71,17 +71,17 @@
 			!finalMessage ||
 			finalMessage.length === 0
 		) {
-			errorMessage = $t('contact.form.errors.fields');
+			errorMessage = $t('contact.form.errors.fields') as string;
 			return;
 		}
 
 		if (!validateEmail(finalEmail)) {
-			errorMessage = $t('contact.form.errors.email');
+			errorMessage = $t('contact.form.errors.email') as string;
 			return;
 		}
 
 		if (!token) {
-			errorMessage = $t('contact.form.errors.captcha');
+			errorMessage = $t('contact.form.errors.captcha') as string;
 			return;
 		}
 

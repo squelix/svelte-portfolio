@@ -9,3 +9,10 @@ declare namespace App {
 	// interface Session {}
 	// interface Stuff {}
 }
+
+interface Window {
+	grecaptcha: {
+		// eslint-disable-next-line @typescript-eslint/no-explicit-any
+		render: (d: string, t: any) => any;
+	};
+}
