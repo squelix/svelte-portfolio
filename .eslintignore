@@ -19,3 +19,6 @@ yarn.lock
 .netlify
 
 graphql-generated
+
+vite.config.js
+svelte.config.js
