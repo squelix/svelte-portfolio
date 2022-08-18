@@ -1,5 +1,4 @@
 <script lang="ts">
-	/* eslint-disable @typescript-eslint/no-unsafe-member-access */
 	import 'sanitize.css';
 	import 'sanitize.css/forms.css';
 	import 'sanitize.css/assets.css';
@@ -25,7 +24,7 @@
 		}
 	};
 
-	const keyDownEvent = (event: any) => {
+	const keyDownEvent = (event: KeyboardEvent) => {
 		if (event.code === TAB_KEY) {
 			toggleOutline(false);
 		}
