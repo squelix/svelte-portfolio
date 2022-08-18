@@ -1,14 +1,11 @@
-name: Lint
+name: Checkout and Install
 
 on:
-  push:
-    branches: [ "main" ]
-  pull_request:
-    branches: [ "main" ]
+  workflow_call
 
 jobs:
-  run-linters:
-    name: Lint
+  checkout-install:
+    name: Checkout and Install
     runs-on: ubuntu-latest
 
     steps:
@@ -24,8 +21,3 @@ jobs:
       - name: Install dependencies
         run: npm ci
 
-      - name: Run linters
-        uses: wearerequired/lint-action@v2
-        with:
-          eslint: true
-          prettier: true
