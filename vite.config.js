@@ -8,7 +8,6 @@ const dirname = path.dirname(filename);
 /** @type {import('vite').UserConfig} */
 const config = {
 	plugins: [sveltekit()],
-	legacy: { buildSsrCjsExternalHeuristics: true },
 	resolve: {
 		alias: {
 			$styles: path.resolve(dirname, './src/styles'),
