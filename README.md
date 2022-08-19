@@ -1,8 +1,6 @@
 # Portfolio
 
-![Lint](https://github.com/squelix/svelte-portfolio/actions/workflows/lint.yml/badge.svg)
-![Build](https://github.com/squelix/svelte-portfolio/actions/workflows/build.yml/badge.svg)
-
+![Workflow](https://github.com/squelix/svelte-portfolio/actions/workflows/main.yml/badge.svg)
 [![Netlify Status](https://api.netlify.com/api/v1/badges/353f57c7-20ae-4fbf-a2a5-89980c6055a3/deploy-status?branch=main)](https://app.netlify.com/sites/mickael-svelte-portfolio/deploys)
 [![Better Uptime Badge](https://betteruptime.com/status-badges/v1/monitor/fn60.svg)](https://betteruptime.com/?utm_source=status_badge)
 
