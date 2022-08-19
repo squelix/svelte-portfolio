@@ -134,6 +134,18 @@ export const config: Config = {
 			key: 'contact',
 			routes: [Routes[RoutesEnum.Contact]],
 			loader: async () => (await import('./en/contact.json')).default
+		},
+		{
+			locale: LangEnum.fr_FR,
+			key: 'projects',
+			routes: [Routes[RoutesEnum.Projects]],
+			loader: async () => (await import('./fr/projects.json')).default
+		},
+		{
+			locale: LangEnum.en_GB,
+			key: 'projects',
+			routes: [Routes[RoutesEnum.Projects]],
+			loader: async () => (await import('./en/projects.json')).default
 		}
 	]
 };
