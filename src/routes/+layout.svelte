@@ -1,18 +1,18 @@
 <script lang="ts">
 	import 'sanitize.css';
-	import 'sanitize.css/forms.css';
 	import 'sanitize.css/assets.css';
-	import 'sanitize.css/typography.css';
+	import 'sanitize.css/forms.css';
 	import 'sanitize.css/reduce-motion.css';
+	import 'sanitize.css/typography.css';
 	import '../styles/app.scss';
 
-	import { locale } from '$translations';
 	import { page } from '$app/stores';
-	import { picture } from '$stores/profile';
-	import { strapiUri } from '$stores/env';
+	import Footer from '$lib/commons/Footer.svelte';
 	import Header from '$lib/commons/Header.svelte';
 	import { isRouteActive, RoutesEnum } from '$lib/routing';
-	import Footer from '$lib/commons/Footer.svelte';
+	import { strapiUri } from '$stores/env';
+	import { picture } from '$stores/profile';
+	import { locale } from '$translations';
 
 	const TAB_KEY = 'Tab';
 
@@ -75,8 +75,8 @@
 		border: 1px solid var(--lines);
 		box-shadow: 0 4px 4px rgb(0 0 0 / 25%);
 		border-radius: 0 0 var(--border-radius) var(--border-radius);
-		height: calc(100vh - (var(--mobile-main-padding) * 2) - var(--nav-height));
-		padding-bottom: 3.0625rem;
+		min-height: calc(100vh - (var(--mobile-main-padding) * 2) - var(--nav-height));
+		padding-bottom: calc(3.0625rem + 3rem);
 
 		&--home {
 			background: var(--primary-2) url('/svg/bg-blur-mobile.svg') no-repeat;
