@@ -18,7 +18,7 @@
 		"@graphql-codegen/cli": "^2.11.6",
 		"@graphql-codegen/typescript-operations": "^2.5.3",
 		"@sveltejs/adapter-netlify": "1.0.0-next.71",
-		"@sveltejs/kit": "1.0.0-next.420",
+		"@sveltejs/kit": "1.0.0-next.428",
 		"@types/cookie": "^0.5.1",
 		"@typescript-eslint/eslint-plugin": "^5.33.1",
 		"@typescript-eslint/parser": "^5.33.1",
@@ -47,6 +47,7 @@
 		"dayjs": "^1.11.5",
 		"graphql": "^16.5.0",
 		"query-string": "^7.1.1",
-		"sanitize.css": "^13.0.0"
+		"sanitize.css": "^13.0.0",
+		"slugify": "^1.6.5"
 	}
 }
