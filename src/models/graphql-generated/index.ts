@@ -89,6 +89,15 @@ export type DateTimeFilterInput = {
 	startsWith?: InputMaybe<Scalars['DateTime']>;
 };
 
+export enum Enum_Techno_Color {
+	Blue = 'blue',
+	DarkGreen = 'dark_green',
+	Green = 'green',
+	Orange = 'orange',
+	Pink = 'pink',
+	Red = 'red'
+}
+
 export type FileInfoInput = {
 	alternativeText?: InputMaybe<Scalars['String']>;
 	caption?: InputMaybe<Scalars['String']>;
@@ -128,10 +137,12 @@ export type GenericMorph =
 	| JobSkill
 	| Language
 	| Profile
+	| Project
 	| School
 	| SchoolProject
 	| Skill
 	| SocialNetwork
+	| Techno
 	| UploadFile
 	| UploadFolder
 	| UsersPermissionsPermission
@@ -682,15 +693,18 @@ export type Mutation = {
 	createJobSkillLocalization?: Maybe<JobSkillEntityResponse>;
 	createLanguageLocalization?: Maybe<LanguageEntityResponse>;
 	createProfileLocalization?: Maybe<ProfileEntityResponse>;
+	createProjectLocalization?: Maybe<ProjectEntityResponse>;
 	createSchoolLocalization?: Maybe<SchoolEntityResponse>;
 	createSchoolProjectLocalization?: Maybe<SchoolProjectEntityResponse>;
 	createSkillLocalization?: Maybe<SkillEntityResponse>;
+	createTechno?: Maybe<TechnoEntityResponse>;
 	createUploadFile?: Maybe<UploadFileEntityResponse>;
 	createUploadFolder?: Maybe<UploadFolderEntityResponse>;
 	/** Create a new role */
 	createUsersPermissionsRole?: Maybe<UsersPermissionsCreateRolePayload>;
 	/** Create a new user */
 	createUsersPermissionsUser: UsersPermissionsUserEntityResponse;
+	deleteTechno?: Maybe<TechnoEntityResponse>;
 	deleteUploadFile?: Maybe<UploadFileEntityResponse>;
 	deleteUploadFolder?: Maybe<UploadFolderEntityResponse>;
 	/** Delete an existing role */
@@ -709,6 +723,7 @@ export type Mutation = {
 	/** Reset user password. Confirm with a code (resetToken from forgotPassword) */
 	resetPassword?: Maybe<UsersPermissionsLoginPayload>;
 	updateFileInfo: UploadFileEntityResponse;
+	updateTechno?: Maybe<TechnoEntityResponse>;
 	updateUploadFile?: Maybe<UploadFileEntityResponse>;
 	updateUploadFolder?: Maybe<UploadFolderEntityResponse>;
 	/** Update an existing role */
@@ -766,6 +781,12 @@ export type MutationCreateProfileLocalizationArgs = {
 	locale?: InputMaybe<Scalars['I18NLocaleCode']>;
 };
 
+export type MutationCreateProjectLocalizationArgs = {
+	data?: InputMaybe<ProjectInput>;
+	id?: InputMaybe<Scalars['ID']>;
+	locale?: InputMaybe<Scalars['I18NLocaleCode']>;
+};
+
 export type MutationCreateSchoolLocalizationArgs = {
 	data?: InputMaybe<SchoolInput>;
 	id?: InputMaybe<Scalars['ID']>;
@@ -784,6 +805,10 @@ export type MutationCreateSkillLocalizationArgs = {
 	locale?: InputMaybe<Scalars['I18NLocaleCode']>;
 };
 
+export type MutationCreateTechnoArgs = {
+	data: TechnoInput;
+};
+
 export type MutationCreateUploadFileArgs = {
 	data: UploadFileInput;
 };
@@ -798,6 +823,10 @@ export type MutationCreateUsersPermissionsRoleArgs = {
 
 export type MutationCreateUsersPermissionsUserArgs = {
 	data: UsersPermissionsUserInput;
+};
+
+export type MutationDeleteTechnoArgs = {
+	id: Scalars['ID'];
 };
 
 export type MutationDeleteUploadFileArgs = {
@@ -852,6 +881,11 @@ export type MutationResetPasswordArgs = {
 export type MutationUpdateFileInfoArgs = {
 	id: Scalars['ID'];
 	info?: InputMaybe<FileInfoInput>;
+};
+
+export type MutationUpdateTechnoArgs = {
+	data: TechnoInput;
+	id: Scalars['ID'];
 };
 
 export type MutationUpdateUploadFileArgs = {
@@ -964,6 +998,92 @@ export type ProfileRelationResponseCollection = {
 	data: Array<ProfileEntity>;
 };
 
+export type Project = {
+	__typename?: 'Project';
+	createdAt?: Maybe<Scalars['DateTime']>;
+	description: Scalars['String'];
+	locale?: Maybe<Scalars['String']>;
+	localizations?: Maybe<ProjectRelationResponseCollection>;
+	mainTechno?: Maybe<TechnoEntityResponse>;
+	picture: UploadFileEntityResponse;
+	publishedAt?: Maybe<Scalars['DateTime']>;
+	slug?: Maybe<Scalars['String']>;
+	technos?: Maybe<TechnoRelationResponseCollection>;
+	title: Scalars['String'];
+	updatedAt?: Maybe<Scalars['DateTime']>;
+	url: Scalars['String'];
+	urlName: Scalars['String'];
+};
+
+export type ProjectLocalizationsArgs = {
+	filters?: InputMaybe<ProjectFiltersInput>;
+	pagination?: InputMaybe<PaginationArg>;
+	publicationState?: InputMaybe<PublicationState>;
+	sort?: InputMaybe<Array<InputMaybe<Scalars['String']>>>;
+};
+
+export type ProjectTechnosArgs = {
+	filters?: InputMaybe<TechnoFiltersInput>;
+	pagination?: InputMaybe<PaginationArg>;
+	publicationState?: InputMaybe<PublicationState>;
+	sort?: InputMaybe<Array<InputMaybe<Scalars['String']>>>;
+};
+
+export type ProjectEntity = {
+	__typename?: 'ProjectEntity';
+	attributes?: Maybe<Project>;
+	id?: Maybe<Scalars['ID']>;
+};
+
+export type ProjectEntityResponse = {
+	__typename?: 'ProjectEntityResponse';
+	data?: Maybe<ProjectEntity>;
+};
+
+export type ProjectEntityResponseCollection = {
+	__typename?: 'ProjectEntityResponseCollection';
+	data: Array<ProjectEntity>;
+	meta: ResponseCollectionMeta;
+};
+
+export type ProjectFiltersInput = {
+	and?: InputMaybe<Array<InputMaybe<ProjectFiltersInput>>>;
+	createdAt?: InputMaybe<DateTimeFilterInput>;
+	description?: InputMaybe<StringFilterInput>;
+	id?: InputMaybe<IdFilterInput>;
+	locale?: InputMaybe<StringFilterInput>;
+	localizations?: InputMaybe<ProjectFiltersInput>;
+	mainTechno?: InputMaybe<TechnoFiltersInput>;
+	not?: InputMaybe<ProjectFiltersInput>;
+	or?: InputMaybe<Array<InputMaybe<ProjectFiltersInput>>>;
+	publishedAt?: InputMaybe<DateTimeFilterInput>;
+	sitemap_exclude?: InputMaybe<BooleanFilterInput>;
+	slug?: InputMaybe<StringFilterInput>;
+	technos?: InputMaybe<TechnoFiltersInput>;
+	title?: InputMaybe<StringFilterInput>;
+	updatedAt?: InputMaybe<DateTimeFilterInput>;
+	url?: InputMaybe<StringFilterInput>;
+	urlName?: InputMaybe<StringFilterInput>;
+};
+
+export type ProjectInput = {
+	description?: InputMaybe<Scalars['String']>;
+	mainTechno?: InputMaybe<Scalars['ID']>;
+	picture?: InputMaybe<Scalars['ID']>;
+	publishedAt?: InputMaybe<Scalars['DateTime']>;
+	sitemap_exclude?: InputMaybe<Scalars['Boolean']>;
+	slug?: InputMaybe<Scalars['String']>;
+	technos?: InputMaybe<Array<InputMaybe<Scalars['ID']>>>;
+	title?: InputMaybe<Scalars['String']>;
+	url?: InputMaybe<Scalars['String']>;
+	urlName?: InputMaybe<Scalars['String']>;
+};
+
+export type ProjectRelationResponseCollection = {
+	__typename?: 'ProjectRelationResponseCollection';
+	data: Array<ProjectEntity>;
+};
+
 export enum PublicationState {
 	Live = 'LIVE',
 	Preview = 'PREVIEW'
@@ -987,6 +1107,8 @@ export type Query = {
 	languages?: Maybe<LanguageEntityResponseCollection>;
 	me?: Maybe<UsersPermissionsMe>;
 	profile?: Maybe<ProfileEntityResponse>;
+	project?: Maybe<ProjectEntityResponse>;
+	projects?: Maybe<ProjectEntityResponseCollection>;
 	school?: Maybe<SchoolEntityResponse>;
 	schoolProject?: Maybe<SchoolProjectEntityResponse>;
 	schoolProjects?: Maybe<SchoolProjectEntityResponseCollection>;
@@ -995,6 +1117,8 @@ export type Query = {
 	skills?: Maybe<SkillEntityResponseCollection>;
 	socialNetwork?: Maybe<SocialNetworkEntityResponse>;
 	socialNetworks?: Maybe<SocialNetworkEntityResponseCollection>;
+	techno?: Maybe<TechnoEntityResponse>;
+	technos?: Maybe<TechnoEntityResponseCollection>;
 	uploadFile?: Maybe<UploadFileEntityResponse>;
 	uploadFiles?: Maybe<UploadFileEntityResponseCollection>;
 	uploadFolder?: Maybe<UploadFolderEntityResponse>;
@@ -1098,6 +1222,19 @@ export type QueryProfileArgs = {
 	publicationState?: InputMaybe<PublicationState>;
 };
 
+export type QueryProjectArgs = {
+	id?: InputMaybe<Scalars['ID']>;
+	locale?: InputMaybe<Scalars['I18NLocaleCode']>;
+};
+
+export type QueryProjectsArgs = {
+	filters?: InputMaybe<ProjectFiltersInput>;
+	locale?: InputMaybe<Scalars['I18NLocaleCode']>;
+	pagination?: InputMaybe<PaginationArg>;
+	publicationState?: InputMaybe<PublicationState>;
+	sort?: InputMaybe<Array<InputMaybe<Scalars['String']>>>;
+};
+
 export type QuerySchoolArgs = {
 	id?: InputMaybe<Scalars['ID']>;
 	locale?: InputMaybe<Scalars['I18NLocaleCode']>;
@@ -1143,6 +1280,17 @@ export type QuerySocialNetworkArgs = {
 
 export type QuerySocialNetworksArgs = {
 	filters?: InputMaybe<SocialNetworkFiltersInput>;
+	pagination?: InputMaybe<PaginationArg>;
+	publicationState?: InputMaybe<PublicationState>;
+	sort?: InputMaybe<Array<InputMaybe<Scalars['String']>>>;
+};
+
+export type QueryTechnoArgs = {
+	id?: InputMaybe<Scalars['ID']>;
+};
+
+export type QueryTechnosArgs = {
+	filters?: InputMaybe<TechnoFiltersInput>;
 	pagination?: InputMaybe<PaginationArg>;
 	publicationState?: InputMaybe<PublicationState>;
 	sort?: InputMaybe<Array<InputMaybe<Scalars['String']>>>;
@@ -1269,6 +1417,7 @@ export type SchoolProject = {
 	createdAt?: Maybe<Scalars['DateTime']>;
 	locale?: Maybe<Scalars['String']>;
 	localizations?: Maybe<SchoolProjectRelationResponseCollection>;
+	picture: UploadFileEntityResponse;
 	publishedAt?: Maybe<Scalars['DateTime']>;
 	slug?: Maybe<Scalars['String']>;
 	title: Scalars['String'];
@@ -1319,6 +1468,7 @@ export type SchoolProjectFiltersInput = {
 };
 
 export type SchoolProjectInput = {
+	picture?: InputMaybe<Scalars['ID']>;
 	publishedAt?: InputMaybe<Scalars['DateTime']>;
 	sitemap_exclude?: InputMaybe<Scalars['Boolean']>;
 	slug?: InputMaybe<Scalars['String']>;
@@ -1471,6 +1621,60 @@ export type StringFilterInput = {
 	null?: InputMaybe<Scalars['Boolean']>;
 	or?: InputMaybe<Array<InputMaybe<Scalars['String']>>>;
 	startsWith?: InputMaybe<Scalars['String']>;
+};
+
+export type Techno = {
+	__typename?: 'Techno';
+	color?: Maybe<Enum_Techno_Color>;
+	createdAt?: Maybe<Scalars['DateTime']>;
+	name: Scalars['String'];
+	publishedAt?: Maybe<Scalars['DateTime']>;
+	slug: Scalars['String'];
+	updatedAt?: Maybe<Scalars['DateTime']>;
+};
+
+export type TechnoEntity = {
+	__typename?: 'TechnoEntity';
+	attributes?: Maybe<Techno>;
+	id?: Maybe<Scalars['ID']>;
+};
+
+export type TechnoEntityResponse = {
+	__typename?: 'TechnoEntityResponse';
+	data?: Maybe<TechnoEntity>;
+};
+
+export type TechnoEntityResponseCollection = {
+	__typename?: 'TechnoEntityResponseCollection';
+	data: Array<TechnoEntity>;
+	meta: ResponseCollectionMeta;
+};
+
+export type TechnoFiltersInput = {
+	and?: InputMaybe<Array<InputMaybe<TechnoFiltersInput>>>;
+	color?: InputMaybe<StringFilterInput>;
+	createdAt?: InputMaybe<DateTimeFilterInput>;
+	id?: InputMaybe<IdFilterInput>;
+	name?: InputMaybe<StringFilterInput>;
+	not?: InputMaybe<TechnoFiltersInput>;
+	or?: InputMaybe<Array<InputMaybe<TechnoFiltersInput>>>;
+	publishedAt?: InputMaybe<DateTimeFilterInput>;
+	sitemap_exclude?: InputMaybe<BooleanFilterInput>;
+	slug?: InputMaybe<StringFilterInput>;
+	updatedAt?: InputMaybe<DateTimeFilterInput>;
+};
+
+export type TechnoInput = {
+	color?: InputMaybe<Enum_Techno_Color>;
+	name?: InputMaybe<Scalars['String']>;
+	publishedAt?: InputMaybe<Scalars['DateTime']>;
+	sitemap_exclude?: InputMaybe<Scalars['Boolean']>;
+	slug?: InputMaybe<Scalars['String']>;
+};
+
+export type TechnoRelationResponseCollection = {
+	__typename?: 'TechnoRelationResponseCollection';
+	data: Array<TechnoEntity>;
 };
 
 export type UploadFile = {
@@ -1903,5 +2107,76 @@ export type GetProfileQuery = {
 				} | null;
 			} | null;
 		} | null;
+	} | null;
+};
+
+export type GetProjectsQueryVariables = Exact<{
+	locale: Scalars['I18NLocaleCode'];
+}>;
+
+export type GetProjectsQuery = {
+	__typename?: 'Query';
+	projects?: {
+		__typename?: 'ProjectEntityResponseCollection';
+		data: Array<{
+			__typename?: 'ProjectEntity';
+			attributes?: {
+				__typename?: 'Project';
+				slug?: string | null;
+				url: string;
+				urlName: string;
+				title: string;
+				description: string;
+				mainTechno?: {
+					__typename?: 'TechnoEntityResponse';
+					data?: {
+						__typename?: 'TechnoEntity';
+						attributes?: {
+							__typename?: 'Techno';
+							name: string;
+							slug: string;
+							color?: Enum_Techno_Color | null;
+						} | null;
+					} | null;
+				} | null;
+				technos?: {
+					__typename?: 'TechnoRelationResponseCollection';
+					data: Array<{
+						__typename?: 'TechnoEntity';
+						attributes?: {
+							__typename?: 'Techno';
+							name: string;
+							slug: string;
+							color?: Enum_Techno_Color | null;
+						} | null;
+					}>;
+				} | null;
+				picture: {
+					__typename?: 'UploadFileEntityResponse';
+					data?: {
+						__typename?: 'UploadFileEntity';
+						attributes?: { __typename?: 'UploadFile'; url: string; name: string } | null;
+					} | null;
+				};
+			} | null;
+		}>;
+	} | null;
+};
+
+export type GetTechnosQueryVariables = Exact<{ [key: string]: never }>;
+
+export type GetTechnosQuery = {
+	__typename?: 'Query';
+	technos?: {
+		__typename?: 'TechnoEntityResponseCollection';
+		data: Array<{
+			__typename?: 'TechnoEntity';
+			attributes?: {
+				__typename?: 'Techno';
+				name: string;
+				slug: string;
+				color?: Enum_Techno_Color | null;
+			} | null;
+		}>;
 	} | null;
 };
