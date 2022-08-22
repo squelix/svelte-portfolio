@@ -589,5 +589,21 @@ export interface SvelteInputProps extends HTMLProps<HTMLInputElement> {
 	indeterminate?: boolean | undefined | null;
 }
 
+interface SapperAnchorProps {
+	// transformed from sapper:noscroll so it should be camel case
+	sapperNoscroll?: true | undefined | null;
+	sapperPrefetch?: true | undefined | null;
+}
+
+interface SvelteKitAnchorProps {
+	// transformed from sveltekit:noscroll so it should be camel case
+	sveltekitNoscroll?: true | undefined | null;
+	sveltekitPrefetch?: true | undefined | null;
+	sveltekitReload?: true | undefined | null;
+}
+
 export type SvelteButtonProps = HTMLProps<HTMLButtonElement>;
 export type SvelteTextAreaProps = HTMLProps<HTMLTextAreaElement>;
+export type SvelteLinkProps = HTMLProps<HTMLAnchorElement> &
+	SapperAnchorProps &
+	SvelteKitAnchorProps;
