@@ -31,12 +31,14 @@
 			{/if}
 		</a>
 	{:else}
-		{#if item.labelKey && !item.label}
-			<p>{$t(item.labelKey)}</p>
-		{/if}
-		{#if item.label && !item.labelKey}
-			<p>{item.label}</p>
-		{/if}
+		<p>
+			{#if item.labelKey && !item.label}
+				{$t(item.labelKey)}
+			{/if}
+			{#if item.label && !item.labelKey}
+				{item.label}
+			{/if}
+		</p>
 	{/if}
 </li>
 

@@ -9,15 +9,17 @@
 			//&nbsp;{$t($aboutTitleItem.labelKey)}
 		{/if}
 		{#if !$aboutTitleItem?.labelKey && $aboutTitleItem?.label}
-			//&nbsp;{$t($aboutTitleItem?.label)}
+			//&nbsp;{$titleItem.label}
 		{/if}
 
-		{#if $titleItem?.labelKey && !$titleItem?.label}
-			<span class="title--gray">/&nbsp;{$t($titleItem.labelKey)}</span>
-		{/if}
-		{#if !$titleItem?.labelKey && $titleItem?.label}
-			<span class="title--gray">/&nbsp;{$t($titleItem?.label)}</span>
-		{/if}
+		<span class="title--gray">
+			{#if $titleItem?.labelKey && !$titleItem?.label}
+				/&nbsp;{$t($titleItem.labelKey)}
+			{/if}
+			{#if !$titleItem?.labelKey && $titleItem?.label}
+				/&nbsp;{$titleItem.label}
+			{/if}
+		</span>
 	</h2>
 
 	<slot />

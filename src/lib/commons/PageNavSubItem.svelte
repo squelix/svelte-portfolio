@@ -43,12 +43,14 @@
 			>
 				<Icon data={Folder} width="100%" />
 			</span>
-			{#if item.labelKey && !item.label}
-				<span class="page-nav-sub-item__button__text">{$t(item.labelKey)}</span>
-			{/if}
-			{#if item.label && !item.labelKey}
-				<span class="page-nav-sub-item__button__text">{item.label}</span>
-			{/if}
+			<span class="page-nav-sub-item__button__text">
+				{#if item.labelKey && !item.label}
+					{$t(item.labelKey)}
+				{/if}
+				{#if item.label && !item.labelKey}
+					{item.label}
+				{/if}
+			</span>
 		</button>
 		<ul class="page-nav-sub-item__sub-items" aria-hidden={$subNavItemOpened !== item.id}>
 			{#each item.items || [] as item}
@@ -56,13 +58,14 @@
 			{/each}
 		</ul>
 	{:else}
-		{#if item.labelKey && !item.label}
-			<a class="page-nav-sub-item__text" href={item.link}>{$t(item.labelKey)}</a>
-		{/if}
-
-		{#if item.label && !item.labelKey}
-			<a class="page-nav-sub-item__text" href={item.link}>{item.label}</a>
-		{/if}
+		<a class="page-nav-sub-item__text" href={item.link}>
+			{#if item.labelKey && !item.label}
+				{$t(item.labelKey)}
+			{/if}
+			{#if item.label && !item.labelKey}
+				{item.label}
+			{/if}
+		</a>
 	{/if}
 </li>
 
