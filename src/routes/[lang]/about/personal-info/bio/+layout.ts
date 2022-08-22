@@ -1,6 +1,5 @@
 import { bioNavItems } from '$lib/menu/nav';
-import { subnav } from '$stores/nav';
-import { setItem } from '$stores/page-sub-nav';
+import { setSubNavItem, subnav } from '$stores/nav';
 
-setItem('personal-info-bio');
+setSubNavItem('personal-info-bio');
 subnav.set(bioNavItems);

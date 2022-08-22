@@ -1,6 +1,5 @@
 import { aboutPageNavItems } from '$lib/menu/nav';
-import { nav } from '$stores/nav';
-import { setItem } from '$stores/page-nav';
+import { nav, setNavItem } from '$stores/nav';
 
-setItem('personal-info');
+setNavItem('personal-info');
 nav.set(aboutPageNavItems);

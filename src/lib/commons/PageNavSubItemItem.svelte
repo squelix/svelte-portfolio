@@ -1,10 +1,9 @@
 <script lang="ts">
-	import Icon from '$lib/SvgIcon.svelte';
+	import { page } from '$app/stores';
 	import Mardown from '$icons/markdown.svg?raw';
 	import { getRoute, isRouteActive } from '$lib/routing';
-	import { locale } from '$translations';
-	import { page } from '$app/stores';
-	import { t } from '$translations';
+	import Icon from '$lib/SvgIcon.svelte';
+	import { locale, t } from '$translations';
 
 	import type { PageNavItemInterface } from '$models/page-nav-item.interface';
 
@@ -24,12 +23,20 @@
 			<span class="page-nav-sub-item-item__link__icon">
 				<Icon data={Mardown} width="100%" />
 			</span>
-			{$t(item.labelKey)}
+			{#if item.labelKey && !item.label}
+				{$t(item.labelKey)}
+			{/if}
+			{#if item.label && !item.labelKey}
+				{item.label}
+			{/if}
 		</a>
 	{:else}
-		<p>
-			{$t(item.labelKey)}
-		</p>
+		{#if item.labelKey && !item.label}
+			<p>{$t(item.labelKey)}</p>
+		{/if}
+		{#if item.label && !item.labelKey}
+			<p>{item.label}</p>
+		{/if}
 	{/if}
 </li>
 

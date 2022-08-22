@@ -1,6 +1,5 @@
 import { contactPageNavItems } from '$lib/menu/nav';
-import { nav } from '$stores/nav';
-import { setItem } from '$stores/page-nav';
+import { nav, setNavItem } from '$stores/nav';
 
-setItem('contacts');
+setNavItem('contacts');
 nav.set(contactPageNavItems);

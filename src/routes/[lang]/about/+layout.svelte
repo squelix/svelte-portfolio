@@ -1,13 +1,13 @@
 <script lang="ts">
-	import { aboutTitleItem } from '$stores/title';
-	import { nav } from '$stores/nav';
-	import { t } from '$translations';
-	import { RoutesEnum, getRoute } from '$lib/routing';
 	import { page } from '$app/stores';
-	import { LangEnum } from '$models/langs.enum';
+	import BorderBottom from '$lib/commons/BorderBottom.svelte';
 	import PageNav from '$lib/commons/PageNav.svelte';
 	import PageTitle from '$lib/commons/PageTitle.svelte';
-	import BorderBottom from '$lib/commons/BorderBottom.svelte';
+	import { getRoute, RoutesEnum } from '$lib/routing';
+	import { LangEnum } from '$models/langs.enum';
+	import { nav } from '$stores/nav';
+	import { aboutTitleItem } from '$stores/title';
+	import { t } from '$translations';
 </script>
 
 <svelte:head>
@@ -29,7 +29,12 @@
 	/>
 </svelte:head>
 
-<PageTitle textDesktop={$t($aboutTitleItem?.labelKey)} textMobile={$t('about.title')} />
+{#if $aboutTitleItem?.labelKey && !$aboutTitleItem?.label}
+	<PageTitle textDesktop={$t($aboutTitleItem.labelKey)} textMobile={$t('about.title')} />
+{/if}
+{#if !$aboutTitleItem?.labelKey && $aboutTitleItem?.label}
+	<PageTitle textDesktop={$aboutTitleItem.label} textMobile={$t('about.title')} />
+{/if}
 
 <BorderBottom />
 

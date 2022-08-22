@@ -1,9 +1,9 @@
 <script lang="ts">
-	import { itemSelected, itemOpened } from '$stores/page-sub-nav';
-	import Icon from '$lib/SvgIcon.svelte';
-	import Chevron from '$icons/list-chevron-2.svg?raw';
 	import Folder from '$icons/folder.svg?raw';
-	import PageNavSubItemItem from './PageNavSubItemItem.svelte';
+	import Chevron from '$icons/list-chevron-2.svg?raw';
+	import PageNavSubItemItem from '$lib/commons/PageNavSubItemItem.svelte';
+	import Icon from '$lib/SvgIcon.svelte';
+	import { subNavItemOpened, subNavItemSelected } from '$stores/nav';
 	import { t } from '$translations';
 
 	import type { PageNavItemInterface } from '$models/page-nav-item.interface';
@@ -12,14 +12,14 @@
 	export let index: number;
 
 	const setSeletedItem = (itemId: string) => {
-		if (itemId !== $itemSelected) {
-			itemSelected.set(itemId);
+		if (itemId !== $subNavItemSelected) {
+			subNavItemSelected.set(itemId);
 		}
 
-		if (itemId === $itemOpened) {
-			itemOpened.set(undefined);
+		if (itemId === $subNavItemOpened) {
+			subNavItemOpened.set(undefined);
 		} else {
-			itemOpened.set(itemId);
+			subNavItemOpened.set(itemId);
 		}
 	};
 </script>
@@ -29,12 +29,12 @@
 		<button
 			type="button"
 			class="btn-clean page-nav-sub-item__button"
-			aria-expanded={$itemOpened === item.id}
+			aria-expanded={$subNavItemOpened === item.id}
 			on:click={() => setSeletedItem(item.id)}
 		>
 			<span
 				class="page-nav-sub-item__button__icon-chevron"
-				class:page-nav-sub-item__button__icon-chevron--expanded={$itemOpened === item.id}
+				class:page-nav-sub-item__button__icon-chevron--expanded={$subNavItemOpened === item.id}
 			>
 				<Icon data={Chevron} width="100%" />
 			</span>
@@ -43,15 +43,26 @@
 			>
 				<Icon data={Folder} width="100%" />
 			</span>
-			<span class="page-nav-sub-item__button__text">{$t(item.labelKey)}</span>
+			{#if item.labelKey && !item.label}
+				<span class="page-nav-sub-item__button__text">{$t(item.labelKey)}</span>
+			{/if}
+			{#if item.label && !item.labelKey}
+				<span class="page-nav-sub-item__button__text">{item.label}</span>
+			{/if}
 		</button>
-		<ul class="page-nav-sub-item__sub-items" aria-hidden={$itemOpened !== item.id}>
+		<ul class="page-nav-sub-item__sub-items" aria-hidden={$subNavItemOpened !== item.id}>
 			{#each item.items || [] as item}
 				<PageNavSubItemItem {item} />
 			{/each}
 		</ul>
 	{:else}
-		<a class="page-nav-sub-item__text" href={item.link}>{$t(item.labelKey)}</a>
+		{#if item.labelKey && !item.label}
+			<a class="page-nav-sub-item__text" href={item.link}>{$t(item.labelKey)}</a>
+		{/if}
+
+		{#if item.label && !item.labelKey}
+			<a class="page-nav-sub-item__text" href={item.link}>{item.label}</a>
+		{/if}
 	{/if}
 </li>
 

@@ -1,6 +1,5 @@
 import { educationNavItems } from '$lib/menu/nav';
-import { subnav } from '$stores/nav';
-import { setItem } from '$stores/page-sub-nav';
+import { setSubNavItem, subnav } from '$stores/nav';
 
-setItem('personal-info-education');
+setSubNavItem('personal-info-education');
 subnav.set(educationNavItems);

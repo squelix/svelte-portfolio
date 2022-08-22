@@ -1,12 +1,23 @@
 <script lang="ts">
-	import { aboutSubTitleItem, aboutTitleItem } from '$stores/title';
+	import { aboutTitleItem, titleItem } from '$stores/title';
 	import { t } from '$translations';
 </script>
 
 <section class="page-content">
 	<h2 class="display-only-mobile title">
-		//&nbsp;{$t($aboutTitleItem?.labelKey)}
-		<span class="title--gray">/&nbsp;{$t($aboutSubTitleItem?.labelKey)}</span>
+		{#if $aboutTitleItem?.labelKey && !$aboutTitleItem?.label}
+			//&nbsp;{$t($aboutTitleItem.labelKey)}
+		{/if}
+		{#if !$aboutTitleItem?.labelKey && $aboutTitleItem?.label}
+			//&nbsp;{$t($aboutTitleItem?.label)}
+		{/if}
+
+		{#if $titleItem?.labelKey && !$titleItem?.label}
+			<span class="title--gray">/&nbsp;{$t($titleItem.labelKey)}</span>
+		{/if}
+		{#if !$titleItem?.labelKey && $titleItem?.label}
+			<span class="title--gray">/&nbsp;{$t($titleItem?.label)}</span>
+		{/if}
 	</h2>
 
 	<slot />
