@@ -1,6 +1,6 @@
 <script lang="ts">
-	import Icon from '$lib/SvgIcon.svelte';
 	import Loader from '$icons/loader.svg?raw';
+	import Icon from '$lib/SvgIcon.svelte';
 
 	import type { SvelteButtonProps } from '$models/forms/svelte-html-props.interface';
 

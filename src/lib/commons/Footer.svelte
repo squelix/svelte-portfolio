@@ -1,9 +1,9 @@
 <script lang="ts">
-	import { facebook, twitter, github } from '$stores/profile';
-	import Icon from '$lib/SvgIcon.svelte';
 	import Facebook from '$icons/facebook.svg?raw';
-	import Twitter from '$icons/twitter.svg?raw';
 	import Github from '$icons/github.svg?raw';
+	import Twitter from '$icons/twitter.svg?raw';
+	import Icon from '$lib/SvgIcon.svelte';
+	import { facebook, github, twitter } from '$stores/profile';
 	import { t } from '$translations';
 </script>
 

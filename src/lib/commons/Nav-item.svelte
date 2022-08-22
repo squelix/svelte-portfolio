@@ -1,8 +1,8 @@
 <script lang="ts">
-	import { createEventDispatcher } from 'svelte';
 	import { page } from '$app/stores';
 	import { getRoute, isBaseRouteActive } from '$lib/routing';
 	import { locale } from '$translations';
+	import { createEventDispatcher } from 'svelte';
 
 	export let label: string;
 	export let link: string;

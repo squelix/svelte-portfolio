@@ -1,8 +1,8 @@
 <script lang="ts">
 	/* eslint-disable @typescript-eslint/no-non-null-assertion */
-	import { onDestroy, onMount } from 'svelte';
-	import Icon from '$lib/SvgIcon.svelte';
 	import ChevronUpKey from '$icons/chevron-up-key.svg?raw';
+	import Icon from '$lib/SvgIcon.svelte';
+	import { onDestroy, onMount } from 'svelte';
 
 	import type { ColorInterface } from '$models/color';
 	import type { PositionInterface } from '$models/snake/position.interface';

@@ -1,11 +1,10 @@
 <script lang="ts">
-	import { t } from '$translations';
-	import { getRoute, RoutesEnum } from '$lib/routing';
 	import { page } from '$app/stores';
-	import { formattedDesktopBiography, formattedMobileBiography } from '$stores/profile';
-	import { LangEnum } from '$models/langs.enum';
-	import { locale } from '$translations';
 	import PageTextContent from '$lib/commons/PageTextContent.svelte';
+	import { getRoute, RoutesEnum } from '$lib/routing';
+	import { LangEnum } from '$models/langs.enum';
+	import { formattedDesktopBiography, formattedMobileBiography } from '$stores/profile';
+	import { locale, t } from '$translations';
 </script>
 
 <svelte:head>

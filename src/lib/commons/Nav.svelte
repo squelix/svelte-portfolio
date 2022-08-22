@@ -1,9 +1,9 @@
 <script lang="ts">
-	import Icon from '$lib/SvgIcon.svelte';
 	import Burger from '$icons/burger.svg?raw';
 	import Cross from '$icons/cross.svg?raw';
 	import NavItem from '$lib/commons/Nav-item.svelte';
 	import { MainRoutes } from '$lib/routing';
+	import Icon from '$lib/SvgIcon.svelte';
 	import { t } from '$translations';
 
 	let open = false;

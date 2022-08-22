@@ -1,21 +1,20 @@
 <script lang="ts">
 	/* eslint-disable @typescript-eslint/restrict-template-expressions */
-	import Input from '$lib/commons/Input.svelte';
-	import { t } from '$translations';
-	import { getRoute, RoutesEnum } from '$lib/routing';
 	import { page } from '$app/stores';
-	import { mailAccessToken, reCaptchaKey } from '$stores/env';
-	import { mailService } from '$stores/services';
-	import { onMount } from 'svelte';
-	import { LangEnum } from '$models/langs.enum';
-	import { locale } from '$translations';
+	import BorderBottom from '$lib/commons/BorderBottom.svelte';
 	import Button from '$lib/commons/Button.svelte';
-	import Textarea from '$lib/commons/Textarea.svelte';
+	import Input from '$lib/commons/Input.svelte';
 	import PageNav from '$lib/commons/PageNav.svelte';
 	import PageTitle from '$lib/commons/PageTitle.svelte';
-	import BorderBottom from '$lib/commons/BorderBottom.svelte';
-	import { nav } from '$stores/nav';
+	import Textarea from '$lib/commons/Textarea.svelte';
+	import { getRoute, RoutesEnum } from '$lib/routing';
 	import { validateEmail } from '$lib/validators';
+	import { LangEnum } from '$models/langs.enum';
+	import { mailAccessToken, reCaptchaKey } from '$stores/env';
+	import { nav } from '$stores/nav';
+	import { mailService } from '$stores/services';
+	import { locale, t } from '$translations';
+	import { onMount } from 'svelte';
 
 	let intervalLoading: number;
 	let intervalLoaded: number;

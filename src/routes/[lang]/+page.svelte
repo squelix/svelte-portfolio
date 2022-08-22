@@ -1,11 +1,10 @@
 <script lang="ts">
-	import { name, job, github } from '$stores/profile';
-	import { t } from '$translations';
-	import { getRoute, RoutesEnum } from '$lib/routing';
 	import { page } from '$app/stores';
-	import { LangEnum } from '$models/langs.enum';
-	import { locale } from '$translations';
 	import Snake from '$lib/commons/Snake.svelte';
+	import { getRoute, RoutesEnum } from '$lib/routing';
+	import { LangEnum } from '$models/langs.enum';
+	import { github, job, name } from '$stores/profile';
+	import { locale, t } from '$translations';
 </script>
 
 <svelte:head>
@@ -91,7 +90,7 @@
 		flex-direction: column;
 		flex-wrap: wrap;
 		padding: 0 1.6875rem;
-		margin: 6rem 0 12.1875rem 0;
+		margin: 5rem 0;
 
 		&__first {
 			@include font.fontWeight(400);
@@ -105,7 +104,7 @@
 		&__name {
 			@include font.fontWeight(400);
 
-			font-size: 3.875rem;
+			font-size: 3.625rem;
 			line-height: 1;
 			color: var(--grey);
 			text-shadow: 0 4px 4px rgb(0 0 0 / 25%);
@@ -135,6 +134,7 @@
 
 			&__name {
 				line-height: 1.3065;
+				font-size: 3.875rem;
 			}
 
 			&__job {

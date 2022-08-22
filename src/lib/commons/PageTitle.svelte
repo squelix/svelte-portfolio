@@ -1,14 +1,14 @@
 <script lang="ts">
-	import Icon from '$lib/SvgIcon.svelte';
 	import Close from '$icons/close.svg?raw';
+	import Icon from '$lib/SvgIcon.svelte';
 
 	export let textDesktop: string;
 	export let textMobile: string;
 </script>
 
 <h1 class="title">
-	<span class="display-only-mobile">{textMobile}</span>
-	<span class="display-only-desktop">{textDesktop}</span>
+	<span class="display-only-mobile">{@html textMobile}</span>
+	<span class="display-only-desktop">{@html textDesktop}</span>
 
 	<Icon class="display-only-desktop" data={Close} />
 </h1>

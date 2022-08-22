@@ -1,6 +1,6 @@
 <script lang="ts">
-	import { dashedName } from '$stores/profile';
 	import Nav from '$lib/commons/Nav.svelte';
+	import { dashedName } from '$stores/profile';
 </script>
 
 <header class="header">
