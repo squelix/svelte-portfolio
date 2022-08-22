@@ -3,7 +3,7 @@ import { derived, writable } from 'svelte/store';
 
 import type { GetProfileQuery } from '$models/graphql-generated';
 
-export const profile = writable<GetProfileQuery>();
+export const profile = writable<GetProfileQuery | undefined>();
 
 export const firstname = derived(
 	profile,

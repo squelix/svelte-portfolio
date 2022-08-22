@@ -1,15 +1,18 @@
 /* eslint-disable @typescript-eslint/no-non-null-assertion */
-import { nav, subnav } from '$stores/nav';
-import { itemSelected } from '$stores/page-nav';
-import { itemSelected as subItemSelected } from '$stores/page-sub-nav';
+import { itemSelected, nav, navItemSelected, subnav, subNavItemSelected } from '$stores/nav';
 import { derived } from 'svelte/store';
 
 export const aboutTitleItem = derived(
-	[itemSelected, nav],
-	([$itemSelected, $nav]) => $nav.find((item) => $itemSelected === item.id)!
+	[navItemSelected, nav],
+	([$navItemSelected, $nav]) => $nav.find((item) => $navItemSelected === item.id)!
 );
 
 export const aboutSubTitleItem = derived(
-	[subItemSelected, subnav],
-	([$subItemSelected, $subnav]) => $subnav.find((item) => $subItemSelected === item.id)!
+	[subNavItemSelected, subnav],
+	([$subNavItemSelected, $subnav]) => $subnav.find((item) => $subNavItemSelected === item.id)!
+);
+
+export const titleItem = derived(
+	[itemSelected, subnav],
+	([$itemSelected, $subnav]) => $subnav.find((item) => $itemSelected === item.id)!
 );
