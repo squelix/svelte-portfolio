@@ -2,9 +2,11 @@
 	import type { SvelteLinkProps } from '$models/forms/svelte-html-props.interface';
 
 	export let style: 'primary' | 'default' | 'ghost' = 'default';
+	export let href: string;
 
 	interface $$Props extends SvelteLinkProps {
 		style?: 'primary' | 'default' | 'ghost';
+		href: string;
 	}
 </script>
 
@@ -13,6 +15,7 @@
 	class:primary={style === 'primary'}
 	class:default={style === 'default'}
 	class:ghost={style === 'ghost'}
+	{href}
 >
 	<slot />
 </a>
