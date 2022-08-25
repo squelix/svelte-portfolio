@@ -697,14 +697,12 @@ export type Mutation = {
 	createSchoolLocalization?: Maybe<SchoolEntityResponse>;
 	createSchoolProjectLocalization?: Maybe<SchoolProjectEntityResponse>;
 	createSkillLocalization?: Maybe<SkillEntityResponse>;
-	createTechno?: Maybe<TechnoEntityResponse>;
 	createUploadFile?: Maybe<UploadFileEntityResponse>;
 	createUploadFolder?: Maybe<UploadFolderEntityResponse>;
 	/** Create a new role */
 	createUsersPermissionsRole?: Maybe<UsersPermissionsCreateRolePayload>;
 	/** Create a new user */
 	createUsersPermissionsUser: UsersPermissionsUserEntityResponse;
-	deleteTechno?: Maybe<TechnoEntityResponse>;
 	deleteUploadFile?: Maybe<UploadFileEntityResponse>;
 	deleteUploadFolder?: Maybe<UploadFolderEntityResponse>;
 	/** Delete an existing role */
@@ -723,7 +721,6 @@ export type Mutation = {
 	/** Reset user password. Confirm with a code (resetToken from forgotPassword) */
 	resetPassword?: Maybe<UsersPermissionsLoginPayload>;
 	updateFileInfo: UploadFileEntityResponse;
-	updateTechno?: Maybe<TechnoEntityResponse>;
 	updateUploadFile?: Maybe<UploadFileEntityResponse>;
 	updateUploadFolder?: Maybe<UploadFolderEntityResponse>;
 	/** Update an existing role */
@@ -805,10 +802,6 @@ export type MutationCreateSkillLocalizationArgs = {
 	locale?: InputMaybe<Scalars['I18NLocaleCode']>;
 };
 
-export type MutationCreateTechnoArgs = {
-	data: TechnoInput;
-};
-
 export type MutationCreateUploadFileArgs = {
 	data: UploadFileInput;
 };
@@ -823,10 +816,6 @@ export type MutationCreateUsersPermissionsRoleArgs = {
 
 export type MutationCreateUsersPermissionsUserArgs = {
 	data: UsersPermissionsUserInput;
-};
-
-export type MutationDeleteTechnoArgs = {
-	id: Scalars['ID'];
 };
 
 export type MutationDeleteUploadFileArgs = {
@@ -881,11 +870,6 @@ export type MutationResetPasswordArgs = {
 export type MutationUpdateFileInfoArgs = {
 	id: Scalars['ID'];
 	info?: InputMaybe<FileInfoInput>;
-};
-
-export type MutationUpdateTechnoArgs = {
-	data: TechnoInput;
-	id: Scalars['ID'];
 };
 
 export type MutationUpdateUploadFileArgs = {
@@ -1662,14 +1646,6 @@ export type TechnoFiltersInput = {
 	sitemap_exclude?: InputMaybe<BooleanFilterInput>;
 	slug?: InputMaybe<StringFilterInput>;
 	updatedAt?: InputMaybe<DateTimeFilterInput>;
-};
-
-export type TechnoInput = {
-	color?: InputMaybe<Enum_Techno_Color>;
-	name?: InputMaybe<Scalars['String']>;
-	publishedAt?: InputMaybe<Scalars['DateTime']>;
-	sitemap_exclude?: InputMaybe<Scalars['Boolean']>;
-	slug?: InputMaybe<Scalars['String']>;
 };
 
 export type TechnoRelationResponseCollection = {
