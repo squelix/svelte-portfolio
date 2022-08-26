@@ -1,3 +1,11 @@
 {
-	"page": { "title": "Mickaël Depardon - Projets", "description": "DESC" }
+	"page": { "title": "Mickaël Depardon - Projets", "description": "DESC" },
+	"title": "projets",
+	"card": {
+		"title": "Projet",
+		"link": "voir-le-projet"
+	},
+	"aria": {
+		"nav": "Filtre de techno"
+	}
 }
