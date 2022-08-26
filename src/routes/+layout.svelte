@@ -84,8 +84,8 @@
 		}
 
 		@include br.desktop {
-			min-height: calc(100vh - (var(--desktop-main-padding) * 2) - var(--nav-height));
-			padding-bottom: 3rem;
+			min-height: auto;
+			height: calc(100vh - (var(--desktop-main-padding) * 2) - var(--nav-height));
 
 			&--home {
 				background: var(--primary-2) url('/svg/bg-blur-desktop.svg') no-repeat;
@@ -97,6 +97,7 @@
 				display: grid;
 				grid-template-columns: 311px fit-content(100%) minmax(0, 1fr);
 				grid-template-rows: 40px minmax(0, 1fr);
+				padding-bottom: 3rem;
 			}
 		}
 	}
