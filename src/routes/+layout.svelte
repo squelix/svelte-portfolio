@@ -84,7 +84,8 @@
 		}
 
 		@include br.desktop {
-			height: calc(100vh - (var(--desktop-main-padding) * 2) - var(--nav-height));
+			min-height: calc(100vh - (var(--desktop-main-padding) * 2) - var(--nav-height));
+			padding-bottom: 3rem;
 
 			&--home {
 				background: var(--primary-2) url('/svg/bg-blur-desktop.svg') no-repeat;
