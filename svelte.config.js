@@ -1,6 +1,6 @@
 import adapter from '@sveltejs/adapter-netlify';
-import preprocess from 'svelte-preprocess';
 import path from 'path';
+import preprocess from 'svelte-preprocess';
 import { fileURLToPath } from 'url';
 
 const __filename = fileURLToPath(import.meta.url);
@@ -20,7 +20,7 @@ const config = {
 	kit: {
 		inlineStyleThreshold: 1024,
 		adapter: adapter({
-			edge: true
+			split: true
 		})
 	}
 };
