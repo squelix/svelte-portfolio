@@ -10,6 +10,8 @@
 
 	export let project: Project;
 	export let index: number;
+
+	const ariaLink = `${$t('projects.aria.card') as string} ${project.urlName}`;
 </script>
 
 <li>
@@ -44,7 +46,7 @@
 				/>
 			{/if}
 			<p class="card__description">{project.description}</p>
-			<Link href={project.url} aria-label={project.urlName} target="_blank"
+			<Link href={project.url} aria-label={ariaLink} target="_blank"
 				>{$t('projects.card.link')}</Link
 			>
 		</div>

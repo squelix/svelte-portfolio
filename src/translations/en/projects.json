@@ -6,6 +6,7 @@
 		"link": "view-project"
 	},
 	"aria": {
-		"nav": "Techno filters"
+		"nav": "Techno filters",
+		"card": "View project"
 	}
 }

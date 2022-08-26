@@ -6,6 +6,7 @@
 		"link": "voir-le-projet"
 	},
 	"aria": {
-		"nav": "Filtre de techno"
+		"nav": "Filtre de techno",
+		"card": "Voir le projet"
 	}
 }
