@@ -1410,7 +1410,7 @@ export type SchoolProject = {
 	title: Scalars['String'];
 	updatedAt?: Maybe<Scalars['DateTime']>;
 	url: Scalars['String'];
-	urlName?: Maybe<Scalars['String']>;
+	urlName: Scalars['String'];
 };
 
 export type SchoolProjectLocalizationsArgs = {
@@ -2169,7 +2169,7 @@ export type GetSchoolsProjectsQuery = {
 				__typename?: 'SchoolProject';
 				slug?: string | null;
 				url: string;
-				urlName?: string | null;
+				urlName: string;
 				title: string;
 				description: string;
 				mainTechno?: {

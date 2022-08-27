@@ -80,7 +80,7 @@
 	{/if}
 </h2>
 
-<ul class="list">
+<ul class="page-content list">
 	{#each $projectsListFiltered as project, index}
 		{#if project}
 			<Project {project} {index} />
@@ -96,8 +96,6 @@
 		grid-template-columns: repeat(auto-fit, minmax(0, 18.75rem));
 		grid-auto-rows: minmax(min-content, max-content);
 		gap: 1.25rem;
-		grid-column: 2 / 4;
-		grid-row: 2 / 3;
 		padding: 0 1.6875rem;
 		margin-top: 1.0625rem;
 

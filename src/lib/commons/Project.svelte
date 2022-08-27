@@ -6,9 +6,9 @@
 	import { locale, t } from '$translations';
 	import slugify from 'slugify';
 
-	import type { Project } from '$models/graphql-generated';
+	import type { Project, SchoolProject } from '$models/graphql-generated';
 
-	export let project: Project;
+	export let project: Omit<Project, '__typename'> | Omit<SchoolProject, '__typename'>;
 	export let index: number;
 
 	const ariaLink = `${$t('projects.aria.card') as string} ${project.urlName}`;
