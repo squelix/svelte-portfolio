@@ -397,7 +397,7 @@ export type Job = {
 	locale?: Maybe<Scalars['String']>;
 	localizations?: Maybe<JobRelationResponseCollection>;
 	location: Scalars['String'];
-	logo?: Maybe<UploadFileEntityResponse>;
+	picture?: Maybe<UploadFileEntityResponse>;
 	publishedAt?: Maybe<Scalars['DateTime']>;
 	slug?: Maybe<Scalars['String']>;
 	startDate: Scalars['Date'];
@@ -468,7 +468,7 @@ export type JobInput = {
 	jobMissions?: InputMaybe<Array<InputMaybe<Scalars['ID']>>>;
 	jobSkills?: InputMaybe<Array<InputMaybe<Scalars['ID']>>>;
 	location?: InputMaybe<Scalars['String']>;
-	logo?: InputMaybe<Scalars['ID']>;
+	picture?: InputMaybe<Scalars['ID']>;
 	publishedAt?: InputMaybe<Scalars['DateTime']>;
 	sitemap_exclude?: InputMaybe<Scalars['Boolean']>;
 	slug?: InputMaybe<Scalars['String']>;
@@ -1333,8 +1333,8 @@ export type School = {
 	endYear: Scalars['Int'];
 	locale?: Maybe<Scalars['String']>;
 	localizations?: Maybe<SchoolRelationResponseCollection>;
-	logo: UploadFileEntityResponse;
 	name: Scalars['String'];
+	picture: UploadFileEntityResponse;
 	publishedAt?: Maybe<Scalars['DateTime']>;
 	slug?: Maybe<Scalars['String']>;
 	startYear: Scalars['Int'];
@@ -1388,8 +1388,8 @@ export type SchoolInput = {
 	address?: InputMaybe<Scalars['String']>;
 	diploma?: InputMaybe<Scalars['String']>;
 	endYear?: InputMaybe<Scalars['Int']>;
-	logo?: InputMaybe<Scalars['ID']>;
 	name?: InputMaybe<Scalars['String']>;
+	picture?: InputMaybe<Scalars['ID']>;
 	publishedAt?: InputMaybe<Scalars['DateTime']>;
 	sitemap_exclude?: InputMaybe<Scalars['Boolean']>;
 	slug?: InputMaybe<Scalars['String']>;
@@ -1399,11 +1399,14 @@ export type SchoolInput = {
 export type SchoolProject = {
 	__typename?: 'SchoolProject';
 	createdAt?: Maybe<Scalars['DateTime']>;
+	description: Scalars['String'];
 	locale?: Maybe<Scalars['String']>;
 	localizations?: Maybe<SchoolProjectRelationResponseCollection>;
+	mainTechno?: Maybe<TechnoEntityResponse>;
 	picture: UploadFileEntityResponse;
 	publishedAt?: Maybe<Scalars['DateTime']>;
 	slug?: Maybe<Scalars['String']>;
+	technos?: Maybe<TechnoRelationResponseCollection>;
 	title: Scalars['String'];
 	updatedAt?: Maybe<Scalars['DateTime']>;
 	url: Scalars['String'];
@@ -1412,6 +1415,13 @@ export type SchoolProject = {
 
 export type SchoolProjectLocalizationsArgs = {
 	filters?: InputMaybe<SchoolProjectFiltersInput>;
+	pagination?: InputMaybe<PaginationArg>;
+	publicationState?: InputMaybe<PublicationState>;
+	sort?: InputMaybe<Array<InputMaybe<Scalars['String']>>>;
+};
+
+export type SchoolProjectTechnosArgs = {
+	filters?: InputMaybe<TechnoFiltersInput>;
 	pagination?: InputMaybe<PaginationArg>;
 	publicationState?: InputMaybe<PublicationState>;
 	sort?: InputMaybe<Array<InputMaybe<Scalars['String']>>>;
@@ -1437,14 +1447,17 @@ export type SchoolProjectEntityResponseCollection = {
 export type SchoolProjectFiltersInput = {
 	and?: InputMaybe<Array<InputMaybe<SchoolProjectFiltersInput>>>;
 	createdAt?: InputMaybe<DateTimeFilterInput>;
+	description?: InputMaybe<StringFilterInput>;
 	id?: InputMaybe<IdFilterInput>;
 	locale?: InputMaybe<StringFilterInput>;
 	localizations?: InputMaybe<SchoolProjectFiltersInput>;
+	mainTechno?: InputMaybe<TechnoFiltersInput>;
 	not?: InputMaybe<SchoolProjectFiltersInput>;
 	or?: InputMaybe<Array<InputMaybe<SchoolProjectFiltersInput>>>;
 	publishedAt?: InputMaybe<DateTimeFilterInput>;
 	sitemap_exclude?: InputMaybe<BooleanFilterInput>;
 	slug?: InputMaybe<StringFilterInput>;
+	technos?: InputMaybe<TechnoFiltersInput>;
 	title?: InputMaybe<StringFilterInput>;
 	updatedAt?: InputMaybe<DateTimeFilterInput>;
 	url?: InputMaybe<StringFilterInput>;
@@ -1452,10 +1465,13 @@ export type SchoolProjectFiltersInput = {
 };
 
 export type SchoolProjectInput = {
+	description?: InputMaybe<Scalars['String']>;
+	mainTechno?: InputMaybe<Scalars['ID']>;
 	picture?: InputMaybe<Scalars['ID']>;
 	publishedAt?: InputMaybe<Scalars['DateTime']>;
 	sitemap_exclude?: InputMaybe<Scalars['Boolean']>;
 	slug?: InputMaybe<Scalars['String']>;
+	technos?: InputMaybe<Array<InputMaybe<Scalars['ID']>>>;
 	title?: InputMaybe<Scalars['String']>;
 	url?: InputMaybe<Scalars['String']>;
 	urlName?: InputMaybe<Scalars['String']>;
@@ -2127,6 +2143,89 @@ export type GetProjectsQuery = {
 						} | null;
 					}>;
 				} | null;
+				picture: {
+					__typename?: 'UploadFileEntityResponse';
+					data?: {
+						__typename?: 'UploadFileEntity';
+						attributes?: { __typename?: 'UploadFile'; url: string; name: string } | null;
+					} | null;
+				};
+			} | null;
+		}>;
+	} | null;
+};
+
+export type GetSchoolsProjectsQueryVariables = Exact<{
+	locale: Scalars['I18NLocaleCode'];
+}>;
+
+export type GetSchoolsProjectsQuery = {
+	__typename?: 'Query';
+	schoolProjects?: {
+		__typename?: 'SchoolProjectEntityResponseCollection';
+		data: Array<{
+			__typename?: 'SchoolProjectEntity';
+			attributes?: {
+				__typename?: 'SchoolProject';
+				slug?: string | null;
+				url: string;
+				urlName?: string | null;
+				title: string;
+				description: string;
+				mainTechno?: {
+					__typename?: 'TechnoEntityResponse';
+					data?: {
+						__typename?: 'TechnoEntity';
+						attributes?: {
+							__typename?: 'Techno';
+							name: string;
+							slug: string;
+							color?: Enum_Techno_Color | null;
+						} | null;
+					} | null;
+				} | null;
+				technos?: {
+					__typename?: 'TechnoRelationResponseCollection';
+					data: Array<{
+						__typename?: 'TechnoEntity';
+						attributes?: {
+							__typename?: 'Techno';
+							name: string;
+							slug: string;
+							color?: Enum_Techno_Color | null;
+						} | null;
+					}>;
+				} | null;
+				picture: {
+					__typename?: 'UploadFileEntityResponse';
+					data?: {
+						__typename?: 'UploadFileEntity';
+						attributes?: { __typename?: 'UploadFile'; url: string; name: string } | null;
+					} | null;
+				};
+			} | null;
+		}>;
+	} | null;
+};
+
+export type GetSchoolsQueryVariables = Exact<{
+	locale: Scalars['I18NLocaleCode'];
+}>;
+
+export type GetSchoolsQuery = {
+	__typename?: 'Query';
+	schools?: {
+		__typename?: 'SchoolEntityResponseCollection';
+		data: Array<{
+			__typename?: 'SchoolEntity';
+			attributes?: {
+				__typename?: 'School';
+				diploma: string;
+				address: string;
+				startYear: number;
+				endYear: number;
+				name: string;
+				slug?: string | null;
 				picture: {
 					__typename?: 'UploadFileEntityResponse';
 					data?: {
