@@ -1,11 +1,14 @@
+/* eslint-disable @typescript-eslint/restrict-template-expressions */
 import { Routes, RoutesEnum } from '$lib/routing';
-import { locale } from '$translations';
-import { get } from 'svelte/store';
 
 import type { RequestHandler } from './$types';
 
-export const GET: RequestHandler = () =>
-	new Response(undefined, {
+export const GET: RequestHandler = ({ url }) => {
+	const { pathname } = url;
+	const lang = `${pathname.match(/[^/]+?(?=\/|$)/) || ''}`;
+
+	return new Response(undefined, {
 		status: 301,
-		headers: { Location: `/${get(locale)}${Routes[RoutesEnum.AboutPersonalInfo]}` }
+		headers: { Location: `/${lang}${Routes[RoutesEnum.AboutPersonalInfo]}` }
 	});
+};
