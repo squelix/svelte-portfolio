@@ -7,6 +7,7 @@ import parser from '@sveltekit-i18n/parser-default';
 import type { Config } from '@sveltekit-i18n/parser-default';
 
 export const config: Config = {
+	fallbackLocale: 'en',
 	translations: {
 		en: { lang },
 		fr: { lang }
