@@ -1,4 +1,4 @@
-import adapter from '@sveltejs/adapter-netlify';
+import adapter from '@sveltejs/adapter-vercel';
 import path from 'path';
 import preprocess from 'svelte-preprocess';
 import { fileURLToPath } from 'url';

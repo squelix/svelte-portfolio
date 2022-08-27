@@ -1,4 +1,4 @@
-import { gql } from '@apollo/client/core';
+import { gql } from '@apollo/client/core/index.js';
 
 export const GET_PROJECTS_QUERY = gql`
 	query getProjects($locale: I18NLocaleCode!) {
