@@ -105,18 +105,20 @@
 			overflow: hidden;
 			transition: max-height var(--transition-duration) var(--transition-easing),
 				opacity var(--transition-duration) var(--transition-easing),
+				gap var(--transition-duration) var(--transition-easing),
 				padding var(--transition-duration) var(--transition-easing);
+			display: grid;
 
 			&[aria-hidden='true'] {
 				max-height: 0;
 				opacity: 0;
+				gap: 0;
 				padding: 0 0 0 1.6875rem;
 			}
 
 			&[aria-hidden='false'] {
 				max-height: 200px;
 				opacity: 1;
-				display: grid;
 				gap: 0.5rem;
 				padding: 1rem 0 1rem 1.6875rem;
 			}
