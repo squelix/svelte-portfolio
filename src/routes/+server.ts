@@ -1,5 +1,7 @@
 /* eslint-disable @typescript-eslint/restrict-template-expressions */
 import { LangEnum } from '$models/langs.enum';
+import { redirect } from '@sveltejs/kit';
+
 import type { RequestHandler } from './$types';
 
 export const GET: RequestHandler = ({ request }) => {
@@ -9,10 +11,5 @@ export const GET: RequestHandler = ({ request }) => {
 		.toString()
 		.toLowerCase();
 
-	return new Response(undefined, {
-		status: 301,
-		headers: {
-			Location: `/${lang}`
-		}
-	});
+	throw redirect(301, `/${lang}`);
 };
