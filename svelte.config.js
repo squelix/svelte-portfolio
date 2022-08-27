@@ -8,8 +8,6 @@ const __dirname = path.dirname(__filename);
 
 /** @type {import('@sveltejs/kit').Config} */
 const config = {
-	// Consult https://github.com/sveltejs/svelte-preprocess
-	// for more information about preprocessors
 	preprocess: preprocess({
 		postcss: false,
 		scss: {
@@ -21,6 +19,7 @@ const config = {
 		inlineStyleThreshold: 1024,
 		adapter: adapter({
 			split: true
+			// edge: true
 		})
 	}
 };
