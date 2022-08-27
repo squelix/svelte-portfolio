@@ -2,7 +2,6 @@
 	"name": "svelte-portfolio",
 	"version": "0.0.1",
 	"scripts": {
-		"netlify": "netlify",
 		"dev": "vite dev",
 		"build": "vite build",
 		"package": "svelte-kit package",
@@ -26,7 +25,6 @@
 		"eslint": "^8.22.0",
 		"eslint-config-prettier": "^8.5.0",
 		"eslint-plugin-svelte3": "^4.0.0",
-		"netlify-cli": "^11.5.0",
 		"prettier": "^2.7.1",
 		"prettier-plugin-svelte": "^2.7.0",
 		"sass": "^1.54.5",
