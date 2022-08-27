@@ -1,4 +1,4 @@
-import { gql } from '@apollo/client/core';
+import { gql } from '@apollo/client/core/index.js';
 
 export const GET_SCHOOLS_PROJECTS_QUERY = gql`
 	query getSchoolsProjects($locale: I18NLocaleCode!) {
