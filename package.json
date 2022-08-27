@@ -19,7 +19,7 @@
 		"@graphql-codegen/cli": "^2.11.8",
 		"@graphql-codegen/typescript-operations": "^2.5.3",
 		"@sveltejs/adapter-netlify": "1.0.0-next.72",
-		"@sveltejs/kit": "1.0.0-next.442",
+		"@sveltejs/kit": "1.0.0-next.444",
 		"@types/cookie": "^0.5.1",
 		"@typescript-eslint/eslint-plugin": "^5.35.1",
 		"@typescript-eslint/parser": "^5.35.1",
