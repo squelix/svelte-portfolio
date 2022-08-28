@@ -36,13 +36,15 @@
 	/>
 </svelte:head>
 
-<ul class="page-content list">
-	{#each $schoolsProjectsList as project, index}
-		{#if project}
-			<Project {project} {index} />
-		{/if}
-	{/each}
-</ul>
+<section class="page-content">
+	<ul class="list">
+		{#each $schoolsProjectsList as project, index}
+			{#if project}
+				<Project {project} {index} />
+			{/if}
+		{/each}
+	</ul>
+</section>
 
 <style lang="scss">
 	@use 'lib/breakpoints' as br;
