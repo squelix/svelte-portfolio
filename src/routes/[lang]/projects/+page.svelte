@@ -80,13 +80,15 @@
 	{/if}
 </h2>
 
-<ul class="page-content list">
-	{#each $projectsListFiltered as project, index}
-		{#if project}
-			<Project {project} {index} />
-		{/if}
-	{/each}
-</ul>
+<section class="page-content">
+	<ul class="list">
+		{#each $projectsListFiltered as project, index}
+			{#if project}
+				<Project {project} {index} />
+			{/if}
+		{/each}
+	</ul>
+</section>
 
 <style lang="scss">
 	@use 'lib/breakpoints' as br;
