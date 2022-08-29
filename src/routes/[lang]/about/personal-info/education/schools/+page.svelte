@@ -1,5 +1,6 @@
 <script lang="ts">
 	import { page } from '$app/stores';
+	import LayoutPage from '$lib/commons/LayoutPage.svelte';
 	import { getRoute, RoutesEnum } from '$lib/routing';
 	import { LangEnum } from '$models/langs.enum';
 	import { locale, t } from '$translations';
@@ -34,7 +35,9 @@
 	/>
 </svelte:head>
 
-<p class="page-content">SCHOOLS</p>
+<LayoutPage>
+	<p>SCHOOLS</p>
+</LayoutPage>
 
 <style lang="scss">
 </style>

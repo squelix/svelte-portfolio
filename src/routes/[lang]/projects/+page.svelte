@@ -2,9 +2,10 @@
 	import { goto } from '$app/navigation';
 	import { page } from '$app/stores';
 	import BorderBottom from '$lib/commons/BorderBottom.svelte';
+	import LayoutPage from '$lib/commons/LayoutPage.svelte';
 	import PageNavFilter from '$lib/commons/PageNavFilter.svelte';
 	import PageTitle from '$lib/commons/PageTitle.svelte';
-	import Project from '$lib/commons/Project.svelte';
+	import ProjectsList from '$lib/commons/ProjectsList.svelte';
 	import { getRoute, RoutesEnum } from '$lib/routing';
 	import { LangEnum } from '$models/langs.enum';
 	import { projectsListFiltered } from '$stores/projects';
@@ -80,32 +81,12 @@
 	{/if}
 </h2>
 
-<section class="page-content">
-	<ul class="list">
-		{#each $projectsListFiltered as project, index}
-			{#if project}
-				<Project {project} {index} />
-			{/if}
-		{/each}
-	</ul>
-</section>
+<LayoutPage>
+	<ProjectsList projects={$projectsListFiltered} />
+</LayoutPage>
 
 <style lang="scss">
 	@use 'lib/breakpoints' as br;
-
-	.list {
-		display: grid;
-		grid-template-columns: repeat(auto-fit, minmax(0, 18.75rem));
-		grid-auto-rows: minmax(min-content, max-content);
-		gap: 1.25rem;
-		padding: 0 1.6875rem;
-		margin-top: 1.0625rem;
-
-		@include br.desktop {
-			grid-template-columns: repeat(auto-fit, minmax(0, 23.1469rem));
-			padding: 1.0625rem 2.375rem 0 2.375rem;
-		}
-	}
 
 	h2 {
 		margin: 2.375rem 0 0 0;

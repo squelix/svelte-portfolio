@@ -1,6 +1,7 @@
 <script lang="ts">
 	import { page } from '$app/stores';
-	import Project from '$lib/commons/Project.svelte';
+	import LayoutPage from '$lib/commons/LayoutPage.svelte';
+	import ProjectsList from '$lib/commons/ProjectsList.svelte';
 	import { getRoute, RoutesEnum } from '$lib/routing';
 	import { LangEnum } from '$models/langs.enum';
 	import { schoolsProjectsList } from '$stores/schools';
@@ -36,30 +37,8 @@
 	/>
 </svelte:head>
 
-<section class="page-content">
-	<ul class="list">
-		{#each $schoolsProjectsList as project, index}
-			{#if project}
-				<Project {project} {index} />
-			{/if}
-		{/each}
-	</ul>
-</section>
+<LayoutPage>
+	<ProjectsList projects={$schoolsProjectsList} />
+</LayoutPage>
 
-<style lang="scss">
-	@use 'lib/breakpoints' as br;
-
-	.list {
-		display: grid;
-		grid-template-columns: repeat(auto-fit, minmax(0, 18.75rem));
-		grid-auto-rows: minmax(min-content, max-content);
-		gap: 1.25rem;
-		padding: 0 1.6875rem;
-		margin-top: 1.0625rem;
-
-		@include br.desktop {
-			grid-template-columns: repeat(auto-fit, minmax(0, 23.1469rem));
-			padding: 1.0625rem 2.375rem 0 2.375rem;
-		}
-	}
-</style>
+<style lang="scss"></style>

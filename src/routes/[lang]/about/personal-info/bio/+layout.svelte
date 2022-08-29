@@ -1,9 +1,10 @@
 <script lang="ts">
+	import LayoutPage from '$lib/commons/LayoutPage.svelte';
 	import { aboutTitleItem, titleItem } from '$stores/title';
 	import { t } from '$translations';
 </script>
 
-<section class="page-content">
+<LayoutPage>
 	<h2 class="display-only-mobile title">
 		{#if $aboutTitleItem?.labelKey && !$aboutTitleItem?.label}
 			//&nbsp;{$t($aboutTitleItem.labelKey)}
@@ -23,7 +24,7 @@
 	</h2>
 
 	<slot />
-</section>
+</LayoutPage>
 
 <style lang="scss">
 	@use 'lib/font' as font;
