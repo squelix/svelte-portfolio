@@ -34,6 +34,3 @@
 	formattedDesktopText={$formattedDesktopJobSearch}
 	formattedMobileText={$formattedMobileJobSearch}
 />
-
-<style lang="scss">
-</style>

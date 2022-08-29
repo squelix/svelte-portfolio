@@ -41,5 +41,3 @@
 <PageNav ariaLabel={$t('about.aria.nav')} items={$nav} />
 
 <slot />
-
-<style lang="scss"></style>

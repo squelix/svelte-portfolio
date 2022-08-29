@@ -65,7 +65,7 @@
 
 	.title {
 		font-style: normal;
-		font-weight: 700;
+		font-weight: bold;
 		font-size: 1rem;
 		line-height: 1.3125;
 		color: #5565e8;

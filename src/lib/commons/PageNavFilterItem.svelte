@@ -77,9 +77,7 @@
 			padding: 0.3125rem 0 0.3125rem 1.6875rem;
 			background-color: var(--lines);
 			margin: 0;
-		}
 
-		&__button {
 			&__icon {
 				display: inline-flex;
 				width: 0.375rem;

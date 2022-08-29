@@ -420,6 +420,8 @@
 </section>
 
 <style lang="scss">
+	/* stylelint-disable no-descending-specificity */
+
 	@use 'lib/breakpoints' as br;
 	@use 'lib/font' as font;
 

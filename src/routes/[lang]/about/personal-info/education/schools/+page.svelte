@@ -38,6 +38,3 @@
 <LayoutPage>
 	<p>SCHOOLS</p>
 </LayoutPage>
-
-<style lang="scss">
-</style>

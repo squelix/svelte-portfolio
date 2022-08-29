@@ -40,5 +40,3 @@
 <LayoutPage>
 	<ProjectsList projects={$schoolsProjectsList} />
 </LayoutPage>
-
-<style lang="scss"></style>

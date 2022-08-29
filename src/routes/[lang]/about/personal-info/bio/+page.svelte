@@ -34,6 +34,3 @@
 	formattedDesktopText={$formattedDesktopBiography}
 	formattedMobileText={$formattedMobileBiography}
 />
-
-<style lang="scss">
-</style>

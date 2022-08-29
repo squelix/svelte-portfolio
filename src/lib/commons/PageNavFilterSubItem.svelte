@@ -39,7 +39,7 @@
 	@use 'lib/font' as font;
 
 	.checkbox {
-		font-weight: 400;
+		font-weight: normal;
 		font-size: 1rem;
 		line-height: 1.3125;
 
