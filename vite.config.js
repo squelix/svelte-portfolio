@@ -17,6 +17,9 @@ const config = {
 			$graphql: path.resolve(dirname, './src/graphql'),
 			$icons: path.resolve(dirname, './src/icons')
 		}
+	},
+	optimizeDeps: {
+		exclude: ['@urql/svelte']
 	}
 };
 

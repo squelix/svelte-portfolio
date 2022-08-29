@@ -16,15 +16,14 @@ export const load: PageServerLoad = async ({ url }) => {
 	let schoolsProjects;
 
 	try {
-		const { data } = await get(client).query<
-			GetSchoolsProjectsQuery,
-			GetSchoolsProjectsQueryVariables
-		>({
-			query: GET_SCHOOLS_PROJECTS_QUERY,
-			variables: {
-				locale: lang
-			}
-		});
+		const { data } = await get(client)
+			.query<GetSchoolsProjectsQuery, GetSchoolsProjectsQueryVariables>(
+				GET_SCHOOLS_PROJECTS_QUERY,
+				{
+					locale: lang
+				}
+			)
+			.toPromise();
 
 		schoolsProjects = data;
 	} catch (error) {

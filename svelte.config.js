@@ -18,8 +18,8 @@ const config = {
 	kit: {
 		inlineStyleThreshold: 1024,
 		adapter: adapter({
-			split: true
-			// edge: true
+			// split: true
+			edge: true
 		})
 	}
 };

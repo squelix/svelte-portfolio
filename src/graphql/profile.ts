@@ -1,4 +1,4 @@
-import { gql } from '@apollo/client/core/index.js';
+import { gql } from '@urql/svelte';
 
 export const GET_PROFILE_QUERY = gql`
 	query getProfile($locale: I18NLocaleCode!) {

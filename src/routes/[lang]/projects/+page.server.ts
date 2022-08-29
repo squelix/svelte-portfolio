@@ -25,12 +25,11 @@ export const load: PageServerLoad = async ({ url }) => {
 	let projects;
 
 	try {
-		const { data } = await get(client).query<GetProjectsQuery, GetProjectsQueryVariables>({
-			query: GET_PROJECTS_QUERY,
-			variables: {
+		const { data } = await get(client)
+			.query<GetProjectsQuery, GetProjectsQueryVariables>(GET_PROJECTS_QUERY, {
 				locale: lang
-			}
-		});
+			})
+			.toPromise();
 
 		projects = data;
 	} catch (error) {
@@ -40,9 +39,9 @@ export const load: PageServerLoad = async ({ url }) => {
 	let technos;
 
 	try {
-		const { data } = await get(client).query<GetTechnosQuery, GetTechnosQueryVariables>({
-			query: GET_TECHNOS_QUERY
-		});
+		const { data } = await get(client)
+			.query<GetTechnosQuery, GetTechnosQueryVariables>(GET_TECHNOS_QUERY, {})
+			.toPromise();
 
 		technos = data;
 	} catch (error) {

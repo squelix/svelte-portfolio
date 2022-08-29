@@ -13,12 +13,11 @@ export const load: PageServerLoad = async ({ url }) => {
 	let schools;
 
 	try {
-		const { data } = await get(client).query<GetSchoolsQuery, GetSchoolsQueryVariables>({
-			query: GET_SCHOOLS_QUERY,
-			variables: {
+		const { data } = await get(client)
+			.query<GetSchoolsQuery, GetSchoolsQueryVariables>(GET_SCHOOLS_QUERY, {
 				locale: lang
-			}
-		});
+			})
+			.toPromise();
 
 		schools = data;
 	} catch (error) {
