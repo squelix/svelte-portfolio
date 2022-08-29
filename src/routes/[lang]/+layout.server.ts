@@ -14,12 +14,12 @@ export const load: LayoutServerLoad = async ({ url }) => {
 	let profile;
 
 	try {
-		const { data } = await get(client).query<GetProfileQuery, GetProfileQueryVariables>({
-			query: GET_PROFILE_QUERY,
-			variables: {
+		const data = await get(client).request<GetProfileQuery, GetProfileQueryVariables>(
+			GET_PROFILE_QUERY,
+			{
 				locale: lang
 			}
-		});
+		);
 
 		profile = data;
 	} catch (error) {
