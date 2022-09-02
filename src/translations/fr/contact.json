@@ -1,5 +1,8 @@
 {
-	"page": { "title": "Mickaël Depardon - Contact", "description": "DESC" },
+	"page": {
+		"title": "Contact - Portfolio et CV de Mickaël Depardon",
+		"description": "Portfolio et CV de Mickaël Depardon. Page présentant permettant de m'envoyer un email."
+	},
 	"aria": {
 		"nav": "Navigation de la page de contact"
 	},

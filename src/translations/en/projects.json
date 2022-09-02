@@ -1,5 +1,8 @@
 {
-	"page": { "title": "Mickaël Depardon - Projects", "description": "DESC" },
+	"page": {
+		"title": "Projects - Portfolio and CV of Mickaël Depardon",
+		"description": "Portfolio and CV of Mickaël Depardon. Page allowing me to present the different projects I have carried out during my missions."
+	},
 	"title": "projects",
 	"card": {
 		"title": "Project",

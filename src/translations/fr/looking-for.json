@@ -1,3 +1,6 @@
 {
-	"page": { "title": "Mickaël Depardon - Looking For", "description": "DESC" }
+	"page": {
+		"title": "Ma recherche - Portfolio et CV de Mickaël Depardon",
+		"description": "Portfolio et CV de Mickaël Depardon. Page permettant de présenter ce que je recherche dans une entreprise et si je suis en recherche active."
+	}
 }

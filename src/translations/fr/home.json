@@ -1,5 +1,8 @@
 {
-	"page": { "title": "Mickaël Depardon - Accueil", "description": "DESC" },
+	"page": {
+		"title": "Accueil - Portfolio et CV de Mickaël Depardon",
+		"description": "Portfolio et CV de Mickaël Depardon. Page d'accueil"
+	},
 	"title": {
 		"first": "Bonjour ! Je suis"
 	},

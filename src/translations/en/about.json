@@ -1,5 +1,8 @@
 {
-	"page": { "title": "Mickaël Depardon - About me", "description": "DESC" },
+	"page": {
+		"title": "About me - Portfolio and CV of Mickaël Depardon",
+		"description": "Portfolio and CV of Mickaël Depardon. Page introducing me."
+	},
 	"title": "_about-me",
 	"aria": {
 		"nav": "Navigation of about me page"

@@ -1,5 +1,8 @@
 {
-	"page": { "title": "Mickaël Depardon - Projets", "description": "DESC" },
+	"page": {
+		"title": "Projets - Portfolio et CV de Mickaël Depardon",
+		"description": "Portfolio et CV de Mickaël Depardon. Page permettant de présenter les différents projets que j'ai pu réaliser lors de mes missions."
+	},
 	"title": "projets",
 	"card": {
 		"title": "Projet",
