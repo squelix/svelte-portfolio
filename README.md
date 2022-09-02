@@ -1,6 +1,6 @@
 # Portfolio
 
-![Workflow](https://github.com/squelix/svelte-portfolio/actions/workflows/main.yml/badge.svg)
+[![Workflow](https://github.com/squelix/svelte-portfolio/actions/workflows/main.yml/badge.svg)](https://github.com/squelix/svelte-portfolio/actions)
 [![Vercel Status](https://img.shields.io/github/deployments/squelix/svelte-portfolio/Production?label=vercel)](https://github.com/squelix/svelte-portfolio/deployments/activity_log?environment=Production)
 [![Better Uptime Badge](https://betteruptime.com/status-badges/v1/monitor/fn60.svg)](https://betteruptime.com/?utm_source=status_badge)
 
