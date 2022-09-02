@@ -8,7 +8,7 @@
 	export let selectedItems: string[];
 </script>
 
-<nav class="nav" aria-label={ariaLabel}>
+<nav class="page-nav-filter" aria-label={ariaLabel}>
 	<ul>
 		{#each items as item}
 			<PageNavFilterItem on:updateSelectedFilter {item} {selectedItems} />
@@ -17,18 +17,9 @@
 </nav>
 
 <style lang="scss">
-	@use 'lib/breakpoints' as br;
+	@use 'lib/page-nav' as nav;
 
-	.nav {
-		@include br.desktop {
-			grid-column: 1;
-			grid-row: 1/3;
-			border-right: 1px solid var(--lines);
-		}
-	}
-
-	ul {
-		display: grid;
-		gap: 0.1875rem;
+	.page-nav-filter {
+		@include nav.page-nav;
 	}
 </style>

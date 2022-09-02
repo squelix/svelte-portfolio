@@ -1,0 +1,18 @@
+@use 'lib/breakpoints' as br;
+
+@mixin page-nav {
+	ul {
+		display: grid;
+		gap: 0.1875rem;
+	}
+
+	@include br.desktop {
+		grid-column: 1;
+		grid-row: 1/3;
+		border-right: 1px solid var(--lines);
+
+		ul {
+			gap: 0;
+		}
+	}
+}

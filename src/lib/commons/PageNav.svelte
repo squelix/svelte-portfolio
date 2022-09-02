@@ -7,7 +7,7 @@
 	export let items: PageNavItemInterface[];
 </script>
 
-<nav class="nav" aria-label={ariaLabel}>
+<nav class="page-nav" aria-label={ariaLabel}>
 	<ul>
 		{#each items as item}
 			<PageNavItem {item} />
@@ -16,22 +16,9 @@
 </nav>
 
 <style lang="scss">
-	@use 'lib/breakpoints' as br;
+	@use 'lib/page-nav' as nav;
 
-	.nav {
-		@include br.desktop {
-			grid-column: 1;
-			grid-row: 1/3;
-			border-right: 1px solid var(--lines);
-		}
-	}
-
-	ul {
-		display: grid;
-		gap: 0.1875rem;
-
-		@include br.desktop {
-			gap: 0;
-		}
+	.page-nav {
+		@include nav.page-nav;
 	}
 </style>
