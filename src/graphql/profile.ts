@@ -5,6 +5,7 @@ export const GET_PROFILE_QUERY = gql`
 		profile(locale: $locale) {
 			data {
 				attributes {
+					slug
 					firstname
 					lastname
 					address

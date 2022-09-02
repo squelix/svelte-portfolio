@@ -932,7 +932,7 @@ export type Profile = {
 	phone: Scalars['String'];
 	picture: UploadFileEntityResponse;
 	publishedAt?: Maybe<Scalars['DateTime']>;
-	slug?: Maybe<Scalars['String']>;
+	slug: Scalars['String'];
 	socialNetworks?: Maybe<SocialNetworkRelationResponseCollection>;
 	updatedAt?: Maybe<Scalars['DateTime']>;
 };
@@ -991,7 +991,7 @@ export type Project = {
 	mainTechno?: Maybe<TechnoEntityResponse>;
 	picture: UploadFileEntityResponse;
 	publishedAt?: Maybe<Scalars['DateTime']>;
-	slug?: Maybe<Scalars['String']>;
+	slug: Scalars['String'];
 	technos?: Maybe<TechnoRelationResponseCollection>;
 	title: Scalars['String'];
 	updatedAt?: Maybe<Scalars['DateTime']>;
@@ -1405,7 +1405,7 @@ export type SchoolProject = {
 	mainTechno?: Maybe<TechnoEntityResponse>;
 	picture: UploadFileEntityResponse;
 	publishedAt?: Maybe<Scalars['DateTime']>;
-	slug?: Maybe<Scalars['String']>;
+	slug: Scalars['String'];
 	technos?: Maybe<TechnoRelationResponseCollection>;
 	title: Scalars['String'];
 	updatedAt?: Maybe<Scalars['DateTime']>;
@@ -1557,7 +1557,7 @@ export type SocialNetwork = {
 	createdAt?: Maybe<Scalars['DateTime']>;
 	icon?: Maybe<UploadFileEntityResponse>;
 	publishedAt?: Maybe<Scalars['DateTime']>;
-	slug?: Maybe<Scalars['String']>;
+	slug: Scalars['String'];
 	title: Scalars['String'];
 	updatedAt?: Maybe<Scalars['DateTime']>;
 	url: Scalars['String'];
@@ -2056,6 +2056,7 @@ export type GetProfileQuery = {
 			__typename?: 'ProfileEntity';
 			attributes?: {
 				__typename?: 'Profile';
+				slug: string;
 				firstname: string;
 				lastname: string;
 				address: string;
@@ -2114,7 +2115,7 @@ export type GetProjectsQuery = {
 			__typename?: 'ProjectEntity';
 			attributes?: {
 				__typename?: 'Project';
-				slug?: string | null;
+				slug: string;
 				url: string;
 				urlName: string;
 				title: string;
@@ -2167,7 +2168,7 @@ export type GetSchoolsProjectsQuery = {
 			__typename?: 'SchoolProjectEntity';
 			attributes?: {
 				__typename?: 'SchoolProject';
-				slug?: string | null;
+				slug: string;
 				url: string;
 				urlName: string;
 				title: string;
