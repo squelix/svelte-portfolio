@@ -70,7 +70,7 @@
 </li>
 
 <style lang="scss">
-	@use 'lib/font' as font;
+	@use 'lib/mixins/font' as font;
 
 	.page-nav-sub-item {
 		@include font.fontWeight(400);

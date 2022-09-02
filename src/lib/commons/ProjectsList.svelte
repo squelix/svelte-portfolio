@@ -15,7 +15,7 @@
 </ul>
 
 <style lang="scss">
-	@use 'lib/breakpoints' as br;
+	@use 'lib/mixins/breakpoints' as br;
 
 	.list {
 		display: grid;

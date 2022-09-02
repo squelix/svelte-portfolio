@@ -3,7 +3,7 @@
 </section>
 
 <style lang="scss">
-	@use 'lib/breakpoints' as br;
+	@use 'lib/mixins/breakpoints' as br;
 
 	.page-content {
 		grid-row: 2;

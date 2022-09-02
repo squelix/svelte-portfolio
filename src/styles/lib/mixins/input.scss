@@ -1,4 +1,4 @@
-@use 'lib/font' as font;
+@use 'lib/mixins/font' as font;
 
 @mixin label {
 	@include font.fontWeight(450);

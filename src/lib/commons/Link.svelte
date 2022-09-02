@@ -21,8 +21,8 @@
 </a>
 
 <style lang="scss">
-	@use 'lib/breakpoints' as br;
-	@use 'lib/font' as font;
+	@use 'lib/mixins/breakpoints' as br;
+	@use 'lib/mixins/font' as font;
 
 	a {
 		@include font.fontWeight(450);

@@ -16,7 +16,7 @@
 </label>
 
 <style lang="scss">
-	@use 'lib/input' as input;
+	@use 'lib/mixins/input' as input;
 
 	label {
 		@include input.label;

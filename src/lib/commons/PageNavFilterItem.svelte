@@ -60,8 +60,8 @@
 </li>
 
 <style lang="scss">
-	@use 'lib/font' as font;
-	@use 'lib/breakpoints' as br;
+	@use 'lib/mixins/font' as font;
+	@use 'lib/mixins/breakpoints' as br;
 
 	.page-nav-filter-item {
 		@include font.fontWeight(400);

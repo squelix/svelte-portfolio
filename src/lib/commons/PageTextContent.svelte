@@ -18,7 +18,7 @@
 </div>
 
 <style lang="scss">
-	@use 'lib/breakpoints' as br;
+	@use 'lib/mixins/breakpoints' as br;
 
 	.content {
 		color: var(--secondary-1);

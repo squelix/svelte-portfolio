@@ -16,7 +16,7 @@
 </nav>
 
 <style lang="scss">
-	@use 'lib/page-nav' as nav;
+	@use 'lib/mixins/page-nav' as nav;
 
 	.page-nav {
 		@include nav.page-nav;

@@ -33,7 +33,7 @@
 </nav>
 
 <style lang="scss">
-	@use 'lib/breakpoints' as br;
+	@use 'lib/mixins/breakpoints' as br;
 
 	.nav {
 		&__links {

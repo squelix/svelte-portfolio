@@ -68,7 +68,7 @@
 <Footer />
 
 <style lang="scss">
-	@use 'lib/breakpoints' as br;
+	@use 'lib/mixins/breakpoints' as br;
 
 	.main {
 		background-color: var(--primary-2);

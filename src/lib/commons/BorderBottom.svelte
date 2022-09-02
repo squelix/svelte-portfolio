@@ -1,7 +1,7 @@
 <span class="border-bottom" />
 
 <style lang="scss">
-	@use 'lib/breakpoints' as br;
+	@use 'lib/mixins/breakpoints' as br;
 
 	.border-bottom {
 		display: none;

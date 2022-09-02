@@ -28,8 +28,8 @@
 </li>
 
 <style lang="scss">
-	@use 'lib/breakpoints' as br;
-	@use 'lib/link' as link;
+	@use 'lib/mixins/breakpoints' as br;
+	@use 'lib/mixins/link' as link;
 
 	.item {
 		&__link {

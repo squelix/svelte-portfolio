@@ -54,8 +54,8 @@
 </li>
 
 <style lang="scss">
-	@use 'lib/font' as font;
-	@use 'lib/breakpoints' as br;
+	@use 'lib/mixins/font' as font;
+	@use 'lib/mixins/breakpoints' as br;
 
 	li {
 		display: flex;

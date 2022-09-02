@@ -175,8 +175,8 @@
 </form>
 
 <style lang="scss">
-	@use 'lib/breakpoints' as br;
-	@use 'lib/font' as font;
+	@use 'lib/mixins/breakpoints' as br;
+	@use 'lib/mixins/font' as font;
 
 	form {
 		height: fit-content;

@@ -1,4 +1,4 @@
-@use 'lib/breakpoints' as br;
+@use 'lib/mixins/breakpoints' as br;
 
 @mixin page-nav {
 	ul {

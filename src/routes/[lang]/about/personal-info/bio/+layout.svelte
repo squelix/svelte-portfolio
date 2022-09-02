@@ -27,7 +27,7 @@
 </LayoutPage>
 
 <style lang="scss">
-	@use 'lib/font' as font;
+	@use 'lib/mixins/font' as font;
 
 	.title {
 		@include font.fontWeight(450);

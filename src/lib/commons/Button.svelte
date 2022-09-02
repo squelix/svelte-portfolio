@@ -29,8 +29,8 @@
 </button>
 
 <style lang="scss">
-	@use 'lib/breakpoints' as br;
-	@use 'lib/font' as font;
+	@use 'lib/mixins/breakpoints' as br;
+	@use 'lib/mixins/font' as font;
 
 	button {
 		@include font.fontWeight(450);

@@ -43,8 +43,8 @@
 </li>
 
 <style lang="scss">
-	@use 'lib/link' as link;
-	@use 'lib/font' as font;
+	@use 'lib/mixins/link' as link;
+	@use 'lib/mixins/font' as font;
 
 	.page-nav-sub-item-item {
 		@include font.fontWeight(400);

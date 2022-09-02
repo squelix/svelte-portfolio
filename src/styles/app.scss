@@ -1,6 +1,6 @@
 @use 'lib/variables';
 @use 'lib/reset';
-@use 'lib/breakpoints' as br;
+@use 'lib/mixins/breakpoints' as br;
 
 :where(:root) {
 	cursor: auto;
