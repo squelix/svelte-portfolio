@@ -17,11 +17,21 @@
 
 <style lang="scss">
 	@use 'lib/breakpoints' as br;
+
 	.nav {
 		@include br.desktop {
 			grid-column: 1;
 			grid-row: 1/3;
 			border-right: 1px solid var(--lines);
+		}
+	}
+
+	ul {
+		display: grid;
+		gap: 0.1875rem;
+
+		@include br.desktop {
+			gap: 0;
 		}
 	}
 </style>

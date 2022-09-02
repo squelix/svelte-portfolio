@@ -61,6 +61,7 @@
 
 <style lang="scss">
 	@use 'lib/font' as font;
+	@use 'lib/breakpoints' as br;
 
 	.page-nav-filter-item {
 		@include font.fontWeight(400);
@@ -114,6 +115,16 @@
 				opacity: 1;
 				gap: 1rem;
 				padding: 1rem 0 1rem 1.6875rem;
+			}
+		}
+
+		@include br.desktop {
+			margin-top: -1px;
+
+			&__button {
+				background-color: transparent;
+				border-top: 1px solid var(--lines);
+				border-bottom: 1px solid var(--lines);
 			}
 		}
 	}

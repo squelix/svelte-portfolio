@@ -26,4 +26,9 @@
 			border-right: 1px solid var(--lines);
 		}
 	}
+
+	ul {
+		display: grid;
+		gap: 0.1875rem;
+	}
 </style>
