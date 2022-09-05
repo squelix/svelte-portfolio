@@ -14,7 +14,7 @@
 	export let boardBorderColor: ColorInterface = { r: 0, g: 0, b: 0, a: 0 };
 	export let boardBackgroundColor: ColorInterface = { r: 0, g: 0, b: 0, a: 0 };
 	export let snakeColor: ColorInterface = { r: 67, g: 217, b: 173, a: 1 };
-	export let snakeBorderColor: ColorInterface = { r: 0, g: 0, b: 0, a: 0 };
+	export let snakeBorderColor: ColorInterface | undefined = undefined;
 
 	let board: HTMLCanvasElement;
 	let context: CanvasRenderingContext2D | null;
@@ -105,10 +105,13 @@
 		);
 
 		context.fillStyle = gradient;
-		if (snakeBorderColor.a) {
-			context.strokeStyle = `rgb(${snakeBorderColor.r} ${snakeBorderColor.g} ${snakeBorderColor.b} / ${snakeBorderColor.a}%)`;
-		} else {
-			context.strokeStyle = `rgb(${snakeBorderColor.r} ${snakeBorderColor.g} ${snakeBorderColor.b})`;
+
+		if (snakeBorderColor) {
+			if (snakeBorderColor.a) {
+				context.strokeStyle = `rgb(${snakeBorderColor.r} ${snakeBorderColor.g} ${snakeBorderColor.b} / ${snakeBorderColor.a}%)`;
+			} else {
+				context.strokeStyle = `rgb(${snakeBorderColor.r} ${snakeBorderColor.g} ${snakeBorderColor.b})`;
+			}
 		}
 
 		context.fillRect(
@@ -117,12 +120,14 @@
 			snakeSquareSize,
 			snakeSquareSize
 		);
-		context.strokeRect(
-			snakePart.x - snakeSquareSize / 2,
-			snakePart.y - snakeSquareSize / 2,
-			snakeSquareSize,
-			snakeSquareSize
-		);
+		if (snakeBorderColor) {
+			context.strokeRect(
+				snakePart.x - snakeSquareSize / 2,
+				snakePart.y - snakeSquareSize / 2,
+				snakeSquareSize,
+				snakeSquareSize
+			);
+		}
 	};
 
 	const drawSnake = (): void => {
@@ -422,7 +427,6 @@
 
 <style lang="scss">
 	/* stylelint-disable no-descending-specificity */
-
 	@use 'lib/mixins/breakpoints' as br;
 	@use 'lib/mixins/font' as font;
 
