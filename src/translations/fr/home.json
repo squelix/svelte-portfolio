@@ -6,5 +6,12 @@
 	"title": {
 		"first": "Bonjour ! Je suis"
 	},
-	"githubText": "retrouvez mon profil Github&nbsp;:"
+	"githubText": "retrouvez mon profil Github&nbsp;:",
+	"snake": {
+		"keyboards": "//&nbsp;clavier",
+		"pause": "//&nbsp;P: pause",
+		"start": "//&nbsp;Espace: start",
+		"restart": "//&nbsp;R: resart",
+		"play": "//&nbsp;flèches: jouer"
+	}
 }

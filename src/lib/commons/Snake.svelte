@@ -2,6 +2,7 @@
 	/* eslint-disable @typescript-eslint/no-non-null-assertion */
 	import ChevronUpKey from '$icons/chevron-up-key.svg?raw';
 	import Icon from '$lib/SvgIcon.svelte';
+	import { t } from '$translations';
 	import { onDestroy, onMount } from 'svelte';
 
 	import type { ColorInterface } from '$models/color';
@@ -375,11 +376,11 @@
 
 	<div class="snake__board">
 		<div class="snake__board__keys">
-			<div class="snake__board__keys__text">//&nbsp;use keyboard</div>
-			<div class="snake__board__keys__text">//&nbsp;P to pause</div>
-			<div class="snake__board__keys__text">//&nbsp;Space to start</div>
-			<div class="snake__board__keys__text">//&nbsp;R to restart</div>
-			<div class="snake__board__keys__text">//&nbsp;arrows to play</div>
+			<div class="snake__board__keys__text">{@html $t('home.snake.keyboards')}</div>
+			<div class="snake__board__keys__text">{@html $t('home.snake.pause')}</div>
+			<div class="snake__board__keys__text">{@html $t('home.snake.start')}</div>
+			<div class="snake__board__keys__text">{@html $t('home.snake.restart')}</div>
+			<div class="snake__board__keys__text">{@html $t('home.snake.play')}</div>
 			<div class="snake__board__keys__list">
 				<span class="snake__board__keys__list__item snake__board__keys__list__item--up">
 					<span class="snake__board__keys__list__item__icon">

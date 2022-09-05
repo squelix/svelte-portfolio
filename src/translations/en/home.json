@@ -6,5 +6,12 @@
 	"title": {
 		"first": "Hi all ! I am"
 	},
-	"githubText": "find my profile on Github:"
+	"githubText": "find my profile on Github:",
+	"snake": {
+		"keyboards": "//&nbsp;use keyboard",
+		"pause": "//&nbsp;P to pause",
+		"start": "//&nbsp;Space to start",
+		"restart": "//&nbsp;R to restart",
+		"play": "//&nbsp;arrows to play"
+	}
 }
