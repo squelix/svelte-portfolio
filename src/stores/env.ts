@@ -1,12 +1,19 @@
 /* eslint-disable @typescript-eslint/no-unsafe-assignment */
+import {
+  PUBLIC_GRAPHQL_URI,
+  PUBLIC_MAIL_ACCESS_TOKEN,
+  PUBLIC_MAIL_URI,
+  PUBLIC_RE_CAPTCHA_KEY,
+  PUBLIC_STRAPI_URI,
+} from '$env/static/public';
 import { derived, writable } from 'svelte/store';
 
 export const env = writable<Record<string, string>>({
-	graphqlUri: import.meta.env.VITE_GRAPHQL_URI,
-	strapiUri: import.meta.env.VITE_STRAPI_URI,
-	mailUri: import.meta.env.VITE_MAIL_URI,
-	mailAccessToken: import.meta.env.VITE_MAIL_ACCESS_TOKEN,
-	reCaptchaKey: import.meta.env.VITE_RE_CAPTCHA_KEY
+	graphqlUri: PUBLIC_GRAPHQL_URI,
+	strapiUri: PUBLIC_STRAPI_URI,
+	mailUri: PUBLIC_MAIL_URI,
+	mailAccessToken: PUBLIC_MAIL_ACCESS_TOKEN,
+	reCaptchaKey: PUBLIC_RE_CAPTCHA_KEY
 });
 
 export const graphqlUri = derived(env, ($env) => $env.graphqlUri);
