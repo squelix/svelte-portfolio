@@ -6,6 +6,8 @@ import localeData from 'dayjs/plugin/localeData.js';
 
 import type { LayoutLoad } from './$types';
 
+export const prerender = 'auto';
+
 export const load: LayoutLoad = ({ data }) => {
 	dayjs.extend(localeData);
 	dayjs.locale(data.lang);

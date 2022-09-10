@@ -1,0 +1,36 @@
+{
+	"transform": {
+		"^.+\\.js$": "babel-jest",
+		"^.+\\.svelte$": [
+			"./node_modules/svelte-jester/dist/transformer.mjs",
+			{
+				"preprocess": true
+			}
+		],
+		"^.+\\.ts$": [
+			"ts-jest",
+			{
+				"tsconfig": "tsconfig.spec.json",
+				"useESM": true
+			}
+		],
+		"^.+\\.svg$": "jest-transform-stub"
+	},
+	"moduleNameMapper": {
+		"^\\$lib(.*)$": "<rootDir>/src/lib$1",
+		"^\\$translations(.*)$": "<rootDir>/src/translations$1",
+		"^\\$styles(.*)$": "<rootDir>/src/styles$1",
+		"^\\$models(.*)$": "<rootDir>/src/models$1",
+		"^\\$stores(.*)$": "<rootDir>/src/stores$1",
+		"^\\$graphql(.*)$": "<rootDir>/src/graphql$1",
+		"^\\$icons(.*)$": "<rootDir>/src/lib/icons$1",
+		"^\\$app(.*)$": [
+			"<rootDir>/.svelte-kit/dev/runtime/app$1",
+			"<rootDir>/.svelte-kit/build/runtime/app$1"
+		]
+	},
+	"extensionsToTreatAsEsm": [".svelte", ".ts"],
+	"moduleFileExtensions": ["js", "svelte", "ts"],
+	"setupFilesAfterEnv": ["@testing-library/jest-dom/extend-expect"],
+	"testEnvironment": "jsdom"
+}
