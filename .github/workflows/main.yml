@@ -115,9 +115,36 @@ jobs:
       - name: "Svelte Check"
         run: "npm run check"
 
+  test:
+    name: "Test"
+    runs-on: "ubuntu-latest"
+    env:
+      PUBLIC_STRAPI_URI: "http://localhost"
+      PUBLIC_GRAPHQL_URI: "http://localhost/graphql"
+      PUBLIC_MAIL_URI: "http://localhost/api/send/mail"
+      PUBLIC_MAIL_ACCESS_TOKEN: "XXX"
+      PUBLIC_PLATFORM: "dev"
+      PUBLIC_RE_CAPTCHA_KEY: "XXX"
+
+    steps:
+      - name: "Check out Git repository"
+        uses: "actions/checkout@v3"
+
+      - name: "Use Node.js 16"
+        uses: "actions/setup-node@v3"
+        with:
+          node-version: 16
+          cache: 'npm'
+
+      - name: "Install dependencies"
+        run: "npm ci"
+
+      - name: "Test"
+        run: "npm run test -- --ci"
+
   build:
     name: "Build"
-    needs: ["eslint", "prettier", "stylelint", "check"]
+    needs: ["eslint", "prettier", "stylelint", "check", "test"]
     runs-on: "ubuntu-latest"
     env:
       PUBLIC_STRAPI_URI: "http://localhost"

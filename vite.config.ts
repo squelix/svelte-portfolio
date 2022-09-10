@@ -2,11 +2,12 @@ import { sveltekit } from '@sveltejs/kit/vite';
 import path from 'path';
 import { fileURLToPath } from 'url';
 
+import type { UserConfig } from 'vite';
+
 const filename = fileURLToPath(import.meta.url);
 const dirname = path.dirname(filename);
 
-/** @type {import('vite').UserConfig} */
-const config = {
+const config: UserConfig = {
 	plugins: [sveltekit()],
 	resolve: {
 		alias: {
