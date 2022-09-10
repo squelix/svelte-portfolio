@@ -10,6 +10,13 @@ jobs:
   eslint:
     name: "Eslint"
     runs-on: "ubuntu-latest"
+    env:
+      PUBLIC_STRAPI_URI: "http://localhost"
+      PUBLIC_GRAPHQL_URI: "http://localhost/graphql"
+      PUBLIC_MAIL_URI: "http://localhost/api/send/mail"
+      PUBLIC_MAIL_ACCESS_TOKEN: "XXX"
+      PUBLIC_PLATFORM: "dev"
+      PUBLIC_RE_CAPTCHA_KEY: "XXX"
 
     steps:
       - name: "Check out Git repository"
@@ -30,6 +37,13 @@ jobs:
   stylelint:
     name: "Stylelint"
     runs-on: "ubuntu-latest"
+    env:
+      PUBLIC_STRAPI_URI: "http://localhost"
+      PUBLIC_GRAPHQL_URI: "http://localhost/graphql"
+      PUBLIC_MAIL_URI: "http://localhost/api/send/mail"
+      PUBLIC_MAIL_ACCESS_TOKEN: "XXX"
+      PUBLIC_PLATFORM: "dev"
+      PUBLIC_RE_CAPTCHA_KEY: "XXX"
 
     steps:
       - name: "Check out Git repository"
@@ -50,6 +64,13 @@ jobs:
   prettier:
     name: "Prettier"
     runs-on: "ubuntu-latest"
+    env:
+      PUBLIC_STRAPI_URI: "http://localhost"
+      PUBLIC_GRAPHQL_URI: "http://localhost/graphql"
+      PUBLIC_MAIL_URI: "http://localhost/api/send/mail"
+      PUBLIC_MAIL_ACCESS_TOKEN: "XXX"
+      PUBLIC_PLATFORM: "dev"
+      PUBLIC_RE_CAPTCHA_KEY: "XXX"
 
     steps:
       - name: "Check out Git repository"
@@ -70,6 +91,13 @@ jobs:
   check:
     name: "Svelte Check"
     runs-on: "ubuntu-latest"
+    env:
+      PUBLIC_STRAPI_URI: "http://localhost"
+      PUBLIC_GRAPHQL_URI: "http://localhost/graphql"
+      PUBLIC_MAIL_URI: "http://localhost/api/send/mail"
+      PUBLIC_MAIL_ACCESS_TOKEN: "XXX"
+      PUBLIC_PLATFORM: "dev"
+      PUBLIC_RE_CAPTCHA_KEY: "XXX"
 
     steps:
       - name: "Check out Git repository"
@@ -83,9 +111,6 @@ jobs:
 
       - name: "Install dependencies"
         run: "npm ci"
-
-      - name: "Build"
-        run: "npm run build --if-present"
 
       - name: "Svelte Check"
         run: "npm run check"
