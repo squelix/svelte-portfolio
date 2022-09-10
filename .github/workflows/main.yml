@@ -84,6 +84,9 @@ jobs:
       - name: "Install dependencies"
         run: "npm ci"
 
+      - name: "Build"
+        run: "npm run build --if-present"
+
       - name: "Svelte Check"
         run: "npm run check"
 
