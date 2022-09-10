@@ -119,6 +119,13 @@ jobs:
     name: "Build"
     needs: ["eslint", "prettier", "stylelint", "check"]
     runs-on: "ubuntu-latest"
+    env:
+      PUBLIC_STRAPI_URI: "http://localhost"
+      PUBLIC_GRAPHQL_URI: "http://localhost/graphql"
+      PUBLIC_MAIL_URI: "http://localhost/api/send/mail"
+      PUBLIC_MAIL_ACCESS_TOKEN: "XXX"
+      PUBLIC_PLATFORM: "dev"
+      PUBLIC_RE_CAPTCHA_KEY: "XXX"
 
     steps:
       - name: "Check out Git repository"
