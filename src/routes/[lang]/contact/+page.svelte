@@ -28,6 +28,8 @@
 	let errorMessage: string | undefined;
 	let sending = false;
 
+	let showConfirmMessage = false;
+
 	onMount(() => {
 		intervalLoading = window.setInterval(() => {
 			if (!window.grecaptcha?.render) {
@@ -57,7 +59,7 @@
 		});
 	});
 
-	const onSubmit = () => {
+	const onSubmit = (): void => {
 		const finalEmail = email.trim();
 		const finalMessage = message.trim();
 		const finalName = name.trim();
@@ -93,6 +95,7 @@
 			})
 			.finally(() => {
 				sending = false;
+				showConfirmMessage = true;
 			});
 	};
 
@@ -107,6 +110,10 @@
 		if (errorMessage) {
 			errorMessage = undefined;
 		}
+	};
+
+	const hideConfirmMessage = (): void => {
+		showConfirmMessage = false;
 	};
 </script>
 
@@ -142,37 +149,47 @@
 
 <PageNav ariaLabel={$t('contact.aria.nav')} items={$nav} />
 
-<form on:submit|preventDefault={onSubmit}>
-	<Input
-		label={`_${$t('contact.form.name')}`}
-		disabled={sending}
-		bind:value={name}
-		on:input={clearErrorMessage}
-	/>
-	<Input
-		label={`_${$t('contact.form.email')}`}
-		disabled={sending}
-		bind:value={email}
-		on:input={clearErrorMessage}
-	/>
-	<Textarea
-		label={`_${$t('contact.form.message')}`}
-		rows={6}
-		disabled={sending}
-		bind:value={message}
-		on:input={clearErrorMessage}
-	/>
+{#if showConfirmMessage}
+	<section class="confirm">
+		<p class="confirm__thank-you">{$t('contact.confirm.thankYou')}</p>
+		<p class="confirm__message">{$t('contact.confirm.message')}</p>
+		<Button type="button" class="confirm__button" on:click={hideConfirmMessage}
+			>{$t('contact.confirm.button')}</Button
+		>
+	</section>
+{:else}
+	<form on:submit|preventDefault={onSubmit}>
+		<Input
+			label={`_${$t('contact.form.name')}`}
+			disabled={sending}
+			bind:value={name}
+			on:input={clearErrorMessage}
+		/>
+		<Input
+			label={`_${$t('contact.form.email')}`}
+			disabled={sending}
+			bind:value={email}
+			on:input={clearErrorMessage}
+		/>
+		<Textarea
+			label={`_${$t('contact.form.message')}`}
+			rows={6}
+			disabled={sending}
+			bind:value={message}
+			on:input={clearErrorMessage}
+		/>
 
-	<div id="reCaptcha" class="reCaptcha" class:reCaptcha--disabled={sending} />
+		<div id="reCaptcha" class="reCaptcha" class:reCaptcha--disabled={sending} />
 
-	{#if !!errorMessage}
-		<p class="error">{errorMessage}</p>
-	{/if}
+		{#if !!errorMessage}
+			<p class="error">{errorMessage}</p>
+		{/if}
 
-	<Button type="submit" disabled={sending} isLoading={sending}>
-		{$t('contact.form.submit')}
-	</Button>
-</form>
+		<Button type="submit" disabled={sending} isLoading={sending}>
+			{$t('contact.form.submit')}
+		</Button>
+	</form>
+{/if}
 
 <style lang="scss">
 	@use 'lib/mixins/breakpoints' as br;
@@ -201,5 +218,30 @@
 
 	.error {
 		color: var(--accent-3);
+	}
+
+	.confirm {
+		padding: 0 1.875rem;
+		margin-top: 2.625rem;
+		text-align: center;
+
+		&__thank-you {
+			@include font.fontWeight(450);
+
+			font-style: normal;
+			font-size: 1.5rem;
+			line-height: 1.29167;
+			margin-bottom: 0.8125rem;
+		}
+
+		&__message {
+			@include font.fontWeight(450);
+
+			font-style: normal;
+			font-size: 1.125rem;
+			line-height: 1.3333;
+			color: var(--secondary-1);
+			margin-bottom: 1.3125rem;
+		}
 	}
 </style>

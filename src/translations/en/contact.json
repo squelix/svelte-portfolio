@@ -18,5 +18,10 @@
 			"email": "Email is not valid"
 		}
 	},
-	"title": "_contact-me"
+	"title": "_contact-me",
+	"confirm": {
+		"thankYou": "Thank you! 🤘",
+		"message": "Your message has been accepted. You will receive answer really soon!",
+		"button": "send-new-message"
+	}
 }

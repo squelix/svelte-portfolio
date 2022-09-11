@@ -18,5 +18,10 @@
 			"email": "L'adresse email n'est pas valide"
 		}
 	},
-	"title": "_me-contacter"
+	"title": "_me-contacter",
+	"confirm": {
+		"thankYou": "Merci! 🤘",
+		"message": "Votre message a bien été envoyé. Vous allez recevoir une réponse bientôt!",
+		"button": "nouveau-message"
+	}
 }
