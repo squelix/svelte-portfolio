@@ -15,6 +15,10 @@
 	import { mailService } from '$stores/services';
 	import { locale, t } from '$translations';
 	import { onMount } from 'svelte';
+	import { sineInOut } from 'svelte/easing';
+	import { fade } from 'svelte/transition';
+
+	const transitionMs = 175;
 
 	let intervalLoading: number;
 	let intervalLoaded: number;
@@ -29,6 +33,7 @@
 	let sending = false;
 
 	let showConfirmMessage = false;
+	let showForm = true;
 
 	onMount(() => {
 		intervalLoading = window.setInterval(() => {
@@ -95,7 +100,10 @@
 			})
 			.finally(() => {
 				sending = false;
-				showConfirmMessage = true;
+				showForm = false;
+				setTimeout(() => {
+					showConfirmMessage = true;
+				}, transitionMs);
 			});
 	};
 
@@ -114,6 +122,9 @@
 
 	const hideConfirmMessage = (): void => {
 		showConfirmMessage = false;
+		setTimeout(() => {
+			showForm = true;
+		}, transitionMs);
 	};
 </script>
 
@@ -150,18 +161,24 @@
 <PageNav ariaLabel={$t('contact.aria.nav')} items={$nav} />
 
 {#if showConfirmMessage}
-	<section class="confirm">
+	<section class="confirm" transition:fade={{ duration: transitionMs, easing: sineInOut }}>
 		<p class="confirm__thank-you">{$t('contact.confirm.thankYou')}</p>
 		<p class="confirm__message">{$t('contact.confirm.message')}</p>
 		<Button type="button" class="confirm__button" on:click={hideConfirmMessage}
 			>{$t('contact.confirm.button')}</Button
 		>
 	</section>
-{:else}
-	<form on:submit|preventDefault={onSubmit}>
+{/if}
+
+{#if showForm}
+	<form
+		transition:fade={{ duration: transitionMs, easing: sineInOut }}
+		on:submit|preventDefault={onSubmit}
+	>
 		<Input
 			label={`_${$t('contact.form.name')}`}
 			disabled={sending}
+			autofocus
 			bind:value={name}
 			on:input={clearErrorMessage}
 		/>
@@ -242,6 +259,12 @@
 			line-height: 1.3333;
 			color: var(--secondary-1);
 			margin-bottom: 1.3125rem;
+		}
+
+		@include br.desktop {
+			margin: 2.625rem 1.6875rem 0 1.6875rem;
+			padding: 0;
+			max-width: 23.875rem;
 		}
 	}
 </style>
