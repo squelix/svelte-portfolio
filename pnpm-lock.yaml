@@ -5,8 +5,8 @@ specifiers:
   '@babel/preset-env': ^7.19.0
   '@graphql-codegen/cli': ^2.12.0
   '@graphql-codegen/typescript-operations': ^2.5.3
-  '@sveltejs/adapter-vercel': 1.0.0-next.74
-  '@sveltejs/kit': 1.0.0-next.481
+  '@sveltejs/adapter-vercel': 1.0.0-next.75
+  '@sveltejs/kit': 1.0.0-next.483
   '@sveltekit-i18n/base': ^1.2.1
   '@sveltekit-i18n/parser-default': ^1.0.3
   '@testing-library/jest-dom': ^5.16.5
@@ -67,8 +67,8 @@ devDependencies:
   '@babel/preset-env': 7.19.1_@babel+core@7.19.1
   '@graphql-codegen/cli': 2.12.0_2rg3cx5q5swf3yowumie2skcs4
   '@graphql-codegen/typescript-operations': 2.5.3_graphql@16.6.0
-  '@sveltejs/adapter-vercel': 1.0.0-next.74
-  '@sveltejs/kit': 1.0.0-next.481_svelte@3.50.1+vite@3.1.1
+  '@sveltejs/adapter-vercel': 1.0.0-next.75
+  '@sveltejs/kit': 1.0.0-next.483_svelte@3.50.1+vite@3.1.1
   '@sveltekit-i18n/base': 1.2.1_svelte@3.50.1
   '@sveltekit-i18n/parser-default': 1.0.3
   '@testing-library/jest-dom': 5.16.5
@@ -2251,8 +2251,8 @@ packages:
       '@sinonjs/commons': 1.8.3
     dev: true
 
-  /@sveltejs/adapter-vercel/1.0.0-next.74:
-    resolution: {integrity: sha512-BMAeib/aH0JdCyMncnugZteVMc47DfKtqE49BpH8JtiIBna34mkYevUWFLyIEVjoNUu2hHr9GMZXBI0q7JL8tQ==}
+  /@sveltejs/adapter-vercel/1.0.0-next.75:
+    resolution: {integrity: sha512-aFy24cx/N7fiTkmSMKB/9BTPJe5Dqre7mUMGwzguugr8FlZw/uvkjcNoqr7XrLqPCB+C550vQOJ/KeEV0g3NwQ==}
     dependencies:
       '@vercel/nft': 0.22.1
       esbuild: 0.15.7
@@ -2261,8 +2261,8 @@ packages:
       - supports-color
     dev: true
 
-  /@sveltejs/kit/1.0.0-next.481_svelte@3.50.1+vite@3.1.1:
-    resolution: {integrity: sha512-rgt6KKjUmx/S/a/duntAp+yds9F3fSm6uq8nvfWHuT1aVGSC5sOdNDrKqck7PCUc9/GPJ6WJu3et5R69hqevRw==}
+  /@sveltejs/kit/1.0.0-next.483_svelte@3.50.1+vite@3.1.1:
+    resolution: {integrity: sha512-0aiVdVJSy1kiK7xp4bw81qjDkErVaA6oIPlpbjsIYe2UYfeg3aRtST41b6XzLbyg61qLlHVGoM5WTLTIdLnbAQ==}
     engines: {node: '>=16.14'}
     hasBin: true
     requiresBuild: true
