@@ -1,27 +1,27 @@
 lockfileVersion: 5.4
 
 specifiers:
-  '@babel/core': ^7.19.0
-  '@babel/preset-env': ^7.19.0
+  '@babel/core': ^7.19.1
+  '@babel/preset-env': ^7.19.1
   '@graphql-codegen/cli': ^2.12.0
   '@graphql-codegen/typescript-operations': ^2.5.3
-  '@sveltejs/adapter-vercel': 1.0.0-next.75
-  '@sveltejs/kit': 1.0.0-next.483
+  '@sveltejs/adapter-vercel': 1.0.0-next.76
+  '@sveltejs/kit': 1.0.0-next.484
   '@sveltekit-i18n/base': ^1.2.1
   '@sveltekit-i18n/parser-default': ^1.0.3
   '@testing-library/jest-dom': ^5.16.5
   '@types/cookie': ^0.5.1
-  '@types/jest': ^29.0.0
+  '@types/jest': ^29.0.3
   '@types/node': '16'
-  '@typescript-eslint/eslint-plugin': ^5.36.2
-  '@typescript-eslint/parser': ^5.36.2
+  '@typescript-eslint/eslint-plugin': ^5.37.0
+  '@typescript-eslint/parser': ^5.37.0
   '@urql/exchange-graphcache': ^5.0.1
   '@urql/svelte': ^3.0.1
   babel-jest: ^29.0.3
   cookie: ^0.5.0
   cross-env: ^7.0.3
   dayjs: ^1.11.5
-  eslint: ^8.23.0
+  eslint: ^8.23.1
   eslint-config-prettier: ^8.5.0
   eslint-plugin-svelte3: ^4.0.0
   graphql: ^16.6.0
@@ -46,11 +46,11 @@ specifiers:
   svelte-jester: ^2.3.2
   svelte-preprocess: ^4.10.7
   sveltekit-i18n: ^2.2.2
-  ts-jest: ^29.0.0
+  ts-jest: ^29.0.1
   ts-node: ^10.9.1
-  tslib: ^2.3.1
+  tslib: ^2.4.0
   typescript: ~4.8.3
-  vite: ^3.1.0
+  vite: ^3.1.2
 
 dependencies:
   '@urql/exchange-graphcache': 5.0.1_graphql@16.6.0
@@ -67,13 +67,13 @@ devDependencies:
   '@babel/preset-env': 7.19.1_@babel+core@7.19.1
   '@graphql-codegen/cli': 2.12.0_2rg3cx5q5swf3yowumie2skcs4
   '@graphql-codegen/typescript-operations': 2.5.3_graphql@16.6.0
-  '@sveltejs/adapter-vercel': 1.0.0-next.75
-  '@sveltejs/kit': 1.0.0-next.483_svelte@3.50.1+vite@3.1.1
+  '@sveltejs/adapter-vercel': 1.0.0-next.76
+  '@sveltejs/kit': 1.0.0-next.484_svelte@3.50.1+vite@3.1.2
   '@sveltekit-i18n/base': 1.2.1_svelte@3.50.1
   '@sveltekit-i18n/parser-default': 1.0.3
   '@testing-library/jest-dom': 5.16.5
   '@types/cookie': 0.5.1
-  '@types/jest': 29.0.2
+  '@types/jest': 29.0.3
   '@types/node': 16.11.59
   '@typescript-eslint/eslint-plugin': 5.37.0_22c5fnooleyfkzrkkgdmel5kmi
   '@typescript-eslint/parser': 5.37.0_irgkl5vooow2ydyo6aokmferha
@@ -104,7 +104,7 @@ devDependencies:
   ts-node: 10.9.1_ao52im6kiihokc7tdj7weudhra
   tslib: 2.4.0
   typescript: 4.8.3
-  vite: 3.1.1_sass@1.54.9
+  vite: 3.1.2_sass@1.54.9
 
 packages:
 
@@ -2251,8 +2251,8 @@ packages:
       '@sinonjs/commons': 1.8.3
     dev: true
 
-  /@sveltejs/adapter-vercel/1.0.0-next.75:
-    resolution: {integrity: sha512-aFy24cx/N7fiTkmSMKB/9BTPJe5Dqre7mUMGwzguugr8FlZw/uvkjcNoqr7XrLqPCB+C550vQOJ/KeEV0g3NwQ==}
+  /@sveltejs/adapter-vercel/1.0.0-next.76:
+    resolution: {integrity: sha512-Od9DBfeMwWC/sZNeCJw4TYVE3LMR8lGJivSdkXWgpvksgG+QizLyzTfvBacapId3wcu+7X4PPTLoH00o5iQGEQ==}
     dependencies:
       '@vercel/nft': 0.22.1
       esbuild: 0.15.7
@@ -2261,8 +2261,8 @@ packages:
       - supports-color
     dev: true
 
-  /@sveltejs/kit/1.0.0-next.483_svelte@3.50.1+vite@3.1.1:
-    resolution: {integrity: sha512-0aiVdVJSy1kiK7xp4bw81qjDkErVaA6oIPlpbjsIYe2UYfeg3aRtST41b6XzLbyg61qLlHVGoM5WTLTIdLnbAQ==}
+  /@sveltejs/kit/1.0.0-next.484_svelte@3.50.1+vite@3.1.2:
+    resolution: {integrity: sha512-Y3l8OmlgmfJX3m081rMUZmmEQWHtiSsj3+YWYK/CQ4V99jqoztXPz/4cAxUt5mC45jVF5Ee9ykmh6GzkYjvfAQ==}
     engines: {node: '>=16.14'}
     hasBin: true
     requiresBuild: true
@@ -2270,7 +2270,8 @@ packages:
       svelte: ^3.44.0
       vite: ^3.1.0
     dependencies:
-      '@sveltejs/vite-plugin-svelte': 1.0.5_svelte@3.50.1+vite@3.1.1
+      '@sveltejs/vite-plugin-svelte': 1.0.5_svelte@3.50.1+vite@3.1.2
+      '@types/cookie': 0.5.1
       cookie: 0.5.0
       devalue: 3.1.3
       kleur: 4.1.5
@@ -2283,13 +2284,13 @@ packages:
       svelte: 3.50.1
       tiny-glob: 0.2.9
       undici: 5.10.0
-      vite: 3.1.1_sass@1.54.9
+      vite: 3.1.2_sass@1.54.9
     transitivePeerDependencies:
       - diff-match-patch
       - supports-color
     dev: true
 
-  /@sveltejs/vite-plugin-svelte/1.0.5_svelte@3.50.1+vite@3.1.1:
+  /@sveltejs/vite-plugin-svelte/1.0.5_svelte@3.50.1+vite@3.1.2:
     resolution: {integrity: sha512-CmSdSow0Dr5ua1A11BQMtreWnE0JZmkVIcRU/yG3PKbycKUpXjNdgYTWFSbStLB0vdlGnBbm2+Y4sBVj+C+TIw==}
     engines: {node: ^14.18.0 || >= 16}
     peerDependencies:
@@ -2307,7 +2308,7 @@ packages:
       magic-string: 0.26.3
       svelte: 3.50.1
       svelte-hmr: 0.14.12_svelte@3.50.1
-      vite: 3.1.1_sass@1.54.9
+      vite: 3.1.2_sass@1.54.9
     transitivePeerDependencies:
       - supports-color
     dev: true
@@ -2417,8 +2418,8 @@ packages:
       '@types/istanbul-lib-report': 3.0.0
     dev: true
 
-  /@types/jest/29.0.2:
-    resolution: {integrity: sha512-TaklkwSEtvwJpleiKBHgEBySIQlcZ08gYP/s5wdtdLnjz9uxjnDd7U+Y0JWACebkqBc+jtbol2PEtEW0wQV2zQ==}
+  /@types/jest/29.0.3:
+    resolution: {integrity: sha512-F6ukyCTwbfsEX5F2YmVYmM5TcTHy1q9P5rWlRbrk56KyMh3v9xRGUO3aa8+SkvMi0SHXtASJv1283enXimC0Og==}
     dependencies:
       expect: 29.0.3
       pretty-format: 29.0.3
@@ -2491,7 +2492,7 @@ packages:
   /@types/testing-library__jest-dom/5.14.5:
     resolution: {integrity: sha512-SBwbxYoyPIvxHbeHxTZX2Pe/74F/tX2/D3mMvzabdeJ25bBojfW0TyB8BHrbq/9zaaKICJZjLP+8r6AeZMFCuQ==}
     dependencies:
-      '@types/jest': 29.0.2
+      '@types/jest': 29.0.3
     dev: true
 
   /@types/tough-cookie/4.0.2:
@@ -7680,8 +7681,8 @@ packages:
     engines: {node: '>=12'}
     dev: true
 
-  /vite/3.1.1_sass@1.54.9:
-    resolution: {integrity: sha512-hgxQWev/AL7nWYrqByYo8nfcH9n97v6oFsta9+JX8h6cEkni7nHKP2kJleNYV2kcGhE8jsbaY1aStwPZXzPbgA==}
+  /vite/3.1.2_sass@1.54.9:
+    resolution: {integrity: sha512-wTDKPkiVbeT+drTPdkuvjVIC/2vKKUc1w3qNOuwgpyvPCZF6fvdxB5v5WEcCsqaYea0zrwA4+XialJKCHM3oVQ==}
     engines: {node: ^14.18.0 || >=16.0.0}
     hasBin: true
     peerDependencies:
