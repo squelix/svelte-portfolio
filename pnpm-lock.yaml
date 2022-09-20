@@ -6,7 +6,7 @@ specifiers:
   '@graphql-codegen/cli': ^2.12.0
   '@graphql-codegen/typescript-operations': ^2.5.3
   '@sveltejs/adapter-vercel': 1.0.0-next.76
-  '@sveltejs/kit': 1.0.0-next.484
+  '@sveltejs/kit': 1.0.0-next.489
   '@sveltekit-i18n/base': ^1.2.1
   '@sveltekit-i18n/parser-default': ^1.0.3
   '@testing-library/jest-dom': ^5.16.5
@@ -68,7 +68,7 @@ devDependencies:
   '@graphql-codegen/cli': 2.12.0_2rg3cx5q5swf3yowumie2skcs4
   '@graphql-codegen/typescript-operations': 2.5.3_graphql@16.6.0
   '@sveltejs/adapter-vercel': 1.0.0-next.76
-  '@sveltejs/kit': 1.0.0-next.484_svelte@3.50.1+vite@3.1.2
+  '@sveltejs/kit': 1.0.0-next.489_svelte@3.50.1+vite@3.1.2
   '@sveltekit-i18n/base': 1.2.1_svelte@3.50.1
   '@sveltekit-i18n/parser-default': 1.0.3
   '@testing-library/jest-dom': 5.16.5
@@ -2261,8 +2261,8 @@ packages:
       - supports-color
     dev: true
 
-  /@sveltejs/kit/1.0.0-next.484_svelte@3.50.1+vite@3.1.2:
-    resolution: {integrity: sha512-Y3l8OmlgmfJX3m081rMUZmmEQWHtiSsj3+YWYK/CQ4V99jqoztXPz/4cAxUt5mC45jVF5Ee9ykmh6GzkYjvfAQ==}
+  /@sveltejs/kit/1.0.0-next.489_svelte@3.50.1+vite@3.1.2:
+    resolution: {integrity: sha512-7oag1fimI9f8e8mNy2wQRgMCXSov5dASqeTdXffgnptWBpuEjr8myffJ9djoRVQXoFjCja39lCHBo239iY8+KA==}
     engines: {node: '>=16.14'}
     hasBin: true
     requiresBuild: true
