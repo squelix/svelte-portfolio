@@ -4,5 +4,6 @@ export interface PageNavItemInterface {
 	label?: string;
 	link?: string;
 	icon?: string;
+	ariaLabel?: string;
 	items?: PageNavItemInterface[];
 }

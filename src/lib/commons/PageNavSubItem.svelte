@@ -63,6 +63,7 @@
 			class="page-nav-sub-item__text"
 			class:page-nav-sub-item__text--icon={!!item.icon}
 			href={item.link}
+			aria-label={item.ariaLabel ? item.ariaLabel : undefined}
 		>
 			{#if item.icon}
 				<span class="page-nav-sub-item__text__icon">

@@ -19,6 +19,7 @@
 				lang: $locale
 			})}
 			href={getRoute($locale, item.link)}
+			aria-label={item.ariaLabel ? item.ariaLabel : undefined}
 		>
 			<span class="page-nav-sub-item-item__link__icon">
 				<Icon data={Mardown} width="100%" />
