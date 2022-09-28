@@ -1,3 +1,4 @@
+import { BioNavItemEnum } from '$lib/menu/bio-nav-item.enum';
 import { itemSelected } from '$stores/nav';
 
-itemSelected.set('personal-info-bio-looking-for');
+itemSelected.set(BioNavItemEnum.LookingFor);

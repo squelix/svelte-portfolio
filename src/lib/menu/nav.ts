@@ -1,15 +1,21 @@
+import { AboutPageNavItemEnum } from '$lib/menu/about-page-nav-item.enum';
+import { BioNavItemEnum } from '$lib/menu/bio-nav-item.enum';
+import { ContactPageNavItemEnum } from '$lib/menu/contact-page-nav-item.enum';
+import { EducationNavItemEnum } from '$lib/menu/education-nav-item.enum';
+import { PersonalInfoNavItemEnum } from '$lib/menu/personal-info-nav-item.enum';
+import { ProfessionalInfoNavItemEnum } from '$lib/menu/professional-info-nav-item.enum';
 import { RoutesEnum } from '$lib/routing';
 
 import type { PageNavItemInterface } from '$models/page-nav-item.interface';
 
 export const educationNavItems: PageNavItemInterface[] = [
 	{
-		id: 'personal-info-education-schools',
+		id: EducationNavItemEnum.Schools,
 		labelKey: 'about.personal-info-subnav-education.0',
 		link: RoutesEnum.AboutPersonalInfoEducationSchools
 	},
 	{
-		id: 'personal-info-education-projects',
+		id: EducationNavItemEnum.Projects,
 		labelKey: 'about.personal-info-subnav-education.1',
 		link: RoutesEnum.AboutPersonalInfoEducationProjects
 	}
@@ -17,12 +23,12 @@ export const educationNavItems: PageNavItemInterface[] = [
 
 export const bioNavItems: PageNavItemInterface[] = [
 	{
-		id: 'personal-info-bio-biography',
+		id: BioNavItemEnum.Biography,
 		labelKey: 'about.personal-info-subnav-bio.0',
 		link: RoutesEnum.AboutPersonalInfoBio
 	},
 	{
-		id: 'personal-info-bio-looking-for',
+		id: BioNavItemEnum.LookingFor,
 		labelKey: 'about.personal-info-subnav-bio.1',
 		link: RoutesEnum.AboutPersonalInfoBioLookingFor
 	}
@@ -30,56 +36,52 @@ export const bioNavItems: PageNavItemInterface[] = [
 
 export const personalInfoNavItems: PageNavItemInterface[] = [
 	{
-		id: 'personal-info-bio',
+		id: PersonalInfoNavItemEnum.Biography,
 		labelKey: 'about.personal-info-subnav.0',
 		items: bioNavItems
 	},
 	{
-		id: 'personal-info-education',
+		id: PersonalInfoNavItemEnum.Education,
 		labelKey: 'about.personal-info-subnav.1',
 		items: educationNavItems
 	}
 ];
 
+export const professionalInfoNavItems: PageNavItemInterface[] = [
+	{ id: ProfessionalInfoNavItemEnum.Skills, labelKey: 'about.professional-info-subnav.0' },
+	{
+		id: ProfessionalInfoNavItemEnum.Languages,
+		labelKey: 'about.professional-info-subnav.1'
+		// link: ''
+	},
+	{
+		id: ProfessionalInfoNavItemEnum.Projects,
+		labelKey: 'about.professional-info-subnav.2'
+		// link: ''
+	}
+];
+
 export const aboutPageNavItems: PageNavItemInterface[] = [
 	{
-		// Personal infos
-		id: 'personal-info',
+		id: AboutPageNavItemEnum.PersonalInfo,
 		labelKey: 'about.nav.0',
 		items: personalInfoNavItems
 	},
-	// Professional infos
 	{
-		id: 'professional-info',
+		id: AboutPageNavItemEnum.ProfessionalInfo,
 		labelKey: 'about.nav.1',
-		items: [
-			{ id: 'professional-info-skills', labelKey: 'about.professional-info-subnav.0' },
-			{
-				id: 'professional-info-languages',
-				labelKey: 'about.professional-info-subnav.1'
-				// link: ''
-			},
-			{
-				id: 'professional-info-projects',
-				labelKey: 'about.professional-info-subnav.2'
-				// link: ''
-			}
-		]
+		items: professionalInfoNavItems
 	},
-	{ id: 'hobbies', labelKey: 'about.nav.2' }
+	{ id: AboutPageNavItemEnum.Hobbies, labelKey: 'about.nav.2' }
 ];
 
 export const contactPageNavItems: PageNavItemInterface[] = [
 	{
-		// Personal infos
-		id: 'contacts',
+		id: ContactPageNavItemEnum.Contacts,
 		labelKey: 'contact.nav.0'
-		// items: personalInfoNavItems
 	},
 	{
-		// Personal infos
-		id: 'find-me-also-in',
+		id: ContactPageNavItemEnum.FindMeAlsoIn,
 		labelKey: 'contact.nav.1'
-		// items: personalInfoNavItems
 	}
 ];
