@@ -1,3 +1,8 @@
 import { itemSelected } from '$stores/nav';
 
-itemSelected.set('personal-info-bio-biography');
+import type { PageLoad } from './$types';
+
+export const load: PageLoad = () => {
+	itemSelected.set('personal-info-bio-biography');
+	return {};
+};

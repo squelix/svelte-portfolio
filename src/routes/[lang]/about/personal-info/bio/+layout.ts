@@ -1,5 +1,10 @@
 import { bioNavItems } from '$lib/menu/nav';
 import { setSubNavItem, subnav } from '$stores/nav';
 
-setSubNavItem('personal-info-bio');
-subnav.set(bioNavItems);
+import type { LayoutLoad } from './$types';
+
+export const load: LayoutLoad = () => {
+	setSubNavItem('personal-info-bio');
+	subnav.set(bioNavItems);
+	return {};
+};
