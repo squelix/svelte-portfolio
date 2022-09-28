@@ -4,7 +4,10 @@
 		"description": "Portfolio and CV of Mickaël Depardon. Page presenting the possibility to send me an email."
 	},
 	"aria": {
-		"nav": "Navigation of contact page"
+		"nav": "Navigation of contact page",
+		"email": "Professional email",
+		"phone": "Professional phone",
+		"social": "{{social}}: professional social network"
 	},
 	"nav": ["contacts", "find-me-also-in"],
 	"form": {
