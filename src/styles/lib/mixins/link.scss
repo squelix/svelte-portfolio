@@ -2,6 +2,7 @@
 	position: relative;
 	font-style: unset;
 	text-decoration: none;
+	transition: color var(--transition-duration) var(--transition-easing);
 
 	&::after {
 		content: '';
@@ -28,6 +29,7 @@
 	position: relative;
 	font-style: unset;
 	text-decoration: none;
+	transition: color var(--transition-duration) var(--transition-easing);
 
 	&::after {
 		content: '';
