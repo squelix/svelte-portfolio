@@ -11,8 +11,6 @@
 	export let selectedItems: string[];
 
 	const setSeletedItem = (itemId: string) => {
-		console.log(itemId);
-
 		if (itemId !== $navItemSelected) {
 			navItemSelected.set(itemId);
 		}
@@ -49,11 +47,11 @@
 		</span>
 	</button>
 	<ul class="page-nav-filter-item__sub-items" aria-hidden={$navItemOpened !== item.id}>
-		{#each item.items || [] as item}
+		{#each item.items || [] as subItem}
 			<PageNavFilterSubItem
 				on:updateSelectedFilter
 				checked={selectedItems.includes(item.id)}
-				{item}
+				item={subItem}
 			/>
 		{/each}
 	</ul>

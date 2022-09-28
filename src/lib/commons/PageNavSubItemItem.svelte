@@ -57,6 +57,8 @@
 
 			&--active {
 				@include link.linkSelected(var(--accent-1), 0, var(--secondary-4));
+
+				color: var(--secondary-4);
 			}
 
 			&__icon {

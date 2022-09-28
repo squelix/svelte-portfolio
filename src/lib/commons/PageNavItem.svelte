@@ -47,8 +47,8 @@
 			</span>
 		</button>
 		<ul class="page-nav-item__sub-items" aria-hidden={$navItemOpened !== item.id}>
-			{#each item.items || [] as item, index}
-				<PageNavSubItem {item} {index} />
+			{#each item.items || [] as subItem, index}
+				<PageNavSubItem item={subItem} {index} />
 			{/each}
 		</ul>
 	{:else}

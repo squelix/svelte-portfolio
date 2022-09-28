@@ -29,6 +29,7 @@
 		<button
 			type="button"
 			class="btn-clean page-nav-sub-item__button"
+			class:page-nav-sub-item__button--expanded={$subNavItemOpened === item.id}
 			aria-expanded={$subNavItemOpened === item.id}
 			on:click={() => setSeletedItem(item.id)}
 		>
@@ -53,17 +54,30 @@
 			</span>
 		</button>
 		<ul class="page-nav-sub-item__sub-items" aria-hidden={$subNavItemOpened !== item.id}>
-			{#each item.items || [] as item}
-				<PageNavSubItemItem {item} />
+			{#each item.items || [] as subItem}
+				<PageNavSubItemItem item={subItem} />
 			{/each}
 		</ul>
 	{:else}
-		<a class="page-nav-sub-item__text" href={item.link}>
+		<a
+			class="page-nav-sub-item__text"
+			class:page-nav-sub-item__text--icon={!!item.icon}
+			href={item.link}
+		>
+			{#if item.icon}
+				<span class="page-nav-sub-item__text__icon">
+					<Icon data={item.icon} width="100%" />
+				</span>
+			{/if}
 			{#if item.labelKey && !item.label}
-				{$t(item.labelKey)}
+				<span class="page-nav-sub-item__text__label">
+					{$t(item.labelKey)}
+				</span>
 			{/if}
 			{#if item.label && !item.labelKey}
-				{item.label}
+				<span class="page-nav-sub-item__text__label">
+					{item.label}
+				</span>
 			{/if}
 		</a>
 	{/if}
@@ -77,6 +91,7 @@
 
 		font-size: 1rem;
 		line-height: 1.3125;
+		color: var(--secondary-1);
 
 		&__text,
 		&__button {
@@ -86,6 +101,33 @@
 			justify-content: flex-start;
 			text-align: left;
 			width: 100%;
+		}
+
+		&__text {
+			--first-column-width: 1.0137rem;
+			&--icon {
+				display: grid;
+				grid-template-columns: minmax(0, var(--first-column-width)) minmax(0, 1fr);
+				gap: 0.5175rem;
+			}
+
+			&__label {
+				display: -webkit-box;
+				-webkit-box-orient: vertical;
+				-webkit-line-clamp: 1;
+				overflow: hidden;
+				padding-right: 0.625rem;
+			}
+
+			&__icon {
+				width: var(--first-column-width);
+				height: auto;
+			}
+
+			&:hover {
+				transition: color var(--transition-duration) var(--transition-easing);
+				color: var(--secondary-4);
+			}
 		}
 
 		&__button {
@@ -120,6 +162,10 @@
 
 			&__text {
 				margin-left: 0.5625rem;
+			}
+
+			&--expanded {
+				color: var(--secondary-4);
 			}
 		}
 
