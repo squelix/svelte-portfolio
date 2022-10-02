@@ -3,8 +3,9 @@
 	import PageNavSubItem from '$lib/commons/PageNavSubItem.svelte';
 	import Icon from '$lib/SvgIcon.svelte';
 	import { navItemOpened, navItemSelected, subNavItemOpened } from '$stores/nav';
-	import { t } from '$translations';
+	import { locale, t } from '$translations';
 
+	import { getRoute } from '$lib/routing';
 	import type { PageNavItemInterface } from '$models/page-nav-item.interface';
 
 	export let item: PageNavItemInterface;
@@ -51,8 +52,12 @@
 				<PageNavSubItem item={subItem} {index} />
 			{/each}
 		</ul>
-	{:else}
-		<a class="page-nav-item__text" href={item.link}>
+	{:else if item.link}
+		<a
+			class="page-nav-item__text"
+			href={getRoute($locale, item.link)}
+			aria-label={item.ariaLabel ? item.ariaLabel : undefined}
+		>
 			{#if item.labelKey && !item.label}
 				{$t(item.labelKey)}
 			{/if}

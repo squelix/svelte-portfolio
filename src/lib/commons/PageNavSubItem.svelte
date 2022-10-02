@@ -1,10 +1,12 @@
 <script lang="ts">
+	import { page } from '$app/stores';
 	import Folder from '$icons/folder.svg?raw';
 	import Chevron from '$icons/list-chevron-2.svg?raw';
 	import PageNavSubItemItem from '$lib/commons/PageNavSubItemItem.svelte';
+	import { getRoute, isRouteActive } from '$lib/routing';
 	import Icon from '$lib/SvgIcon.svelte';
 	import { subNavItemOpened, subNavItemSelected } from '$stores/nav';
-	import { t } from '$translations';
+	import { locale, t } from '$translations';
 
 	import type { PageNavItemInterface } from '$models/page-nav-item.interface';
 
@@ -58,25 +60,29 @@
 				<PageNavSubItemItem item={subItem} />
 			{/each}
 		</ul>
-	{:else}
+	{:else if item.link}
 		<a
-			class="page-nav-sub-item__text"
-			class:page-nav-sub-item__text--icon={!!item.icon}
-			href={item.link}
+			class="page-nav-sub-item__link"
+			class:page-nav-sub-item__link--icon={!!item.icon}
+			class:page-nav-sub-item__link--active={isRouteActive($page.url.pathname, {
+				route: item.link,
+				lang: $locale
+			})}
+			href={getRoute($locale, item.link)}
 			aria-label={item.ariaLabel ? item.ariaLabel : undefined}
 		>
 			{#if item.icon}
-				<span class="page-nav-sub-item__text__icon">
+				<span class="page-nav-sub-item__link__icon">
 					<Icon data={item.icon} width="100%" />
 				</span>
 			{/if}
 			{#if item.labelKey && !item.label}
-				<span class="page-nav-sub-item__text__label">
+				<span class="page-nav-sub-item__link__label">
 					{$t(item.labelKey)}
 				</span>
 			{/if}
 			{#if item.label && !item.labelKey}
-				<span class="page-nav-sub-item__text__label">
+				<span class="page-nav-sub-item__link__label">
 					{item.label}
 				</span>
 			{/if}
@@ -94,7 +100,7 @@
 		line-height: 1.3125;
 		color: var(--secondary-1);
 
-		&__text,
+		&__link,
 		&__button {
 			margin: 0;
 			display: flex;
@@ -104,12 +110,19 @@
 			width: 100%;
 		}
 
-		&__text {
+		&__link {
 			--first-column-width: 1.0137rem;
+
+			transition: color var(--transition-duration) var(--transition-easing);
+
 			&--icon {
 				display: grid;
 				grid-template-columns: minmax(0, var(--first-column-width)) minmax(0, 1fr);
 				gap: 0.5175rem;
+			}
+
+			&--active {
+				color: var(--secondary-4);
 			}
 
 			&__label {
@@ -126,7 +139,6 @@
 			}
 
 			&:hover {
-				transition: color var(--transition-duration) var(--transition-easing);
 				color: var(--secondary-4);
 			}
 		}
