@@ -1,7 +1,7 @@
 import { gql } from '@urql/svelte';
 
 export const GET_PROFILE_QUERY = gql`
-	query getProfile($locale: I18NLocaleCode!) {
+	query getProfile($locale: I18NLocaleCode) {
 		profile(locale: $locale) {
 			data {
 				attributes {

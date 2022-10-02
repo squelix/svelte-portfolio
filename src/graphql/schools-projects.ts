@@ -1,8 +1,8 @@
 import { gql } from '@urql/svelte';
 
 export const GET_SCHOOLS_PROJECTS_QUERY = gql`
-	query getSchoolsProjects($locale: I18NLocaleCode!) {
-		schoolProjects(locale: $locale) {
+	query getSchoolsProjects($locale: I18NLocaleCode) {
+		schoolProjects(locale: $locale, pagination: { page: 1, pageSize: 50 }) {
 			data {
 				attributes {
 					slug

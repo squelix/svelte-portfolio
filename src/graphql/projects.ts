@@ -1,8 +1,8 @@
 import { gql } from '@urql/svelte';
 
 export const GET_PROJECTS_QUERY = gql`
-	query getProjects($locale: I18NLocaleCode!) {
-		projects(locale: $locale) {
+	query getProjects($locale: I18NLocaleCode) {
+		projects(locale: $locale, pagination: { page: 1, pageSize: 50 }) {
 			data {
 				attributes {
 					slug
