@@ -48,7 +48,11 @@ export const personalInfoNavItems: PageNavItemInterface[] = [
 ];
 
 export const professionalInfoNavItems: PageNavItemInterface[] = [
-	{ id: ProfessionalInfoNavItemEnum.Skills, labelKey: 'about.professional-info-subnav.0' },
+	{
+		id: ProfessionalInfoNavItemEnum.Skills,
+		labelKey: 'about.professional-info-subnav.0',
+		link: RoutesEnum.AboutProfessionalInfoSkills
+	},
 	{
 		id: ProfessionalInfoNavItemEnum.Languages,
 		labelKey: 'about.professional-info-subnav.1'
