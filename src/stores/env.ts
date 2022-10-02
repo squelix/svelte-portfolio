@@ -1,11 +1,11 @@
 /* eslint-disable @typescript-eslint/no-unsafe-assignment */
 import {
-  PUBLIC_GRAPHQL_URI,
-  PUBLIC_MAIL_ACCESS_TOKEN,
-  PUBLIC_MAIL_URI,
-  PUBLIC_PLATFORM,
-  PUBLIC_RE_CAPTCHA_KEY,
-  PUBLIC_STRAPI_URI,
+	PUBLIC_GRAPHQL_URI,
+	PUBLIC_MAIL_ACCESS_TOKEN,
+	PUBLIC_MAIL_URI,
+	PUBLIC_PLATFORM,
+	PUBLIC_RE_CAPTCHA_KEY,
+	PUBLIC_STRAPI_URI
 } from '$env/static/public';
 import { derived, writable } from 'svelte/store';
 
