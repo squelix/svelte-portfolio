@@ -2239,6 +2239,26 @@ export type GetSchoolsQuery = {
 	} | null;
 };
 
+export type GetSkillsQueryVariables = Exact<{
+	locale: Scalars['I18NLocaleCode'];
+}>;
+
+export type GetSkillsQuery = {
+	__typename?: 'Query';
+	skills?: {
+		__typename?: 'SkillEntityResponseCollection';
+		data: Array<{
+			__typename?: 'SkillEntity';
+			attributes?: {
+				__typename?: 'Skill';
+				name: string;
+				percentage: number;
+				slug?: string | null;
+			} | null;
+		}>;
+	} | null;
+};
+
 export type GetTechnosQueryVariables = Exact<{ [key: string]: never }>;
 
 export type GetTechnosQuery = {
