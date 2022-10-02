@@ -3,7 +3,7 @@
 	import PageTextContent from '$lib/commons/PageTextContent.svelte';
 	import { getRoute, RoutesEnum } from '$lib/routing';
 	import { LangEnum } from '$models/langs.enum';
-	import { formattedDesktopBiography, formattedMobileBiography } from '$stores/profile';
+	import { biographyLines } from '$stores/profile';
 	import { locale, t } from '$translations';
 </script>
 
@@ -30,7 +30,4 @@
 	/>
 </svelte:head>
 
-<PageTextContent
-	formattedDesktopText={$formattedDesktopBiography}
-	formattedMobileText={$formattedMobileBiography}
-/>
+<PageTextContent lines={$biographyLines} />

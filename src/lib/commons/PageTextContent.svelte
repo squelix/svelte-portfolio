@@ -1,21 +1,22 @@
 <script lang="ts">
-	export let formattedDesktopText: string | undefined;
-	export let formattedMobileText: string | undefined;
+	import FormattedTextDesktop from '$lib/commons/FormattedTextDesktop.svelte';
+	import FormattedTextMobile from './FormattedTextMobile.svelte';
+
+	export let lines: string[];
+	export let mobileDisplayText: 'inline' | 'per-line' = 'inline';
 </script>
 
-<div class="content">
-	{#if !!formattedDesktopText}
+{#if !!lines && lines.length > 0}
+	<div class="content">
 		<p class="content__text content__text--desktop display-only-desktop">
-			{@html formattedDesktopText}
+			<FormattedTextDesktop {lines} />
 		</p>
-	{/if}
 
-	{#if !!formattedMobileText}
 		<p class="content__text content__text--mobile display-only-mobile">
-			{@html formattedMobileText}
+			<FormattedTextMobile {lines} displayText={mobileDisplayText} />
 		</p>
-	{/if}
-</div>
+	</div>
+{/if}
 
 <style lang="scss">
 	@use 'lib/mixins/breakpoints' as br;
@@ -23,6 +24,13 @@
 	.content {
 		color: var(--secondary-1);
 		padding: 1.0625rem 1.6875rem 0 1.6875rem;
+		grid-column: 2/4;
+
+		&__text {
+			&--mobile {
+				white-space: pre-line;
+			}
+		}
 
 		@include br.desktop {
 			padding: 1.0625rem 2.375rem 0 2.375rem;

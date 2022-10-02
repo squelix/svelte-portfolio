@@ -3,7 +3,7 @@
 	import PageTextContent from '$lib/commons/PageTextContent.svelte';
 	import { getRoute, RoutesEnum } from '$lib/routing';
 	import { LangEnum } from '$models/langs.enum';
-	import { formattedDesktopJobSearch, formattedMobileJobSearch } from '$stores/profile';
+	import { jobSearchLines } from '$stores/profile';
 	import { locale, t } from '$translations';
 </script>
 
@@ -30,7 +30,4 @@
 	/>
 </svelte:head>
 
-<PageTextContent
-	formattedDesktopText={$formattedDesktopJobSearch}
-	formattedMobileText={$formattedMobileJobSearch}
-/>
+<PageTextContent lines={$jobSearchLines} />
