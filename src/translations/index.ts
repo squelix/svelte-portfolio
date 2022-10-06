@@ -163,6 +163,18 @@ export const config: Config = {
 			key: 'skills',
 			routes: [Routes[RoutesEnum.AboutProfessionalInfoSkills]],
 			loader: async () => (await import('./en/skills.json')).default
+		},
+		{
+			locale: LangEnum.fr_FR,
+			key: 'languages',
+			routes: [Routes[RoutesEnum.AboutProfessionalInfoLanguages]],
+			loader: async () => (await import('./fr/languages.json')).default
+		},
+		{
+			locale: LangEnum.en_GB,
+			key: 'languages',
+			routes: [Routes[RoutesEnum.AboutProfessionalInfoLanguages]],
+			loader: async () => (await import('./en/languages.json')).default
 		}
 	]
 };
