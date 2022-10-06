@@ -1,3 +1,4 @@
+import Mardown from '$icons/markdown.svg?raw';
 import { AboutPageNavItemEnum } from '$lib/menu/about-page-nav-item.enum';
 import { BioNavItemEnum } from '$lib/menu/bio-nav-item.enum';
 import { ContactPageNavItemEnum } from '$lib/menu/contact-page-nav-item.enum';
@@ -51,12 +52,14 @@ export const professionalInfoNavItems: PageNavItemInterface[] = [
 	{
 		id: ProfessionalInfoNavItemEnum.Skills,
 		labelKey: 'about.professional-info-subnav.0',
-		link: RoutesEnum.AboutProfessionalInfoSkills
+		link: RoutesEnum.AboutProfessionalInfoSkills,
+		icon: Mardown
 	},
 	{
 		id: ProfessionalInfoNavItemEnum.Languages,
-		labelKey: 'about.professional-info-subnav.1'
-		// link: ''
+		labelKey: 'about.professional-info-subnav.1',
+		link: RoutesEnum.AboutProfessionalInfoLanguages,
+		icon: Mardown
 	},
 	{
 		id: ProfessionalInfoNavItemEnum.Projects,
