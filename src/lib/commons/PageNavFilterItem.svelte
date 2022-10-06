@@ -50,7 +50,7 @@
 		{#each item.items || [] as subItem}
 			<PageNavFilterSubItem
 				on:updateSelectedFilter
-				checked={selectedItems.includes(item.id)}
+				checked={selectedItems.includes(subItem.id)}
 				item={subItem}
 			/>
 		{/each}
