@@ -2044,6 +2044,26 @@ export type UsersPermissionsUserRelationResponseCollection = {
 	data: Array<UsersPermissionsUserEntity>;
 };
 
+export type GetLanguagesQueryVariables = Exact<{
+	locale?: InputMaybe<Scalars['I18NLocaleCode']>;
+}>;
+
+export type GetLanguagesQuery = {
+	__typename?: 'Query';
+	languages?: {
+		__typename?: 'LanguageEntityResponseCollection';
+		data: Array<{
+			__typename?: 'LanguageEntity';
+			attributes?: {
+				__typename?: 'Language';
+				name: string;
+				percentage: number;
+				slug?: string | null;
+			} | null;
+		}>;
+	} | null;
+};
+
 export type GetProfileQueryVariables = Exact<{
 	locale?: InputMaybe<Scalars['I18NLocaleCode']>;
 }>;
