@@ -28,7 +28,7 @@
 		"@graphql-codegen/cli": "^2.13.4",
 		"@graphql-codegen/typescript-operations": "^2.5.3",
 		"@sveltejs/adapter-vercel": "1.0.0-next.77",
-		"@sveltejs/kit": "1.0.0-next.510",
+		"@sveltejs/kit": "1.0.0-next.511",
 		"@sveltekit-i18n/base": "^1.2.1",
 		"@sveltekit-i18n/parser-default": "^1.0.3",
 		"@testing-library/jest-dom": "^5.16.5",
