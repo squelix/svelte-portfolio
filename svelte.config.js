@@ -36,6 +36,7 @@ const config = {
 				'/en/about/personal-info/education/projects',
 				'/en/about/professional-info',
 				'/en/about/professional-info/skills',
+				'/en/about/professional-info/languages',
 				'/fr/contact',
 				'/fr/projects',
 				'/fr/about',
@@ -46,7 +47,8 @@ const config = {
 				'/fr/about/personal-info/education/schools',
 				'/fr/about/personal-info/education/projects',
 				'/fr/about/professional-info',
-				'/fr/about/professional-info/skills'
+				'/fr/about/professional-info/skills',
+				'/fr/about/professional-info/languages'
 			],
 			onError: 'continue'
 		}
