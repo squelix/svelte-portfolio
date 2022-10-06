@@ -60,7 +60,8 @@ export const config: Config = {
 				Routes[RoutesEnum.AboutPersonalInfoEducationSchools],
 				Routes[RoutesEnum.AboutPersonalInfoEducationProjects],
 				Routes[RoutesEnum.AboutProfessionalInfo],
-				Routes[RoutesEnum.AboutProfessionalInfoSkills]
+				Routes[RoutesEnum.AboutProfessionalInfoSkills],
+				Routes[RoutesEnum.AboutProfessionalInfoLanguages]
 			],
 			loader: async () => (await import('./fr/about.json')).default
 		},
@@ -76,7 +77,8 @@ export const config: Config = {
 				Routes[RoutesEnum.AboutPersonalInfoEducationSchools],
 				Routes[RoutesEnum.AboutPersonalInfoEducationProjects],
 				Routes[RoutesEnum.AboutProfessionalInfo],
-				Routes[RoutesEnum.AboutProfessionalInfoSkills]
+				Routes[RoutesEnum.AboutProfessionalInfoSkills],
+				Routes[RoutesEnum.AboutProfessionalInfoLanguages]
 			],
 			loader: async () => (await import('./en/about.json')).default
 		},
