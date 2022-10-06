@@ -1,7 +1,8 @@
-/* eslint-disable @typescript-eslint/no-unsafe-return, @typescript-eslint/no-unsafe-call, @typescript-eslint/no-explicit-any, @typescript-eslint/no-non-null-assertion */
+/* eslint-disable @typescript-eslint/no-unsafe-return, @typescript-eslint/no-unsafe-assignment, @typescript-eslint/no-unsafe-call, @typescript-eslint/no-explicit-any, @typescript-eslint/no-non-null-assertion */
+import { browser } from '$app/environment';
 import { graphqlUri, platform } from '$stores/env';
 import { cacheExchange } from '@urql/exchange-graphcache';
-import { createClient, dedupExchange, fetchExchange } from '@urql/svelte';
+import { createClient, dedupExchange, fetchExchange, ssrExchange } from '@urql/svelte';
 import { derived, get } from 'svelte/store';
 
 import type {
@@ -77,6 +78,10 @@ export const client = derived(platform, ($platform) =>
 							}
 						})
 				  ]),
+			ssrExchange({
+				isClient: browser,
+				initialState: browser ? (window as any).__URQL_DATA__ : undefined
+			}),
 			fetchExchange
 		]
 	})
