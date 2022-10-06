@@ -10,7 +10,7 @@ const repeatToBuildBar = (str: string, i: number): string => {
 
 export const generateUnicodeBar = (
 	percent: number,
-	minSize = 1,
+	minSize = 0,
 	maxSize = 20,
 	barStyleEnum = UnicodeBarStyleEnum['□◱◧▣■']
 ): string | undefined => {
@@ -21,7 +21,7 @@ export const generateUnicodeBar = (
 	let minDelta = Number.POSITIVE_INFINITY;
 
 	if (percent == 100) {
-		return repeatToBuildBar(fullSymbol, 10);
+		return repeatToBuildBar(fullSymbol, maxSize);
 	}
 	percent = percent / 100;
 
