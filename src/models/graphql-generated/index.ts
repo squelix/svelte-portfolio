@@ -2045,7 +2045,7 @@ export type UsersPermissionsUserRelationResponseCollection = {
 };
 
 export type GetProfileQueryVariables = Exact<{
-	locale: Scalars['I18NLocaleCode'];
+	locale?: InputMaybe<Scalars['I18NLocaleCode']>;
 }>;
 
 export type GetProfileQuery = {
@@ -2104,7 +2104,7 @@ export type GetProfileQuery = {
 };
 
 export type GetProjectsQueryVariables = Exact<{
-	locale: Scalars['I18NLocaleCode'];
+	locale?: InputMaybe<Scalars['I18NLocaleCode']>;
 }>;
 
 export type GetProjectsQuery = {
@@ -2157,7 +2157,7 @@ export type GetProjectsQuery = {
 };
 
 export type GetSchoolsProjectsQueryVariables = Exact<{
-	locale: Scalars['I18NLocaleCode'];
+	locale?: InputMaybe<Scalars['I18NLocaleCode']>;
 }>;
 
 export type GetSchoolsProjectsQuery = {
@@ -2210,7 +2210,7 @@ export type GetSchoolsProjectsQuery = {
 };
 
 export type GetSchoolsQueryVariables = Exact<{
-	locale: Scalars['I18NLocaleCode'];
+	locale?: InputMaybe<Scalars['I18NLocaleCode']>;
 }>;
 
 export type GetSchoolsQuery = {
@@ -2240,7 +2240,7 @@ export type GetSchoolsQuery = {
 };
 
 export type GetSkillsQueryVariables = Exact<{
-	locale: Scalars['I18NLocaleCode'];
+	locale?: InputMaybe<Scalars['I18NLocaleCode']>;
 }>;
 
 export type GetSkillsQuery = {
