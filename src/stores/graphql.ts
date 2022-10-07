@@ -6,6 +6,8 @@ import { createClient, dedupExchange, fetchExchange, ssrExchange } from '@urql/s
 import { derived, get } from 'svelte/store';
 
 import type {
+	Language,
+	LanguageEntity,
 	Profile,
 	ProfileEntity,
 	ProfileEntityResponse,
@@ -36,6 +38,8 @@ export const client = derived(platform, ($platform) =>
 				: [
 						cacheExchange({
 							keys: {
+								Language: (item: any) => (item as Language).slug!,
+								LanguageEntity: (item: any) => (item as LanguageEntity).attributes!.slug!,
 								Skill: (item: any) => (item as Skill).slug!,
 								SkillEntity: (item: any) => (item as SkillEntity).attributes!.slug!,
 								SocialNetwork: (item: any) => (item as SocialNetwork).slug,
