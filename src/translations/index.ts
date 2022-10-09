@@ -59,6 +59,7 @@ export const config: Config = {
 				Routes[RoutesEnum.AboutPersonalInfoEducation],
 				Routes[RoutesEnum.AboutPersonalInfoEducationSchools],
 				Routes[RoutesEnum.AboutPersonalInfoEducationProjects],
+				Routes[RoutesEnum.AboutPersonalInfoHobbies],
 				Routes[RoutesEnum.AboutProfessionalInfo],
 				Routes[RoutesEnum.AboutProfessionalInfoSkills],
 				Routes[RoutesEnum.AboutProfessionalInfoLanguages]
@@ -76,6 +77,7 @@ export const config: Config = {
 				Routes[RoutesEnum.AboutPersonalInfoEducation],
 				Routes[RoutesEnum.AboutPersonalInfoEducationSchools],
 				Routes[RoutesEnum.AboutPersonalInfoEducationProjects],
+				Routes[RoutesEnum.AboutPersonalInfoHobbies],
 				Routes[RoutesEnum.AboutProfessionalInfo],
 				Routes[RoutesEnum.AboutProfessionalInfoSkills],
 				Routes[RoutesEnum.AboutProfessionalInfoLanguages]
@@ -177,6 +179,18 @@ export const config: Config = {
 			key: 'languages',
 			routes: [Routes[RoutesEnum.AboutProfessionalInfoLanguages]],
 			loader: async () => (await import('./en/languages.json')).default
+		},
+		{
+			locale: LangEnum.fr_FR,
+			key: 'hobbies',
+			routes: [Routes[RoutesEnum.AboutPersonalInfoHobbies]],
+			loader: async () => (await import('./fr/hobbies.json')).default
+		},
+		{
+			locale: LangEnum.en_GB,
+			key: 'hobbies',
+			routes: [Routes[RoutesEnum.AboutPersonalInfoHobbies]],
+			loader: async () => (await import('./en/hobbies.json')).default
 		}
 	]
 };
