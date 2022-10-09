@@ -4,12 +4,13 @@
 
 	export let lines: string[];
 	export let mobileDisplayText: 'inline' | 'per-line' = 'inline';
+	export let mustSplit = true;
 </script>
 
 {#if !!lines && lines.length > 0}
 	<div class="content">
 		<p class="content__text content__text--desktop display-only-desktop">
-			<FormattedTextDesktop {lines} />
+			<FormattedTextDesktop {lines} {mustSplit} />
 		</p>
 
 		<p class="content__text content__text--mobile display-only-mobile">

@@ -30,4 +30,4 @@
 	/>
 </svelte:head>
 
-<PageTextContent lines={$biographyLines} />
+<PageTextContent lines={$biographyLines} mustSplit={false} />

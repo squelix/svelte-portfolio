@@ -1,20 +1,39 @@
 <script lang="ts">
 	/* eslint-disable @typescript-eslint/no-unsafe-call */
 	export let lines: string[];
-	$: shouldDisplayGrid = lines.every((line) => line.includes(':'));
+	export let mustSplit = true;
+
+	let splittedLines: string[][] = [];
+
+	const getSplittedLines = (line: string, index: number): string[] => {
+		if (!splittedLines[index]) {
+			splittedLines[index] = line.split(':');
+		}
+		return splittedLines[index];
+	};
+
+	const lastPart = (line: string, index: number): string => {
+		const splitted = getSplittedLines(line, index);
+		return splitted[splitted.length - 1];
+	};
+
+	const firstParts = (line: string, index: number): string => {
+		const splitted = getSplittedLines(line, index);
+		return splitted.slice(0, splitted.length - 1).join(':');
+	};
 </script>
 
 <span class="count-line" />
 <span>/**</span>
-{#each lines as line}
+{#each lines as line, index}
 	<span class="count-line" />
-	{#if shouldDisplayGrid}
+	{#if mustSplit}
 		<span class="content-line">
-			<span>&nbsp;* {line.split(':')[0]}</span>
-			<span>&nbsp:&nbsp{line.split(':')[1]}</span>
+			<span>&nbsp;* {@html firstParts(line, index)}</span>
+			<span>&nbsp:&nbsp{@html lastPart(line, index)}</span>
 		</span>
 	{:else}
-		<span>&nbsp;* {line}</span>
+		<span>&nbsp;* {@html line}</span>
 	{/if}
 {/each}
 <span class="count-line" />

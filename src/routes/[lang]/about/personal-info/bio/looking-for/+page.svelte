@@ -30,4 +30,4 @@
 	/>
 </svelte:head>
 
-<PageTextContent lines={$jobSearchLines} />
+<PageTextContent lines={$jobSearchLines} mustSplit={false} />
