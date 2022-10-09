@@ -45,6 +45,12 @@ export const personalInfoNavItems: PageNavItemInterface[] = [
 		id: PersonalInfoNavItemEnum.Education,
 		labelKey: 'about.personal-info-subnav.1',
 		items: educationNavItems
+	},
+	{
+		id: PersonalInfoNavItemEnum.Hobbies,
+		labelKey: 'about.personal-info-subnav.2',
+		link: RoutesEnum.AboutPersonalInfoHobbies,
+		icon: Mardown
 	}
 ];
 
@@ -78,8 +84,7 @@ export const aboutPageNavItems: PageNavItemInterface[] = [
 		id: AboutPageNavItemEnum.ProfessionalInfo,
 		labelKey: 'about.nav.1',
 		items: professionalInfoNavItems
-	},
-	{ id: AboutPageNavItemEnum.Hobbies, labelKey: 'about.nav.2' }
+	}
 ];
 
 export const contactPageNavItems: PageNavItemInterface[] = [

@@ -7,8 +7,8 @@
 	"aria": {
 		"nav": "Navigation de la page a propos de moi"
 	},
-	"nav": ["infos-persos", "infos-pros", "centres-d-intérêts"],
-	"personal-info-subnav": ["bio", "formation"],
+	"nav": ["infos-persos", "infos-pros"],
+	"personal-info-subnav": ["bio", "formation", "centres-d-intérêts"],
 	"personal-info-subnav-bio": ["biographie", "recherche"],
 	"personal-info-subnav-education": ["écoles", "projets"],
 	"professional-info-subnav": ["compétences", "langues", "expériences"]

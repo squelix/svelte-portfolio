@@ -7,8 +7,8 @@
 	"aria": {
 		"nav": "Navigation of about me page"
 	},
-	"nav": ["personal-info", "professional-info", "hobbies"],
-	"personal-info-subnav": ["bio", "education"],
+	"nav": ["personal-info", "professional-info"],
+	"personal-info-subnav": ["bio", "education", "hobbies"],
 	"personal-info-subnav-bio": ["biography", "looking-for"],
 	"personal-info-subnav-education": ["schools", "projects"],
 	"professional-info-subnav": ["skills", "languages", "experiences"]
