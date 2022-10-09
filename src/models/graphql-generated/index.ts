@@ -129,9 +129,9 @@ export type FloatFilterInput = {
 };
 
 export type GenericMorph =
+	| Hobby
 	| I18NLocale
 	| Icon
-	| Interest
 	| Job
 	| JobMission
 	| JobSkill
@@ -148,6 +148,74 @@ export type GenericMorph =
 	| UsersPermissionsPermission
 	| UsersPermissionsRole
 	| UsersPermissionsUser;
+
+export type Hobby = {
+	__typename?: 'Hobby';
+	createdAt?: Maybe<Scalars['DateTime']>;
+	description?: Maybe<Scalars['String']>;
+	icon: Scalars['String'];
+	locale?: Maybe<Scalars['String']>;
+	localizations?: Maybe<HobbyRelationResponseCollection>;
+	name: Scalars['String'];
+	publishedAt?: Maybe<Scalars['DateTime']>;
+	slug?: Maybe<Scalars['String']>;
+	updatedAt?: Maybe<Scalars['DateTime']>;
+};
+
+export type HobbyLocalizationsArgs = {
+	filters?: InputMaybe<HobbyFiltersInput>;
+	pagination?: InputMaybe<PaginationArg>;
+	publicationState?: InputMaybe<PublicationState>;
+	sort?: InputMaybe<Array<InputMaybe<Scalars['String']>>>;
+};
+
+export type HobbyEntity = {
+	__typename?: 'HobbyEntity';
+	attributes?: Maybe<Hobby>;
+	id?: Maybe<Scalars['ID']>;
+};
+
+export type HobbyEntityResponse = {
+	__typename?: 'HobbyEntityResponse';
+	data?: Maybe<HobbyEntity>;
+};
+
+export type HobbyEntityResponseCollection = {
+	__typename?: 'HobbyEntityResponseCollection';
+	data: Array<HobbyEntity>;
+	meta: ResponseCollectionMeta;
+};
+
+export type HobbyFiltersInput = {
+	and?: InputMaybe<Array<InputMaybe<HobbyFiltersInput>>>;
+	createdAt?: InputMaybe<DateTimeFilterInput>;
+	description?: InputMaybe<StringFilterInput>;
+	icon?: InputMaybe<StringFilterInput>;
+	id?: InputMaybe<IdFilterInput>;
+	locale?: InputMaybe<StringFilterInput>;
+	localizations?: InputMaybe<HobbyFiltersInput>;
+	name?: InputMaybe<StringFilterInput>;
+	not?: InputMaybe<HobbyFiltersInput>;
+	or?: InputMaybe<Array<InputMaybe<HobbyFiltersInput>>>;
+	publishedAt?: InputMaybe<DateTimeFilterInput>;
+	sitemap_exclude?: InputMaybe<BooleanFilterInput>;
+	slug?: InputMaybe<StringFilterInput>;
+	updatedAt?: InputMaybe<DateTimeFilterInput>;
+};
+
+export type HobbyInput = {
+	description?: InputMaybe<Scalars['String']>;
+	icon?: InputMaybe<Scalars['String']>;
+	name?: InputMaybe<Scalars['String']>;
+	publishedAt?: InputMaybe<Scalars['DateTime']>;
+	sitemap_exclude?: InputMaybe<Scalars['Boolean']>;
+	slug?: InputMaybe<Scalars['String']>;
+};
+
+export type HobbyRelationResponseCollection = {
+	__typename?: 'HobbyRelationResponseCollection';
+	data: Array<HobbyEntity>;
+};
 
 export type I18NLocale = {
 	__typename?: 'I18NLocale';
@@ -298,70 +366,6 @@ export type IntFilterInput = {
 	null?: InputMaybe<Scalars['Boolean']>;
 	or?: InputMaybe<Array<InputMaybe<Scalars['Int']>>>;
 	startsWith?: InputMaybe<Scalars['Int']>;
-};
-
-export type Interest = {
-	__typename?: 'Interest';
-	createdAt?: Maybe<Scalars['DateTime']>;
-	icon?: Maybe<UploadFileEntityResponse>;
-	locale?: Maybe<Scalars['String']>;
-	localizations?: Maybe<InterestRelationResponseCollection>;
-	name: Scalars['String'];
-	publishedAt?: Maybe<Scalars['DateTime']>;
-	slug?: Maybe<Scalars['String']>;
-	updatedAt?: Maybe<Scalars['DateTime']>;
-};
-
-export type InterestLocalizationsArgs = {
-	filters?: InputMaybe<InterestFiltersInput>;
-	pagination?: InputMaybe<PaginationArg>;
-	publicationState?: InputMaybe<PublicationState>;
-	sort?: InputMaybe<Array<InputMaybe<Scalars['String']>>>;
-};
-
-export type InterestEntity = {
-	__typename?: 'InterestEntity';
-	attributes?: Maybe<Interest>;
-	id?: Maybe<Scalars['ID']>;
-};
-
-export type InterestEntityResponse = {
-	__typename?: 'InterestEntityResponse';
-	data?: Maybe<InterestEntity>;
-};
-
-export type InterestEntityResponseCollection = {
-	__typename?: 'InterestEntityResponseCollection';
-	data: Array<InterestEntity>;
-	meta: ResponseCollectionMeta;
-};
-
-export type InterestFiltersInput = {
-	and?: InputMaybe<Array<InputMaybe<InterestFiltersInput>>>;
-	createdAt?: InputMaybe<DateTimeFilterInput>;
-	id?: InputMaybe<IdFilterInput>;
-	locale?: InputMaybe<StringFilterInput>;
-	localizations?: InputMaybe<InterestFiltersInput>;
-	name?: InputMaybe<StringFilterInput>;
-	not?: InputMaybe<InterestFiltersInput>;
-	or?: InputMaybe<Array<InputMaybe<InterestFiltersInput>>>;
-	publishedAt?: InputMaybe<DateTimeFilterInput>;
-	sitemap_exclude?: InputMaybe<BooleanFilterInput>;
-	slug?: InputMaybe<StringFilterInput>;
-	updatedAt?: InputMaybe<DateTimeFilterInput>;
-};
-
-export type InterestInput = {
-	icon?: InputMaybe<Scalars['ID']>;
-	name?: InputMaybe<Scalars['String']>;
-	publishedAt?: InputMaybe<Scalars['DateTime']>;
-	sitemap_exclude?: InputMaybe<Scalars['Boolean']>;
-	slug?: InputMaybe<Scalars['String']>;
-};
-
-export type InterestRelationResponseCollection = {
-	__typename?: 'InterestRelationResponseCollection';
-	data: Array<InterestEntity>;
 };
 
 export type JsonFilterInput = {
@@ -686,8 +690,9 @@ export type Mutation = {
 	__typename?: 'Mutation';
 	/** Change user password. Confirm with the current password. */
 	changePassword?: Maybe<UsersPermissionsLoginPayload>;
+	createHobby?: Maybe<HobbyEntityResponse>;
+	createHobbyLocalization?: Maybe<HobbyEntityResponse>;
 	createIconLocalization?: Maybe<IconEntityResponse>;
-	createInterestLocalization?: Maybe<InterestEntityResponse>;
 	createJobLocalization?: Maybe<JobEntityResponse>;
 	createJobMissionLocalization?: Maybe<JobMissionEntityResponse>;
 	createJobSkillLocalization?: Maybe<JobSkillEntityResponse>;
@@ -703,6 +708,7 @@ export type Mutation = {
 	createUsersPermissionsRole?: Maybe<UsersPermissionsCreateRolePayload>;
 	/** Create a new user */
 	createUsersPermissionsUser: UsersPermissionsUserEntityResponse;
+	deleteHobby?: Maybe<HobbyEntityResponse>;
 	deleteUploadFile?: Maybe<UploadFileEntityResponse>;
 	deleteUploadFolder?: Maybe<UploadFolderEntityResponse>;
 	/** Delete an existing role */
@@ -721,6 +727,7 @@ export type Mutation = {
 	/** Reset user password. Confirm with a code (resetToken from forgotPassword) */
 	resetPassword?: Maybe<UsersPermissionsLoginPayload>;
 	updateFileInfo: UploadFileEntityResponse;
+	updateHobby?: Maybe<HobbyEntityResponse>;
 	updateUploadFile?: Maybe<UploadFileEntityResponse>;
 	updateUploadFolder?: Maybe<UploadFolderEntityResponse>;
 	/** Update an existing role */
@@ -736,14 +743,19 @@ export type MutationChangePasswordArgs = {
 	passwordConfirmation: Scalars['String'];
 };
 
-export type MutationCreateIconLocalizationArgs = {
-	data?: InputMaybe<IconInput>;
+export type MutationCreateHobbyArgs = {
+	data: HobbyInput;
+	locale?: InputMaybe<Scalars['I18NLocaleCode']>;
+};
+
+export type MutationCreateHobbyLocalizationArgs = {
+	data?: InputMaybe<HobbyInput>;
 	id?: InputMaybe<Scalars['ID']>;
 	locale?: InputMaybe<Scalars['I18NLocaleCode']>;
 };
 
-export type MutationCreateInterestLocalizationArgs = {
-	data?: InputMaybe<InterestInput>;
+export type MutationCreateIconLocalizationArgs = {
+	data?: InputMaybe<IconInput>;
 	id?: InputMaybe<Scalars['ID']>;
 	locale?: InputMaybe<Scalars['I18NLocaleCode']>;
 };
@@ -818,6 +830,11 @@ export type MutationCreateUsersPermissionsUserArgs = {
 	data: UsersPermissionsUserInput;
 };
 
+export type MutationDeleteHobbyArgs = {
+	id: Scalars['ID'];
+	locale?: InputMaybe<Scalars['I18NLocaleCode']>;
+};
+
 export type MutationDeleteUploadFileArgs = {
 	id: Scalars['ID'];
 };
@@ -870,6 +887,12 @@ export type MutationResetPasswordArgs = {
 export type MutationUpdateFileInfoArgs = {
 	id: Scalars['ID'];
 	info?: InputMaybe<FileInfoInput>;
+};
+
+export type MutationUpdateHobbyArgs = {
+	data: HobbyInput;
+	id: Scalars['ID'];
+	locale?: InputMaybe<Scalars['I18NLocaleCode']>;
 };
 
 export type MutationUpdateUploadFileArgs = {
@@ -1075,12 +1098,12 @@ export enum PublicationState {
 
 export type Query = {
 	__typename?: 'Query';
+	hobbies?: Maybe<HobbyEntityResponseCollection>;
+	hobby?: Maybe<HobbyEntityResponse>;
 	i18NLocale?: Maybe<I18NLocaleEntityResponse>;
 	i18NLocales?: Maybe<I18NLocaleEntityResponseCollection>;
 	icon?: Maybe<IconEntityResponse>;
 	icons?: Maybe<IconEntityResponseCollection>;
-	interest?: Maybe<InterestEntityResponse>;
-	interests?: Maybe<InterestEntityResponseCollection>;
 	job?: Maybe<JobEntityResponse>;
 	jobMission?: Maybe<JobMissionEntityResponse>;
 	jobMissions?: Maybe<JobMissionEntityResponseCollection>;
@@ -1113,6 +1136,19 @@ export type Query = {
 	usersPermissionsUsers?: Maybe<UsersPermissionsUserEntityResponseCollection>;
 };
 
+export type QueryHobbiesArgs = {
+	filters?: InputMaybe<HobbyFiltersInput>;
+	locale?: InputMaybe<Scalars['I18NLocaleCode']>;
+	pagination?: InputMaybe<PaginationArg>;
+	publicationState?: InputMaybe<PublicationState>;
+	sort?: InputMaybe<Array<InputMaybe<Scalars['String']>>>;
+};
+
+export type QueryHobbyArgs = {
+	id?: InputMaybe<Scalars['ID']>;
+	locale?: InputMaybe<Scalars['I18NLocaleCode']>;
+};
+
 export type QueryI18NLocaleArgs = {
 	id?: InputMaybe<Scalars['ID']>;
 };
@@ -1130,19 +1166,6 @@ export type QueryIconArgs = {
 
 export type QueryIconsArgs = {
 	filters?: InputMaybe<IconFiltersInput>;
-	locale?: InputMaybe<Scalars['I18NLocaleCode']>;
-	pagination?: InputMaybe<PaginationArg>;
-	publicationState?: InputMaybe<PublicationState>;
-	sort?: InputMaybe<Array<InputMaybe<Scalars['String']>>>;
-};
-
-export type QueryInterestArgs = {
-	id?: InputMaybe<Scalars['ID']>;
-	locale?: InputMaybe<Scalars['I18NLocaleCode']>;
-};
-
-export type QueryInterestsArgs = {
-	filters?: InputMaybe<InterestFiltersInput>;
 	locale?: InputMaybe<Scalars['I18NLocaleCode']>;
 	pagination?: InputMaybe<PaginationArg>;
 	publicationState?: InputMaybe<PublicationState>;
@@ -2042,6 +2065,27 @@ export type UsersPermissionsUserInput = {
 export type UsersPermissionsUserRelationResponseCollection = {
 	__typename?: 'UsersPermissionsUserRelationResponseCollection';
 	data: Array<UsersPermissionsUserEntity>;
+};
+
+export type GetHobbiesQueryVariables = Exact<{
+	locale?: InputMaybe<Scalars['I18NLocaleCode']>;
+}>;
+
+export type GetHobbiesQuery = {
+	__typename?: 'Query';
+	hobbies?: {
+		__typename?: 'HobbyEntityResponseCollection';
+		data: Array<{
+			__typename?: 'HobbyEntity';
+			attributes?: {
+				__typename?: 'Hobby';
+				name: string;
+				icon: string;
+				description?: string | null;
+				slug?: string | null;
+			} | null;
+		}>;
+	} | null;
 };
 
 export type GetLanguagesQueryVariables = Exact<{
