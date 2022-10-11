@@ -10,6 +10,8 @@
 	export let item: PageNavFilterItemInterface;
 	export let selectedItems: string[];
 
+	const ENTER_KEY = 'Enter';
+
 	const setSeletedItem = (itemId: string) => {
 		if (itemId !== $navItemSelected) {
 			navItemSelected.set(itemId);
@@ -22,6 +24,16 @@
 		}
 		subNavItemOpened.set(undefined);
 	};
+
+	const selectItem = (): void => {
+		setSeletedItem(item.id);
+	};
+
+	const keydown = ({ code }: KeyboardEvent): void => {
+		if (code === ENTER_KEY) {
+			selectItem();
+		}
+	};
 </script>
 
 <li class="page-nav-filter-item">
@@ -29,7 +41,8 @@
 		type="button"
 		class="btn-clean page-nav-filter-item__button"
 		aria-expanded={$navItemOpened === item.id}
-		on:click={() => setSeletedItem(item.id)}
+		on:click={selectItem}
+		on:keydown={keydown}
 	>
 		<span
 			class="page-nav-filter-item__button__icon"
@@ -109,7 +122,7 @@
 			}
 
 			&[aria-hidden='false'] {
-				max-height: 400px;
+				max-height: 1000px;
 				opacity: 1;
 				gap: 1rem;
 				padding: 1rem 0 1rem 1.6875rem;

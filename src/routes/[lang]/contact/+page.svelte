@@ -19,6 +19,7 @@
 	import { fade } from 'svelte/transition';
 
 	const transitionMs = 175;
+	const ENTER_KEY = 'Enter';
 
 	let intervalLoading: number;
 	let intervalLoaded: number;
@@ -126,6 +127,12 @@
 			showForm = true;
 		}, transitionMs);
 	};
+
+	const keydown = ({ code }: KeyboardEvent): void => {
+		if (code === ENTER_KEY) {
+			hideConfirmMessage();
+		}
+	};
 </script>
 
 <svelte:head>
@@ -164,7 +171,7 @@
 	<section class="confirm" transition:fade={{ duration: transitionMs, easing: sineInOut }}>
 		<p class="confirm__thank-you">{$t('contact.confirm.thankYou')}</p>
 		<p class="confirm__message">{$t('contact.confirm.message')}</p>
-		<Button type="button" class="confirm__button" on:click={hideConfirmMessage}
+		<Button type="button" class="confirm__button" on:click={hideConfirmMessage} on:keydown={keydown}
 			>{$t('contact.confirm.button')}</Button
 		>
 	</section>

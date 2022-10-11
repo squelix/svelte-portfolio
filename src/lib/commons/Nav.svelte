@@ -6,14 +6,26 @@
 	import Icon from '$lib/SvgIcon.svelte';
 	import { t } from '$translations';
 
+	const ENTER_KEY = 'Enter';
 	let open = false;
+
+	const toggleClose = (): void => {
+		open = !open;
+	};
+
+	const keydown = ({ code }: KeyboardEvent): void => {
+		if (code === ENTER_KEY) {
+			toggleClose();
+		}
+	};
 </script>
 
 <nav class="nav">
 	<button
 		class="btn-clean nav__btn"
 		aria-expanded={open}
-		on:click={() => (open = !open)}
+		on:click={toggleClose}
+		on:keydown={keydown}
 		aria-label="Ouvrir le menu de navigation"
 	>
 		<Icon data={open ? Cross : Burger} />

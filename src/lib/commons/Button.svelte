@@ -19,6 +19,7 @@
 	class:default={style === 'default'}
 	class:ghost={style === 'ghost'}
 	on:click
+	on:keydown
 >
 	<slot />
 	{#if isLoading}

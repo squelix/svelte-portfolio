@@ -11,12 +11,26 @@
 
 	const dispatch = createEventDispatcher();
 
+	const ENTER_KEY = 'Enter';
+
 	const closeMenu = (): void => {
 		dispatch('closeMenu');
 	};
+
+	const keydown = ({ code }: KeyboardEvent): void => {
+		if (code === ENTER_KEY) {
+			closeMenu();
+		}
+	};
 </script>
 
-<li class="item" class:item--last={last} class:item--before-last={beforeLast} on:click={closeMenu}>
+<li
+	class="item"
+	class:item--last={last}
+	class:item--before-last={beforeLast}
+	on:click={closeMenu}
+	on:keydown={keydown}
+>
 	<a
 		class="item__link"
 		href={getRoute($locale, link)}
@@ -42,6 +56,10 @@
 
 			&--selected {
 				@include link.linkSelected(var(--accent-1), 0, var(--secondary-4));
+			}
+
+			&:focus {
+				outline-offset: -10px;
 			}
 		}
 

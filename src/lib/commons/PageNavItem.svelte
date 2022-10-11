@@ -10,6 +10,8 @@
 
 	export let item: PageNavItemInterface;
 
+	const ENTER_KEY = 'Enter';
+
 	const setSeletedItem = (itemId: string) => {
 		if (itemId !== $navItemSelected) {
 			navItemSelected.set(itemId);
@@ -22,6 +24,16 @@
 		}
 		subNavItemOpened.set(undefined);
 	};
+
+	const selectItem = (): void => {
+		setSeletedItem(item.id);
+	};
+
+	const keydown = ({ code }: KeyboardEvent): void => {
+		if (code === ENTER_KEY) {
+			selectItem();
+		}
+	};
 </script>
 
 <li class="page-nav-item">
@@ -30,7 +42,8 @@
 			type="button"
 			class="btn-clean page-nav-item__button"
 			aria-expanded={$navItemOpened === item.id}
-			on:click={() => setSeletedItem(item.id)}
+			on:click={selectItem}
+			on:keydown={keydown}
 		>
 			<span
 				class="page-nav-item__button__icon"
