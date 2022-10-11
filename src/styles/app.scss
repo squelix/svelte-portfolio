@@ -57,3 +57,9 @@ body {
 .focus-off *:focus {
 	outline: none;
 }
+
+.focus-on *:focus {
+	transition: transform var(--transition-duration) var(--transition-easing);
+	transform: scale(1.08);
+	outline: 2px solid var(--accent-1);
+}

@@ -19,14 +19,16 @@
 	const toggleOutline = (value: boolean) => {
 		if (!value) {
 			document.body.classList.add('focus-off');
+			document.body.classList.remove('focus-on');
 		} else {
 			document.body.classList.remove('focus-off');
+			document.body.classList.add('focus-on');
 		}
 	};
 
 	const keyDownEvent = (event: KeyboardEvent) => {
 		if (event.code === TAB_KEY) {
-			toggleOutline(false);
+			toggleOutline(true);
 		}
 	};
 	const mouseDownEvent = () => {
