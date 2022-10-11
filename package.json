@@ -79,6 +79,7 @@
 		"graphql": "^16.6.0",
 		"query-string": "^7.1.1",
 		"sanitize.css": "^13.0.0",
-		"slugify": "^1.6.5"
+		"slugify": "^1.6.5",
+		"svelte-vertical-timeline": "^0.0.2"
 	}
 }
