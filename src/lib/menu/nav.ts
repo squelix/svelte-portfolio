@@ -68,9 +68,10 @@ export const professionalInfoNavItems: PageNavItemInterface[] = [
 		icon: Mardown
 	},
 	{
-		id: ProfessionalInfoNavItemEnum.Projects,
-		labelKey: 'about.professional-info-subnav.2'
-		// link: ''
+		id: ProfessionalInfoNavItemEnum.Experiences,
+		labelKey: 'about.professional-info-subnav.2',
+		link: RoutesEnum.AboutProfessionalInfoExperiences,
+		icon: Mardown
 	}
 ];
 
