@@ -89,6 +89,15 @@ export type DateTimeFilterInput = {
 	startsWith?: InputMaybe<Scalars['DateTime']>;
 };
 
+export enum Enum_Jobskill_Category {
+	Bi = 'BI',
+	Backend = 'Backend',
+	Devops = 'Devops',
+	FrontendGlobal = 'Frontend_Global',
+	FrontendTechnique = 'Frontend_Technique',
+	Mobile = 'Mobile'
+}
+
 export enum Enum_Techno_Color {
 	Blue = 'blue',
 	DarkGreen = 'dark_green',
@@ -402,6 +411,7 @@ export type Job = {
 	localizations?: Maybe<JobRelationResponseCollection>;
 	location: Scalars['String'];
 	picture?: Maybe<UploadFileEntityResponse>;
+	pictureUrl: Scalars['String'];
 	publishedAt?: Maybe<Scalars['DateTime']>;
 	slug?: Maybe<Scalars['String']>;
 	startDate: Scalars['Date'];
@@ -459,6 +469,7 @@ export type JobFiltersInput = {
 	location?: InputMaybe<StringFilterInput>;
 	not?: InputMaybe<JobFiltersInput>;
 	or?: InputMaybe<Array<InputMaybe<JobFiltersInput>>>;
+	pictureUrl?: InputMaybe<StringFilterInput>;
 	publishedAt?: InputMaybe<DateTimeFilterInput>;
 	sitemap_exclude?: InputMaybe<BooleanFilterInput>;
 	slug?: InputMaybe<StringFilterInput>;
@@ -473,6 +484,7 @@ export type JobInput = {
 	jobSkills?: InputMaybe<Array<InputMaybe<Scalars['ID']>>>;
 	location?: InputMaybe<Scalars['String']>;
 	picture?: InputMaybe<Scalars['ID']>;
+	pictureUrl?: InputMaybe<Scalars['String']>;
 	publishedAt?: InputMaybe<Scalars['DateTime']>;
 	sitemap_exclude?: InputMaybe<Scalars['Boolean']>;
 	slug?: InputMaybe<Scalars['String']>;
@@ -558,8 +570,8 @@ export type JobRelationResponseCollection = {
 
 export type JobSkill = {
 	__typename?: 'JobSkill';
+	category?: Maybe<Enum_Jobskill_Category>;
 	createdAt?: Maybe<Scalars['DateTime']>;
-	description: Scalars['String'];
 	locale?: Maybe<Scalars['String']>;
 	localizations?: Maybe<JobSkillRelationResponseCollection>;
 	name: Scalars['String'];
@@ -594,8 +606,8 @@ export type JobSkillEntityResponseCollection = {
 
 export type JobSkillFiltersInput = {
 	and?: InputMaybe<Array<InputMaybe<JobSkillFiltersInput>>>;
+	category?: InputMaybe<StringFilterInput>;
 	createdAt?: InputMaybe<DateTimeFilterInput>;
-	description?: InputMaybe<StringFilterInput>;
 	id?: InputMaybe<IdFilterInput>;
 	locale?: InputMaybe<StringFilterInput>;
 	localizations?: InputMaybe<JobSkillFiltersInput>;
@@ -609,7 +621,7 @@ export type JobSkillFiltersInput = {
 };
 
 export type JobSkillInput = {
-	description?: InputMaybe<Scalars['String']>;
+	category?: InputMaybe<Enum_Jobskill_Category>;
 	name?: InputMaybe<Scalars['String']>;
 	publishedAt?: InputMaybe<Scalars['DateTime']>;
 	sitemap_exclude?: InputMaybe<Scalars['Boolean']>;
@@ -690,7 +702,6 @@ export type Mutation = {
 	__typename?: 'Mutation';
 	/** Change user password. Confirm with the current password. */
 	changePassword?: Maybe<UsersPermissionsLoginPayload>;
-	createHobby?: Maybe<HobbyEntityResponse>;
 	createHobbyLocalization?: Maybe<HobbyEntityResponse>;
 	createIconLocalization?: Maybe<IconEntityResponse>;
 	createJobLocalization?: Maybe<JobEntityResponse>;
@@ -708,7 +719,6 @@ export type Mutation = {
 	createUsersPermissionsRole?: Maybe<UsersPermissionsCreateRolePayload>;
 	/** Create a new user */
 	createUsersPermissionsUser: UsersPermissionsUserEntityResponse;
-	deleteHobby?: Maybe<HobbyEntityResponse>;
 	deleteUploadFile?: Maybe<UploadFileEntityResponse>;
 	deleteUploadFolder?: Maybe<UploadFolderEntityResponse>;
 	/** Delete an existing role */
@@ -727,7 +737,6 @@ export type Mutation = {
 	/** Reset user password. Confirm with a code (resetToken from forgotPassword) */
 	resetPassword?: Maybe<UsersPermissionsLoginPayload>;
 	updateFileInfo: UploadFileEntityResponse;
-	updateHobby?: Maybe<HobbyEntityResponse>;
 	updateUploadFile?: Maybe<UploadFileEntityResponse>;
 	updateUploadFolder?: Maybe<UploadFolderEntityResponse>;
 	/** Update an existing role */
@@ -741,11 +750,6 @@ export type MutationChangePasswordArgs = {
 	currentPassword: Scalars['String'];
 	password: Scalars['String'];
 	passwordConfirmation: Scalars['String'];
-};
-
-export type MutationCreateHobbyArgs = {
-	data: HobbyInput;
-	locale?: InputMaybe<Scalars['I18NLocaleCode']>;
 };
 
 export type MutationCreateHobbyLocalizationArgs = {
@@ -830,11 +834,6 @@ export type MutationCreateUsersPermissionsUserArgs = {
 	data: UsersPermissionsUserInput;
 };
 
-export type MutationDeleteHobbyArgs = {
-	id: Scalars['ID'];
-	locale?: InputMaybe<Scalars['I18NLocaleCode']>;
-};
-
 export type MutationDeleteUploadFileArgs = {
 	id: Scalars['ID'];
 };
@@ -887,12 +886,6 @@ export type MutationResetPasswordArgs = {
 export type MutationUpdateFileInfoArgs = {
 	id: Scalars['ID'];
 	info?: InputMaybe<FileInfoInput>;
-};
-
-export type MutationUpdateHobbyArgs = {
-	data: HobbyInput;
-	id: Scalars['ID'];
-	locale?: InputMaybe<Scalars['I18NLocaleCode']>;
 };
 
 export type MutationUpdateUploadFileArgs = {
@@ -2083,6 +2076,62 @@ export type GetHobbiesQuery = {
 				icon: string;
 				description?: string | null;
 				slug?: string | null;
+			} | null;
+		}>;
+	} | null;
+};
+
+export type GetJobsQueryVariables = Exact<{
+	locale?: InputMaybe<Scalars['I18NLocaleCode']>;
+}>;
+
+export type GetJobsQuery = {
+	__typename?: 'Query';
+	jobs?: {
+		__typename?: 'JobEntityResponseCollection';
+		data: Array<{
+			__typename?: 'JobEntity';
+			attributes?: {
+				__typename?: 'Job';
+				title: string;
+				location: string;
+				startDate: any;
+				endDate?: any | null;
+				slug?: string | null;
+				pictureUrl: string;
+				picture?: {
+					__typename?: 'UploadFileEntityResponse';
+					data?: {
+						__typename?: 'UploadFileEntity';
+						attributes?: { __typename?: 'UploadFile'; name: string; url: string } | null;
+					} | null;
+				} | null;
+				jobMissions?: {
+					__typename?: 'JobMissionRelationResponseCollection';
+					data: Array<{
+						__typename?: 'JobMissionEntity';
+						attributes?: {
+							__typename?: 'JobMission';
+							title: string;
+							url: string;
+							order: number;
+							urlName?: string | null;
+							slug?: string | null;
+						} | null;
+					}>;
+				} | null;
+				jobSkills?: {
+					__typename?: 'JobSkillRelationResponseCollection';
+					data: Array<{
+						__typename?: 'JobSkillEntity';
+						attributes?: {
+							__typename?: 'JobSkill';
+							name: string;
+							slug?: string | null;
+							category?: Enum_Jobskill_Category | null;
+						} | null;
+					}>;
+				} | null;
 			} | null;
 		}>;
 	} | null;
