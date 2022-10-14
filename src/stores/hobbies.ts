@@ -25,6 +25,6 @@ export const hobbiesListDisplay = derived(
 					}
 					return `${icon.default} ${hobby.name}`;
 				})
-				.filter((hobby) => !!hobby)
+				.filter(async (hobby) => !!(await hobby))
 		) as Promise<string[]>
 );
