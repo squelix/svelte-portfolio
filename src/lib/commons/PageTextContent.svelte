@@ -24,7 +24,7 @@
 
 	.content {
 		color: var(--secondary-1);
-		padding: 1.0625rem 1.6875rem 0 1.6875rem;
+		padding: 1.0625rem;
 		grid-column: 2/4;
 
 		&__text {
@@ -34,7 +34,8 @@
 		}
 
 		@include br.desktop {
-			padding: 1.0625rem 2.375rem 0 2.375rem;
+			overflow-y: auto;
+			padding: 1.0625rem 2.375rem;
 
 			&__text {
 				&--desktop {
