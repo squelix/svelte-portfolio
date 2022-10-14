@@ -502,7 +502,7 @@ export type JobMission = {
 	slug?: Maybe<Scalars['String']>;
 	title: Scalars['String'];
 	updatedAt?: Maybe<Scalars['DateTime']>;
-	url: Scalars['String'];
+	url?: Maybe<Scalars['String']>;
 	urlName?: Maybe<Scalars['String']>;
 };
 
@@ -2113,7 +2113,7 @@ export type GetJobsQuery = {
 						attributes?: {
 							__typename?: 'JobMission';
 							title: string;
-							url: string;
+							url?: string | null;
 							order: number;
 							urlName?: string | null;
 							slug?: string | null;
