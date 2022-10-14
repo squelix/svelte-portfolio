@@ -31,11 +31,7 @@
 
 	<div class="card">
 		{#if project.picture?.data?.attributes}
-			<Image
-				class="card__img"
-				src={project.picture.data?.attributes?.url}
-				params={{ width: 370 }}
-			/>
+			<Image src={project.picture.data?.attributes?.url} params={{ width: 370 }} />
 		{/if}
 
 		<div class="card__bottom">
