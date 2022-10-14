@@ -181,6 +181,7 @@
 
 		&__link {
 			color: var(--accent-3);
+			text-decoration: underline;
 		}
 
 		@include br.desktop {
