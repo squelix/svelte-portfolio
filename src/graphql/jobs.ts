@@ -1,4 +1,4 @@
-import { gql } from '@urql/svelte';
+import { gql } from '@urql/core';
 
 export const GET_JOBS_QUERY = gql`
 	query getJobs($locale: I18NLocaleCode) {

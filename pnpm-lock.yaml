@@ -15,8 +15,8 @@ specifiers:
   '@types/node': ^16.11.65
   '@typescript-eslint/eslint-plugin': ^5.40.0
   '@typescript-eslint/parser': ^5.40.0
+  '@urql/core': ^3.0.4
   '@urql/exchange-graphcache': ^5.0.2
-  '@urql/svelte': ^3.0.1
   babel-jest: ^29.2.0
   cookie: ^0.5.0
   cross-env: ^7.0.3
@@ -54,8 +54,8 @@ specifiers:
   vite: ^3.1.8
 
 dependencies:
+  '@urql/core': 3.0.4_graphql@16.6.0
   '@urql/exchange-graphcache': 5.0.2_graphql@16.6.0
-  '@urql/svelte': 3.0.1_wxbx2ihwd6f3wlqcvarbhfj35a
   cookie: 0.5.0
   dayjs: 1.11.5
   graphql: 16.6.0
@@ -2737,16 +2737,6 @@ packages:
       eslint-visitor-keys: 3.3.0
     dev: true
 
-  /@urql/core/3.0.3_graphql@16.6.0:
-    resolution: {integrity: sha512-raQP51ERNtg5BvlN8x8mHVRvk4K0ugWQ69n53BdkjKpXVV5kuWp7trnwriGv1fQKa8HuiGNSCfyslUucc0OVQg==}
-    peerDependencies:
-      graphql: ^0.11.0 || ^0.12.0 || ^0.13.0 || ^14.0.0 || ^15.0.0 || ^16.0.0
-    dependencies:
-      '@graphql-typed-document-node/core': 3.1.1_graphql@16.6.0
-      graphql: 16.6.0
-      wonka: 6.0.0
-    dev: false
-
   /@urql/core/3.0.4_graphql@16.6.0:
     resolution: {integrity: sha512-7c12WLHKjmxcxM8nrVdtaYHQnS0WXSfYCf5lg28eRL2ySbo2rOPINLblblDo8UwGTeyrNzjSRVd0I0NlTN6XTA==}
     peerDependencies:
@@ -2764,18 +2754,6 @@ packages:
     dependencies:
       '@urql/core': 3.0.4_graphql@16.6.0
       graphql: 16.6.0
-      wonka: 6.0.0
-    dev: false
-
-  /@urql/svelte/3.0.1_wxbx2ihwd6f3wlqcvarbhfj35a:
-    resolution: {integrity: sha512-O5WsLIVl6fWk9duQm2jp3vvVcAqOtru3LEwKAYaM2v6e/tYYxJGYrzNFe3hPkP6H7h0bmOMZBdjGbhGBbF98yA==}
-    peerDependencies:
-      graphql: ^0.11.0 || ^0.12.0 || ^0.13.0 || ^14.0.0 || ^15.0.0 || ^16.0.0
-      svelte: ^3.0.0
-    dependencies:
-      '@urql/core': 3.0.3_graphql@16.6.0
-      graphql: 16.6.0
-      svelte: 3.51.0
       wonka: 6.0.0
     dev: false
 
@@ -7440,6 +7418,7 @@ packages:
   /svelte/3.51.0:
     resolution: {integrity: sha512-PBITYIrsNOuW+Dtds00gSY68raNZQn7i59Dg/fjgf6WwyawPKeBwle692coO7ILZqSO+UJe9899aDn9sMdeOHA==}
     engines: {node: '>= 8'}
+    dev: true
 
   /sveltekit-i18n/2.2.2_svelte@3.51.0:
     resolution: {integrity: sha512-6eygICleGCSL7elY7A3trF8XUhV+mlW56ZSoD0UUKXlw+Y6u0MTTHDq48u1LyY73SfnlbPHXgTarhTjZ0BvUKA==}

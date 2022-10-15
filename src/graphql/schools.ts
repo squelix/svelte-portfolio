@@ -1,4 +1,4 @@
-import { gql } from '@urql/svelte';
+import { gql } from '@urql/core';
 
 export const GET_SCHOOLS_QUERY = gql`
 	query getSchools($locale: I18NLocaleCode) {

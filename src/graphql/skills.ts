@@ -1,4 +1,4 @@
-import { gql } from '@urql/svelte';
+import { gql } from '@urql/core';
 
 export const GET_SKILLS_QUERY = gql`
 	query getSkills($locale: I18NLocaleCode) {

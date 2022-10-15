@@ -1,4 +1,4 @@
-import { gql } from '@urql/svelte';
+import { gql } from '@urql/core';
 
 export const GET_PROJECTS_QUERY = gql`
 	query getProjects($locale: I18NLocaleCode) {

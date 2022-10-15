@@ -1,4 +1,4 @@
-import { gql } from '@urql/svelte';
+import { gql } from '@urql/core';
 
 export const GET_LANGUAGES_QUERY = gql`
 	query getLanguages($locale: I18NLocaleCode) {
