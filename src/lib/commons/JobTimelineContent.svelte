@@ -5,10 +5,10 @@
 
 	import type { Job } from '$models/graphql-generated';
 
-	export let job: Omit<Job, '__typename'>;
+	export let item: Omit<Job, '__typename'>;
 
 	const getJobSkillsCategories = (): string[] => {
-		return job.jobSkills?.data
+		return item.jobSkills?.data
 			.map((skill) => skill.attributes?.category)
 			.filter((category, index, self) => self.indexOf(category) === index)
 			.map((category) => category?.replace('_', ' '))
@@ -18,7 +18,7 @@
 	const groupSkillsByCategories = (): { category: string; skills: string[] }[] => {
 		return getJobSkillsCategories().map((category) => ({
 			category,
-			skills: job.jobSkills?.data
+			skills: item.jobSkills?.data
 				.filter((skill) => skill.attributes?.category?.replace('_', ' ') === category)
 				.map((skill) => skill.attributes?.name)
 				.filter((skill) => !!skill) as string[]
@@ -27,23 +27,23 @@
 </script>
 
 <header>
-	<p class="date">{dayjs(job?.startDate).format('MMMM YYYY')}</p>
-	{#if job.picture?.data?.attributes}
+	<p class="date">{dayjs(item?.startDate).format('MMMM YYYY')}</p>
+	{#if item.picture?.data?.attributes}
 		<div class="picture">
 			<Image
-				src={job.picture?.data?.attributes?.url}
+				src={item.picture?.data?.attributes?.url}
 				params={{ width: 100 }}
 				class="picture__img"
 			/>
 		</div>
 	{/if}
-	<h3 class="title">{job.title}</h3>
-	<p>{job.location.toUpperCase()}</p>
+	<h3 class="title">{item.title}</h3>
+	<p>{item.location.toUpperCase()}</p>
 </header>
 
 <h4 class="title">Missions&nbsp;:</h4>
 <ul class="list">
-	{#each job?.jobMissions?.data ?? [] as mission}
+	{#each item?.jobMissions?.data ?? [] as mission}
 		<li>
 			{mission.attributes?.title}
 			{#if mission.attributes?.url && mission.attributes?.urlName}
