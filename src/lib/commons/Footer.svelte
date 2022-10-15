@@ -1,4 +1,6 @@
 <script lang="ts">
+	import Behance from '$icons/behance.svg?raw';
+	import Dribbble from '$icons/dribbble.svg?raw';
 	import Facebook from '$icons/facebook.svg?raw';
 	import Github from '$icons/github.svg?raw';
 	import Twitter from '$icons/twitter.svg?raw';
@@ -25,9 +27,32 @@
 				</a>
 			</li>
 		{/if}
+
+		<li class="footer__socials__item footer__credit">
+			<span class="footer__socials__item__link footer__credit__item">
+				{$t('common.credits')}
+				<a
+					class="footer__credit__item__link"
+					href="https://www.behance.net/darelova"
+					target="_blank"
+					aria-label={$t('common.aria.creditLabelBehance')}
+				>
+					<Icon data={Behance} width="24px" />
+				</a>
+				<a class="footer__credit__item__link" href="https://dribbble.com/YankaD" target="_blank">
+					<Icon data={Dribbble} width="24px" />
+				</a>
+			</span>
+		</li>
+
 		{#if $github?.attributes?.url}
 			<li class="footer__socials__item">
-				<a class="footer__socials__item__link" href={$github?.attributes?.url} target="_blank">
+				<a
+					class="footer__socials__item__link"
+					href={$github?.attributes?.url}
+					target="_blank"
+					aria-label={$t('common.aria.creditLabelDribble')}
+				>
 					<span class="footer__socials__item__link__text">@squelix</span>
 					<Icon data={Github} width="24px" />
 				</a>
@@ -80,9 +105,30 @@
 					width: 1.5rem;
 					height: 1.5rem;
 					margin: auto;
+					transition: color var(--transition-duration) var(--transition-easing);
+
+					&:not(.footer__credit__item):hover {
+						color: var(--secondary-4);
+					}
 
 					&__text {
 						display: none;
+					}
+				}
+			}
+		}
+
+		&__credit {
+			display: none;
+
+			&__item {
+				gap: 0.625rem;
+
+				&__link {
+					transition: color var(--transition-duration) var(--transition-easing);
+
+					&:hover {
+						color: white;
 					}
 				}
 			}
@@ -121,6 +167,15 @@
 					}
 
 					&:nth-child(3) {
+						grid-row: 1;
+						grid-column: -1;
+						width: calc(100% - 137px);
+						justify-self: baseline;
+						z-index: 1;
+					}
+
+					&:nth-child(4) {
+						grid-row: 1;
 						grid-column-start: -1;
 						position: relative;
 
@@ -136,6 +191,22 @@
 
 						.footer__socials__item__link {
 							margin-right: 0;
+						}
+					}
+				}
+			}
+
+			&__credit {
+				display: list-item;
+
+				&__item {
+					gap: 0.625rem;
+
+					&__link {
+						transition: color var(--transition-duration) var(--transition-easing);
+
+						&:hover {
+							color: white;
 						}
 					}
 				}

@@ -1,6 +1,8 @@
 <script lang="ts">
+	import Behance from '$icons/behance.svg?raw';
 	import Burger from '$icons/burger.svg?raw';
 	import Cross from '$icons/cross.svg?raw';
+	import Dribbble from '$icons/dribbble.svg?raw';
 	import NavItem from '$lib/commons/Nav-item.svelte';
 	import { MainRoutes } from '$lib/routing';
 	import Icon from '$lib/SvgIcon.svelte';
@@ -41,6 +43,24 @@
 				on:closeMenu={() => (open = !open)}
 			/>
 		{/each}
+
+		<li class="nav__credit">
+			{$t('common.credits')}
+			<a
+				href="https://www.behance.net/darelova"
+				target="_blank"
+				aria-label={$t('common.aria.creditLabelBehance')}
+			>
+				<Icon data={Behance} width="24px" />
+			</a>
+			<a
+				href="https://dribbble.com/YankaD"
+				target="_blank"
+				aria-label={$t('common.aria.creditLabelDribble')}
+			>
+				<Icon data={Dribbble} width="24px" />
+			</a>
+		</li>
 	</ul>
 </nav>
 
@@ -71,6 +91,18 @@
 			}
 		}
 
+		&__credit {
+			position: absolute;
+			min-height: 59px;
+			bottom: 0;
+			display: flex;
+			gap: 0.625rem;
+			left: 0;
+			right: 0;
+			align-items: center;
+			padding: 1.0625rem;
+		}
+
 		@include br.desktop {
 			flex: 1;
 
@@ -93,6 +125,10 @@
 				border-radius: 0;
 				border: none;
 				box-shadow: none;
+			}
+
+			&__credit {
+				display: none;
 			}
 		}
 	}

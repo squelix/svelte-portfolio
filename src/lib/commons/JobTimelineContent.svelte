@@ -33,7 +33,7 @@
 			<Image
 				src={job.picture?.data?.attributes?.url}
 				params={{ width: 100 }}
-				style={'background-color: var(--secondary-4); padding: 0.5rem; border-radius: 3px;'}
+				class="picture__img"
 			/>
 		</div>
 	{/if}
@@ -98,9 +98,20 @@
 
 	.link {
 		text-decoration: underline;
+		transition: color var(--transition-duration) var(--transition-easing);
+
+		&:hover {
+			color: var(--secondary-4);
+		}
 	}
 
 	.skill-category {
 		@include font.fontWeight(500);
+	}
+
+	.picture :global(.picture__img) {
+		background-color: var(--secondary-4);
+		padding: 0.5rem;
+		border-radius: 3px;
 	}
 </style>

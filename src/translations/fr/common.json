@@ -6,5 +6,10 @@
 		"projects": "_projets",
 		"contact": "_me-contacter"
 	},
-	"footer": "trouvez moi&nbsp;:"
+	"footer": "trouvez moi&nbsp;:",
+	"credits": "Crédits :",
+	"aria": {
+		"creditLabelDribble": "Lien Dribble du designer",
+		"creditLabelBehance": "Lien Behance du designer"
+	}
 }
