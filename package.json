@@ -6,7 +6,7 @@
 		"build": "vite build",
 		"package": "svelte-kit package",
 		"preview": "vite preview",
-		"lint": "npm run eslint && npm run prettier && npm run stylelint && npm run check",
+		"lint": "pnpm eslint && pnpm prettier && pnpm stylelint && pnpm check",
 		"format": "prettier --ignore-path .prettierignore --write --plugin-search-dir=. .",
 		"preeslint": "svelte-kit sync",
 		"eslint": "eslint --ignore-path .eslintignore .",
@@ -20,7 +20,7 @@
 		"generate": "graphql-codegen",
 		"pretest": "svelte-kit sync",
 		"test": "cross-env NODE_OPTIONS=--experimental-vm-modules jest src --config jest.config.json",
-		"test:watch": "npm run test -- --watch"
+		"test:watch": "pnpm test -- --watch"
 	},
 	"devDependencies": {
 		"@babel/core": "^7.19.3",
@@ -50,7 +50,7 @@
 		"prettier": "^2.7.1",
 		"prettier-plugin-svelte": "^2.8.0",
 		"sass": "^1.55.0",
-		"stylelint": "^14.13.0",
+		"stylelint": "^14.14.0",
 		"stylelint-config-prettier": "^9.0.3",
 		"stylelint-config-recommended-scss": "^7.0.0",
 		"stylelint-config-standard": "^28.0.0",
