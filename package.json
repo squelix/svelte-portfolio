@@ -1,6 +1,19 @@
 {
 	"name": "svelte-portfolio",
+	"private": true,
 	"version": "0.0.1",
+	"license": "MIT",
+	"description": "A Svelte portfolio application with a Strapi backend",
+	"author": {
+		"name": "Mickaël Depardon",
+		"email": "contact@mickael-depardon.fr",
+		"url": "https://mickael-depardon.fr"
+	},
+	"engines": {
+		"node": "16",
+		"pnpm": "7"
+	},
+	"type": "module",
 	"scripts": {
 		"dev": "vite dev",
 		"build": "vite build",
@@ -34,7 +47,7 @@
 		"@testing-library/jest-dom": "^5.16.5",
 		"@types/cookie": "^0.5.1",
 		"@types/jest": "^29.1.2",
-		"@types/node": "^16.11.65",
+		"@types/node": "^16.11.66",
 		"@typescript-eslint/eslint-plugin": "^5.40.0",
 		"@typescript-eslint/parser": "^5.40.0",
 		"babel-jest": "^29.2.0",
@@ -55,7 +68,7 @@
 		"stylelint-config-recommended-scss": "^7.0.0",
 		"stylelint-config-standard": "^28.0.0",
 		"stylelint-scss": "^4.3.0",
-		"svelte": "^3.51.0",
+		"svelte": "^3.52.0",
 		"svelte-check": "^2.9.2",
 		"svelte-jester": "^2.3.2",
 		"svelte-preprocess": "^4.10.7",
@@ -66,11 +79,6 @@
 		"typescript": "~4.8.4",
 		"vite": "^3.1.8"
 	},
-	"engines": {
-		"node": "16",
-		"pnpm": "7"
-	},
-	"type": "module",
 	"dependencies": {
 		"@urql/core": "^3.0.4",
 		"@urql/exchange-graphcache": "^5.0.2",
