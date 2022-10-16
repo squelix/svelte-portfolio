@@ -2373,21 +2373,3 @@ export type GetSkillsQuery = {
 		}>;
 	} | null;
 };
-
-export type GetTechnosQueryVariables = Exact<{ [key: string]: never }>;
-
-export type GetTechnosQuery = {
-	__typename?: 'Query';
-	technos?: {
-		__typename?: 'TechnoEntityResponseCollection';
-		data: Array<{
-			__typename?: 'TechnoEntity';
-			attributes?: {
-				__typename?: 'Techno';
-				name: string;
-				slug: string;
-				color?: Enum_Techno_Color | null;
-			} | null;
-		}>;
-	} | null;
-};

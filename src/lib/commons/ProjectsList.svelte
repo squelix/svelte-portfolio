@@ -4,12 +4,13 @@
 	import type { Project as ProjectType, SchoolProject } from '$models/graphql-generated';
 
 	export let projects: (Omit<ProjectType, '__typename'> | Omit<SchoolProject, '__typename'>)[];
+	export let baseTrad: string;
 </script>
 
 <ul class="list">
 	{#each projects as project, index}
 		{#if project}
-			<Project {project} {index} />
+			<Project {project} {index} {baseTrad} />
 		{/if}
 	{/each}
 </ul>

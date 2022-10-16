@@ -8,8 +8,11 @@
 	import ProjectsList from '$lib/commons/ProjectsList.svelte';
 	import { getRoute, RoutesEnum } from '$lib/routing';
 	import { LangEnum } from '$models/langs.enum';
-	import { projectsListFiltered } from '$stores/projects';
-	import { technosFilter, technosListAllFilters } from '$stores/technos';
+	import {
+		projectsListFiltered,
+		projectsTechnosFilter,
+		projectsTechnosListAllFilters
+	} from '$stores/projects';
 	import { locale, t } from '$translations';
 
 	const textMobile = `_${$t('projects.title') as string}`;
@@ -18,18 +21,14 @@
 		detail: { filterId }
 	}: CustomEvent<{ filterId: string }>) => {
 		const url = new URL($page.url);
-		const actualTechnos = $technosFilter ?? [];
+		const actualTechnos = $projectsTechnosFilter ?? [];
 
 		let newTechnos: string[];
 
 		if (actualTechnos.includes(filterId)) {
-			newTechnos = actualTechnos
-				.filter((techno) => techno !== filterId)
-				.filter((techno, index, self) => self.indexOf(techno) === index);
+			newTechnos = [...new Set(actualTechnos.filter((techno) => techno !== filterId))];
 		} else {
-			newTechnos = [...actualTechnos, filterId].filter(
-				(techno, index, self) => self.indexOf(techno) === index
-			);
+			newTechnos = [...new Set([...actualTechnos, filterId])];
 		}
 
 		const queryParams = newTechnos.length > 0 ? `?techno=${newTechnos.join(',')}` : '';
@@ -59,15 +58,15 @@
 	/>
 </svelte:head>
 
-{#if $technosFilter && ($technosFilter ?? []).length > 0}
-	<PageTitle textDesktop={$technosFilter.join('; ')} {textMobile} />
+{#if $projectsTechnosFilter && ($projectsTechnosFilter ?? []).length > 0}
+	<PageTitle textDesktop={$projectsTechnosFilter.join('; ')} {textMobile} />
 {:else}
 	<PageTitle textDesktop={$t('projects.title')} {textMobile} />
 {/if}
 
 <PageNavFilter
-	items={$technosListAllFilters}
-	selectedItems={$technosFilter ?? []}
+	items={$projectsTechnosListAllFilters}
+	selectedItems={$projectsTechnosFilter ?? []}
 	ariaLabel={$t('projects.aria.nav')}
 	on:updateSelectedFilter={updateSelectedFilters}
 />
@@ -76,13 +75,13 @@
 
 <h2>
 	//&nbsp;{$t('projects.title')}
-	{#if $technosFilter && ($technosFilter ?? []).length > 0}
-		<span>/&nbsp;{$technosFilter.join('; ')}</span>
+	{#if $projectsTechnosFilter && ($projectsTechnosFilter ?? []).length > 0}
+		<span>/&nbsp;{$projectsTechnosFilter.join('; ')}</span>
 	{/if}
 </h2>
 
 <LayoutPage>
-	<ProjectsList projects={$projectsListFiltered} />
+	<ProjectsList projects={$projectsListFiltered} baseTrad="projects" />
 </LayoutPage>
 
 <style lang="scss">
