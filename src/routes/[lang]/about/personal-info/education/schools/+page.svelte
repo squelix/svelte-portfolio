@@ -1,8 +1,10 @@
 <script lang="ts">
 	import { page } from '$app/stores';
-	import LayoutPage from '$lib/commons/LayoutPage.svelte';
+	import PageTimeline from '$lib/commons/PageTimeline.svelte';
+	import SchoolTimelineContent from '$lib/commons/SchoolTimelineContent.svelte';
 	import { getRoute, RoutesEnum } from '$lib/routing';
 	import { LangEnum } from '$models/langs.enum';
+	import { schoolsList } from '$stores/schools';
 	import { locale, t } from '$translations';
 </script>
 
@@ -35,6 +37,6 @@
 	/>
 </svelte:head>
 
-<LayoutPage>
-	<p>SCHOOLS</p>
-</LayoutPage>
+<PageTimeline list={$schoolsList} let:item>
+	<SchoolTimelineContent slot="item-content" {item} />
+</PageTimeline>

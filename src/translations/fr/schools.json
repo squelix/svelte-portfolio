@@ -2,5 +2,8 @@
 	"page": {
 		"title": "Formation & Écoles - Portfolio et CV de Mickaël Depardon",
 		"description": "Portfolio et CV de Mickaël Depardon. Page permettant de présenter ma formation et les écoles que j'ai traversées."
+	},
+	"aria": {
+		"pictureLink": "Lien vers la page de l'école "
 	}
 }

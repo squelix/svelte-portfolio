@@ -4,14 +4,25 @@ import { derived, writable } from 'svelte/store';
 import type {
 	GetSchoolsProjectsQuery,
 	GetSchoolsQuery,
+	School,
 	SchoolProject
 } from '$models/graphql-generated';
 import type { Readable } from 'svelte/store';
 
 export const schools = writable<GetSchoolsQuery | undefined>();
 
-export const schoolsList = derived(schools, ($schools) =>
-	($schools?.schools?.data ?? []).map((school) => school.attributes)
+export const schoolsList: Readable<Omit<School, '__typename'>[]> = derived(
+	schools,
+	($schools) =>
+		($schools?.schools?.data ?? [])
+			.map((school) => school.attributes)
+			.map((school) => {
+				if (school?.__typename) {
+					const { __typename, ...j } = school;
+					return j;
+				}
+				return school;
+			}) as Omit<School, '__typename'>[]
 );
 
 export const schoolsProjects = writable<GetSchoolsProjectsQuery | undefined>();
