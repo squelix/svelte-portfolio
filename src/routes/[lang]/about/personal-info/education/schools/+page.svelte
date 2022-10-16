@@ -38,5 +38,5 @@
 </svelte:head>
 
 <PageTimeline list={$schoolsList} let:item>
-	<SchoolTimelineContent slot="item-content" {item} />
+	<SchoolTimelineContent {item} />
 </PageTimeline>

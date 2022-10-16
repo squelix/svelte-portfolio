@@ -33,5 +33,5 @@
 </svelte:head>
 
 <PageTimeline list={$jobsList} let:item>
-	<JobTimelineContent slot="item-content" {item} />
+	<JobTimelineContent {item} />
 </PageTimeline>

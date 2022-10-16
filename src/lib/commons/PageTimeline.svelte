@@ -1,5 +1,4 @@
 <script lang="ts">
-	/* eslint-disable @typescript-eslint/no-unsafe-call */
 	import {
 		Timeline,
 		TimelineConnector,
@@ -9,8 +8,9 @@
 		TimelineSeparator
 	} from 'svelte-vertical-timeline';
 
-	// eslint-disable-next-line @typescript-eslint/no-explicit-any
-	export let list: any[];
+	type T = $$Generic;
+
+	export let list: T[];
 </script>
 
 <section class="content">
@@ -34,7 +34,7 @@
 					{/if}
 				</TimelineSeparator>
 				<TimelineContent>
-					<slot name="item-content" {item} />
+					<slot {item} />
 				</TimelineContent>
 			</TimelineItem>
 		{/each}
