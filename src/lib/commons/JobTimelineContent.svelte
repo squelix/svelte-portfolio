@@ -1,6 +1,7 @@
 <script lang="ts">
-	/* eslint-disable @typescript-eslint/no-unsafe-return, @typescript-eslint/no-unsafe-call */
+	/* eslint-disable @typescript-eslint/no-unsafe-return, @typescript-eslint/no-unsafe-call, @typescript-eslint/restrict-template-expressions */
 	import Image from '$lib/commons/Image.svelte';
+	import { t } from '$translations';
 	import dayjs from 'dayjs';
 
 	import type { Job } from '$models/graphql-generated';
@@ -29,13 +30,28 @@
 <header>
 	<p class="date">{dayjs(item?.startDate).format('MMMM YYYY')}</p>
 	{#if item.picture?.data?.attributes}
-		<div class="picture">
-			<Image
-				src={item.picture?.data?.attributes?.url}
-				params={{ width: 100 }}
-				class="picture__img"
-			/>
-		</div>
+		{#if item.pictureUrl}
+			<a
+				class="picture"
+				href={item.pictureUrl}
+				target="_blank"
+				aria-label={`${$t('experiences.aria.pictureLink')}${item.companyName}`}
+			>
+				<Image
+					src={item.picture?.data?.attributes?.url}
+					params={{ width: 100 }}
+					class="picture__img"
+				/>
+			</a>
+		{:else}
+			<div class="picture">
+				<Image
+					src={item.picture?.data?.attributes?.url}
+					params={{ width: 100 }}
+					class="picture__img"
+				/>
+			</div>
+		{/if}
 	{/if}
 	<h3 class="title">{item.title}</h3>
 	<p>{item.location.toUpperCase()}</p>

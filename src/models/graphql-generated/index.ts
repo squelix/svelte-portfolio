@@ -403,6 +403,7 @@ export type JsonFilterInput = {
 
 export type Job = {
 	__typename?: 'Job';
+	companyName: Scalars['String'];
 	createdAt?: Maybe<Scalars['DateTime']>;
 	endDate?: Maybe<Scalars['Date']>;
 	jobMissions?: Maybe<JobMissionRelationResponseCollection>;
@@ -459,6 +460,7 @@ export type JobEntityResponseCollection = {
 
 export type JobFiltersInput = {
 	and?: InputMaybe<Array<InputMaybe<JobFiltersInput>>>;
+	companyName?: InputMaybe<StringFilterInput>;
 	createdAt?: InputMaybe<DateTimeFilterInput>;
 	endDate?: InputMaybe<DateFilterInput>;
 	id?: InputMaybe<IdFilterInput>;

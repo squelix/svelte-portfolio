@@ -11,6 +11,7 @@ export const GET_JOBS_QUERY = gql`
 					endDate
 					slug
 					pictureUrl
+					companyName
 					picture {
 						data {
 							attributes {

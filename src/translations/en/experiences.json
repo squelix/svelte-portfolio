@@ -2,5 +2,8 @@
 	"page": {
 		"title": "Experiences - Portfolio and CV of Mickaël Depardon",
 		"description": "Portfolio and CV of Mickaël Depardon. Page presenting all my experiences."
+	},
+	"aria": {
+		"pictureLink": "Link to company "
 	}
 }
