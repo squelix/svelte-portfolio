@@ -3,6 +3,7 @@ import css from '$icons/css.svg?raw';
 import flutter from '$icons/flutter.svg?raw';
 import gatsby from '$icons/gatsby.svg?raw';
 import html from '$icons/html.svg?raw';
+import ionic from '$icons/ionic.svg?raw';
 import javascript from '$icons/javascript.svg?raw';
 import react from '$icons/react.svg?raw';
 import scss from '$icons/scss.svg?raw';
@@ -23,5 +24,6 @@ export const technosIcons: Record<string, string> = {
 	svelte,
 	typescript,
 	vue,
-	xna
+	xna,
+	ionic
 };
