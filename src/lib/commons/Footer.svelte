@@ -128,7 +128,7 @@
 					transition: color var(--transition-duration) var(--transition-easing);
 
 					&:hover {
-						color: white;
+						color: var(--secondary-4);
 					}
 				}
 			}
@@ -206,7 +206,7 @@
 						transition: color var(--transition-duration) var(--transition-easing);
 
 						&:hover {
-							color: white;
+							color: var(--secondary-4);
 						}
 					}
 				}
