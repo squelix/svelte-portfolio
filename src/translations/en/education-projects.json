@@ -2,5 +2,14 @@
 	"page": {
 		"title": "School projects - Portfolio and CV of Mickaël Depardon",
 		"description": "Portfolio and CV of Mickaël Depardon. Page allowing to present the various projects I have realized during my training."
+	},
+	"title": "projects",
+	"card": {
+		"title": "Project",
+		"link": "view-project"
+	},
+	"aria": {
+		"nav": "Techno filters",
+		"card": "View project"
 	}
 }

@@ -38,5 +38,5 @@
 </svelte:head>
 
 <LayoutPage>
-	<ProjectsList projects={$schoolsProjectsList} />
+	<ProjectsList projects={$schoolsProjectsList} baseTrad="education-projects" />
 </LayoutPage>
