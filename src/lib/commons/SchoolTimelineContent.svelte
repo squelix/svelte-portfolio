@@ -18,6 +18,7 @@
 				class="picture"
 				href={item.pictureUrl}
 				target="_blank"
+				rel="noreferrer noopener"
 				aria-label={`${$t('schools.aria.pictureLink')}${item.schoolName}`}
 			>
 				<Image

@@ -49,6 +49,7 @@
 			<a
 				href="https://www.behance.net/darelova"
 				target="_blank"
+				rel="noreferrer noopener"
 				aria-label={$t('common.aria.creditLabelBehance')}
 			>
 				<Icon data={Behance} width="24px" />
@@ -56,6 +57,7 @@
 			<a
 				href="https://dribbble.com/YankaD"
 				target="_blank"
+				rel="noreferrer noopener"
 				aria-label={$t('common.aria.creditLabelDribble')}
 			>
 				<Icon data={Dribbble} width="24px" />

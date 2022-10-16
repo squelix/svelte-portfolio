@@ -47,7 +47,7 @@
 				/>
 			{/if}
 			<p class="card__description">{project.description}</p>
-			<Link href={project.url} aria-label={ariaLink} target="_blank"
+			<Link href={project.url} aria-label={ariaLink} target="_blank" rel="noreferrer noopener"
 				>{$t(`${baseTrad}.card.link`)}</Link
 			>
 		</div>

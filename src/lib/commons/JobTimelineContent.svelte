@@ -33,6 +33,7 @@
 				class="picture"
 				href={item.pictureUrl}
 				target="_blank"
+				rel="noreferrer noopener"
 				aria-label={`${$t('experiences.aria.pictureLink')}${item.companyName}`}
 			>
 				<Image
@@ -62,7 +63,7 @@
 			{mission.attributes?.title}
 			{#if mission.attributes?.url && mission.attributes?.urlName}
 				-
-				<a class="link" href={mission.attributes?.url} target="_blank"
+				<a class="link" href={mission.attributes?.url} target="_blank" rel="noreferrer noopener"
 					>{mission.attributes?.urlName}</a
 				>
 			{/if}

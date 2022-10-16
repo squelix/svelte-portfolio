@@ -15,14 +15,24 @@
 	<ul class="footer__socials">
 		{#if $twitter?.attributes?.url}
 			<li class="footer__socials__item">
-				<a class="footer__socials__item__link" href={$twitter?.attributes?.url} target="_blank">
+				<a
+					class="footer__socials__item__link"
+					href={$twitter?.attributes?.url}
+					target="_blank"
+					rel="noreferrer noopener"
+				>
 					<Icon data={Twitter} width="24px" />
 				</a>
 			</li>
 		{/if}
 		{#if $facebook?.attributes?.url}
 			<li class="footer__socials__item">
-				<a class="footer__socials__item__link" href={$facebook?.attributes?.url} target="_blank">
+				<a
+					class="footer__socials__item__link"
+					href={$facebook?.attributes?.url}
+					target="_blank"
+					rel="noreferrer noopener"
+				>
 					<Icon data={Facebook} width="24px" />
 				</a>
 			</li>
@@ -35,11 +45,17 @@
 					class="footer__credit__item__link"
 					href="https://www.behance.net/darelova"
 					target="_blank"
+					rel="noreferrer noopener"
 					aria-label={$t('common.aria.creditLabelBehance')}
 				>
 					<Icon data={Behance} width="24px" />
 				</a>
-				<a class="footer__credit__item__link" href="https://dribbble.com/YankaD" target="_blank">
+				<a
+					class="footer__credit__item__link"
+					href="https://dribbble.com/YankaD"
+					target="_blank"
+					rel="noreferrer noopener"
+				>
 					<Icon data={Dribbble} width="24px" />
 				</a>
 			</span>
@@ -51,6 +67,7 @@
 					class="footer__socials__item__link"
 					href={$github?.attributes?.url}
 					target="_blank"
+					rel="noreferrer noopener"
 					aria-label={$t('common.aria.creditLabelDribble')}
 				>
 					<span class="footer__socials__item__link__text">@squelix</span>

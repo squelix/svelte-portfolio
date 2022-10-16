@@ -43,7 +43,8 @@
 				<span class="github-link__var">githubLink</span>
 				=
 				<span class="github-link__link"
-					>&quot;<a href={$github?.attributes?.url} target="_blank">{$github?.attributes?.url}</a
+					>&quot;<a href={$github?.attributes?.url} target="_blank" rel="noreferrer noopener"
+						>{$github?.attributes?.url}</a
 					>&quot;</span
 				>
 			</p>
