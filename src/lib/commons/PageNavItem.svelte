@@ -98,7 +98,7 @@
 			justify-content: flex-start;
 			text-align: left;
 			width: 100%;
-			padding: 0.3125rem 0 0.3125rem 1.6875rem;
+			padding: 0.5625rem 0 0.5625rem 1.6875rem;
 			background-color: var(--lines);
 			margin: 0;
 		}
