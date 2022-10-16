@@ -481,6 +481,7 @@ export type JobFiltersInput = {
 };
 
 export type JobInput = {
+	companyName?: InputMaybe<Scalars['String']>;
 	endDate?: InputMaybe<Scalars['Date']>;
 	jobMissions?: InputMaybe<Array<InputMaybe<Scalars['ID']>>>;
 	jobSkills?: InputMaybe<Array<InputMaybe<Scalars['ID']>>>;
@@ -1351,9 +1352,10 @@ export type School = {
 	endYear: Scalars['Int'];
 	locale?: Maybe<Scalars['String']>;
 	localizations?: Maybe<SchoolRelationResponseCollection>;
-	name: Scalars['String'];
 	picture: UploadFileEntityResponse;
+	pictureUrl?: Maybe<Scalars['String']>;
 	publishedAt?: Maybe<Scalars['DateTime']>;
+	schoolName: Scalars['String'];
 	slug?: Maybe<Scalars['String']>;
 	startYear: Scalars['Int'];
 	updatedAt?: Maybe<Scalars['DateTime']>;
@@ -1392,10 +1394,11 @@ export type SchoolFiltersInput = {
 	id?: InputMaybe<IdFilterInput>;
 	locale?: InputMaybe<StringFilterInput>;
 	localizations?: InputMaybe<SchoolFiltersInput>;
-	name?: InputMaybe<StringFilterInput>;
 	not?: InputMaybe<SchoolFiltersInput>;
 	or?: InputMaybe<Array<InputMaybe<SchoolFiltersInput>>>;
+	pictureUrl?: InputMaybe<StringFilterInput>;
 	publishedAt?: InputMaybe<DateTimeFilterInput>;
+	schoolName?: InputMaybe<StringFilterInput>;
 	sitemap_exclude?: InputMaybe<BooleanFilterInput>;
 	slug?: InputMaybe<StringFilterInput>;
 	startYear?: InputMaybe<IntFilterInput>;
@@ -1406,9 +1409,10 @@ export type SchoolInput = {
 	address?: InputMaybe<Scalars['String']>;
 	diploma?: InputMaybe<Scalars['String']>;
 	endYear?: InputMaybe<Scalars['Int']>;
-	name?: InputMaybe<Scalars['String']>;
 	picture?: InputMaybe<Scalars['ID']>;
+	pictureUrl?: InputMaybe<Scalars['String']>;
 	publishedAt?: InputMaybe<Scalars['DateTime']>;
+	schoolName?: InputMaybe<Scalars['String']>;
 	sitemap_exclude?: InputMaybe<Scalars['Boolean']>;
 	slug?: InputMaybe<Scalars['String']>;
 	startYear?: InputMaybe<Scalars['Int']>;
@@ -2101,6 +2105,7 @@ export type GetJobsQuery = {
 				endDate?: any | null;
 				slug?: string | null;
 				pictureUrl: string;
+				companyName: string;
 				picture?: {
 					__typename?: 'UploadFileEntityResponse';
 					data?: {
@@ -2340,8 +2345,8 @@ export type GetSchoolsQuery = {
 				address: string;
 				startYear: number;
 				endYear: number;
-				name: string;
 				slug?: string | null;
+				schoolName: string;
 				picture: {
 					__typename?: 'UploadFileEntityResponse';
 					data?: {
