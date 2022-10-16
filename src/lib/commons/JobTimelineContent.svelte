@@ -9,9 +9,7 @@
 	export let item: Omit<Job, '__typename'>;
 
 	const getJobSkillsCategories = (): string[] => {
-		return item.jobSkills?.data
-			.map((skill) => skill.attributes?.category)
-			.filter((category, index, self) => self.indexOf(category) === index)
+		return [...new Set(item.jobSkills?.data.map((skill) => skill.attributes?.category))]
 			.map((category) => category?.replace('_', ' '))
 			.filter((category) => !!category) as string[];
 	};
