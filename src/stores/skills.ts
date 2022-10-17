@@ -23,7 +23,7 @@ export const skillsListBars = derived(
 				if (!bar) {
 					return undefined;
 				}
-				return `${skill.name} : ${bar} (${skill.percentage}%)`;
+				return `${skill.name} : \n${bar} (${skill.percentage}%)`;
 			})
 			.filter((skill) => !!skill) as string[]
 );
