@@ -20,7 +20,7 @@ const sendToAnalytics = async (
 		params: { [s: string]: any } | ArrayLike<any>;
 		path: string;
 		analyticsId: string;
-		debug: boolean;
+		debug?: boolean;
 	}
 ): Promise<void> => {
 	const page = Object.entries(options.params).reduce(
@@ -58,7 +58,13 @@ const sendToAnalytics = async (
 };
 
 // eslint-disable-next-line @typescript-eslint/no-explicit-any
-export const webVitals = (options: any): void => {
+export const webVitals = (options: {
+	// eslint-disable-next-line @typescript-eslint/no-explicit-any
+	params: { [s: string]: any } | ArrayLike<any>;
+	path: string;
+	analyticsId: string;
+	debug?: boolean;
+}): void => {
 	try {
 		onFID(async (metric) => await sendToAnalytics(metric, options));
 		onTTFB(async (metric) => await sendToAnalytics(metric, options));

@@ -23,7 +23,7 @@
 			webVitals({
 				path: $page.url.pathname,
 				params: $page.params,
-				$vercelAnalyticsId
+				analyticsId: $vercelAnalyticsId
 			});
 		}
 	}
