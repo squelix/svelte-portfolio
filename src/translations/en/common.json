@@ -10,6 +10,9 @@
 	"credits": "Credits:",
 	"aria": {
 		"creditLabelDribble": "Designer's Dribble Link",
-		"creditLabelBehance": "Designer's Behance Link"
+		"creditLabelBehance": "Designer's Behance Link",
+		"twitterLabel": "My Twitter link",
+		"facebookLabel": "My Facebook link",
+		"githubLabel": "My Github link"
 	}
 }

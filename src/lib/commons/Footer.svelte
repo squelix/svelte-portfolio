@@ -20,6 +20,7 @@
 					href={$twitter?.attributes?.url}
 					target="_blank"
 					rel="noreferrer noopener"
+					aria-label={$t('common.aria.twitterLabel')}
 				>
 					<Icon data={Twitter} width="24px" />
 				</a>
@@ -32,6 +33,7 @@
 					href={$facebook?.attributes?.url}
 					target="_blank"
 					rel="noreferrer noopener"
+					aria-label={$t('common.aria.facebookLabel')}
 				>
 					<Icon data={Facebook} width="24px" />
 				</a>
@@ -55,6 +57,7 @@
 					href="https://dribbble.com/YankaD"
 					target="_blank"
 					rel="noreferrer noopener"
+					aria-label={$t('common.aria.creditLabelDribble')}
 				>
 					<Icon data={Dribbble} width="24px" />
 				</a>
@@ -68,7 +71,7 @@
 					href={$github?.attributes?.url}
 					target="_blank"
 					rel="noreferrer noopener"
-					aria-label={$t('common.aria.creditLabelDribble')}
+					aria-label={$t('common.aria.githubLabel')}
 				>
 					<span class="footer__socials__item__link__text">@squelix</span>
 					<Icon data={Github} width="24px" />
