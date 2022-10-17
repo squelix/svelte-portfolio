@@ -96,10 +96,6 @@
 		}
 	}
 
-	.picture {
-		margin-top: 0.5rem;
-	}
-
 	.title {
 		@include font.fontWeight(450);
 
@@ -126,6 +122,7 @@
 
 	.picture {
 		display: block;
+		margin-top: 0.5rem;
 
 		:global(.picture__img) {
 			background-color: var(--secondary-4);
