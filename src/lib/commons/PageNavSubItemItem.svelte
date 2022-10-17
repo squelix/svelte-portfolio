@@ -8,6 +8,7 @@
 	import type { PageNavItemInterface } from '$models/page-nav-item.interface';
 
 	export let item: PageNavItemInterface;
+	export let ariaHidden: boolean;
 </script>
 
 <li class="page-nav-sub-item-item">
@@ -20,6 +21,8 @@
 			})}
 			href={getRoute($locale, item.link)}
 			aria-label={item.ariaLabel ? item.ariaLabel : undefined}
+			aria-hidden={ariaHidden}
+			tabindex={ariaHidden ? -1 : undefined}
 		>
 			<span class="page-nav-sub-item-item__link__icon">
 				<Icon data={Mardown} width="100%" />

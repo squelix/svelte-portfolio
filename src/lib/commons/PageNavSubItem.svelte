@@ -12,6 +12,7 @@
 
 	export let item: PageNavItemInterface;
 	export let index: number;
+	export let ariaHidden: boolean;
 
 	const ENTER_KEY = 'Enter';
 
@@ -31,9 +32,11 @@
 		setSeletedItem(item.id);
 	};
 
-	const keydown = ({ code }: KeyboardEvent): void => {
-		if (code === ENTER_KEY) {
+	const keydown = (event: KeyboardEvent): void => {
+		if (event.code === ENTER_KEY) {
 			selectItem();
+			event.preventDefault();
+			event.stopPropagation();
 		}
 	};
 </script>
@@ -47,6 +50,8 @@
 			aria-expanded={$subNavItemOpened === item.id}
 			on:click={selectItem}
 			on:keydown={keydown}
+			tabindex={ariaHidden ? -1 : undefined}
+			aria-hidden={ariaHidden}
 		>
 			<span
 				class="page-nav-sub-item__button__icon-chevron"
@@ -70,7 +75,10 @@
 		</button>
 		<ul class="page-nav-sub-item__sub-items" aria-hidden={$subNavItemOpened !== item.id}>
 			{#each item.items || [] as subItem}
-				<PageNavSubItemItem item={subItem} />
+				<PageNavSubItemItem
+					item={subItem}
+					ariaHidden={$subNavItemOpened !== item.id || ariaHidden}
+				/>
 			{/each}
 		</ul>
 	{:else if item.link}
@@ -83,6 +91,8 @@
 			})}
 			href={getRoute($locale, item.link)}
 			aria-label={item.ariaLabel ? item.ariaLabel : undefined}
+			aria-hidden={ariaHidden}
+			tabindex={ariaHidden ? -1 : undefined}
 		>
 			{#if item.icon}
 				<span class="page-nav-sub-item__link__icon">

@@ -29,9 +29,11 @@
 		setSeletedItem(item.id);
 	};
 
-	const keydown = ({ code }: KeyboardEvent): void => {
-		if (code === ENTER_KEY) {
+	const keydown = (event: KeyboardEvent): void => {
+		if (event.code === ENTER_KEY) {
 			selectItem();
+			event.preventDefault();
+			event.stopPropagation();
 		}
 	};
 </script>
@@ -62,7 +64,7 @@
 		</button>
 		<ul class="page-nav-item__sub-items" aria-hidden={$navItemOpened !== item.id}>
 			{#each item.items || [] as subItem, index}
-				<PageNavSubItem item={subItem} {index} />
+				<PageNavSubItem item={subItem} {index} ariaHidden={$navItemOpened !== item.id} />
 			{/each}
 		</ul>
 	{:else if item.link}
@@ -70,6 +72,8 @@
 			class="page-nav-item__text"
 			href={getRoute($locale, item.link)}
 			aria-label={item.ariaLabel ? item.ariaLabel : undefined}
+			aria-hidden={$navItemOpened !== item.id}
+			tabindex={$navItemOpened !== item.id ? -1 : undefined}
 		>
 			{#if item.labelKey && !item.label}
 				{$t(item.labelKey)}
