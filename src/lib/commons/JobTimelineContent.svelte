@@ -124,9 +124,13 @@
 		@include font.fontWeight(500);
 	}
 
-	.picture :global(.picture__img) {
-		background-color: var(--secondary-4);
-		padding: 0.5rem;
-		border-radius: 3px;
+	.picture {
+		display: block;
+
+		:global(.picture__img) {
+			background-color: var(--secondary-4);
+			padding: 0.5rem;
+			border-radius: 3px;
+		}
 	}
 </style>
