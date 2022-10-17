@@ -23,7 +23,7 @@ export const languagesListBars = derived(
 				if (!bar) {
 					return undefined;
 				}
-				return `${language.name} : ${bar} (${language.percentage}%)`;
+				return `${language.name} : \n${bar} (${language.percentage}%)`;
 			})
 			.filter((language) => !!language) as string[]
 );
