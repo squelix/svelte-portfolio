@@ -40,6 +40,7 @@
 	},
 	"[svelte]": {
 		"editor.defaultFormatter": "svelte.svelte-vscode",
+		"editor.formatOnSave": true,
 		// Fix and organise imports on save
 		"editor.codeActionsOnSave": {
 			"source.fixAll.eslint": true,
