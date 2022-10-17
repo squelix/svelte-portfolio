@@ -6,15 +6,27 @@
 	import 'sanitize.css/typography.css';
 	import '../styles/app.scss';
 
+	import { browser } from '$app/environment';
 	import { page } from '$app/stores';
 	import Footer from '$lib/commons/Footer.svelte';
 	import Header from '$lib/commons/Header.svelte';
 	import { isRouteActive, RoutesEnum } from '$lib/routing';
-	import { strapiUri } from '$stores/env';
+	import { webVitals } from '$lib/webvitals';
+	import { strapiUri, vercelAnalyticsId } from '$stores/env';
 	import { picture } from '$stores/profile';
 	import { locale } from '$translations';
 
 	const TAB_KEY = 'Tab';
+
+	$: {
+		if (browser && $vercelAnalyticsId) {
+			webVitals({
+				path: $page.url.pathname,
+				params: $page.params,
+				$vercelAnalyticsId
+			});
+		}
+	}
 
 	const toggleOutline = (value: boolean) => {
 		if (!value) {

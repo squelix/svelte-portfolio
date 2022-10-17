@@ -15,7 +15,8 @@ export const env = writable<Record<string, string>>({
 	strapiUri: PUBLIC_STRAPI_URI,
 	mailUri: PUBLIC_MAIL_URI,
 	mailAccessToken: PUBLIC_MAIL_ACCESS_TOKEN,
-	reCaptchaKey: PUBLIC_RE_CAPTCHA_KEY
+	reCaptchaKey: PUBLIC_RE_CAPTCHA_KEY,
+	vercelAnalyticsId: import.meta.env.VERCEL_ANALYTICS_ID
 });
 
 export const graphqlUri = derived(env, ($env) => $env.graphqlUri);
@@ -24,3 +25,4 @@ export const mailUri = derived(env, ($env) => $env.mailUri);
 export const mailAccessToken = derived(env, ($env) => $env.mailAccessToken);
 export const reCaptchaKey = derived(env, ($env) => $env.reCaptchaKey);
 export const platform = derived(env, ($env) => $env.platform);
+export const vercelAnalyticsId = derived(env, ($env) => $env.vercelAnalyticsId);

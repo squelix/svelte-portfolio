@@ -16,3 +16,8 @@ interface Window {
 		render: (d: string, t: any) => any;
 	};
 }
+
+interface Navigator {
+	// eslint-disable-next-line @typescript-eslint/no-explicit-any
+	connection: any;
+}

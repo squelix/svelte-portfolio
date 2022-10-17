@@ -9,6 +9,7 @@ const dirname = path.dirname(filename);
 
 const config: UserConfig = {
 	plugins: [sveltekit()],
+	envPrefix: ['PUBLIC', 'VERCEL'],
 	resolve: {
 		alias: {
 			$styles: path.resolve(dirname, './src/styles'),
