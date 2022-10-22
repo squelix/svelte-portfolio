@@ -5,5 +5,19 @@
 	},
 	"aria": {
 		"pictureLink": "Lien vers la page de l'entreprise "
+	},
+	"missions": {
+		"title": "Missions"
+	},
+	"skills": {
+		"title": "Skills",
+		"categories": {
+			"Frontend Technique": "Frontend Technique",
+			"Frontend Global": "Frontend Global",
+			"Backend": "Backend",
+			"Devops": "Devops",
+			"Mobile": "Mobile",
+			"BI": "BI"
+		}
 	}
 }

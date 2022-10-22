@@ -71,11 +71,13 @@
 	{/each}
 </ul>
 
-<h4 class="title">Compétences&nbsp;:</h4>
+<h4 class="title">{$t('experiences.skills.title')}&nbsp;:</h4>
 <ul class="list">
 	{#each groupSkillsByCategories() ?? [] as categoriesSkills}
 		<li>
-			<span class="skill-category">{categoriesSkills.category}&nbsp;: </span>
+			<span class="skill-category"
+				>{$t(`experiences.skills.categories.${categoriesSkills.category}`)}&nbsp;:
+			</span>
 			<span>{categoriesSkills.skills.join(', ')}</span>
 		</li>
 	{/each}

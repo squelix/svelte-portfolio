@@ -5,5 +5,19 @@
 	},
 	"aria": {
 		"pictureLink": "Link to company "
+	},
+	"missions": {
+		"title": "Missions"
+	},
+	"skills": {
+		"title": "Compétences",
+		"categories": {
+			"Frontend Technique": "Technical Frontend",
+			"Frontend Global": "Global Frontend",
+			"Backend": "Backend",
+			"Devops": "Devops",
+			"Mobile": "Mobile",
+			"BI": "BI"
+		}
 	}
 }
