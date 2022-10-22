@@ -9,6 +9,7 @@ import ionic from '$icons/ionic.svg?raw';
 import javascript from '$icons/javascript.svg?raw';
 import ngxs from '$icons/ng-xs.svg?raw';
 import react from '$icons/react.svg?raw';
+import redux from '$icons/redux.svg?raw';
 import scss from '$icons/scss.svg?raw';
 import svelte from '$icons/svelte.svg?raw';
 import typescript from '$icons/typescript.svg?raw';
@@ -27,6 +28,7 @@ export const technosIcons: Record<string, string> = {
 	typescript,
 	ionic,
 	vue,
+	redux,
 	['angular-universal']: universal,
 	['c-xna']: xna,
 	['ng-xs']: ngxs
