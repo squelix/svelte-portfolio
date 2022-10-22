@@ -12,7 +12,7 @@
 	export let width = size;
 	export let height: string | undefined = undefined;
 
-	export let color = 'currentcolor';
+	export let color = 'none';
 	export let stroke = 'none';
 	export let fill = color;
 
