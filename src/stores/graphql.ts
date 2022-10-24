@@ -31,6 +31,7 @@ import type {
 export const client = derived(platform, ($platform) =>
 	createClient({
 		url: get(graphqlUri),
+		...($platform === 'dev' ? {} : { requestPolicy: 'cache-and-network' }),
 		exchanges: [
 			dedupExchange,
 			...($platform === 'dev'
