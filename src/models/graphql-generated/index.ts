@@ -140,7 +140,6 @@ export type FloatFilterInput = {
 export type GenericMorph =
 	| Hobby
 	| I18NLocale
-	| Icon
 	| Job
 	| JobMission
 	| JobSkill
@@ -207,7 +206,6 @@ export type HobbyFiltersInput = {
 	not?: InputMaybe<HobbyFiltersInput>;
 	or?: InputMaybe<Array<InputMaybe<HobbyFiltersInput>>>;
 	publishedAt?: InputMaybe<DateTimeFilterInput>;
-	sitemap_exclude?: InputMaybe<BooleanFilterInput>;
 	slug?: InputMaybe<StringFilterInput>;
 	updatedAt?: InputMaybe<DateTimeFilterInput>;
 };
@@ -217,7 +215,6 @@ export type HobbyInput = {
 	icon?: InputMaybe<Scalars['String']>;
 	name?: InputMaybe<Scalars['String']>;
 	publishedAt?: InputMaybe<Scalars['DateTime']>;
-	sitemap_exclude?: InputMaybe<Scalars['Boolean']>;
 	slug?: InputMaybe<Scalars['String']>;
 };
 
@@ -284,73 +281,6 @@ export type IdFilterInput = {
 	null?: InputMaybe<Scalars['Boolean']>;
 	or?: InputMaybe<Array<InputMaybe<Scalars['ID']>>>;
 	startsWith?: InputMaybe<Scalars['ID']>;
-};
-
-export type Icon = {
-	__typename?: 'Icon';
-	createdAt?: Maybe<Scalars['DateTime']>;
-	locale?: Maybe<Scalars['String']>;
-	localizations?: Maybe<IconRelationResponseCollection>;
-	media: UploadFileEntityResponse;
-	publishedAt?: Maybe<Scalars['DateTime']>;
-	slug?: Maybe<Scalars['String']>;
-	title: Scalars['String'];
-	updatedAt?: Maybe<Scalars['DateTime']>;
-	url: Scalars['String'];
-};
-
-export type IconLocalizationsArgs = {
-	filters?: InputMaybe<IconFiltersInput>;
-	pagination?: InputMaybe<PaginationArg>;
-	publicationState?: InputMaybe<PublicationState>;
-	sort?: InputMaybe<Array<InputMaybe<Scalars['String']>>>;
-};
-
-export type IconEntity = {
-	__typename?: 'IconEntity';
-	attributes?: Maybe<Icon>;
-	id?: Maybe<Scalars['ID']>;
-};
-
-export type IconEntityResponse = {
-	__typename?: 'IconEntityResponse';
-	data?: Maybe<IconEntity>;
-};
-
-export type IconEntityResponseCollection = {
-	__typename?: 'IconEntityResponseCollection';
-	data: Array<IconEntity>;
-	meta: ResponseCollectionMeta;
-};
-
-export type IconFiltersInput = {
-	and?: InputMaybe<Array<InputMaybe<IconFiltersInput>>>;
-	createdAt?: InputMaybe<DateTimeFilterInput>;
-	id?: InputMaybe<IdFilterInput>;
-	locale?: InputMaybe<StringFilterInput>;
-	localizations?: InputMaybe<IconFiltersInput>;
-	not?: InputMaybe<IconFiltersInput>;
-	or?: InputMaybe<Array<InputMaybe<IconFiltersInput>>>;
-	publishedAt?: InputMaybe<DateTimeFilterInput>;
-	sitemap_exclude?: InputMaybe<BooleanFilterInput>;
-	slug?: InputMaybe<StringFilterInput>;
-	title?: InputMaybe<StringFilterInput>;
-	updatedAt?: InputMaybe<DateTimeFilterInput>;
-	url?: InputMaybe<StringFilterInput>;
-};
-
-export type IconInput = {
-	media?: InputMaybe<Scalars['ID']>;
-	publishedAt?: InputMaybe<Scalars['DateTime']>;
-	sitemap_exclude?: InputMaybe<Scalars['Boolean']>;
-	slug?: InputMaybe<Scalars['String']>;
-	title?: InputMaybe<Scalars['String']>;
-	url?: InputMaybe<Scalars['String']>;
-};
-
-export type IconRelationResponseCollection = {
-	__typename?: 'IconRelationResponseCollection';
-	data: Array<IconEntity>;
 };
 
 export type IntFilterInput = {
@@ -473,7 +403,6 @@ export type JobFiltersInput = {
 	or?: InputMaybe<Array<InputMaybe<JobFiltersInput>>>;
 	pictureUrl?: InputMaybe<StringFilterInput>;
 	publishedAt?: InputMaybe<DateTimeFilterInput>;
-	sitemap_exclude?: InputMaybe<BooleanFilterInput>;
 	slug?: InputMaybe<StringFilterInput>;
 	startDate?: InputMaybe<DateFilterInput>;
 	title?: InputMaybe<StringFilterInput>;
@@ -489,7 +418,6 @@ export type JobInput = {
 	picture?: InputMaybe<Scalars['ID']>;
 	pictureUrl?: InputMaybe<Scalars['String']>;
 	publishedAt?: InputMaybe<Scalars['DateTime']>;
-	sitemap_exclude?: InputMaybe<Scalars['Boolean']>;
 	slug?: InputMaybe<Scalars['String']>;
 	startDate?: InputMaybe<Scalars['Date']>;
 	title?: InputMaybe<Scalars['String']>;
@@ -543,7 +471,6 @@ export type JobMissionFiltersInput = {
 	or?: InputMaybe<Array<InputMaybe<JobMissionFiltersInput>>>;
 	order?: InputMaybe<IntFilterInput>;
 	publishedAt?: InputMaybe<DateTimeFilterInput>;
-	sitemap_exclude?: InputMaybe<BooleanFilterInput>;
 	slug?: InputMaybe<StringFilterInput>;
 	title?: InputMaybe<StringFilterInput>;
 	updatedAt?: InputMaybe<DateTimeFilterInput>;
@@ -554,7 +481,6 @@ export type JobMissionFiltersInput = {
 export type JobMissionInput = {
 	order?: InputMaybe<Scalars['Int']>;
 	publishedAt?: InputMaybe<Scalars['DateTime']>;
-	sitemap_exclude?: InputMaybe<Scalars['Boolean']>;
 	slug?: InputMaybe<Scalars['String']>;
 	title?: InputMaybe<Scalars['String']>;
 	url?: InputMaybe<Scalars['String']>;
@@ -618,7 +544,6 @@ export type JobSkillFiltersInput = {
 	not?: InputMaybe<JobSkillFiltersInput>;
 	or?: InputMaybe<Array<InputMaybe<JobSkillFiltersInput>>>;
 	publishedAt?: InputMaybe<DateTimeFilterInput>;
-	sitemap_exclude?: InputMaybe<BooleanFilterInput>;
 	slug?: InputMaybe<StringFilterInput>;
 	updatedAt?: InputMaybe<DateTimeFilterInput>;
 };
@@ -627,7 +552,6 @@ export type JobSkillInput = {
 	category?: InputMaybe<Enum_Jobskill_Category>;
 	name?: InputMaybe<Scalars['String']>;
 	publishedAt?: InputMaybe<Scalars['DateTime']>;
-	sitemap_exclude?: InputMaybe<Scalars['Boolean']>;
 	slug?: InputMaybe<Scalars['String']>;
 };
 
@@ -683,7 +607,6 @@ export type LanguageFiltersInput = {
 	or?: InputMaybe<Array<InputMaybe<LanguageFiltersInput>>>;
 	percentage?: InputMaybe<IntFilterInput>;
 	publishedAt?: InputMaybe<DateTimeFilterInput>;
-	sitemap_exclude?: InputMaybe<BooleanFilterInput>;
 	slug?: InputMaybe<StringFilterInput>;
 	updatedAt?: InputMaybe<DateTimeFilterInput>;
 };
@@ -692,7 +615,6 @@ export type LanguageInput = {
 	name?: InputMaybe<Scalars['String']>;
 	percentage?: InputMaybe<Scalars['Int']>;
 	publishedAt?: InputMaybe<Scalars['DateTime']>;
-	sitemap_exclude?: InputMaybe<Scalars['Boolean']>;
 	slug?: InputMaybe<Scalars['String']>;
 };
 
@@ -706,7 +628,6 @@ export type Mutation = {
 	/** Change user password. Confirm with the current password. */
 	changePassword?: Maybe<UsersPermissionsLoginPayload>;
 	createHobbyLocalization?: Maybe<HobbyEntityResponse>;
-	createIconLocalization?: Maybe<IconEntityResponse>;
 	createJobLocalization?: Maybe<JobEntityResponse>;
 	createJobMissionLocalization?: Maybe<JobMissionEntityResponse>;
 	createJobSkillLocalization?: Maybe<JobSkillEntityResponse>;
@@ -757,12 +678,6 @@ export type MutationChangePasswordArgs = {
 
 export type MutationCreateHobbyLocalizationArgs = {
 	data?: InputMaybe<HobbyInput>;
-	id?: InputMaybe<Scalars['ID']>;
-	locale?: InputMaybe<Scalars['I18NLocaleCode']>;
-};
-
-export type MutationCreateIconLocalizationArgs = {
-	data?: InputMaybe<IconInput>;
 	id?: InputMaybe<Scalars['ID']>;
 	locale?: InputMaybe<Scalars['I18NLocaleCode']>;
 };
@@ -991,7 +906,6 @@ export type ProfileInput = {
 	phone?: InputMaybe<Scalars['String']>;
 	picture?: InputMaybe<Scalars['ID']>;
 	publishedAt?: InputMaybe<Scalars['DateTime']>;
-	sitemap_exclude?: InputMaybe<Scalars['Boolean']>;
 	slug?: InputMaybe<Scalars['String']>;
 	socialNetworks?: InputMaybe<Array<InputMaybe<Scalars['ID']>>>;
 };
@@ -1060,7 +974,6 @@ export type ProjectFiltersInput = {
 	not?: InputMaybe<ProjectFiltersInput>;
 	or?: InputMaybe<Array<InputMaybe<ProjectFiltersInput>>>;
 	publishedAt?: InputMaybe<DateTimeFilterInput>;
-	sitemap_exclude?: InputMaybe<BooleanFilterInput>;
 	slug?: InputMaybe<StringFilterInput>;
 	technos?: InputMaybe<TechnoFiltersInput>;
 	title?: InputMaybe<StringFilterInput>;
@@ -1074,7 +987,6 @@ export type ProjectInput = {
 	mainTechno?: InputMaybe<Scalars['ID']>;
 	picture?: InputMaybe<Scalars['ID']>;
 	publishedAt?: InputMaybe<Scalars['DateTime']>;
-	sitemap_exclude?: InputMaybe<Scalars['Boolean']>;
 	slug?: InputMaybe<Scalars['String']>;
 	technos?: InputMaybe<Array<InputMaybe<Scalars['ID']>>>;
 	title?: InputMaybe<Scalars['String']>;
@@ -1098,8 +1010,6 @@ export type Query = {
 	hobby?: Maybe<HobbyEntityResponse>;
 	i18NLocale?: Maybe<I18NLocaleEntityResponse>;
 	i18NLocales?: Maybe<I18NLocaleEntityResponseCollection>;
-	icon?: Maybe<IconEntityResponse>;
-	icons?: Maybe<IconEntityResponseCollection>;
 	job?: Maybe<JobEntityResponse>;
 	jobMission?: Maybe<JobMissionEntityResponse>;
 	jobMissions?: Maybe<JobMissionEntityResponseCollection>;
@@ -1152,19 +1062,6 @@ export type QueryI18NLocaleArgs = {
 export type QueryI18NLocalesArgs = {
 	filters?: InputMaybe<I18NLocaleFiltersInput>;
 	pagination?: InputMaybe<PaginationArg>;
-	sort?: InputMaybe<Array<InputMaybe<Scalars['String']>>>;
-};
-
-export type QueryIconArgs = {
-	id?: InputMaybe<Scalars['ID']>;
-	locale?: InputMaybe<Scalars['I18NLocaleCode']>;
-};
-
-export type QueryIconsArgs = {
-	filters?: InputMaybe<IconFiltersInput>;
-	locale?: InputMaybe<Scalars['I18NLocaleCode']>;
-	pagination?: InputMaybe<PaginationArg>;
-	publicationState?: InputMaybe<PublicationState>;
 	sort?: InputMaybe<Array<InputMaybe<Scalars['String']>>>;
 };
 
@@ -1399,7 +1296,6 @@ export type SchoolFiltersInput = {
 	pictureUrl?: InputMaybe<StringFilterInput>;
 	publishedAt?: InputMaybe<DateTimeFilterInput>;
 	schoolName?: InputMaybe<StringFilterInput>;
-	sitemap_exclude?: InputMaybe<BooleanFilterInput>;
 	slug?: InputMaybe<StringFilterInput>;
 	startYear?: InputMaybe<IntFilterInput>;
 	updatedAt?: InputMaybe<DateTimeFilterInput>;
@@ -1413,7 +1309,6 @@ export type SchoolInput = {
 	pictureUrl?: InputMaybe<Scalars['String']>;
 	publishedAt?: InputMaybe<Scalars['DateTime']>;
 	schoolName?: InputMaybe<Scalars['String']>;
-	sitemap_exclude?: InputMaybe<Scalars['Boolean']>;
 	slug?: InputMaybe<Scalars['String']>;
 	startYear?: InputMaybe<Scalars['Int']>;
 };
@@ -1477,7 +1372,6 @@ export type SchoolProjectFiltersInput = {
 	not?: InputMaybe<SchoolProjectFiltersInput>;
 	or?: InputMaybe<Array<InputMaybe<SchoolProjectFiltersInput>>>;
 	publishedAt?: InputMaybe<DateTimeFilterInput>;
-	sitemap_exclude?: InputMaybe<BooleanFilterInput>;
 	slug?: InputMaybe<StringFilterInput>;
 	technos?: InputMaybe<TechnoFiltersInput>;
 	title?: InputMaybe<StringFilterInput>;
@@ -1491,7 +1385,6 @@ export type SchoolProjectInput = {
 	mainTechno?: InputMaybe<Scalars['ID']>;
 	picture?: InputMaybe<Scalars['ID']>;
 	publishedAt?: InputMaybe<Scalars['DateTime']>;
-	sitemap_exclude?: InputMaybe<Scalars['Boolean']>;
 	slug?: InputMaybe<Scalars['String']>;
 	technos?: InputMaybe<Array<InputMaybe<Scalars['ID']>>>;
 	title?: InputMaybe<Scalars['String']>;
@@ -1556,7 +1449,6 @@ export type SkillFiltersInput = {
 	or?: InputMaybe<Array<InputMaybe<SkillFiltersInput>>>;
 	percentage?: InputMaybe<IntFilterInput>;
 	publishedAt?: InputMaybe<DateTimeFilterInput>;
-	sitemap_exclude?: InputMaybe<BooleanFilterInput>;
 	slug?: InputMaybe<StringFilterInput>;
 	updatedAt?: InputMaybe<DateTimeFilterInput>;
 };
@@ -1565,7 +1457,6 @@ export type SkillInput = {
 	name?: InputMaybe<Scalars['String']>;
 	percentage?: InputMaybe<Scalars['Int']>;
 	publishedAt?: InputMaybe<Scalars['DateTime']>;
-	sitemap_exclude?: InputMaybe<Scalars['Boolean']>;
 	slug?: InputMaybe<Scalars['String']>;
 };
 
@@ -1609,7 +1500,6 @@ export type SocialNetworkFiltersInput = {
 	not?: InputMaybe<SocialNetworkFiltersInput>;
 	or?: InputMaybe<Array<InputMaybe<SocialNetworkFiltersInput>>>;
 	publishedAt?: InputMaybe<DateTimeFilterInput>;
-	sitemap_exclude?: InputMaybe<BooleanFilterInput>;
 	slug?: InputMaybe<StringFilterInput>;
 	title?: InputMaybe<StringFilterInput>;
 	updatedAt?: InputMaybe<DateTimeFilterInput>;
@@ -1681,7 +1571,6 @@ export type TechnoFiltersInput = {
 	not?: InputMaybe<TechnoFiltersInput>;
 	or?: InputMaybe<Array<InputMaybe<TechnoFiltersInput>>>;
 	publishedAt?: InputMaybe<DateTimeFilterInput>;
-	sitemap_exclude?: InputMaybe<BooleanFilterInput>;
 	slug?: InputMaybe<StringFilterInput>;
 	updatedAt?: InputMaybe<DateTimeFilterInput>;
 };
@@ -1748,7 +1637,6 @@ export type UploadFileFiltersInput = {
 	previewUrl?: InputMaybe<StringFilterInput>;
 	provider?: InputMaybe<StringFilterInput>;
 	provider_metadata?: InputMaybe<JsonFilterInput>;
-	sitemap_exclude?: InputMaybe<BooleanFilterInput>;
 	size?: InputMaybe<FloatFilterInput>;
 	updatedAt?: InputMaybe<DateTimeFilterInput>;
 	url?: InputMaybe<StringFilterInput>;
@@ -1769,7 +1657,6 @@ export type UploadFileInput = {
 	previewUrl?: InputMaybe<Scalars['String']>;
 	provider?: InputMaybe<Scalars['String']>;
 	provider_metadata?: InputMaybe<Scalars['JSON']>;
-	sitemap_exclude?: InputMaybe<Scalars['Boolean']>;
 	size?: InputMaybe<Scalars['Float']>;
 	url?: InputMaybe<Scalars['String']>;
 	width?: InputMaybe<Scalars['Int']>;
@@ -1833,7 +1720,6 @@ export type UploadFolderFiltersInput = {
 	parent?: InputMaybe<UploadFolderFiltersInput>;
 	path?: InputMaybe<StringFilterInput>;
 	pathId?: InputMaybe<IntFilterInput>;
-	sitemap_exclude?: InputMaybe<BooleanFilterInput>;
 	updatedAt?: InputMaybe<DateTimeFilterInput>;
 };
 
@@ -1844,7 +1730,6 @@ export type UploadFolderInput = {
 	parent?: InputMaybe<Scalars['ID']>;
 	path?: InputMaybe<Scalars['String']>;
 	pathId?: InputMaybe<Scalars['Int']>;
-	sitemap_exclude?: InputMaybe<Scalars['Boolean']>;
 };
 
 export type UploadFolderRelationResponseCollection = {
@@ -2043,7 +1928,6 @@ export type UsersPermissionsUserFiltersInput = {
 	provider?: InputMaybe<StringFilterInput>;
 	resetPasswordToken?: InputMaybe<StringFilterInput>;
 	role?: InputMaybe<UsersPermissionsRoleFiltersInput>;
-	sitemap_exclude?: InputMaybe<BooleanFilterInput>;
 	updatedAt?: InputMaybe<DateTimeFilterInput>;
 	username?: InputMaybe<StringFilterInput>;
 };
@@ -2057,7 +1941,6 @@ export type UsersPermissionsUserInput = {
 	provider?: InputMaybe<Scalars['String']>;
 	resetPasswordToken?: InputMaybe<Scalars['String']>;
 	role?: InputMaybe<Scalars['ID']>;
-	sitemap_exclude?: InputMaybe<Scalars['Boolean']>;
 	username?: InputMaybe<Scalars['String']>;
 };
 
