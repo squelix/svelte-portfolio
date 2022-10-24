@@ -10,7 +10,7 @@
 		"title": "Missions"
 	},
 	"skills": {
-		"title": "Compétences",
+		"title": "Skills",
 		"categories": {
 			"Frontend Technique": "Technical Frontend",
 			"Frontend Global": "Global Frontend",
