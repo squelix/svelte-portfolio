@@ -8,8 +8,12 @@
 	import Icon from '$lib/SvgIcon.svelte';
 	import { t } from '$translations';
 
+	import type { RoutesEnum } from '$lib/routing';
+
 	const ENTER_KEY = 'Enter';
 	let open = false;
+
+	const mainRoutesKeys: RoutesEnum[] = Object.keys(MainRoutes) as RoutesEnum[];
 
 	const toggleClose = (): void => {
 		open = !open;
@@ -34,10 +38,11 @@
 	</button>
 
 	<ul class="nav__links" class:nav__links--visible={open}>
-		{#each Object.keys(MainRoutes) as routeKey, index}
+		{#each mainRoutesKeys as routeKey, index}
 			<NavItem
 				label={$t(`common.nav.${routeKey}`)}
 				link={routeKey}
+				route={MainRoutes[routeKey]}
 				last={index === Object.keys(MainRoutes).length - 1}
 				beforeLast={index === Object.keys(MainRoutes).length - 2}
 				on:closeMenu={() => (open = !open)}

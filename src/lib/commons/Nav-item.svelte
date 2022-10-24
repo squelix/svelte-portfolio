@@ -1,11 +1,12 @@
 <script lang="ts">
 	import { page } from '$app/stores';
-	import { getRoute, isBaseRouteActive } from '$lib/routing';
+	import { isBaseRouteActive } from '$lib/routing';
 	import { locale } from '$translations';
 	import { createEventDispatcher } from 'svelte';
 
 	export let label: string;
 	export let link: string;
+	export let route: string | undefined;
 	export let last: boolean;
 	export let beforeLast: boolean;
 
@@ -33,7 +34,7 @@
 >
 	<a
 		class="item__link"
-		href={getRoute($locale, link)}
+		href={`/${$locale}${route ?? ''}`}
 		class:item__link--selected={isBaseRouteActive($page.url.pathname, {
 			lang: $locale,
 			route: link

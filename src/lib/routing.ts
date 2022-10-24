@@ -18,7 +18,7 @@ export enum RoutesEnum {
 
 export const MainRoutes: Partial<Record<RoutesEnum, string>> = {
 	[RoutesEnum.Home]: '/',
-	[RoutesEnum.About]: '/about',
+	[RoutesEnum.About]: '/about/personal-info/bio',
 	[RoutesEnum.Projects]: '/projects',
 	[RoutesEnum.Contact]: '/contact'
 };
