@@ -32,6 +32,11 @@
 	/>
 </svelte:head>
 
-<PageTimeline list={$jobsList} let:item>
-	<JobTimelineContent {item} />
+<PageTimeline
+	list={$jobsList}
+	shouldDisplayLastConnector={$jobsList.findIndex((job) => !job.endDate) === -1}
+	let:item
+	let:last
+>
+	<JobTimelineContent {item} {last} />
 </PageTimeline>

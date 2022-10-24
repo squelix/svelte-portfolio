@@ -9,6 +9,7 @@
 	"missions": {
 		"title": "Missions"
 	},
+	"todayText": "Aujourd'hui",
 	"skills": {
 		"title": "Compétences",
 		"categories": {

@@ -11,11 +11,12 @@
 	type T = $$Generic;
 
 	export let list: T[];
+	export let shouldDisplayLastConnector = true;
 </script>
 
 <section class="content">
 	<Timeline style={'padding: 0; color: var(--secondary-1);'}>
-		{#each list as item}
+		{#each list as item, i}
 			<TimelineItem>
 				<TimelineOppositeContent
 					slot="opposite-content"
@@ -29,12 +30,14 @@
 					{/if}
 					{#if $$slots['item-connector']}
 						<slot name="item-connector" {item} />
-					{:else}
+					{:else if shouldDisplayLastConnector}
+						<TimelineConnector style={'background-color: var(--secondary-1);'} />
+					{:else if !shouldDisplayLastConnector && i !== list.length - 1}
 						<TimelineConnector style={'background-color: var(--secondary-1);'} />
 					{/if}
 				</TimelineSeparator>
 				<TimelineContent>
-					<slot {item} />
+					<slot {item} last={i === list.length - 1} />
 				</TimelineContent>
 			</TimelineItem>
 		{/each}
