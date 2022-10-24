@@ -56,32 +56,36 @@
 	<p>{item.location.toUpperCase()}</p>
 </header>
 
-<h4 class="title">Missions&nbsp;:</h4>
-<ul class="list">
-	{#each item?.jobMissions?.data ?? [] as mission}
-		<li>
-			{mission.attributes?.title}
-			{#if mission.attributes?.url && mission.attributes?.urlName}
-				-
-				<a class="link" href={mission.attributes?.url} target="_blank" rel="noreferrer noopener"
-					>{mission.attributes?.urlName}</a
-				>
-			{/if}
-		</li>
-	{/each}
-</ul>
+{#if (item?.jobMissions?.data ?? []).length > 0}
+	<h4 class="title">{$t('experiences.missions.title')}&nbsp;:</h4>
+	<ul class="list">
+		{#each item?.jobMissions?.data ?? [] as mission}
+			<li>
+				{mission.attributes?.title}
+				{#if mission.attributes?.url && mission.attributes?.urlName}
+					-
+					<a class="link" href={mission.attributes?.url} target="_blank" rel="noreferrer noopener"
+						>{mission.attributes?.urlName}</a
+					>
+				{/if}
+			</li>
+		{/each}
+	</ul>
+{/if}
 
-<h4 class="title">{$t('experiences.skills.title')}&nbsp;:</h4>
-<ul class="list">
-	{#each groupSkillsByCategories() ?? [] as categoriesSkills}
-		<li>
-			<span class="skill-category"
-				>{$t(`experiences.skills.categories.${categoriesSkills.category}`)}&nbsp;:
-			</span>
-			<span>{categoriesSkills.skills.join(', ')}</span>
-		</li>
-	{/each}
-</ul>
+{#if (groupSkillsByCategories() ?? []).length > 0}
+	<h4 class="title">{$t('experiences.skills.title')}&nbsp;:</h4>
+	<ul class="list">
+		{#each groupSkillsByCategories() ?? [] as categoriesSkills}
+			<li>
+				<span class="skill-category"
+					>{$t(`experiences.skills.categories.${categoriesSkills.category}`)}&nbsp;:
+				</span>
+				<span>{categoriesSkills.skills.join(', ')}</span>
+			</li>
+		{/each}
+	</ul>
+{/if}
 
 <style lang="scss">
 	@use 'lib/mixins/breakpoints' as br;
