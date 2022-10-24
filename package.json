@@ -47,7 +47,7 @@
 		"@testing-library/jest-dom": "^5.16.5",
 		"@types/cookie": "^0.5.1",
 		"@types/jest": "^29.2.0",
-		"@types/node": "^16.11.68",
+		"@types/node": "^16.18.0",
 		"@typescript-eslint/eslint-plugin": "^5.40.1",
 		"@typescript-eslint/parser": "^5.40.1",
 		"babel-jest": "^29.2.1",
