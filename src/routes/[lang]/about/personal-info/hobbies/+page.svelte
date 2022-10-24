@@ -31,5 +31,5 @@
 </svelte:head>
 
 {#await $hobbiesListDisplay then value}
-	<PageTextContent lines={value} mustSplit={false} />
+	<PageTextContent lines={value} mustSplit={false} mobileDisplayText="per-line" />
 {/await}
