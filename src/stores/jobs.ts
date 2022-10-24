@@ -17,5 +17,5 @@ export const jobsList: Readable<Omit<Job, '__typename'>[]> = derived(jobs, ($job
 			return job;
 		}) as Omit<Job, '__typename'>[];
 
-	return [..._jobs, _jobs[_jobs.length - 1]];
+	return [..._jobs, _jobs[_jobs.length - 1]].filter((job) => job !== undefined);
 });
