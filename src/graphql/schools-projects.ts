@@ -19,7 +19,7 @@ export const GET_SCHOOLS_PROJECTS_QUERY = gql`
 							}
 						}
 					}
-					technos {
+					technos(pagination: { page: 1, pageSize: 50 }) {
 						data {
 							attributes {
 								name

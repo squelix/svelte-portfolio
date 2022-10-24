@@ -31,7 +31,7 @@ export const GET_JOBS_QUERY = gql`
 							}
 						}
 					}
-					jobSkills {
+					jobSkills(pagination: { page: 1, pageSize: 50 }) {
 						data {
 							attributes {
 								name

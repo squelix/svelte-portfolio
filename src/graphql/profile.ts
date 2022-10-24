@@ -31,7 +31,7 @@ export const GET_PROFILE_QUERY = gql`
 							}
 						}
 					}
-					socialNetworks {
+					socialNetworks(pagination: { page: 1, pageSize: 50 }) {
 						data {
 							attributes {
 								title
