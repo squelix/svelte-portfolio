@@ -16,7 +16,6 @@ specifiers:
   '@typescript-eslint/eslint-plugin': ^5.41.0
   '@typescript-eslint/parser': ^5.41.0
   '@urql/core': ^3.0.4
-  '@urql/exchange-graphcache': ^5.0.2
   babel-jest: ^29.2.2
   cookie: ^0.5.0
   cross-env: ^7.0.3
@@ -56,7 +55,6 @@ specifiers:
 
 dependencies:
   '@urql/core': 3.0.4_graphql@16.6.0
-  '@urql/exchange-graphcache': 5.0.2_graphql@16.6.0
   cookie: 0.5.0
   dayjs: 1.11.6
   graphql: 16.6.0
@@ -2753,16 +2751,6 @@ packages:
       graphql: ^0.11.0 || ^0.12.0 || ^0.13.0 || ^14.0.0 || ^15.0.0 || ^16.0.0
     dependencies:
       '@graphql-typed-document-node/core': 3.1.1_graphql@16.6.0
-      graphql: 16.6.0
-      wonka: 6.0.0
-    dev: false
-
-  /@urql/exchange-graphcache/5.0.2_graphql@16.6.0:
-    resolution: {integrity: sha512-sTqoYewIB/aiSpJoMAjzJDGTO3xnvl3NeWI9fzqg6qFRp9df2uf3W7hy6oS4NKqOK7CZfo+Ct0coawoF/RK5Kg==}
-    peerDependencies:
-      graphql: ^0.11.0 || ^0.12.0 || ^0.13.0 || ^14.0.0 || ^15.0.0 || ^16.0.0
-    dependencies:
-      '@urql/core': 3.0.4_graphql@16.6.0
       graphql: 16.6.0
       wonka: 6.0.0
     dev: false
