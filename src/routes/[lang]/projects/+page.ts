@@ -3,6 +3,8 @@ import { projects, projectsTechnosFilter } from '$stores/projects';
 
 import type { PageLoad } from './$types';
 
+export const prerender = false;
+
 export const load: PageLoad = ({ data }) => {
 	projects.set(data.projects);
 	projectsTechnosFilter.set(data.projectsTechnosFilter);

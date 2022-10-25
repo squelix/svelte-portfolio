@@ -1,17 +1,12 @@
 import { Routes, RoutesEnum } from '$lib/routing';
 import { LangEnum } from '$models/langs.enum';
-import lang from '$translations/lang.json';
 import i18n from '@sveltekit-i18n/base';
 import parser from '@sveltekit-i18n/parser-default';
 
 import type { Config } from '@sveltekit-i18n/parser-default';
 
 export const config: Config = {
-	fallbackLocale: 'en',
-	translations: {
-		en: { lang },
-		fr: { lang }
-	},
+	fallbackLocale: LangEnum.en_GB,
 	parser: parser(),
 	loaders: [
 		{
