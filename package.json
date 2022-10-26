@@ -80,7 +80,7 @@
 		"vite": "^3.1.8"
 	},
 	"dependencies": {
-		"@urql/core": "^3.0.4",
+		"@urql/core": "^3.0.5",
 		"cookie": "^0.5.0",
 		"dayjs": "^1.11.6",
 		"graphql": "^16.6.0",
