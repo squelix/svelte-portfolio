@@ -61,6 +61,9 @@ body {
 
 .focus-on *:focus {
 	transition: transform var(--transition-duration) var(--transition-easing);
-	transform: scale(1.08);
 	outline: 2px solid var(--accent-1);
+
+	&:not(input):not(textarea) {
+		transform: scale(1.08);
+	}
 }
