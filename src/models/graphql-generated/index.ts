@@ -928,8 +928,8 @@ export type Project = {
 	technos?: Maybe<TechnoRelationResponseCollection>;
 	title: Scalars['String'];
 	updatedAt?: Maybe<Scalars['DateTime']>;
-	url: Scalars['String'];
-	urlName: Scalars['String'];
+	url?: Maybe<Scalars['String']>;
+	urlName?: Maybe<Scalars['String']>;
 };
 
 export type ProjectLocalizationsArgs = {
@@ -1326,8 +1326,8 @@ export type SchoolProject = {
 	technos?: Maybe<TechnoRelationResponseCollection>;
 	title: Scalars['String'];
 	updatedAt?: Maybe<Scalars['DateTime']>;
-	url: Scalars['String'];
-	urlName: Scalars['String'];
+	url?: Maybe<Scalars['String']>;
+	urlName?: Maybe<Scalars['String']>;
 };
 
 export type SchoolProjectLocalizationsArgs = {
@@ -2119,8 +2119,8 @@ export type GetProjectsQuery = {
 			attributes?: {
 				__typename?: 'Project';
 				slug: string;
-				url: string;
-				urlName: string;
+				url?: string | null;
+				urlName?: string | null;
 				title: string;
 				description: string;
 				mainTechno?: {
@@ -2172,8 +2172,8 @@ export type GetSchoolsProjectsQuery = {
 			attributes?: {
 				__typename?: 'SchoolProject';
 				slug: string;
-				url: string;
-				urlName: string;
+				url?: string | null;
+				urlName?: string | null;
 				title: string;
 				description: string;
 				mainTechno?: {

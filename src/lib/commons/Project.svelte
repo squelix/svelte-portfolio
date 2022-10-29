@@ -1,4 +1,5 @@
 <script lang="ts">
+	/* eslint-disable @typescript-eslint/restrict-template-expressions */
 	import Image from '$lib/commons/Image.svelte';
 	import Link from '$lib/commons/Link.svelte';
 	import TechnoIcon from '$lib/commons/TechnoIcon.svelte';
@@ -12,7 +13,7 @@
 	export let index: number;
 	export let baseTrad: string;
 
-	const ariaLink = `${$t('projects.aria.card') as string} ${project.urlName}`;
+	// const ariaLink = `${$t('projects.aria.card') as string} ${project.urlName}`;
 </script>
 
 <li>
@@ -47,9 +48,14 @@
 				/>
 			{/if}
 			<p class="card__description">{project.description}</p>
-			<Link href={project.url} aria-label={ariaLink} target="_blank" rel="noreferrer noopener"
-				>{$t(`${baseTrad}.card.link`)}</Link
-			>
+			{#if project.url && project.urlName}
+				<Link
+					href={project.url}
+					aria-label={`${$t('projects.aria.card')} ${project.urlName}`}
+					target="_blank"
+					rel="noreferrer noopener">{$t(`${baseTrad}.card.link`)}</Link
+				>
+			{/if}
 		</div>
 	</div>
 </li>
