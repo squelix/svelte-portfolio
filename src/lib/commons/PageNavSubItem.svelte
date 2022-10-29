@@ -110,6 +110,31 @@
 				</span>
 			{/if}
 		</a>
+	{:else if item.href}
+		<a
+			class="page-nav-sub-item__link"
+			class:page-nav-sub-item__link--icon={!!item.icon}
+			href={item.href}
+			aria-label={item.ariaLabel ? item.ariaLabel : undefined}
+			aria-hidden={ariaHidden}
+			tabindex={ariaHidden ? -1 : undefined}
+		>
+			{#if item.icon}
+				<span class="page-nav-sub-item__link__icon">
+					<Icon data={item.icon} width="100%" />
+				</span>
+			{/if}
+			{#if item.labelKey && !item.label}
+				<span class="page-nav-sub-item__link__label">
+					{$t(item.labelKey)}
+				</span>
+			{/if}
+			{#if item.label && !item.labelKey}
+				<span class="page-nav-sub-item__link__label">
+					{item.label}
+				</span>
+			{/if}
+		</a>
 	{/if}
 </li>
 

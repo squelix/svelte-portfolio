@@ -17,19 +17,20 @@ export const load: PageLoad = () => {
 
 	const emailValue = get(email);
 	const phoneValue = get(phone);
+
 	setNavItems(ContactPageNavItemEnum.Contacts, [
 		{
 			id: 'contacts-email',
 			label: emailValue,
 			icon: mailSvg,
-			link: emailValue ? `mailto:${emailValue}` : undefined,
+			href: emailValue ? `mailto:${emailValue}` : undefined,
 			ariaLabel: t.get('contact.aria.email')
 		},
 		{
 			id: 'contacts-phone',
 			label: phoneValue,
 			icon: phoneSvg,
-			link: phoneValue ? `tel:${phoneValue}` : undefined,
+			href: phoneValue ? `tel:${phoneValue}` : undefined,
 			ariaLabel: t.get('contact.aria.phone')
 		}
 	]);
@@ -40,7 +41,7 @@ export const load: PageLoad = () => {
 		socials?.map((item) => ({
 			id: item.attributes!.title,
 			label: item.attributes!.title,
-			link: item.attributes!.url,
+			href: item.attributes!.url,
 			icon: externalLinkSvg,
 			ariaLabel: t.get('contact.aria.social', { social: item.attributes!.title } as never)
 		})) ?? []

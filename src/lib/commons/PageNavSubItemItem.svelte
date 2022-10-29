@@ -34,6 +34,24 @@
 				{item.label}
 			{/if}
 		</a>
+	{:else if item.href}
+		<a
+			class="page-nav-sub-item-item__link"
+			href={item.href}
+			aria-label={item.ariaLabel ? item.ariaLabel : undefined}
+			aria-hidden={ariaHidden}
+			tabindex={ariaHidden ? -1 : undefined}
+		>
+			<span class="page-nav-sub-item-item__link__icon">
+				<Icon data={Mardown} width="100%" />
+			</span>
+			{#if item.labelKey && !item.label}
+				{$t(item.labelKey)}
+			{/if}
+			{#if item.label && !item.labelKey}
+				{item.label}
+			{/if}
+		</a>
 	{:else}
 		<p>
 			{#if item.labelKey && !item.label}

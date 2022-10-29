@@ -67,6 +67,21 @@
 				<PageNavSubItem item={subItem} {index} ariaHidden={$navItemOpened !== item.id} />
 			{/each}
 		</ul>
+	{:else if item.href}
+		<a
+			class="page-nav-item__text"
+			href={item.href}
+			aria-label={item.ariaLabel ? item.ariaLabel : undefined}
+			aria-hidden={$navItemOpened !== item.id}
+			tabindex={$navItemOpened !== item.id ? -1 : undefined}
+		>
+			{#if item.labelKey && !item.label}
+				{$t(item.labelKey)}
+			{/if}
+			{#if item.label && !item.labelKey}
+				{item.label}
+			{/if}
+		</a>
 	{:else if item.link}
 		<a
 			class="page-nav-item__text"

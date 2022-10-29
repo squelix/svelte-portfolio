@@ -3,6 +3,7 @@ export interface PageNavItemInterface {
 	labelKey?: string;
 	label?: string;
 	link?: string;
+	href?: string;
 	icon?: string;
 	ariaLabel?: string;
 	items?: PageNavItemInterface[];
