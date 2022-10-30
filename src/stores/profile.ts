@@ -1,4 +1,3 @@
-import { strapiUri } from '$stores/env';
 import { derived, writable } from 'svelte/store';
 
 import type { GetProfileQuery } from '$models/graphql-generated';
@@ -24,10 +23,8 @@ export const email = derived(profile, ($profile) => $profile?.profile?.data?.att
 
 export const phone = derived(profile, ($profile) => $profile?.profile?.data?.attributes?.phone);
 
-export const picture = derived([profile, strapiUri], ([$profile, $strapiUri]) =>
-	$profile && $strapiUri
-		? `${$strapiUri}${$profile?.profile?.data?.attributes?.picture.data?.attributes?.url ?? ''}`
-		: undefined
+export const picture = derived([profile], ([$profile]) =>
+	$profile ? $profile?.profile?.data?.attributes?.picture.data?.attributes?.url : undefined
 );
 
 export const socialNetworks = derived(

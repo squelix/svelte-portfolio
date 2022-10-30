@@ -56,12 +56,15 @@
 	<meta property="og:type" content="website" />
 	<link rel="canonical" href="{$page.url.origin}{$page.url.pathname}" />
 
-	<meta property="og:image" content={$picture} />
 	<meta name="twitter:card" content="summary_large_image" />
 	<meta name="twitter:site" content="@squelix" />
 	<meta name="twitter:creator" content="@squelix" />
 	<meta property="twitter:url" content="{$page.url.origin}{$page.url.pathname}" />
-	<meta name="twitter:image" content={$picture} />
+
+	{#if $picture}
+		<meta property="og:image" content={$picture} />
+		<meta name="twitter:image" content={$picture} />
+	{/if}
 
 	{#if !!$strapiUri}
 		<link rel="preconnect" href={$strapiUri} />
