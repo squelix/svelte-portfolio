@@ -54,7 +54,7 @@ const config = {
 				'/fr/about/professional-info/languages',
 				'/fr/about/professional-info/experiences'
 			],
-			onError: 'continue'
+			handleHttpError: 'warn'
 		}
 	}
 };
