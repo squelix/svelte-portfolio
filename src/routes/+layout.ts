@@ -1,4 +1,5 @@
 /* eslint-disable @typescript-eslint/restrict-template-expressions, @typescript-eslint/no-unsafe-assignment, @typescript-eslint/no-unsafe-call */
+import { inject } from '@vercel/analytics';
 import dayjs from 'dayjs';
 import 'dayjs/locale/en.js';
 import 'dayjs/locale/fr.js';
@@ -10,6 +11,8 @@ import type { LayoutLoad } from './$types';
 export const prerender = 'auto';
 
 export const load: LayoutLoad = ({ data }) => {
+	inject();
+
 	dayjs.extend(localeData);
 	dayjs.extend(updateLocale);
 	dayjs.locale(data.lang);
