@@ -8,7 +8,7 @@ export const GET: RequestHandler = ({ request }) => {
 	const lang = (
 		parse(request.headers.get('accept-language') ?? LangEnum.en_GB).find((lang) =>
 			AcceptedLanguages.includes(lang.code.toLowerCase() as LangEnum)
-		) ?? LangEnum.en_GB
+		)?.code ?? LangEnum.en_GB
 	)
 		.toString()
 		.toLowerCase();
