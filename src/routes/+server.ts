@@ -1,11 +1,14 @@
-/* eslint-disable @typescript-eslint/restrict-template-expressions */
-import { LangEnum } from '$models/langs.enum';
+/* eslint-disable @typescript-eslint/no-unsafe-call,  @typescript-eslint/no-unsafe-assignment, @typescript-eslint/restrict-template-expressions */
+import { AcceptedLanguages, LangEnum } from '$models/langs.enum';
+import { parse } from 'accept-language-parser';
 
 import type { RequestHandler } from './$types';
 
 export const GET: RequestHandler = ({ request }) => {
 	const lang = (
-		request.headers.get('accept-language')?.match(/[a-zA-Z]+?(?=-|_|,|;)/) ?? LangEnum.en_GB
+		parse(request.headers.get('accept-language') ?? LangEnum.en_GB).find((lang) =>
+			AcceptedLanguages.includes(lang.code.toLowerCase() as LangEnum)
+		) ?? LangEnum.en_GB
 	)
 		.toString()
 		.toLowerCase();
