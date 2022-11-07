@@ -51,7 +51,7 @@ specifiers:
   ts-node: ^10.9.1
   tslib: ^2.4.1
   typescript: ~4.8.4
-  vite: ^3.2.2
+  vite: ^3.2.3
   web-vitals: ^3.0.4
 
 dependencies:
@@ -72,7 +72,7 @@ devDependencies:
   '@graphql-codegen/cli': 2.13.11_elxr3pk4knyqa4ctn4cr6jdr6y
   '@graphql-codegen/typescript-operations': 2.5.6_graphql@16.6.0
   '@sveltejs/adapter-vercel': 1.0.0-next.81
-  '@sveltejs/kit': 1.0.0-next.535_svelte@3.52.0+vite@3.2.2
+  '@sveltejs/kit': 1.0.0-next.535_svelte@3.52.0+vite@3.2.3
   '@sveltekit-i18n/base': 1.2.1_svelte@3.52.0
   '@sveltekit-i18n/parser-default': 1.0.3
   '@testing-library/jest-dom': 5.16.5
@@ -108,7 +108,7 @@ devDependencies:
   ts-node: 10.9.1_e7yvbkxpwwqnzxz2s2bfjt7zx4
   tslib: 2.4.1
   typescript: 4.8.4
-  vite: 3.2.2_sass@1.56.0
+  vite: 3.2.3_4lje5nbsfuxfzjlhhm323oq6t4
 
 packages:
 
@@ -2368,7 +2368,7 @@ packages:
       - supports-color
     dev: true
 
-  /@sveltejs/kit/1.0.0-next.535_svelte@3.52.0+vite@3.2.2:
+  /@sveltejs/kit/1.0.0-next.535_svelte@3.52.0+vite@3.2.3:
     resolution: {integrity: sha512-sbVFeidRGYKqahVWATuvl9PVnIDA/DvXUuq3LAV7eLXf9LWsdMt+9OhXmz8Ltxv8ov3+Ph6gcVSBvisF4BEvBQ==}
     engines: {node: '>=16.14'}
     hasBin: true
@@ -2377,7 +2377,7 @@ packages:
       svelte: ^3.44.0
       vite: ^3.2.0
     dependencies:
-      '@sveltejs/vite-plugin-svelte': 1.1.0_svelte@3.52.0+vite@3.2.2
+      '@sveltejs/vite-plugin-svelte': 1.1.0_svelte@3.52.0+vite@3.2.3
       '@types/cookie': 0.5.1
       cookie: 0.5.0
       devalue: 4.2.0
@@ -2390,13 +2390,13 @@ packages:
       svelte: 3.52.0
       tiny-glob: 0.2.9
       undici: 5.12.0
-      vite: 3.2.2_sass@1.56.0
+      vite: 3.2.3_4lje5nbsfuxfzjlhhm323oq6t4
     transitivePeerDependencies:
       - diff-match-patch
       - supports-color
     dev: true
 
-  /@sveltejs/vite-plugin-svelte/1.1.0_svelte@3.52.0+vite@3.2.2:
+  /@sveltejs/vite-plugin-svelte/1.1.0_svelte@3.52.0+vite@3.2.3:
     resolution: {integrity: sha512-cFRfEdztubtj1c/rYh7ArK7XCfFJn6wG6+J8/e9amFsKtEJILovoBrK0/mxt1AjPQg0vaX+fHPKvhx+q8mTPaQ==}
     engines: {node: ^14.18.0 || >= 16}
     peerDependencies:
@@ -2413,7 +2413,7 @@ packages:
       magic-string: 0.26.7
       svelte: 3.52.0
       svelte-hmr: 0.15.0_svelte@3.52.0
-      vite: 3.2.2_sass@1.56.0
+      vite: 3.2.3_4lje5nbsfuxfzjlhhm323oq6t4
     transitivePeerDependencies:
       - supports-color
     dev: true
@@ -7999,17 +7999,20 @@ packages:
     engines: {node: '>=12'}
     dev: true
 
-  /vite/3.2.2_sass@1.56.0:
-    resolution: {integrity: sha512-pLrhatFFOWO9kS19bQ658CnRYzv0WLbsPih6R+iFeEEhDOuYgYCX2rztUViMz/uy/V8cLCJvLFeiOK7RJEzHcw==}
+  /vite/3.2.3_4lje5nbsfuxfzjlhhm323oq6t4:
+    resolution: {integrity: sha512-h8jl1TZ76eGs3o2dIBSsvXDLb1m/Ec1iej8ZMdz+PsaFUsftZeWe2CZOI3qogEsMNaywc17gu0q6cQDzh/weCQ==}
     engines: {node: ^14.18.0 || >=16.0.0}
     hasBin: true
     peerDependencies:
+      '@types/node': '>= 14'
       less: '*'
       sass: '*'
       stylus: '*'
       sugarss: '*'
       terser: ^5.4.0
     peerDependenciesMeta:
+      '@types/node':
+        optional: true
       less:
         optional: true
       sass:
@@ -8021,6 +8024,7 @@ packages:
       terser:
         optional: true
     dependencies:
+      '@types/node': 16.18.3
       esbuild: 0.15.10
       postcss: 8.4.18
       resolve: 1.22.1
