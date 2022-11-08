@@ -6,9 +6,10 @@ import type { RequestHandler } from './$types';
 
 export const GET: RequestHandler = ({ request }) => {
 	const lang = (
-		parse(request.headers.get('accept-language') ?? LangEnum.en_GB).find((lang) =>
-			AcceptedLanguages.includes(lang.code.toLowerCase() as LangEnum)
-		)?.code ?? LangEnum.en_GB
+		parse(request.headers.get('accept-language') ?? LangEnum.en_GB)
+			.filter((langs) => AcceptedLanguages.includes(langs.code.toLowerCase() as LangEnum))
+			.sort((a, b) => b.quality - a.quality)
+			.shift()?.code ?? LangEnum.en_GB
 	)
 		.toString()
 		.toLowerCase();
