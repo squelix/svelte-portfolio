@@ -1,16 +1,20 @@
-/* eslint-disable @typescript-eslint/no-non-null-assertion */
+/* eslint-disable @typescript-eslint/restrict-template-expressions, @typescript-eslint/no-non-null-assertion */
+import { getLanguage } from '$lib/lang/utils';
+import { AcceptedLanguages, LangEnum } from '$models/langs.enum';
 import { locales } from '$translations';
 
 import type { Handle } from '@sveltejs/kit';
 
 export const handle: Handle = async ({ event, resolve }) => {
-	const { url } = event;
+	const { url, request } = event;
 	const { pathname } = url;
+	const lang = `${pathname.match(/[^/]+?(?=\/|$)/) || ''}`;
+	const route = pathname.replace(new RegExp(`^/${lang}`), '');
 
 	const response = await resolve(event);
 
 	// If this request is a route request
-	if (pathname.startsWith('/fr') || pathname.startsWith('/en')) {
+	if (AcceptedLanguages.includes(lang as unknown as LangEnum)) {
 		// Get defined locales
 		const supportedLocales = locales.get();
 
@@ -26,5 +30,10 @@ export const handle: Handle = async ({ event, resolve }) => {
 		}
 	}
 
-	return response;
+	return new Response(undefined, {
+		status: 301,
+		headers: {
+			Location: `/${getLanguage(request.headers.get('accept-language'))}${route}`
+		}
+	});
 };
