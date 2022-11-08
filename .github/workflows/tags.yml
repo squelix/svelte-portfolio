@@ -1,0 +1,291 @@
+name: "Workflow"
+
+on:
+  release:
+    types: [published]
+
+jobs:
+  eslint:
+    name: "Eslint"
+    runs-on: "ubuntu-latest"
+    env:
+      PUBLIC_STRAPI_URI: "http://localhost"
+      PUBLIC_GRAPHQL_URI: "http://localhost/graphql"
+      PUBLIC_MAIL_URI: "http://localhost/api/send/mail"
+      PUBLIC_MAIL_ACCESS_TOKEN: "XXX"
+      PUBLIC_PLATFORM: "dev"
+      PUBLIC_RE_CAPTCHA_KEY: "XXX"
+
+    steps:
+      - name: "Check out Git repository"
+        uses: "actions/checkout@v3"
+
+      - name: "Use Node.js 16"
+        uses: "actions/setup-node@v3"
+        with:
+          node-version: 16
+
+      - uses: pnpm/action-setup@v2.2.2
+        name: Install pnpm
+        id: pnpm-install
+        with:
+          version: 7
+          run_install: false
+
+      - name: Get pnpm store directory
+        id: pnpm-cache
+        run: |
+          echo "::set-output name=pnpm_cache_dir::$(pnpm store path)"
+
+      - uses: actions/cache@v3
+        name: Setup pnpm cache
+        with:
+          path: ${{ steps.pnpm-cache.outputs.pnpm_cache_dir }}
+          key: ${{ runner.os }}-pnpm-store-${{ hashFiles('**/pnpm-lock.yaml') }}
+          restore-keys: |
+            ${{ runner.os }}-pnpm-store-
+
+      - name: "Install dependencies"
+        run: "pnpm install --frozen-lockfile"
+
+      - name: "Eslint"
+        run: "pnpm eslint"
+
+  stylelint:
+    name: "Stylelint"
+    runs-on: "ubuntu-latest"
+    env:
+      PUBLIC_STRAPI_URI: "http://localhost"
+      PUBLIC_GRAPHQL_URI: "http://localhost/graphql"
+      PUBLIC_MAIL_URI: "http://localhost/api/send/mail"
+      PUBLIC_MAIL_ACCESS_TOKEN: "XXX"
+      PUBLIC_PLATFORM: "dev"
+      PUBLIC_RE_CAPTCHA_KEY: "XXX"
+
+    steps:
+      - name: "Check out Git repository"
+        uses: "actions/checkout@v3"
+
+      - name: "Use Node.js 16"
+        uses: "actions/setup-node@v3"
+        with:
+          node-version: 16
+
+      - uses: pnpm/action-setup@v2.2.2
+        name: Install pnpm
+        id: pnpm-install
+        with:
+          version: 7
+          run_install: false
+
+      - name: Get pnpm store directory
+        id: pnpm-cache
+        run: |
+          echo "::set-output name=pnpm_cache_dir::$(pnpm store path)"
+
+      - uses: actions/cache@v3
+        name: Setup pnpm cache
+        with:
+          path: ${{ steps.pnpm-cache.outputs.pnpm_cache_dir }}
+          key: ${{ runner.os }}-pnpm-store-${{ hashFiles('**/pnpm-lock.yaml') }}
+          restore-keys: |
+            ${{ runner.os }}-pnpm-store-
+
+      - name: "Install dependencies"
+        run: "pnpm install --frozen-lockfile"
+
+      - name: "Stylelint"
+        run: "pnpm stylelint"
+
+  prettier:
+    name: "Prettier"
+    runs-on: "ubuntu-latest"
+    env:
+      PUBLIC_STRAPI_URI: "http://localhost"
+      PUBLIC_GRAPHQL_URI: "http://localhost/graphql"
+      PUBLIC_MAIL_URI: "http://localhost/api/send/mail"
+      PUBLIC_MAIL_ACCESS_TOKEN: "XXX"
+      PUBLIC_PLATFORM: "dev"
+      PUBLIC_RE_CAPTCHA_KEY: "XXX"
+
+    steps:
+      - name: "Check out Git repository"
+        uses: "actions/checkout@v3"
+
+      - name: "Use Node.js 16"
+        uses: "actions/setup-node@v3"
+        with:
+          node-version: 16
+
+      - uses: pnpm/action-setup@v2.2.2
+        name: Install pnpm
+        id: pnpm-install
+        with:
+          version: 7
+          run_install: false
+
+      - name: Get pnpm store directory
+        id: pnpm-cache
+        run: |
+          echo "::set-output name=pnpm_cache_dir::$(pnpm store path)"
+
+      - uses: actions/cache@v3
+        name: Setup pnpm cache
+        with:
+          path: ${{ steps.pnpm-cache.outputs.pnpm_cache_dir }}
+          key: ${{ runner.os }}-pnpm-store-${{ hashFiles('**/pnpm-lock.yaml') }}
+          restore-keys: |
+            ${{ runner.os }}-pnpm-store-
+
+      - name: "Install dependencies"
+        run: "pnpm install --frozen-lockfile"
+
+      - name: "Prettier"
+        run: "pnpm prettier"
+
+  check:
+    name: "Svelte Check"
+    runs-on: "ubuntu-latest"
+    env:
+      PUBLIC_STRAPI_URI: "http://localhost"
+      PUBLIC_GRAPHQL_URI: "http://localhost/graphql"
+      PUBLIC_MAIL_URI: "http://localhost/api/send/mail"
+      PUBLIC_MAIL_ACCESS_TOKEN: "XXX"
+      PUBLIC_PLATFORM: "dev"
+      PUBLIC_RE_CAPTCHA_KEY: "XXX"
+
+    steps:
+      - name: "Check out Git repository"
+        uses: "actions/checkout@v3"
+
+      - name: "Use Node.js 16"
+        uses: "actions/setup-node@v3"
+        with:
+          node-version: 16
+
+      - uses: pnpm/action-setup@v2.2.2
+        name: Install pnpm
+        id: pnpm-install
+        with:
+          version: 7
+          run_install: false
+
+      - name: Get pnpm store directory
+        id: pnpm-cache
+        run: |
+          echo "::set-output name=pnpm_cache_dir::$(pnpm store path)"
+
+      - uses: actions/cache@v3
+        name: Setup pnpm cache
+        with:
+          path: ${{ steps.pnpm-cache.outputs.pnpm_cache_dir }}
+          key: ${{ runner.os }}-pnpm-store-${{ hashFiles('**/pnpm-lock.yaml') }}
+          restore-keys: |
+            ${{ runner.os }}-pnpm-store-
+
+      - name: "Install dependencies"
+        run: "pnpm install --frozen-lockfile"
+
+      - name: "Svelte Check"
+        run: "pnpm check"
+
+  test:
+    name: "Test"
+    runs-on: "ubuntu-latest"
+    env:
+      PUBLIC_STRAPI_URI: "http://localhost"
+      PUBLIC_GRAPHQL_URI: "http://localhost/graphql"
+      PUBLIC_MAIL_URI: "http://localhost/api/send/mail"
+      PUBLIC_MAIL_ACCESS_TOKEN: "XXX"
+      PUBLIC_PLATFORM: "dev"
+      PUBLIC_RE_CAPTCHA_KEY: "XXX"
+
+    steps:
+      - name: "Check out Git repository"
+        uses: "actions/checkout@v3"
+
+      - name: "Use Node.js 16"
+        uses: "actions/setup-node@v3"
+        with:
+          node-version: 16
+
+      - uses: pnpm/action-setup@v2.2.2
+        name: Install pnpm
+        id: pnpm-install
+        with:
+          version: 7
+          run_install: false
+
+      - name: Get pnpm store directory
+        id: pnpm-cache
+        run: |
+          echo "::set-output name=pnpm_cache_dir::$(pnpm store path)"
+
+      - uses: actions/cache@v3
+        name: Setup pnpm cache
+        with:
+          path: ${{ steps.pnpm-cache.outputs.pnpm_cache_dir }}
+          key: ${{ runner.os }}-pnpm-store-${{ hashFiles('**/pnpm-lock.yaml') }}
+          restore-keys: |
+            ${{ runner.os }}-pnpm-store-
+
+      - name: "Install dependencies"
+        run: "pnpm install --frozen-lockfile"
+
+      - name: "Test"
+        run: "pnpm test -- --ci"
+
+  build:
+    name: "Build"
+    needs: ["eslint", "prettier", "stylelint", "check", "test"]
+    runs-on: "ubuntu-latest"
+    env:
+      PUBLIC_STRAPI_URI: "http://localhost"
+      PUBLIC_GRAPHQL_URI: "http://localhost/graphql"
+      PUBLIC_MAIL_URI: "http://localhost/api/send/mail"
+      PUBLIC_MAIL_ACCESS_TOKEN: "XXX"
+      PUBLIC_PLATFORM: "dev"
+      PUBLIC_RE_CAPTCHA_KEY: "XXX"
+
+    steps:
+      - name: "Check out Git repository"
+        uses: "actions/checkout@v3"
+
+      - name: "Use Node.js 16"
+        uses: "actions/setup-node@v3"
+        with:
+          node-version: 16
+
+      - uses: pnpm/action-setup@v2.2.2
+        name: Install pnpm
+        id: pnpm-install
+        with:
+          version: 7
+          run_install: false
+
+      - name: Get pnpm store directory
+        id: pnpm-cache
+        run: |
+          echo "::set-output name=pnpm_cache_dir::$(pnpm store path)"
+
+      - uses: actions/cache@v3
+        name: Setup pnpm cache
+        with:
+          path: ${{ steps.pnpm-cache.outputs.pnpm_cache_dir }}
+          key: ${{ runner.os }}-pnpm-store-${{ hashFiles('**/pnpm-lock.yaml') }}
+          restore-keys: |
+            ${{ runner.os }}-pnpm-store-
+
+      - name: "Install dependencies"
+        run: "pnpm install --frozen-lockfile"
+
+      - name: "Build"
+        run: "pnpm build"
+
+  deploy:
+    name: "Deploy"
+    runs-on: ubuntu-latest
+    needs: ["build"]
+    steps:
+      - name: "Deploy"
+        run: curl -X POST -d {} https://api.vercel.com/v1/integrations/deploy/prj_PMZdGD8CwvlxMvEHLUKDFYjAuS7p/WEwNvancSS
