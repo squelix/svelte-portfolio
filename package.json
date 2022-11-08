@@ -33,7 +33,8 @@
 		"generate": "graphql-codegen",
 		"pretest": "svelte-kit sync",
 		"test": "cross-env NODE_OPTIONS=--experimental-vm-modules jest src --config jest.config.json",
-		"test:watch": "pnpm test -- --watch"
+		"test:watch": "pnpm test -- --watch",
+		"release": "release-it"
 	},
 	"devDependencies": {
 		"@babel/core": "^7.20.2",
