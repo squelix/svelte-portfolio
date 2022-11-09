@@ -30,7 +30,7 @@
 		"precheck": "svelte-kit sync",
 		"check": "svelte-check --tsconfig ./tsconfig.json",
 		"check:watch": "svelte-check --tsconfig ./tsconfig.json --watch",
-		"generate": "graphql-codegen",
+		"generate": "graphql-codegen && pnpm format",
 		"pretest": "svelte-kit sync",
 		"test": "cross-env NODE_OPTIONS=--experimental-vm-modules jest src --config jest.config.json",
 		"test:watch": "pnpm test -- --watch",
