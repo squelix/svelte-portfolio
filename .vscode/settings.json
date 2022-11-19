@@ -84,5 +84,10 @@
 		"tab.unfocusedActiveBorder": "#fff0"
 	},
 	"unicode-bom": ["error", "never"],
-	"explorer.compactFolders": false
+	"explorer.compactFolders": false,
+	"jest.autoRun": {
+		"watch": false,
+		"onSave": "test-file",
+		"onStartup": ["all-tests"]
+	}
 }

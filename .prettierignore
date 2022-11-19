@@ -10,3 +10,4 @@ build
 .netlify
 .vercel
 pnpm-lock.yaml
+coverage
