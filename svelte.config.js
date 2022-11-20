@@ -22,7 +22,6 @@ const config = {
 		}),
 		prerender: {
 			entries: [
-				'/',
 				'/fr',
 				'/en',
 				'/en/contact',
