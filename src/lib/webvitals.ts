@@ -1,5 +1,5 @@
 /* eslint-disable @typescript-eslint/no-unsafe-assignment, @typescript-eslint/no-misused-promises, @typescript-eslint/no-unsafe-return, @typescript-eslint/no-unsafe-call */
-import { onCLS, onFCP, onFID, onLCP, onTTFB } from 'web-vitals/attribution';
+import { onCLS, onFCP, onFID, onINP, onLCP, onTTFB } from 'web-vitals/attribution';
 
 import type { Metric } from 'web-vitals';
 
@@ -71,6 +71,7 @@ export const webVitals = (options: {
 		onLCP(async (metric) => await sendToAnalytics(metric, options));
 		onCLS(async (metric) => await sendToAnalytics(metric, options));
 		onFCP(async (metric) => await sendToAnalytics(metric, options));
+		onINP(async (metric) => await sendToAnalytics(metric, options));
 	} catch (err) {
 		console.error('[Analytics]', err);
 	}
