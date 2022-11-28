@@ -3,10 +3,10 @@ lockfileVersion: 5.4
 specifiers:
   '@babel/core': ^7.20.2
   '@babel/preset-env': ^7.20.2
-  '@graphql-codegen/cli': ^2.14.0
+  '@graphql-codegen/cli': ^2.14.1
   '@graphql-codegen/typescript-operations': ^2.5.7
   '@sveltejs/adapter-vercel': 1.0.0-next.84
-  '@sveltejs/kit': 1.0.0-next.561
+  '@sveltejs/kit': 1.0.0-next.563
   '@sveltekit-i18n/base': ^1.2.1
   '@sveltekit-i18n/parser-default': ^1.0.3
   '@testing-library/jest-dom': ^5.16.5
@@ -73,10 +73,10 @@ dependencies:
 devDependencies:
   '@babel/core': 7.20.2
   '@babel/preset-env': 7.20.2_@babel+core@7.20.2
-  '@graphql-codegen/cli': 2.14.0_ud2xyc64tfyardumz7ay5bljyi
+  '@graphql-codegen/cli': 2.14.1_ud2xyc64tfyardumz7ay5bljyi
   '@graphql-codegen/typescript-operations': 2.5.7_graphql@16.6.0
   '@sveltejs/adapter-vercel': 1.0.0-next.84
-  '@sveltejs/kit': 1.0.0-next.561_svelte@3.53.1+vite@3.2.4
+  '@sveltejs/kit': 1.0.0-next.563_svelte@3.53.1+vite@3.2.4
   '@sveltekit-i18n/base': 1.2.1_svelte@3.53.1
   '@sveltekit-i18n/parser-default': 1.0.3
   '@testing-library/jest-dom': 5.16.5
@@ -1515,8 +1515,8 @@ packages:
       - supports-color
     dev: true
 
-  /@graphql-codegen/cli/2.14.0_ud2xyc64tfyardumz7ay5bljyi:
-    resolution: {integrity: sha512-tiG8iJd2jklazcAkPC1yZ4THQZOBazHi4L8qtH212PydFfpZ3G+PQyilf9sOMqT6Fq/b6yirHvVi6Jy2b1smEw==}
+  /@graphql-codegen/cli/2.14.1_ud2xyc64tfyardumz7ay5bljyi:
+    resolution: {integrity: sha512-Z9EiX8yJ5xtNdw/1ApV8uKx6UjCNl/D28zTHU8Fa7BcCdi3ilGOKSiWCNZaH1mpwKr5EfX18kme2bIqKmohv/w==}
     hasBin: true
     peerDependencies:
       graphql: ^0.8.0 || ^0.9.0 || ^0.10.0 || ^0.11.0 || ^0.12.0 || ^0.13.0 || ^14.0.0 || ^15.0.0 || ^16.0.0
@@ -1551,7 +1551,6 @@ packages:
       json-to-pretty-yaml: 1.2.2
       listr2: 4.0.5
       log-symbols: 4.1.0
-      mkdirp: 1.0.4
       shell-quote: 1.7.3
       string-env-interpolation: 1.0.1
       ts-log: 2.2.4
@@ -2563,8 +2562,8 @@ packages:
       - supports-color
     dev: true
 
-  /@sveltejs/kit/1.0.0-next.561_svelte@3.53.1+vite@3.2.4:
-    resolution: {integrity: sha512-N8HQvS6gcm7R78ADfM4xjhuFS3Ir+Ezce3De8WOnISXQ1tS2npc5LMH9LRHHi14nfosAfJ7vUlcLwLE6N/I7+Q==}
+  /@sveltejs/kit/1.0.0-next.563_svelte@3.53.1+vite@3.2.4:
+    resolution: {integrity: sha512-RvQSE6dOuH4vE2hM5K/DezJlm9RjC5EMQK8X46mBXIggp8unaDH+YJyF+KRvAZE5sV93Hk5xaq0WZa8jtU42Jw==}
     engines: {node: '>=16.14'}
     hasBin: true
     requiresBuild: true
