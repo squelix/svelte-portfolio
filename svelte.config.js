@@ -18,8 +18,7 @@ const config = {
 	kit: {
 		inlineStyleThreshold: 1024,
 		adapter: adapter({
-			edge: true,
-			split: true
+			edge: true
 		}),
 		prerender: {
 			entries: [

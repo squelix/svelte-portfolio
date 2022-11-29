@@ -23,3 +23,4 @@ graphql-generated
 
 vite.config.js
 svelte.config.js
+coverage
