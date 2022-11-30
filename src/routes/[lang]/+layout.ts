@@ -9,5 +9,5 @@ import type { LayoutLoad } from './$types';
 export const load: LayoutLoad = async ({ data }) => {
 	profile.set(data.profile);
 	await loadTranslations(data.lang, data.route);
-	return data;
+	return {};
 };

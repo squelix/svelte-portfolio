@@ -43,6 +43,7 @@
 			toggleOutline(true);
 		}
 	};
+
 	const mouseDownEvent = () => {
 		toggleOutline(false);
 	};

@@ -51,5 +51,5 @@ export const load: LayoutLoad = ({ data }) => {
 			'Décembre'
 		]
 	});
-	return data;
+	return {};
 };

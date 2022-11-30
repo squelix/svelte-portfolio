@@ -7,6 +7,5 @@ import type { PageLoad } from './$types';
 export const load: PageLoad = ({ data }) => {
 	itemSelected.set(PersonalInfoNavItemEnum.Hobbies);
 	hobbies.set(data.hobbies);
-
 	return {};
 };

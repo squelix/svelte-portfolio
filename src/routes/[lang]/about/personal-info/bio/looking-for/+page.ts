@@ -1,4 +1,9 @@
 import { BioNavItemEnum } from '$lib/menu/bio-nav-item.enum';
 import { itemSelected } from '$stores/nav';
 
-itemSelected.set(BioNavItemEnum.LookingFor);
+import type { PageLoad } from './$types';
+
+export const load: PageLoad = () => {
+	itemSelected.set(BioNavItemEnum.LookingFor);
+	return {};
+};

@@ -9,5 +9,5 @@ export const load: PageLoad = ({ data }) => {
 	projects.set(data.projects);
 	projectsTechnosFilter.set(data.projectsTechnosFilter);
 	setNavItem('projects');
-	return data;
+	return {};
 };

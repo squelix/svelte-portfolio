@@ -4,7 +4,6 @@ import type { LayoutServerLoad } from './$types';
 export const load: LayoutServerLoad = ({ url }) => {
 	const { pathname } = url;
 	const lang = `${pathname.match(/[^/]+?(?=\/|$)/) || ''}`;
-	const route = pathname.replace(new RegExp(`^/${lang}`), '');
 
-	return { route, lang };
+	return { route: pathname.replace(new RegExp(`^/${lang}`), ''), lang };
 };
