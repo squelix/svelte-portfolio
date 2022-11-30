@@ -31,10 +31,13 @@
 			newTechnos = [...new Set([...actualTechnos, filterId])];
 		}
 
-		const queryParams = newTechnos.length > 0 ? `?techno=${newTechnos.join(',')}` : '';
-		const redirect = `${url.pathname}${queryParams}`;
+		if (newTechnos.length > 0) {
+			url.searchParams.append('techno', newTechnos.join(','));
+		} else {
+			url.searchParams.delete('techno');
+		}
 
-		await goto(redirect);
+		await goto(url);
 	};
 </script>
 
