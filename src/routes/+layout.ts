@@ -11,14 +11,17 @@ import type { LayoutLoad } from './$types';
 
 export const prerender = 'auto';
 
-export const load: LayoutLoad = ({ data }) => {
+export const load: LayoutLoad = ({ url }) => {
+	const { pathname } = url;
+	const lang = `${pathname.match(/[^/]+?(?=\/|$)/) || ''}`;
+
 	if (!dev) {
 		inject();
 	}
 
 	dayjs.extend(localeData);
 	dayjs.extend(updateLocale);
-	dayjs.locale(data.lang);
+	dayjs.locale(lang);
 	dayjs.updateLocale('en', {
 		months: [
 			'January',
@@ -51,5 +54,6 @@ export const load: LayoutLoad = ({ data }) => {
 			'Décembre'
 		]
 	});
-	return {};
+
+	return { route: pathname.replace(new RegExp(`^/${lang}`), ''), lang };
 };
