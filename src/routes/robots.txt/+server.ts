@@ -6,6 +6,7 @@ import type { RequestHandler } from './$types';
 
 export const GET: RequestHandler = ({ url }) =>
 	new Response(getRobotsTxtString(LangEnum, RoutesEnum, Routes, url), {
+		status: 200,
 		headers: {
 			'Content-Type': 'text/plain; charset=utf-8'
 		}

@@ -6,6 +6,7 @@ import type { RequestHandler } from './$types';
 
 export const GET: RequestHandler = ({ url }) =>
 	new Response(getSitemapXmlString(LangEnum, RoutesEnum, Routes, url), {
+		status: 200,
 		headers: {
 			'Content-Type': 'application/xml; charset=utf-8'
 		}

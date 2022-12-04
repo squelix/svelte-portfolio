@@ -8,10 +8,15 @@ import type { Handle } from '@sveltejs/kit';
 export const handle: Handle = async ({ event, resolve }) => {
 	const { url, request } = event;
 	const { pathname } = url;
-	const lang = `${pathname.match(/[^/]+?(?=\/|$)/) || ''}`;
-	const route = pathname.replace(new RegExp(`^/${lang}`), '');
 
 	const response = await resolve(event);
+
+	if (['robots.txt', 'sitemap.xml'].some((path) => pathname.includes(path))) {
+		return response;
+	}
+
+	const lang = `${pathname.match(/[^/]+?(?=\/|$)/) || ''}`;
+	const route = pathname.replace(new RegExp(`^/${lang}`), '');
 
 	// If this request is a route request
 	if (AcceptedLanguages.includes(lang as unknown as LangEnum)) {
