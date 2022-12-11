@@ -57,14 +57,33 @@ const sendToAnalytics = async (
 	}
 };
 
-// eslint-disable-next-line @typescript-eslint/no-explicit-any
-export const webVitals = (options: {
+interface WebVitalsOptions {
 	// eslint-disable-next-line @typescript-eslint/no-explicit-any
 	params: { [s: string]: any } | ArrayLike<any>;
 	path: string;
 	analyticsId: string;
 	debug?: boolean;
+	mode?: 'auto' | 'development' | 'production';
+}
+const webVitalsDefaultOptions: Partial<WebVitalsOptions> = {
+	mode: 'development',
+	debug: false
+};
+
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
+export const webVitals = (paramOptions: {
+	// eslint-disable-next-line @typescript-eslint/no-explicit-any
+	params: { [s: string]: any } | ArrayLike<any>;
+	path: string;
+	analyticsId: string;
+	debug?: boolean;
+	mode?: 'development' | 'production';
 }): void => {
+	const options = { ...webVitalsDefaultOptions, ...paramOptions };
+	if (options.mode === 'development') {
+		return;
+	}
+
 	try {
 		onFID(async (metric) => await sendToAnalytics(metric, options));
 		onTTFB(async (metric) => await sendToAnalytics(metric, options));

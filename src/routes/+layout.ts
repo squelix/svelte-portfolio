@@ -12,9 +12,7 @@ import type { LayoutLoad } from './$types';
 export const prerender = 'auto';
 
 export const load: LayoutLoad = ({ data }) => {
-	if (!dev) {
-		inject();
-	}
+	inject({ mode: dev ? 'development' : 'production' });
 
 	dayjs.extend(localeData);
 	dayjs.extend(updateLocale);

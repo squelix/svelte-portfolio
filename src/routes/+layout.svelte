@@ -6,7 +6,7 @@
 	import 'sanitize.css/typography.css';
 	import '../styles/app.scss';
 
-	import { browser } from '$app/environment';
+	import { browser, dev } from '$app/environment';
 	import { page } from '$app/stores';
 	import Footer from '$lib/commons/Footer.svelte';
 	import Header from '$lib/commons/Header.svelte';
@@ -23,7 +23,8 @@
 			webVitals({
 				path: $page.url.pathname,
 				params: $page.params,
-				analyticsId: $vercelAnalyticsId
+				analyticsId: $vercelAnalyticsId,
+				mode: dev ? 'development' : 'production'
 			});
 		}
 	}
