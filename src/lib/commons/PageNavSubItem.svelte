@@ -5,6 +5,7 @@
 	import PageNavSubItemItem from '$lib/commons/PageNavSubItemItem.svelte';
 	import { getRoute, isRouteActive } from '$lib/routing';
 	import Icon from '$lib/SvgIcon.svelte';
+	import { ENTER_KEY } from '$lib/utils/keys';
 	import { subNavItemOpened, subNavItemSelected } from '$stores/nav';
 	import { locale, t } from '$translations';
 
@@ -14,9 +15,7 @@
 	export let index: number;
 	export let ariaHidden: boolean;
 
-	const ENTER_KEY = 'Enter';
-
-	const setSeletedItem = (itemId: string) => {
+	const setSelectedItem = (itemId: string) => {
 		if (itemId !== $subNavItemSelected) {
 			subNavItemSelected.set(itemId);
 		}
@@ -29,7 +28,7 @@
 	};
 
 	const selectItem = (): void => {
-		setSeletedItem(item.id);
+		setSelectedItem(item.id);
 	};
 
 	const keydown = (event: KeyboardEvent): void => {

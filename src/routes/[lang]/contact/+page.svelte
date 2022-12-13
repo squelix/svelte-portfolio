@@ -8,6 +8,7 @@
 	import PageTitle from '$lib/commons/PageTitle.svelte';
 	import Textarea from '$lib/commons/Textarea.svelte';
 	import { getRoute, RoutesEnum } from '$lib/routing';
+	import { ENTER_KEY } from '$lib/utils/keys';
 	import { validateEmail } from '$lib/validators';
 	import { LangEnum } from '$models/langs.enum';
 	import { mailAccessToken, reCaptchaKey } from '$stores/env';
@@ -19,7 +20,6 @@
 	import { fade } from 'svelte/transition';
 
 	const transitionMs = 175;
-	const ENTER_KEY = 'Enter';
 
 	let intervalLoading: number;
 	let intervalLoaded: number;

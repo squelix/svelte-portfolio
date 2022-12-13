@@ -9,21 +9,19 @@
 	export let item: Omit<Job, '__typename'>;
 	export let last = false;
 
-	const getJobSkillsCategories = (): string[] => {
-		return [...new Set(item.jobSkills?.data.map((skill) => skill.attributes?.category))]
+	const getJobSkillsCategories = (): string[] =>
+		[...new Set(item.jobSkills?.data.map((skill) => skill.attributes?.category))]
 			.map((category) => category?.replace('_', ' '))
 			.filter((category) => !!category) as string[];
-	};
 
-	const groupSkillsByCategories = (): { category: string; skills: string[] }[] => {
-		return getJobSkillsCategories().map((category) => ({
+	const groupSkillsByCategories = (): { category: string; skills: string[] }[] =>
+		getJobSkillsCategories().map((category) => ({
 			category,
 			skills: item.jobSkills?.data
 				.filter((skill) => skill.attributes?.category?.replace('_', ' ') === category)
 				.map((skill) => skill.attributes?.name)
 				.filter((skill) => !!skill) as string[]
 		}));
-	};
 </script>
 
 <header>

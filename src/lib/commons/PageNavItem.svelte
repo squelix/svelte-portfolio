@@ -6,13 +6,12 @@
 	import { locale, t } from '$translations';
 
 	import { getRoute } from '$lib/routing';
+	import { ENTER_KEY } from '$lib/utils/keys';
 	import type { PageNavItemInterface } from '$models/page-nav-item.interface';
 
 	export let item: PageNavItemInterface;
 
-	const ENTER_KEY = 'Enter';
-
-	const setSeletedItem = (itemId: string) => {
+	const setSelectedItem = (itemId: string) => {
 		if (itemId !== $navItemSelected) {
 			navItemSelected.set(itemId);
 		}
@@ -26,7 +25,7 @@
 	};
 
 	const selectItem = (): void => {
-		setSeletedItem(item.id);
+		setSelectedItem(item.id);
 	};
 
 	const keydown = (event: KeyboardEvent): void => {

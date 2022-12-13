@@ -5,14 +5,13 @@
 	import { navItemOpened, navItemSelected, subNavItemOpened } from '$stores/nav';
 	import { t } from '$translations';
 
+	import { ENTER_KEY } from '$lib/utils/keys';
 	import type { PageNavFilterItemInterface } from '$models/page-nav-filter-item.interface';
 
 	export let item: PageNavFilterItemInterface;
 	export let selectedItems: string[];
 
-	const ENTER_KEY = 'Enter';
-
-	const setSeletedItem = (itemId: string) => {
+	const setSelectedItem = (itemId: string) => {
 		if (itemId !== $navItemSelected) {
 			navItemSelected.set(itemId);
 		}
@@ -26,7 +25,7 @@
 	};
 
 	const selectItem = (): void => {
-		setSeletedItem(item.id);
+		setSelectedItem(item.id);
 	};
 
 	const keydown = ({ code }: KeyboardEvent): void => {

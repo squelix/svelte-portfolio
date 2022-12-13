@@ -9,12 +9,13 @@
 	import type { PositionInterface } from '$models/snake/position.interface';
 	import type { RadiusInterface } from '$models/snake/radius.interface';
 
-	const width = 238;
-	const height = 405;
 	export let boardBorderColor: ColorInterface = { r: 0, g: 0, b: 0, a: 0 };
 	export let boardBackgroundColor: ColorInterface = { r: 0, g: 0, b: 0, a: 0 };
 	export let snakeColor: ColorInterface = { r: 67, g: 217, b: 173, a: 1 };
 	export let snakeBorderColor: ColorInterface | undefined = undefined;
+
+	const width = 238;
+	const height = 405;
 
 	let board: HTMLCanvasElement;
 	let context: CanvasRenderingContext2D | null;

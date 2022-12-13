@@ -6,11 +6,11 @@
 	import NavItem from '$lib/commons/Nav-item.svelte';
 	import { MainRoutes } from '$lib/routing';
 	import Icon from '$lib/SvgIcon.svelte';
+	import { ENTER_KEY } from '$lib/utils/keys';
 	import { t } from '$translations';
 
 	import type { RoutesEnum } from '$lib/routing';
 
-	const ENTER_KEY = 'Enter';
 	let open = false;
 
 	const mainRoutesKeys: RoutesEnum[] = Object.keys(MainRoutes) as RoutesEnum[];

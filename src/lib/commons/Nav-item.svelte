@@ -1,6 +1,7 @@
 <script lang="ts">
 	import { page } from '$app/stores';
 	import { isBaseRouteActive } from '$lib/routing';
+	import { ENTER_KEY } from '$lib/utils/keys';
 	import { locale } from '$translations';
 	import { createEventDispatcher } from 'svelte';
 
@@ -11,8 +12,6 @@
 	export let beforeLast: boolean;
 
 	const dispatch = createEventDispatcher();
-
-	const ENTER_KEY = 'Enter';
 
 	const closeMenu = (): void => {
 		dispatch('closeMenu');
