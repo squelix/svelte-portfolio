@@ -4,12 +4,13 @@ import type { LangEnum } from '$models/langs.enum';
 const getRoutes = (
 	langEnum: typeof LangEnum,
 	routesEnum: typeof RoutesEnum,
-	routes: Record<RoutesEnum, string>
+	routes: Partial<Record<RoutesEnum, string>>
 ): string[] =>
 	Object.values(langEnum).flatMap((lang) =>
 		Object.values(routesEnum)
 			.filter((route) => route !== routesEnum.Home)
-			.map((route) => `/${lang}${routes[route]}`)
+			// eslint-disable-next-line @typescript-eslint/no-non-null-assertion
+			.map((route) => `/${lang}${routes[route]!}`)
 	);
 
 export const getRobotsTxtString = (
@@ -32,11 +33,10 @@ export const getRobotsTxtString = (
 export const getSitemapXmlString = (
 	langEnum: typeof LangEnum,
 	routesEnum: typeof RoutesEnum,
-	routes: Record<RoutesEnum, string>,
+	routes: Partial<Record<RoutesEnum, string>>,
 	url: URL
 ): string => {
 	const routesStr = [
-		'/',
 		`/${langEnum.fr_FR}`,
 		`/${langEnum.en_GB}`,
 		...getRoutes(langEnum, routesEnum, routes)
