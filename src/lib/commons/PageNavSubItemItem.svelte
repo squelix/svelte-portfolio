@@ -1,6 +1,6 @@
 <script lang="ts">
 	import { page } from '$app/stores';
-	import Mardown from '$icons/markdown.svg?raw';
+	import Markdown from '$icons/markdown.svg?raw';
 	import { getRoute, isRouteActive } from '$lib/routing';
 	import Icon from '$lib/SvgIcon.svelte';
 	import { locale, t } from '$translations';
@@ -25,7 +25,7 @@
 			tabindex={ariaHidden ? -1 : undefined}
 		>
 			<span class="page-nav-sub-item-item__link__icon">
-				<Icon data={Mardown} width="100%" />
+				<Icon data={Markdown} width="100%" />
 			</span>
 			{#if item.labelKey && !item.label}
 				{$t(item.labelKey)}
@@ -43,7 +43,7 @@
 			tabindex={ariaHidden ? -1 : undefined}
 		>
 			<span class="page-nav-sub-item-item__link__icon">
-				<Icon data={Mardown} width="100%" />
+				<Icon data={Markdown} width="100%" />
 			</span>
 			{#if item.labelKey && !item.label}
 				{$t(item.labelKey)}
