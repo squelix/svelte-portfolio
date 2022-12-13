@@ -3,17 +3,15 @@
 	import Image from '$lib/commons/Image.svelte';
 	import Link from '$lib/commons/Link.svelte';
 	import TechnoIcon from '$lib/commons/TechnoIcon.svelte';
+	import { technosIcons } from '$lib/technos-icons';
 	import { locale, t } from '$translations';
 	import slugify from 'slugify';
 
-	import { technosIcons } from '$lib/technos-icons';
 	import type { Project, SchoolProject } from '$models/graphql-generated';
 
 	export let project: Omit<Project, '__typename'> | Omit<SchoolProject, '__typename'>;
 	export let index: number;
 	export let baseTrad: string;
-
-	// const ariaLink = `${$t('projects.aria.card') as string} ${project.urlName}`;
 </script>
 
 <li>
