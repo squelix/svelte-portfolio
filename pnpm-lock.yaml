@@ -5,7 +5,7 @@ specifiers:
   '@babel/preset-env': ^7.20.2
   '@graphql-codegen/cli': ^2.16.1
   '@graphql-codegen/typescript-operations': ^2.5.10
-  '@sveltejs/adapter-vercel': 1.0.0-next.87
+  '@sveltejs/adapter-vercel': 1.0.0-next.88
   '@sveltejs/kit': 1.0.0-next.587
   '@sveltekit-i18n/base': ^1.2.1
   '@sveltekit-i18n/parser-default': ^1.0.3
@@ -76,7 +76,7 @@ devDependencies:
   '@babel/preset-env': 7.20.2_@babel+core@7.20.5
   '@graphql-codegen/cli': 2.16.1_q25ugmtrewo5eke3a67xig3shm
   '@graphql-codegen/typescript-operations': 2.5.10_graphql@16.6.0
-  '@sveltejs/adapter-vercel': 1.0.0-next.87
+  '@sveltejs/adapter-vercel': 1.0.0-next.88_oogoraclbppcquiitsbqrelvd4
   '@sveltejs/kit': 1.0.0-next.587_svelte@3.55.0+vite@4.0.1
   '@sveltekit-i18n/base': 1.2.1_svelte@3.55.0
   '@sveltekit-i18n/parser-default': 1.0.3
@@ -2717,9 +2717,12 @@ packages:
       '@sinonjs/commons': 1.8.5
     dev: true
 
-  /@sveltejs/adapter-vercel/1.0.0-next.87:
-    resolution: {integrity: sha512-JRmDa7UDpL8Ir2v+8Glq7OMz8Ufn2VLSCJcNDWygNzQehTf9SeK7sAyDjnEUds0WXNH9TMzxqzPd+xj2eZ0W0Q==}
+  /@sveltejs/adapter-vercel/1.0.0-next.88_oogoraclbppcquiitsbqrelvd4:
+    resolution: {integrity: sha512-X2DewfrqALRORli1WsMszFt04Rdh5CBJbNYH+lZ5Kn7Yq6cFa6XDE5kBIbi/Z43ib0qLlWvuys03DJGbjfokDg==}
+    peerDependencies:
+      '@sveltejs/kit': ^1.0.0-next.587
     dependencies:
+      '@sveltejs/kit': 1.0.0-next.587_svelte@3.55.0+vite@4.0.1
       '@vercel/nft': 0.22.1
       esbuild: 0.16.4
     transitivePeerDependencies:
