@@ -1,8 +1,8 @@
 export class MailService {
-	private readonly mailUrl: string;
+	readonly #mailUrl: string;
 
 	constructor(url: string) {
-		this.mailUrl = url.replace(/\/$/, '');
+		this.#mailUrl = url.replace(/\/$/, '');
 	}
 
 	sendMail = async (
@@ -12,7 +12,7 @@ export class MailService {
 		token: string,
 		accessToken: string
 	) => {
-		const response = await fetch(`${this.mailUrl}/send`, {
+		const response = await fetch(`${this.#mailUrl}/send`, {
 			method: 'post',
 			headers: {
 				'Content-Type': 'application/json',

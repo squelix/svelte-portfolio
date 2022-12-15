@@ -23,34 +23,34 @@ export interface ImageParams {
 }
 
 export class ImageCloudinaryService {
-	private readonly defaultQuality = QualityEnum.Auto;
-	private readonly defaultFormat = FormatEnum.Auto;
-	private readonly defaultFit = FitEnum.Fill;
-	private readonly splitter = '/image/upload/';
+	readonly #defaultQuality = QualityEnum.Auto;
+	readonly #defaultFormat = FormatEnum.Auto;
+	readonly #defaultFit = FitEnum.Fill;
+	readonly #splitter = '/image/upload/';
 
-	optimize(imageUrl: string, params: ImageParams): string {
-		this.validateDimensions(params);
-		const imageUrlParts = imageUrl.split(this.splitter);
-		const beforeOptimizeUrl = `${imageUrlParts[0]}${this.splitter}`;
+	readonly optimize = (imageUrl: string, params: ImageParams): string => {
+		this.#validateDimensions(params);
+		const imageUrlParts = imageUrl.split(this.#splitter);
+		const beforeOptimizeUrl = `${imageUrlParts[0]}${this.#splitter}`;
 		const afterOptimizeUrl = imageUrlParts[1];
 
-		const optimizeParams: string = this.buildParams({
-			quality: this.defaultQuality,
-			format: this.defaultFormat,
-			fit: this.defaultFit,
+		const optimizeParams: string = this.#buildParams({
+			quality: this.#defaultQuality,
+			format: this.#defaultFormat,
+			fit: this.#defaultFit,
 			...params
 		});
 
 		return `${beforeOptimizeUrl}${optimizeParams}/${afterOptimizeUrl}`;
-	}
+	};
 
-	private validateDimensions(params: ImageParams): void {
+	readonly #validateDimensions = (params: ImageParams): void => {
 		if (!params.width && !params.height) {
 			throw new Error('dimensions should have at least a width or an height');
 		}
-	}
+	};
 
-	private buildParams(params: ImageParams): string {
+	readonly #buildParams = (params: ImageParams): string => {
 		const fit = params.fit ? params.fit : '';
 		const width = `,w_${params.width}`;
 		const height = params.height ? `,h_${params.height}` : '';
@@ -58,12 +58,12 @@ export class ImageCloudinaryService {
 		const format = params.format ? `/${params.format}` : '';
 
 		return `${fit}${width}${height}${quality}${format}`;
-	}
+	};
 
-	getSrcSet(
+	readonly getSrcSet = (
 		imageUrl: string,
 		params: ImageParams
-	): { image1x: string; image2x: string; image3x: string; image4x: string } {
+	): { image1x: string; image2x: string; image3x: string; image4x: string } => {
 		const image1x = this.optimize(imageUrl, {
 			...params,
 			width: params.width,
@@ -86,5 +86,5 @@ export class ImageCloudinaryService {
 		});
 
 		return { image1x, image2x, image3x, image4x };
-	}
+	};
 }

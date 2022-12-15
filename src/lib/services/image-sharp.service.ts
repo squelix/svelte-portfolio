@@ -29,72 +29,71 @@ export interface ImageParams {
 }
 
 export class ImageSharpService {
-	private readonly imageBaseUrl: string;
-	private readonly defaultQuality = 90;
+	readonly #imageBaseUrl: string;
+	readonly #defaultQuality = 90;
 
 	constructor(imageBaseUrl: string) {
 		// Remove trailing slash
-		this.imageBaseUrl = imageBaseUrl.replace(/\/$/, '');
+		this.#imageBaseUrl = imageBaseUrl.replace(/\/$/, '');
 	}
 
-	private getImageUrl(imageUrl: string): string {
+	readonly #getImageUrl = (imageUrl: string): string => {
 		if (imageUrl.startsWith('http')) {
 			return imageUrl;
 		}
 
 		if (imageUrl.startsWith('/')) {
-			return `${this.imageBaseUrl}${imageUrl}`;
+			return `${this.#imageBaseUrl}${imageUrl}`;
 		}
 
-		return `${this.imageBaseUrl}/${imageUrl}`;
-	}
+		return `${this.#imageBaseUrl}/${imageUrl}`;
+	};
 
-	optimize(imageUrl: string, params: ImageParams): string {
-		this.validateDimensions(params);
-		const queryParams = this.buildWithQueryParams({
-			quality: this.defaultQuality,
+	readonly optimize = (imageUrl: string, params: ImageParams): string => {
+		this.#validateDimensions(params);
+		const queryParams = this.#buildWithQueryParams({
+			quality: this.#defaultQuality,
 			...params
 		});
 
-		return `${this.getImageUrl(imageUrl)}?${queryParams}`;
-	}
+		return `${this.#getImageUrl(imageUrl)}?${queryParams}`;
+	};
 
-	private validateDimensions(params: ImageParams): void {
+	readonly #validateDimensions = (params: ImageParams): void => {
 		if (!params.width && !params.height) {
 			throw new Error('dimensions should have at least a width or an height');
 		}
-	}
+	};
 
-	private buildWithQueryParams(queryParams: Record<string, unknown>): string {
-		return queryString.stringify(queryParams);
-	}
+	readonly #buildWithQueryParams = (queryParams: Record<string, unknown>): string =>
+		queryString.stringify(queryParams);
 
-	getSrcSet(
+	readonly getSrcSet = (
 		imageUrl: string,
 		params: ImageParams
-	): { image1x: string; image2x: string; image3x: string; image4x: string } {
+	): { image1x: string; image2x: string; image3x: string; image4x: string } => {
 		const baseParams = { ...params, fit: FitEnum.Cover };
-		const image1x = this.optimize(this.getImageUrl(imageUrl), {
+		const image1x = this.optimize(this.#getImageUrl(imageUrl), {
 			...baseParams,
 			width: params.width,
 			...(params.height ? { height: params.height } : {})
 		});
-		const image2x = this.optimize(this.getImageUrl(imageUrl), {
+		const image2x = this.optimize(this.#getImageUrl(imageUrl), {
 			...baseParams,
 			width: params.width * 2,
 			...(params.height ? { height: params.height * 2 } : {})
 		});
-		const image3x = this.optimize(this.getImageUrl(imageUrl), {
+		const image3x = this.optimize(this.#getImageUrl(imageUrl), {
 			...baseParams,
 			width: params.width * 3,
 			...(params.height ? { height: params.height * 3 } : {})
 		});
-		const image4x = this.optimize(this.getImageUrl(imageUrl), {
+		const image4x = this.optimize(this.#getImageUrl(imageUrl), {
 			...baseParams,
 			width: params.width * 4,
 			...(params.height ? { height: params.height * 4 } : {})
 		});
 
 		return { image1x, image2x, image3x, image4x };
-	}
+	};
 }
