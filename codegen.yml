@@ -1,7 +1,8 @@
-schema: http://localhost:1337/graphql
+overwrite: true
+schema: './schema.graphql'
 documents: 'src/graphql/**/*.ts'
 generates:
-  ./src/models/graphql-generated/index.ts:
+  src/models/graphql-generated/index.ts:
     plugins:
       - typescript
       - typescript-operations

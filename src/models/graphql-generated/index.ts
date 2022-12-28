@@ -625,7 +625,6 @@ export type LanguageRelationResponseCollection = {
 
 export type Mutation = {
 	__typename?: 'Mutation';
-	/** Change user password. Confirm with the current password. */
 	changePassword?: Maybe<UsersPermissionsLoginPayload>;
 	createHobbyLocalization?: Maybe<HobbyEntityResponse>;
 	createJobLocalization?: Maybe<JobEntityResponse>;
@@ -639,33 +638,23 @@ export type Mutation = {
 	createSkillLocalization?: Maybe<SkillEntityResponse>;
 	createUploadFile?: Maybe<UploadFileEntityResponse>;
 	createUploadFolder?: Maybe<UploadFolderEntityResponse>;
-	/** Create a new role */
 	createUsersPermissionsRole?: Maybe<UsersPermissionsCreateRolePayload>;
-	/** Create a new user */
 	createUsersPermissionsUser: UsersPermissionsUserEntityResponse;
 	deleteUploadFile?: Maybe<UploadFileEntityResponse>;
 	deleteUploadFolder?: Maybe<UploadFolderEntityResponse>;
-	/** Delete an existing role */
 	deleteUsersPermissionsRole?: Maybe<UsersPermissionsDeleteRolePayload>;
-	/** Delete an existing user */
 	deleteUsersPermissionsUser: UsersPermissionsUserEntityResponse;
-	/** Confirm an email users email address */
 	emailConfirmation?: Maybe<UsersPermissionsLoginPayload>;
-	/** Request a reset password token */
 	forgotPassword?: Maybe<UsersPermissionsPasswordPayload>;
 	login: UsersPermissionsLoginPayload;
 	multipleUpload: Array<Maybe<UploadFileEntityResponse>>;
-	/** Register a user */
 	register: UsersPermissionsLoginPayload;
 	removeFile?: Maybe<UploadFileEntityResponse>;
-	/** Reset user password. Confirm with a code (resetToken from forgotPassword) */
 	resetPassword?: Maybe<UsersPermissionsLoginPayload>;
 	updateFileInfo: UploadFileEntityResponse;
 	updateUploadFile?: Maybe<UploadFileEntityResponse>;
 	updateUploadFolder?: Maybe<UploadFolderEntityResponse>;
-	/** Update an existing role */
 	updateUsersPermissionsRole?: Maybe<UsersPermissionsUpdateRolePayload>;
-	/** Update an existing user */
 	updateUsersPermissionsUser: UsersPermissionsUserEntityResponse;
 	upload: UploadFileEntityResponse;
 };

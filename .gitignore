@@ -25,3 +25,5 @@ public
 .netlify
 .vercel
 coverage
+
+schema.graphql
