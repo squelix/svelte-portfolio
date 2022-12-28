@@ -10,13 +10,18 @@ const getRoutes = (
 		Object.values(routesEnum)
 			.filter((route) => route !== routesEnum.Home)
 			// eslint-disable-next-line @typescript-eslint/no-non-null-assertion
-			.map((route) => `/${lang}${routes[route]!}`)
+			.map((route) => {
+				const pathRoute = routes[route];
+
+				return pathRoute ? `/${lang}${pathRoute}` : undefined;
+			})
+			.filter((route): route is string => route !== undefined)
 	);
 
 export const getRobotsTxtString = (
 	langEnum: typeof LangEnum,
 	routesEnum: typeof RoutesEnum,
-	routes: Record<RoutesEnum, string>,
+	routes: Partial<Record<RoutesEnum, string>>,
 	url: URL
 ): string =>
 	[
