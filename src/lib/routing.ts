@@ -44,11 +44,9 @@ export const Routes: Record<RoutesEnum, string> = {
 export const SEORoutes: Partial<Record<RoutesEnum, string>> = {
 	[RoutesEnum.AboutPersonalInfoBio]: '/about/personal-info/bio',
 	[RoutesEnum.AboutPersonalInfoBioLookingFor]: '/about/personal-info/bio/looking-for',
-	[RoutesEnum.AboutPersonalInfoEducation]: '/about/personal-info/education',
 	[RoutesEnum.AboutPersonalInfoEducationSchools]: '/about/personal-info/education/schools',
 	[RoutesEnum.AboutPersonalInfoEducationProjects]: '/about/personal-info/education/projects',
 	[RoutesEnum.AboutPersonalInfoHobbies]: '/about/personal-info/hobbies',
-	[RoutesEnum.AboutProfessionalInfo]: '/about/professional-info',
 	[RoutesEnum.AboutProfessionalInfoSkills]: '/about/professional-info/skills',
 	[RoutesEnum.AboutProfessionalInfoLanguages]: '/about/professional-info/languages',
 	[RoutesEnum.AboutProfessionalInfoExperiences]: '/about/professional-info/experiences',

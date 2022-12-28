@@ -10,7 +10,7 @@ export const GET: RequestHandler = ({ url }) => {
 	return new Response(undefined, {
 		status: 301,
 		headers: {
-			Location: `/${lang}${Routes[RoutesEnum.AboutPersonalInfoBio]}`
+			Location: `/${lang}${Routes[RoutesEnum.AboutProfessionalInfoSkills]}`
 		}
 	});
 };
