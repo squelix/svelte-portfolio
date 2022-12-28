@@ -3,7 +3,9 @@ lockfileVersion: 5.4
 specifiers:
   '@babel/core': ^7.20.7
   '@babel/preset-env': ^7.20.2
-  '@graphql-codegen/cli': ^2.16.2
+  '@graphql-codegen/cli': 2.16.2
+  '@graphql-codegen/typescript': 2.8.6
+  '@graphql-codegen/typescript-document-nodes': 2.3.11
   '@graphql-codegen/typescript-operations': ^2.5.11
   '@sveltejs/adapter-vercel': ^1.0.0
   '@sveltejs/kit': ^1.0.1
@@ -75,6 +77,8 @@ devDependencies:
   '@babel/core': 7.20.7
   '@babel/preset-env': 7.20.2_@babel+core@7.20.7
   '@graphql-codegen/cli': 2.16.2_nq562ybr7zdw5pblc6tsingxsa
+  '@graphql-codegen/typescript': 2.8.6_graphql@16.6.0
+  '@graphql-codegen/typescript-document-nodes': 2.3.11_graphql@16.6.0
   '@graphql-codegen/typescript-operations': 2.5.11_graphql@16.6.0
   '@sveltejs/adapter-vercel': 1.0.0_@sveltejs+kit@1.0.1
   '@sveltejs/kit': 1.0.1_svelte@3.55.0+vite@4.0.3
@@ -1720,6 +1724,21 @@ packages:
       '@graphql-tools/utils': 9.1.3_graphql@16.6.0
       graphql: 16.6.0
       tslib: 2.4.1
+    dev: true
+
+  /@graphql-codegen/typescript-document-nodes/2.3.11_graphql@16.6.0:
+    resolution: {integrity: sha512-/9/4rEmOW9CJ/Zps2URZGwFP6FNINIC2cc/R6JXuizMKumlAlSno7UQntP7Oj+IT+xd0ghzFE2SUFsRh01+2rw==}
+    peerDependencies:
+      graphql: ^0.8.0 || ^0.9.0 || ^0.10.0 || ^0.11.0 || ^0.12.0 || ^0.13.0 || ^14.0.0 || ^15.0.0 || ^16.0.0
+    dependencies:
+      '@graphql-codegen/plugin-helpers': 3.1.2_graphql@16.6.0
+      '@graphql-codegen/visitor-plugin-common': 2.13.6_graphql@16.6.0
+      auto-bind: 4.0.0
+      graphql: 16.6.0
+      tslib: 2.4.1
+    transitivePeerDependencies:
+      - encoding
+      - supports-color
     dev: true
 
   /@graphql-codegen/typescript-operations/2.5.11_graphql@16.6.0:
