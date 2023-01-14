@@ -49,5 +49,6 @@ export const load: LayoutLoad = ({ data }) => {
 			'Décembre'
 		]
 	});
+
 	return {};
 };
