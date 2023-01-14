@@ -8,7 +8,7 @@ specifiers:
   '@graphql-codegen/typescript-document-nodes': 2.3.12
   '@graphql-codegen/typescript-operations': ^2.5.12
   '@sveltejs/adapter-vercel': ^1.0.2
-  '@sveltejs/kit': ^1.0.12
+  '@sveltejs/kit': ^1.1.0
   '@sveltekit-i18n/base': ^1.2.1
   '@sveltekit-i18n/parser-default': ^1.0.3
   '@testing-library/jest-dom': ^5.16.5
@@ -19,7 +19,7 @@ specifiers:
   '@typescript-eslint/eslint-plugin': ^5.48.1
   '@typescript-eslint/parser': ^5.48.1
   '@urql/core': ^3.1.1
-  '@vercel/analytics': ^0.1.7
+  '@vercel/analytics': ^0.1.8
   accept-language-parser: ^1.5.0
   babel-jest: ^29.3.1
   cookie: ^0.5.0
@@ -34,7 +34,7 @@ specifiers:
   jest-transform-stub: ^2.0.0
   postcss: ^8.4.21
   postcss-html: ^1.5.0
-  prettier: ^2.8.2
+  prettier: ^2.8.3
   prettier-plugin-svelte: ^2.9.0
   query-string: ^8.1.0
   release-it: ^15.6.0
@@ -53,7 +53,7 @@ specifiers:
   svelte-preprocess: ^5.0.0
   svelte-vertical-timeline: ^0.0.2
   sveltekit-i18n: ^2.2.2
-  ts-jest: ^29.0.4
+  ts-jest: ^29.0.5
   ts-node: ^10.9.1
   tslib: ^2.4.1
   typescript: ~4.9.4
@@ -62,7 +62,7 @@ specifiers:
 
 dependencies:
   '@urql/core': 3.1.1_graphql@16.6.0
-  '@vercel/analytics': 0.1.7_react@18.2.0
+  '@vercel/analytics': 0.1.8_react@18.2.0
   accept-language-parser: 1.5.0
   cookie: 0.5.0
   dayjs: 1.11.7
@@ -80,8 +80,8 @@ devDependencies:
   '@graphql-codegen/typescript': 2.8.7_graphql@16.6.0
   '@graphql-codegen/typescript-document-nodes': 2.3.12_graphql@16.6.0
   '@graphql-codegen/typescript-operations': 2.5.12_graphql@16.6.0
-  '@sveltejs/adapter-vercel': 1.0.2_@sveltejs+kit@1.0.12
-  '@sveltejs/kit': 1.0.12_svelte@3.55.1+vite@4.0.4
+  '@sveltejs/adapter-vercel': 1.0.2_@sveltejs+kit@1.1.0
+  '@sveltejs/kit': 1.1.0_svelte@3.55.1+vite@4.0.4
   '@sveltekit-i18n/base': 1.2.1_svelte@3.55.1
   '@sveltekit-i18n/parser-default': 1.0.3
   '@testing-library/jest-dom': 5.16.5
@@ -101,8 +101,8 @@ devDependencies:
   jest-transform-stub: 2.0.0
   postcss: 8.4.21
   postcss-html: 1.5.0
-  prettier: 2.8.2
-  prettier-plugin-svelte: 2.9.0_y74x4qymbshr6ujrzcfe2sydsa
+  prettier: 2.8.3
+  prettier-plugin-svelte: 2.9.0_kdmmghgdi3ngrsq6otxkjilbry
   release-it: 15.6.0
   saas: 1.0.0
   sass: 1.57.1
@@ -116,7 +116,7 @@ devDependencies:
   svelte-jester: 2.3.2_jest@29.3.1+svelte@3.55.1
   svelte-preprocess: 5.0.0_tmau7gjkwqlxetpgmujucjmc4y
   sveltekit-i18n: 2.2.2_svelte@3.55.1
-  ts-jest: 29.0.4_lpdtk6tcorkuyzgotacsdxtnxm
+  ts-jest: 29.0.5_lpdtk6tcorkuyzgotacsdxtnxm
   ts-node: 10.9.1_awa2wsr5thmg3i7jqycphctjfq
   tslib: 2.4.1
   typescript: 4.9.4
@@ -2523,7 +2523,7 @@ packages:
     resolution: {integrity: sha512-pq7CwIMV1kmzkFTimdwjAINCXKTajZErLB4wMLYapR2nuB/Jpr66+05wOTZMSCBXP6n4DdDWT2W19Bm17vU69Q==}
     engines: {node: '>= 14'}
     dependencies:
-      '@octokit/types': 8.1.0
+      '@octokit/types': 8.1.1
     dev: true
 
   /@octokit/core/4.1.0:
@@ -2534,7 +2534,7 @@ packages:
       '@octokit/graphql': 5.0.4
       '@octokit/request': 6.2.2
       '@octokit/request-error': 3.0.2
-      '@octokit/types': 8.1.0
+      '@octokit/types': 8.1.1
       before-after-hook: 2.2.3
       universal-user-agent: 6.0.0
     transitivePeerDependencies:
@@ -2545,7 +2545,7 @@ packages:
     resolution: {integrity: sha512-57gRlb28bwTsdNXq+O3JTQ7ERmBTuik9+LelgcLIVfYwf235VHbN9QNo4kXExtp/h8T423cR5iJThKtFYxC7Lw==}
     engines: {node: '>= 14'}
     dependencies:
-      '@octokit/types': 8.1.0
+      '@octokit/types': 8.1.1
       is-plain-object: 5.0.0
       universal-user-agent: 6.0.0
     dev: true
@@ -2555,7 +2555,7 @@ packages:
     engines: {node: '>= 14'}
     dependencies:
       '@octokit/request': 6.2.2
-      '@octokit/types': 8.1.0
+      '@octokit/types': 8.1.1
       universal-user-agent: 6.0.0
     transitivePeerDependencies:
       - encoding
@@ -2572,7 +2572,7 @@ packages:
       '@octokit/core': '>=4'
     dependencies:
       '@octokit/core': 4.1.0
-      '@octokit/types': 8.1.0
+      '@octokit/types': 8.1.1
     dev: true
 
   /@octokit/plugin-request-log/1.0.4_@octokit+core@4.1.0:
@@ -2590,7 +2590,7 @@ packages:
       '@octokit/core': '>=3'
     dependencies:
       '@octokit/core': 4.1.0
-      '@octokit/types': 8.1.0
+      '@octokit/types': 8.1.1
       deprecation: 2.3.1
     dev: true
 
@@ -2598,7 +2598,7 @@ packages:
     resolution: {integrity: sha512-WMNOFYrSaX8zXWoJg9u/pKgWPo94JXilMLb2VManNOby9EZxrQaBe/QSC4a1TzpAlpxofg2X/jMnCyZgL6y7eg==}
     engines: {node: '>= 14'}
     dependencies:
-      '@octokit/types': 8.1.0
+      '@octokit/types': 8.1.1
       deprecation: 2.3.1
       once: 1.4.0
     dev: true
@@ -2609,7 +2609,7 @@ packages:
     dependencies:
       '@octokit/endpoint': 7.0.3
       '@octokit/request-error': 3.0.2
-      '@octokit/types': 8.1.0
+      '@octokit/types': 8.1.1
       is-plain-object: 5.0.0
       node-fetch: 2.6.8
       universal-user-agent: 6.0.0
@@ -2629,8 +2629,8 @@ packages:
       - encoding
     dev: true
 
-  /@octokit/types/8.1.0:
-    resolution: {integrity: sha512-N4nLjzkiWBqVQqljTTsCrbvHGoWdWfcCeZjbHdggw7a9HbJMnxbK8A+UWdqwR4out30JarlSa3eqKyVK0n5aBg==}
+  /@octokit/types/8.1.1:
+    resolution: {integrity: sha512-7tjk+6DyhYAmei8FOEwPfGKc0VE1x56CKPJ+eE44zhDbOyMT+9yan8apfQFxo8oEFsy+0O7PiBtH8w0Yo0Y9Kw==}
     dependencies:
       '@octokit/openapi-types': 14.0.0
     dev: true
@@ -2713,12 +2713,12 @@ packages:
       '@sinonjs/commons': 1.8.6
     dev: true
 
-  /@sveltejs/adapter-vercel/1.0.2_@sveltejs+kit@1.0.12:
+  /@sveltejs/adapter-vercel/1.0.2_@sveltejs+kit@1.1.0:
     resolution: {integrity: sha512-Ms2cTlqpA8Rf6Pl8GuqC6bLoMdA30W688+wV8i6DcHlLO3Z9NBEZET2jF+tEmRF1jrxxAWEDngdQBfs25eOBxw==}
     peerDependencies:
       '@sveltejs/kit': ^1.0.0
     dependencies:
-      '@sveltejs/kit': 1.0.12_svelte@3.55.1+vite@4.0.4
+      '@sveltejs/kit': 1.1.0_svelte@3.55.1+vite@4.0.4
       '@vercel/nft': 0.22.6
       esbuild: 0.16.17
     transitivePeerDependencies:
@@ -2726,8 +2726,8 @@ packages:
       - supports-color
     dev: true
 
-  /@sveltejs/kit/1.0.12_svelte@3.55.1+vite@4.0.4:
-    resolution: {integrity: sha512-+ltedUTLuGIuWJX5TuVeY9pclckFMf/TnaylKD14xDM6zOd2JLGOprAvGuInuqqfgFGF503uMPlPMnzgGrM5Ew==}
+  /@sveltejs/kit/1.1.0_svelte@3.55.1+vite@4.0.4:
+    resolution: {integrity: sha512-SSAOaEpiBtR7l4Y/jN+AGHonpZUQ2tcl4yhE7S+rqSJA8iw8dxiWPVpNe7JI3N70hXVylezTj9I6P3cykq8a1Q==}
     engines: {node: ^16.14 || >=18}
     hasBin: true
     requiresBuild: true
@@ -3133,8 +3133,8 @@ packages:
       wonka: 6.1.2
     dev: false
 
-  /@vercel/analytics/0.1.7_react@18.2.0:
-    resolution: {integrity: sha512-vaHVFggK1lPBbm73NRONI/D6oBM/Ot1zIXI9IpjxgUsvQMZrO4JpPEIDvGihgnAWbzH7LfpjOOJccxRoaDRtDA==}
+  /@vercel/analytics/0.1.8_react@18.2.0:
+    resolution: {integrity: sha512-PQrOI8BJ9qUiVJuQfnKiJd15eDjDJH9TBKsNeMrtelT4NAk7d9mBVz1CoZkvoFnHQ0OW7Xnqmr1F2nScfAnznQ==}
     peerDependencies:
       react: ^16.8||^17||^18
     dependencies:
@@ -7657,18 +7657,18 @@ packages:
     engines: {node: '>= 0.8.0'}
     dev: true
 
-  /prettier-plugin-svelte/2.9.0_y74x4qymbshr6ujrzcfe2sydsa:
+  /prettier-plugin-svelte/2.9.0_kdmmghgdi3ngrsq6otxkjilbry:
     resolution: {integrity: sha512-3doBi5NO4IVgaNPtwewvrgPpqAcvNv0NwJNflr76PIGgi9nf1oguQV1Hpdm9TI2ALIQVn/9iIwLpBO5UcD2Jiw==}
     peerDependencies:
       prettier: ^1.16.4 || ^2.0.0
       svelte: ^3.2.0
     dependencies:
-      prettier: 2.8.2
+      prettier: 2.8.3
       svelte: 3.55.1
     dev: true
 
-  /prettier/2.8.2:
-    resolution: {integrity: sha512-BtRV9BcncDyI2tsuS19zzhzoxD8Dh8LiCx7j7tHzrkz8GFXAexeWFdi22mjE1d16dftH2qNaytVxqiRTGlMfpw==}
+  /prettier/2.8.3:
+    resolution: {integrity: sha512-tJ/oJ4amDihPoufT5sM0Z1SKEuKay8LfVAMlbbhnnkvt6BUserZylqo2PN+p9KeljLr0OHa2rXHU1T8reeoTrw==}
     engines: {node: '>=10.13.0'}
     hasBin: true
     dev: true
@@ -8947,8 +8947,8 @@ packages:
     engines: {node: '>=8'}
     dev: true
 
-  /ts-jest/29.0.4_lpdtk6tcorkuyzgotacsdxtnxm:
-    resolution: {integrity: sha512-YdNofkoyzeinwjIqLSYQeAM+GTmFQ7xFNtWcR5OyitY5VLzzNINrNmfhP5H3daA/V+RGQR7O3g1K6ysRgu5xIQ==}
+  /ts-jest/29.0.5_lpdtk6tcorkuyzgotacsdxtnxm:
+    resolution: {integrity: sha512-PL3UciSgIpQ7f6XjVOmbi96vmDHUqAyqDr8YxzopDqX3kfgYtX1cuNeBjP+L9sFXi6nzsGGA6R3fP3DDDJyrxA==}
     engines: {node: ^14.15.0 || ^16.10.0 || >=18.0.0}
     hasBin: true
     peerDependencies:
