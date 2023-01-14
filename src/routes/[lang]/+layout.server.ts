@@ -6,7 +6,7 @@ import { get } from 'svelte/store';
 import type { GetProfileQuery, GetProfileQueryVariables } from '$models/graphql-generated';
 import type { LayoutServerLoad } from './$types';
 
-export const load: LayoutServerLoad = async ({ url }) => {
+export const load: LayoutServerLoad = async ({ url, fetch }) => {
 	const { pathname } = url;
 	const lang = `${pathname.match(/[^/]+?(?=\/|$)/) || ''}`;
 	const route = pathname.replace(new RegExp(`^/${lang}`), '');
@@ -15,9 +15,13 @@ export const load: LayoutServerLoad = async ({ url }) => {
 
 	try {
 		const { data } = await get(client)
-			.query<GetProfileQuery, GetProfileQueryVariables>(GET_PROFILE_QUERY, {
-				locale: lang
-			})
+			.query<GetProfileQuery, GetProfileQueryVariables>(
+				GET_PROFILE_QUERY,
+				{
+					locale: lang
+				},
+				{ fetch }
+			)
 			.toPromise();
 
 		profile = data;

@@ -6,7 +6,7 @@ import { get } from 'svelte/store';
 import type { GetLanguagesQuery, GetLanguagesQueryVariables } from '$models/graphql-generated';
 import type { PageServerLoad } from './$types';
 
-export const load: PageServerLoad = async ({ url }) => {
+export const load: PageServerLoad = async ({ url, fetch }) => {
 	const { pathname } = url;
 	const lang = `${pathname.match(/[^/]+?(?=\/|$)/) || ''}`;
 
@@ -14,9 +14,13 @@ export const load: PageServerLoad = async ({ url }) => {
 
 	try {
 		const { data } = await get(client)
-			.query<GetLanguagesQuery, GetLanguagesQueryVariables>(GET_LANGUAGES_QUERY, {
-				locale: lang
-			})
+			.query<GetLanguagesQuery, GetLanguagesQueryVariables>(
+				GET_LANGUAGES_QUERY,
+				{
+					locale: lang
+				},
+				{ fetch }
+			)
 			.toPromise();
 
 		languages = data;

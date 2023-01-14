@@ -6,7 +6,7 @@ import { get } from 'svelte/store';
 import type { GetJobsQuery, GetJobsQueryVariables } from '$models/graphql-generated';
 import type { PageServerLoad } from './$types';
 
-export const load: PageServerLoad = async ({ url }) => {
+export const load: PageServerLoad = async ({ url, fetch }) => {
 	const { pathname } = url;
 	const lang = `${pathname.match(/[^/]+?(?=\/|$)/) || ''}`;
 
@@ -14,9 +14,13 @@ export const load: PageServerLoad = async ({ url }) => {
 
 	try {
 		const { data } = await get(client)
-			.query<GetJobsQuery, GetJobsQueryVariables>(GET_JOBS_QUERY, {
-				locale: lang
-			})
+			.query<GetJobsQuery, GetJobsQueryVariables>(
+				GET_JOBS_QUERY,
+				{
+					locale: lang
+				},
+				{ fetch }
+			)
 			.toPromise();
 
 		jobs = data;

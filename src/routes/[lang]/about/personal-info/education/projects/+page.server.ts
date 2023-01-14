@@ -9,7 +9,7 @@ import type {
 } from '$models/graphql-generated';
 import type { PageServerLoad } from './$types';
 
-export const load: PageServerLoad = async ({ url }) => {
+export const load: PageServerLoad = async ({ url, fetch }) => {
 	const { pathname } = url;
 	const lang = `${pathname.match(/[^/]+?(?=\/|$)/) || ''}`;
 
@@ -21,7 +21,8 @@ export const load: PageServerLoad = async ({ url }) => {
 				GET_SCHOOLS_PROJECTS_QUERY,
 				{
 					locale: lang
-				}
+				},
+				{ fetch }
 			)
 			.toPromise();
 
