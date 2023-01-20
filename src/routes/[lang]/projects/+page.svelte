@@ -32,7 +32,7 @@
 		}
 
 		if (newTechnos.length > 0) {
-			url.searchParams.append('techno', newTechnos.join(','));
+			url.searchParams.set('techno', newTechnos.join(','));
 		} else {
 			url.searchParams.delete('techno');
 		}
