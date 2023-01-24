@@ -1,7 +1,7 @@
 {
 	"name": "svelte-portfolio",
 	"private": true,
-	"version": "1.1.7",
+	"version": "1.1.8",
 	"license": "MIT",
 	"description": "A Svelte portfolio application with a Strapi backend",
 	"author": {
