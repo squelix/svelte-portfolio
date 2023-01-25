@@ -8,13 +8,13 @@ specifiers:
   '@graphql-codegen/typescript-document-nodes': 2.3.12
   '@graphql-codegen/typescript-operations': ^2.5.12
   '@sveltejs/adapter-vercel': ^1.0.5
-  '@sveltejs/kit': ^1.2.6
+  '@sveltejs/kit': ^1.2.9
   '@sveltekit-i18n/base': ^1.2.1
   '@sveltekit-i18n/parser-default': ^1.0.3
   '@testing-library/jest-dom': ^5.16.5
   '@types/accept-language-parser': ^1.5.3
   '@types/cookie': ^0.5.1
-  '@types/jest': ^29.2.6
+  '@types/jest': ^29.4.0
   '@types/node': ^18.11.18
   '@typescript-eslint/eslint-plugin': ^5.49.0
   '@typescript-eslint/parser': ^5.49.0
@@ -48,7 +48,7 @@ specifiers:
   stylelint-config-standard: ^29.0.0
   stylelint-scss: ^4.3.0
   svelte: ^3.55.1
-  svelte-check: ^3.0.2
+  svelte-check: ^3.0.3
   svelte-jester: ^2.3.2
   svelte-preprocess: ^5.0.1
   svelte-vertical-timeline: ^0.0.2
@@ -80,14 +80,14 @@ devDependencies:
   '@graphql-codegen/typescript': 2.8.7_graphql@16.6.0
   '@graphql-codegen/typescript-document-nodes': 2.3.12_graphql@16.6.0
   '@graphql-codegen/typescript-operations': 2.5.12_graphql@16.6.0
-  '@sveltejs/adapter-vercel': 1.0.5_@sveltejs+kit@1.2.6
-  '@sveltejs/kit': 1.2.6_svelte@3.55.1+vite@4.0.4
+  '@sveltejs/adapter-vercel': 1.0.5_@sveltejs+kit@1.2.9
+  '@sveltejs/kit': 1.2.9_svelte@3.55.1+vite@4.0.4
   '@sveltekit-i18n/base': 1.2.1_svelte@3.55.1
   '@sveltekit-i18n/parser-default': 1.0.3
   '@testing-library/jest-dom': 5.16.5
   '@types/accept-language-parser': 1.5.3
   '@types/cookie': 0.5.1
-  '@types/jest': 29.2.6
+  '@types/jest': 29.4.0
   '@types/node': 18.11.18
   '@typescript-eslint/eslint-plugin': 5.49.0_iu322prlnwsygkcra5kbpy22si
   '@typescript-eslint/parser': 5.49.0_7uibuqfxkfaozanbtbziikiqje
@@ -112,7 +112,7 @@ devDependencies:
   stylelint-config-standard: 29.0.0_stylelint@14.16.1
   stylelint-scss: 4.3.0_stylelint@14.16.1
   svelte: 3.55.1
-  svelte-check: 3.0.2_kn7tywiu6x3muv3vx7ntkzv3te
+  svelte-check: 3.0.3_kn7tywiu6x3muv3vx7ntkzv3te
   svelte-jester: 2.3.2_jest@29.4.0+svelte@3.55.1
   svelte-preprocess: 5.0.1_tmau7gjkwqlxetpgmujucjmc4y
   sveltekit-i18n: 2.2.2_svelte@3.55.1
@@ -2723,12 +2723,12 @@ packages:
       '@sinonjs/commons': 2.0.0
     dev: true
 
-  /@sveltejs/adapter-vercel/1.0.5_@sveltejs+kit@1.2.6:
+  /@sveltejs/adapter-vercel/1.0.5_@sveltejs+kit@1.2.9:
     resolution: {integrity: sha512-TnFw+2ZwUuzguIeh013h0eiFmHylBuL1aV3jcUWbJmBLRo6YA0Ti8X8VXgFP4izP7XGuLKdpUIMg7HaZe21LbA==}
     peerDependencies:
       '@sveltejs/kit': ^1.0.0
     dependencies:
-      '@sveltejs/kit': 1.2.6_svelte@3.55.1+vite@4.0.4
+      '@sveltejs/kit': 1.2.9_svelte@3.55.1+vite@4.0.4
       '@vercel/nft': 0.22.6
       esbuild: 0.16.17
     transitivePeerDependencies:
@@ -2736,8 +2736,8 @@ packages:
       - supports-color
     dev: true
 
-  /@sveltejs/kit/1.2.6_svelte@3.55.1+vite@4.0.4:
-    resolution: {integrity: sha512-dESK7mYjIm9yQWA7esAbHg7MoWOpB8Ztgzmc7LAvrGlsg2bs1+NPhSPaMKs7CQFznkunzrlE4Q4irMPiXJQmIw==}
+  /@sveltejs/kit/1.2.9_svelte@3.55.1+vite@4.0.4:
+    resolution: {integrity: sha512-zHuYwMgCJpmgYoQ1EOIgNFNkBTKqErHH+fqZVfNmEw2hICoKZHIjqm8/fetRUtF71dqXq0TmPS/HuCCBHXQiZw==}
     engines: {node: ^16.14 || >=18}
     hasBin: true
     requiresBuild: true
@@ -2908,8 +2908,8 @@ packages:
       '@types/istanbul-lib-report': 3.0.0
     dev: true
 
-  /@types/jest/29.2.6:
-    resolution: {integrity: sha512-XEUC/Tgw3uMh6Ho8GkUtQ2lPhY5Fmgyp3TdlkTJs1W9VgNxs+Ow/x3Elh8lHQKqCbZL0AubQuqWjHVT033Hhrw==}
+  /@types/jest/29.4.0:
+    resolution: {integrity: sha512-VaywcGQ9tPorCX/Jkkni7RWGFfI11whqzs8dvxF41P17Z+z872thvEvlIbznjPJ02kl1HMX3LmLOonsj2n7HeQ==}
     dependencies:
       expect: 29.4.0
       pretty-format: 29.4.0
@@ -2982,7 +2982,7 @@ packages:
   /@types/testing-library__jest-dom/5.14.5:
     resolution: {integrity: sha512-SBwbxYoyPIvxHbeHxTZX2Pe/74F/tX2/D3mMvzabdeJ25bBojfW0TyB8BHrbq/9zaaKICJZjLP+8r6AeZMFCuQ==}
     dependencies:
-      '@types/jest': 29.2.6
+      '@types/jest': 29.4.0
     dev: true
 
   /@types/tough-cookie/4.0.2:
@@ -3657,7 +3657,7 @@ packages:
     engines: {node: ^6 || ^7 || ^8 || ^9 || ^10 || ^11 || ^12 || >=13.7}
     hasBin: true
     dependencies:
-      caniuse-lite: 1.0.30001447
+      caniuse-lite: 1.0.30001448
       electron-to-chromium: 1.4.284
       node-releases: 2.0.8
       update-browserslist-db: 1.0.10_browserslist@4.21.4
@@ -3775,8 +3775,8 @@ packages:
     engines: {node: '>=14.16'}
     dev: true
 
-  /caniuse-lite/1.0.30001447:
-    resolution: {integrity: sha512-bdKU1BQDPeEXe9A39xJnGtY0uRq/z5osrnXUw0TcK+EYno45Y+U7QU9HhHEyzvMDffpYadFXi3idnSNkcwLkTw==}
+  /caniuse-lite/1.0.30001448:
+    resolution: {integrity: sha512-tq2YI+MJnooG96XpbTRYkBxLxklZPOdLmNIOdIhvf7SNJan6u5vCKum8iT7ZfCt70m1GPkuC7P3TtX6UuhupuA==}
     dev: true
 
   /capital-case/1.0.4:
@@ -8694,8 +8694,8 @@ packages:
     engines: {node: '>= 0.4'}
     dev: true
 
-  /svelte-check/3.0.2_kn7tywiu6x3muv3vx7ntkzv3te:
-    resolution: {integrity: sha512-DkhKhV0Jt0gh7q9DBB26+J2Vfb9y4/4JWxnbkXBZha7542LOhwvj3edJFjyJ+xjdaXyInZ+YRRYc3V6wytP2ew==}
+  /svelte-check/3.0.3_kn7tywiu6x3muv3vx7ntkzv3te:
+    resolution: {integrity: sha512-ByBFXo3bfHRGIsYEasHkdMhLkNleVfszX/Ns1oip58tPJlKdo5Ssr8kgVIuo5oq00hss8AIcdesuy0Xt0BcTvg==}
     hasBin: true
     peerDependencies:
       svelte: ^3.55.0
