@@ -18,7 +18,8 @@ const config = {
 	kit: {
 		inlineStyleThreshold: 1024,
 		adapter: adapter({
-			edge: true
+			runtime: 'edge',
+			regions: ['cdg1']
 		}),
 		prerender: {
 			entries: [
