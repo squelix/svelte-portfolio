@@ -15,7 +15,7 @@ jobs:
       PUBLIC_MAIL_ACCESS_TOKEN: "XXX"
       PUBLIC_PLATFORM: "dev"
       PUBLIC_RE_CAPTCHA_KEY: "XXX"
-
+      PUBLIC_ANALYTICS_UMAMI_ID: "XXX"
     steps:
       - name: "Check out Git repository"
         uses: "actions/checkout@v3"
@@ -62,7 +62,7 @@ jobs:
       PUBLIC_MAIL_ACCESS_TOKEN: "XXX"
       PUBLIC_PLATFORM: "dev"
       PUBLIC_RE_CAPTCHA_KEY: "XXX"
-
+      PUBLIC_ANALYTICS_UMAMI_ID: "XXX"
     steps:
       - name: "Check out Git repository"
         uses: "actions/checkout@v3"
@@ -109,7 +109,7 @@ jobs:
       PUBLIC_MAIL_ACCESS_TOKEN: "XXX"
       PUBLIC_PLATFORM: "dev"
       PUBLIC_RE_CAPTCHA_KEY: "XXX"
-
+      PUBLIC_ANALYTICS_UMAMI_ID: "XXX"
     steps:
       - name: "Check out Git repository"
         uses: "actions/checkout@v3"
@@ -156,7 +156,7 @@ jobs:
       PUBLIC_MAIL_ACCESS_TOKEN: "XXX"
       PUBLIC_PLATFORM: "dev"
       PUBLIC_RE_CAPTCHA_KEY: "XXX"
-
+      PUBLIC_ANALYTICS_UMAMI_ID: "XXX"
     steps:
       - name: "Check out Git repository"
         uses: "actions/checkout@v3"
@@ -203,7 +203,7 @@ jobs:
       PUBLIC_MAIL_ACCESS_TOKEN: "XXX"
       PUBLIC_PLATFORM: "dev"
       PUBLIC_RE_CAPTCHA_KEY: "XXX"
-
+      PUBLIC_ANALYTICS_UMAMI_ID: "XXX"
     steps:
       - name: "Check out Git repository"
         uses: "actions/checkout@v3"
@@ -251,7 +251,7 @@ jobs:
       PUBLIC_MAIL_ACCESS_TOKEN: "XXX"
       PUBLIC_PLATFORM: "dev"
       PUBLIC_RE_CAPTCHA_KEY: "XXX"
-
+      PUBLIC_ANALYTICS_UMAMI_ID: "XXX"
     steps:
       - name: "Check out Git repository"
         uses: "actions/checkout@v3"
