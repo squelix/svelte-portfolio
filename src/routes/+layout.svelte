@@ -12,7 +12,7 @@
 	import Header from '$lib/commons/Header.svelte';
 	import { isRouteActive, RoutesEnum } from '$lib/routing';
 	import { webVitals } from '$lib/webvitals';
-	import { strapiUri, umamiAnalyticsId, vercelAnalyticsId } from '$stores/env';
+	import { strapiUri, vercelAnalyticsId } from '$stores/env';
 	import { picture } from '$stores/profile';
 	import { locale } from '$translations';
 
@@ -71,13 +71,6 @@
 	{#if !!$strapiUri}
 		<link rel="preconnect" href={$strapiUri} />
 	{/if}
-
-	<script
-		async
-		defer
-		data-website-id={$umamiAnalyticsId}
-		src="https://umami-production-025c.up.railway.app/umami.js"
-	></script>
 </svelte:head>
 
 <svelte:window on:mousedown={mouseDownEvent} on:keydown={keyDownEvent} />

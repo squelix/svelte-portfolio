@@ -1,6 +1,5 @@
 /* eslint-disable @typescript-eslint/no-unsafe-assignment */
 import {
-	PUBLIC_ANALYTICS_UMAMI_ID,
 	PUBLIC_GRAPHQL_URI,
 	PUBLIC_MAIL_ACCESS_TOKEN,
 	PUBLIC_MAIL_URI,
@@ -17,8 +16,7 @@ export const env = writable<Record<string, string>>({
 	mailUri: PUBLIC_MAIL_URI,
 	mailAccessToken: PUBLIC_MAIL_ACCESS_TOKEN,
 	reCaptchaKey: PUBLIC_RE_CAPTCHA_KEY,
-	vercelAnalyticsId: import.meta.env.VERCEL_ANALYTICS_ID,
-	umamiAnalyticsId: PUBLIC_ANALYTICS_UMAMI_ID
+	vercelAnalyticsId: import.meta.env.VERCEL_ANALYTICS_ID
 });
 
 export const graphqlUri = derived(env, ($env) => $env.graphqlUri);
@@ -28,4 +26,3 @@ export const mailAccessToken = derived(env, ($env) => $env.mailAccessToken);
 export const reCaptchaKey = derived(env, ($env) => $env.reCaptchaKey);
 export const platform = derived(env, ($env) => $env.platform);
 export const vercelAnalyticsId = derived(env, ($env) => $env.vercelAnalyticsId);
-export const umamiAnalyticsId = derived(env, ($env) => $env.umamiAnalyticsId);
