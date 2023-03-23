@@ -35,7 +35,7 @@ specifiers:
   postcss: ^8.4.21
   postcss-html: ^1.5.0
   prettier: ^2.8.6
-  prettier-plugin-svelte: ^2.9.0
+  prettier-plugin-svelte: ^2.10.0
   query-string: ^8.1.0
   release-it: ^15.9.1
   saas: ^1.0.0
@@ -101,7 +101,7 @@ devDependencies:
   postcss: 8.4.21
   postcss-html: 1.5.0
   prettier: 2.8.6
-  prettier-plugin-svelte: 2.9.0_bzjcbf5vweu43cmyrxgltnmf74
+  prettier-plugin-svelte: 2.10.0_bzjcbf5vweu43cmyrxgltnmf74
   release-it: 15.9.1
   saas: 1.0.0
   sass: 1.59.3
@@ -7982,8 +7982,8 @@ packages:
     engines: {node: '>= 0.8.0'}
     dev: true
 
-  /prettier-plugin-svelte/2.9.0_bzjcbf5vweu43cmyrxgltnmf74:
-    resolution: {integrity: sha512-3doBi5NO4IVgaNPtwewvrgPpqAcvNv0NwJNflr76PIGgi9nf1oguQV1Hpdm9TI2ALIQVn/9iIwLpBO5UcD2Jiw==}
+  /prettier-plugin-svelte/2.10.0_bzjcbf5vweu43cmyrxgltnmf74:
+    resolution: {integrity: sha512-GXMY6t86thctyCvQq+jqElO+MKdB09BkL3hexyGP3Oi8XLKRFaJP1ud/xlWCZ9ZIa2BxHka32zhHfcuU+XsRQg==}
     peerDependencies:
       prettier: ^1.16.4 || ^2.0.0
       svelte: ^3.2.0
