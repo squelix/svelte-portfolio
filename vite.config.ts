@@ -19,6 +19,9 @@ const config: UserConfig = {
 			$graphql: path.resolve(dirname, './src/graphql'),
 			$icons: path.resolve(dirname, './src/icons')
 		}
+	},
+	build: {
+		sourcemap: true
 	}
 };
 

@@ -1,5 +1,7 @@
 <script lang="ts">
 	/* eslint-disable @typescript-eslint/restrict-template-expressions */
+	/* eslint-disable @typescript-eslint/no-misused-promises */
+	import { applyAction, enhance, type SubmitFunction } from '$app/forms';
 	import { page } from '$app/stores';
 	import BorderBottom from '$lib/commons/BorderBottom.svelte';
 	import Button from '$lib/commons/Button.svelte';
@@ -11,9 +13,8 @@
 	import { ENTER_KEY } from '$lib/utils/keys';
 	import { validateEmail } from '$lib/validators';
 	import { LangEnum } from '$models/langs.enum';
-	import { mailAccessToken, reCaptchaKey } from '$stores/env';
+	import { reCaptchaKey } from '$stores/env';
 	import { nav } from '$stores/nav';
-	import { mailService } from '$stores/services';
 	import { locale, t } from '$translations';
 	import { onMount } from 'svelte';
 	import { sineInOut } from 'svelte/easing';
@@ -65,10 +66,10 @@
 		});
 	});
 
-	const onSubmit = (): void => {
-		const finalEmail = email.trim();
-		const finalMessage = message.trim();
-		const finalName = name.trim();
+	const submitEnhancer: SubmitFunction = ({ data, cancel }) => {
+		const finalEmail = (data.get('email') as string | null)?.trim();
+		const finalMessage = (data.get('message') as string | null)?.trim();
+		const finalName = (data.get('name') as string | null)?.trim();
 
 		if (
 			!finalEmail ||
@@ -78,34 +79,37 @@
 			!finalMessage ||
 			finalMessage.length === 0
 		) {
+			cancel();
 			errorMessage = $t('contact.form.errors.fields') as string;
 			return;
 		}
 
 		if (!validateEmail(finalEmail)) {
+			cancel();
 			errorMessage = $t('contact.form.errors.email') as string;
 			return;
 		}
 
 		if (!token) {
+			cancel();
 			errorMessage = $t('contact.form.errors.captcha') as string;
 			return;
 		}
 
 		sending = true;
 
-		$mailService
-			.sendMail(finalEmail, finalMessage, finalName, token, $mailAccessToken)
-			.then(() => {
+		return async ({ result }) => {
+			if (result.type === 'success') {
 				resetForm();
-			})
-			.finally(() => {
-				sending = false;
-				showForm = false;
-				setTimeout(() => {
-					showConfirmMessage = true;
-				}, transitionMs);
-			});
+			}
+			sending = false;
+			showForm = false;
+
+			setTimeout(() => {
+				showConfirmMessage = true;
+			}, transitionMs);
+			await applyAction(result);
+		};
 	};
 
 	const resetForm = (): void => {
@@ -180,7 +184,8 @@
 {#if showForm}
 	<form
 		transition:fade={{ duration: transitionMs, easing: sineInOut }}
-		on:submit|preventDefault={onSubmit}
+		method="POST"
+		use:enhance={submitEnhancer}
 	>
 		<Input
 			label={`_${$t('contact.form.name')}`}
@@ -188,12 +193,14 @@
 			autofocus
 			bind:value={name}
 			on:input={clearErrorMessage}
+			name="name"
 		/>
 		<Input
 			label={`_${$t('contact.form.email')}`}
 			disabled={sending}
 			bind:value={email}
 			on:input={clearErrorMessage}
+			name="email"
 		/>
 		<Textarea
 			label={`_${$t('contact.form.message')}`}
@@ -201,6 +208,7 @@
 			disabled={sending}
 			bind:value={message}
 			on:input={clearErrorMessage}
+			name="message"
 		/>
 
 		<div id="reCaptcha" class="reCaptcha" class:reCaptcha--disabled={sending} />

@@ -25,7 +25,6 @@ const config = {
 			entries: [
 				'/fr',
 				'/en',
-				'/en/contact',
 				'/en/projects',
 				'/en/about',
 				'/en/about/personal-info',
@@ -39,7 +38,6 @@ const config = {
 				'/en/about/professional-info/skills',
 				'/en/about/professional-info/languages',
 				'/en/about/professional-info/experiences',
-				'/fr/contact',
 				'/fr/projects',
 				'/fr/about',
 				'/fr/about/personal-info',
