@@ -11,8 +11,6 @@ import { get } from 'svelte/store';
 
 import type { PageLoad } from './$types';
 
-export const prerender = false;
-
 export const load: PageLoad = () => {
 	setNavItem(ContactPageNavItemEnum.Contacts);
 	nav.set(contactPageNavItems);
