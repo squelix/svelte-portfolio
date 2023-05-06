@@ -19,10 +19,10 @@ jobs:
       - name: "Check out Git repository"
         uses: "actions/checkout@v3"
 
-      - name: "Use Node.js 20"
+      - name: "Use Node.js 18"
         uses: "actions/setup-node@v3"
         with:
-          node-version: 20
+          node-version: 18
 
       - uses: pnpm/action-setup@v2
         name: Install pnpm
@@ -65,10 +65,10 @@ jobs:
       - name: "Check out Git repository"
         uses: "actions/checkout@v3"
 
-      - name: "Use Node.js 20"
+      - name: "Use Node.js 18"
         uses: "actions/setup-node@v3"
         with:
-          node-version: 20
+          node-version: 18
 
       - uses: pnpm/action-setup@v2
         name: Install pnpm
@@ -111,10 +111,10 @@ jobs:
       - name: "Check out Git repository"
         uses: "actions/checkout@v3"
 
-      - name: "Use Node.js 20"
+      - name: "Use Node.js 18"
         uses: "actions/setup-node@v3"
         with:
-          node-version: 20
+          node-version: 18
 
       - uses: pnpm/action-setup@v2
         name: Install pnpm
@@ -157,10 +157,10 @@ jobs:
       - name: "Check out Git repository"
         uses: "actions/checkout@v3"
 
-      - name: "Use Node.js 20"
+      - name: "Use Node.js 18"
         uses: "actions/setup-node@v3"
         with:
-          node-version: 20
+          node-version: 18
 
       - uses: pnpm/action-setup@v2
         name: Install pnpm
@@ -203,10 +203,10 @@ jobs:
       - name: "Check out Git repository"
         uses: "actions/checkout@v3"
 
-      - name: "Use Node.js 20"
+      - name: "Use Node.js 18"
         uses: "actions/setup-node@v3"
         with:
-          node-version: 20
+          node-version: 18
 
       - uses: pnpm/action-setup@v2
         name: Install pnpm
@@ -250,10 +250,10 @@ jobs:
       - name: "Check out Git repository"
         uses: "actions/checkout@v3"
 
-      - name: "Use Node.js 20"
+      - name: "Use Node.js 18"
         uses: "actions/setup-node@v3"
         with:
-          node-version: 20
+          node-version: 18
 
       - uses: pnpm/action-setup@v2
         name: Install pnpm
@@ -293,10 +293,10 @@ jobs:
       - name: "Check out Git repository"
         uses: "actions/checkout@v3"
 
-      - name: "Use Node.js 20"
+      - name: "Use Node.js 18"
         uses: "actions/setup-node@v3"
         with:
-          node-version: 20
+          node-version: 18
 
       - uses: pnpm/action-setup@v2
         name: Install pnpm
