@@ -44,7 +44,7 @@
 		"@graphql-codegen/typescript-document-nodes": "3.0.4",
 		"@graphql-codegen/typescript-operations": "^3.0.4",
 		"@sveltejs/adapter-vercel": "^2.4.3",
-		"@sveltejs/kit": "^1.16.2",
+		"@sveltejs/kit": "^1.16.3",
 		"@sveltekit-i18n/base": "^1.2.1",
 		"@sveltekit-i18n/parser-default": "^1.0.3",
 		"@testing-library/jest-dom": "^5.16.5",
