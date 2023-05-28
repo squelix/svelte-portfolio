@@ -71,7 +71,7 @@
 			gap: 4.6875rem;
 			grid-template-columns: repeat(2, minmax(0, 1fr));
 			grid-template-rows: minmax(0, 1fr);
-			height: -webkit-fill-available;
+			height: fill-available;
 			padding: 0 2rem;
 
 			&__left {
@@ -81,16 +81,16 @@
 			&__right {
 				display: block;
 
-				@media (max-width: 1299px) {
+				@media (width <= 1299px) {
 					width: fit-content;
 				}
 			}
 		}
 	}
+
 	.title {
 		display: flex;
-		flex-direction: column;
-		flex-wrap: wrap;
+		flex-flow: column wrap;
 		padding: 0 1.6875rem;
 		margin: 5rem 0;
 

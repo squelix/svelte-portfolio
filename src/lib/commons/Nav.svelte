@@ -122,10 +122,7 @@
 				height: auto;
 				z-index: 0;
 				opacity: 1;
-				top: auto;
-				left: auto;
-				right: auto;
-				bottom: auto;
+				inset: auto;
 				display: flex;
 				align-items: center;
 				justify-content: center;

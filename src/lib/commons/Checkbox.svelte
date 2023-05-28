@@ -68,7 +68,7 @@
 			&:focus,
 			&:hover {
 				input {
-					box-shadow: 0 0 0 2px rgb(96 123 150 / 0.3);
+					box-shadow: 0 0 0 2px rgb(96 123 150 / 30%);
 					border-radius: 2px;
 				}
 			}

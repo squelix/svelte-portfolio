@@ -46,7 +46,7 @@
 		&.count-line {
 			counter-increment: line;
 
-			&:before {
+			&::before {
 				content: counter(line);
 				user-select: none;
 			}

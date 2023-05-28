@@ -64,8 +64,7 @@
 
 	li {
 		display: flex;
-		flex-direction: column;
-		flex-wrap: wrap;
+		flex-flow: column wrap;
 	}
 
 	.title {
@@ -99,8 +98,7 @@
 
 	.card {
 		display: flex;
-		flex-direction: column;
-		flex-wrap: wrap;
+		flex-flow: column wrap;
 		flex: 1;
 		background-color: var(--primary-3);
 		border: 1px solid var(--lines);
@@ -110,11 +108,10 @@
 
 		&__bottom {
 			display: flex;
-			flex-direction: column;
-			flex-wrap: wrap;
+			flex-flow: column wrap;
 			justify-content: space-between;
 			flex: 1;
-			padding: 1.8125rem 1.9375rem 2rem 1.9375rem;
+			padding: 1.8125rem 1.9375rem 2rem;
 		}
 
 		&__description {

@@ -234,7 +234,7 @@
 		grid-column: 2;
 		grid-row: 2/3;
 		gap: 1.125rem;
-		padding: 2.625rem 1.6875rem 0 1.6875rem;
+		padding: 2.625rem 1.6875rem 0;
 
 		@include br.desktop {
 			width: 28rem;
@@ -263,7 +263,7 @@
 
 			font-style: normal;
 			font-size: 1.5rem;
-			line-height: 1.29167;
+			line-height: 1.2917;
 			margin-bottom: 0.8125rem;
 		}
 
@@ -278,7 +278,7 @@
 		}
 
 		@include br.desktop {
-			margin: 2.625rem 1.6875rem 0 1.6875rem;
+			margin: 2.625rem 1.6875rem 0;
 			padding: 0;
 			max-width: 23.875rem;
 		}

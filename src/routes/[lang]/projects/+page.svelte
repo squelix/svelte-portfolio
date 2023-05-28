@@ -91,7 +91,7 @@
 	@use 'lib/mixins/breakpoints' as br;
 
 	h2 {
-		margin: 2.375rem 0 0 0;
+		margin: 2.375rem 0 0;
 		padding: 0 1.6875rem;
 
 		span {

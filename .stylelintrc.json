@@ -1,7 +1,8 @@
 {
-	"extends": ["stylelint-config-recommended-scss"],
+	"extends": "stylelint-config-standard-scss",
+	"plugins": ["stylelint-scss"],
 	"rules": {
-		"color-named": "never",
+		"color-named": "always-where-possible",
 		"font-family-name-quotes": "always-where-required",
 		"font-weight-notation": "named-where-possible",
 		"function-url-no-scheme-relative": true,
@@ -11,6 +12,7 @@
 		"no-descending-specificity": true,
 		"no-duplicate-selectors": true,
 		"font-family-no-missing-generic-family-keyword": null,
+		"selector-class-pattern": null,
 		"property-no-unknown": [
 			true,
 			{

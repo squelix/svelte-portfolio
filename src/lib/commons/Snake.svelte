@@ -435,13 +435,9 @@
 		display: grid;
 		gap: 24px;
 		position: relative;
-		background: linear-gradient(
-			150.26deg,
-			rgb(23 85 83 / 0.7) 1.7%,
-			rgb(67 217 173 / 0.091) 81.82%
-		);
+		background: linear-gradient(150.26deg, rgb(23 85 83 / 70%) 1.7%, rgb(67 217 173 / 9.1%) 81.82%);
 		border: 1px solid #0c1616;
-		box-shadow: inset 0px 2px 0px rgb(255 255 255 / 0.3);
+		box-shadow: inset 0 2px 0 rgb(255 255 255 / 30%);
 		backdrop-filter: blur(64px);
 		border-radius: var(--border-radius);
 		max-width: 31.875rem;
@@ -449,8 +445,8 @@
 
 		&__canvas-container {
 			border-radius: var(--border-radius);
-			background-color: rgb(1 22 39 / 0.84);
-			box-shadow: inset 1px 5px 11px rgb(2 18 27 / 0.71);
+			background-color: rgb(1 22 39 / 84%);
+			box-shadow: inset 1px 5px 11px rgb(2 18 27 / 71%);
 		}
 
 		&__board {
@@ -460,7 +456,7 @@
 				font-size: 0.875rem;
 				line-height: 1.2857;
 				padding: 0.8125rem;
-				background-color: rgb(1 20 35 / 0.19);
+				background-color: rgb(1 20 35 / 19%);
 				border-radius: var(--border-radius);
 
 				&__list {
@@ -520,7 +516,7 @@
 				}
 			}
 
-			@media (max-width: 1299px) {
+			@media (width <= 1299px) {
 				display: none;
 			}
 		}
@@ -566,7 +562,7 @@
 			}
 		}
 
-		@media (max-width: 1299px) {
+		@media (width <= 1299px) {
 			gap: 0;
 		}
 
