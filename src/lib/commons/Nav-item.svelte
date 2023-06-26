@@ -24,16 +24,12 @@
 	};
 </script>
 
-<li
-	class="item"
-	class:item--last={last}
-	class:item--before-last={beforeLast}
-	on:click={closeMenu}
-	on:keydown={keydown}
->
+<li class="item" class:item--last={last} class:item--before-last={beforeLast}>
 	<a
 		class="item__link"
 		href={`/${$locale}${route ?? ''}`}
+		on:click={closeMenu}
+		on:keydown={keydown}
 		class:item__link--selected={isBaseRouteActive($page.url.pathname, {
 			lang: $locale,
 			route: link
