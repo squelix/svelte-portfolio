@@ -35,6 +35,7 @@
 			<span class="title__job">>&nbsp;{$job}</span>
 		</h1>
 
+		<!-- eslint-disable-next-line svelte/no-at-html-tags -->
 		<p class="github-text">//&nbsp;{@html $t('home.githubText')}</p>
 
 		{#if $github?.attributes?.url}

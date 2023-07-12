@@ -10,6 +10,7 @@
 </script>
 
 <footer class="footer">
+	<!-- eslint-disable-next-line svelte/no-at-html-tags -->
 	<p class="footer__text">{@html $t('common.footer')}</p>
 
 	<ul class="footer__socials">

@@ -382,10 +382,15 @@
 
 	<div class="snake__board">
 		<div class="snake__board__keys">
+			<!-- eslint-disable-next-line svelte/no-at-html-tags -->
 			<div class="snake__board__keys__text">{@html $t('home.snake.keyboards')}</div>
+			<!-- eslint-disable-next-line svelte/no-at-html-tags -->
 			<div class="snake__board__keys__text">{@html $t('home.snake.pause')}</div>
+			<!-- eslint-disable-next-line svelte/no-at-html-tags -->
 			<div class="snake__board__keys__text">{@html $t('home.snake.start')}</div>
+			<!-- eslint-disable-next-line svelte/no-at-html-tags -->
 			<div class="snake__board__keys__text">{@html $t('home.snake.restart')}</div>
+			<!-- eslint-disable-next-line svelte/no-at-html-tags -->
 			<div class="snake__board__keys__text">{@html $t('home.snake.play')}</div>
 			<div class="snake__board__keys__list">
 				<span class="snake__board__keys__list__item snake__board__keys__list__item--up">

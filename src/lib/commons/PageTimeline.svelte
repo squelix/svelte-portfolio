@@ -8,6 +8,7 @@
 		TimelineSeparator
 	} from 'svelte-vertical-timeline';
 
+	// eslint-disable-next-line no-undef
 	type T = $$Generic;
 
 	export let list: T[];

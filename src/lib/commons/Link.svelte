@@ -4,6 +4,7 @@
 	export let style: 'primary' | 'default' | 'ghost' = 'default';
 	export let href: string;
 
+	// eslint-disable-next-line @typescript-eslint/no-unused-vars
 	interface $$Props extends SvelteLinkProps {
 		style?: 'primary' | 'default' | 'ghost';
 		href: string;

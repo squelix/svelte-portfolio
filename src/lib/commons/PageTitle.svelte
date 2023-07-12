@@ -7,7 +7,9 @@
 </script>
 
 <h1 class="title">
+	<!-- eslint-disable-next-line svelte/no-at-html-tags -->
 	<span class="display-only-mobile">{@html textMobile}</span>
+	<!-- eslint-disable-next-line svelte/no-at-html-tags -->
 	<span class="display-only-desktop">{@html textDesktop}</span>
 
 	<Icon class="display-only-desktop" data={Close} />

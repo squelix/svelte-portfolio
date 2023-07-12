@@ -29,10 +29,13 @@
 	<span class="count-line" />
 	{#if mustSplit}
 		<span class="content-line">
+			<!-- eslint-disable-next-line svelte/no-at-html-tags -->
 			<span>&nbsp;* {@html firstParts(line, index)}</span>
+			<!-- eslint-disable-next-line svelte/no-at-html-tags -->
 			<span>&nbsp:&nbsp{@html lastPart(line, index)}</span>
 		</span>
 	{:else}
+	<!-- eslint-disable-next-line svelte/no-at-html-tags -->
 		<span>&nbsp;* {@html line}</span>
 	{/if}
 {/each}

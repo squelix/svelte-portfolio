@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-redundant-type-constituents */
 /* eslint-disable @typescript-eslint/no-explicit-any */
 
 type EventHandler<E extends Event = Event, T extends EventTarget = HTMLElement> = (

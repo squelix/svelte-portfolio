@@ -7,6 +7,7 @@
 	export let style: 'primary' | 'default' | 'ghost' = 'default';
 	export let isLoading = false;
 
+	// eslint-disable-next-line @typescript-eslint/no-unused-vars
 	interface $$Props extends SvelteButtonProps {
 		style?: 'primary' | 'default' | 'ghost';
 		isLoading?: boolean;
