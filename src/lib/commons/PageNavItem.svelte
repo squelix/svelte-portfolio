@@ -70,7 +70,7 @@
 		<a
 			class="page-nav-item__text"
 			href={item.href}
-			aria-label={item.ariaLabel ? item.ariaLabel : undefined}
+			aria-label={item.ariaLabel ? item.ariaLabel.params ? $t(item.ariaLabel.key, item.ariaLabel.params) :  $t(item.ariaLabel.key) : undefined}
 			aria-hidden={$navItemOpened !== item.id}
 			tabindex={$navItemOpened !== item.id ? -1 : undefined}
 		>
@@ -85,7 +85,7 @@
 		<a
 			class="page-nav-item__text"
 			href={getRoute($locale, item.link)}
-			aria-label={item.ariaLabel ? item.ariaLabel : undefined}
+			aria-label={item.ariaLabel ? item.ariaLabel.params ? $t(item.ariaLabel.key, item.ariaLabel.params) :  $t(item.ariaLabel.key) : undefined}
 			aria-hidden={$navItemOpened !== item.id}
 			tabindex={$navItemOpened !== item.id ? -1 : undefined}
 		>

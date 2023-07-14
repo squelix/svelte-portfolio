@@ -5,6 +5,6 @@ export interface PageNavItemInterface {
 	link?: string;
 	href?: string;
 	icon?: string;
-	ariaLabel?: string;
+	ariaLabel?: { key: string; params?: Record<string, string> };
 	items?: PageNavItemInterface[];
 }

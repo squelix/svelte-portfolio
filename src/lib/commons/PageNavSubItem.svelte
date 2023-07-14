@@ -89,7 +89,7 @@
 				lang: $locale
 			})}
 			href={getRoute($locale, item.link)}
-			aria-label={item.ariaLabel ? item.ariaLabel : undefined}
+			aria-label={item.ariaLabel ? item.ariaLabel.params ? $t(item.ariaLabel.key, item.ariaLabel.params) :  $t(item.ariaLabel.key) : undefined}
 			aria-hidden={ariaHidden}
 			tabindex={ariaHidden ? -1 : undefined}
 		>
@@ -114,7 +114,7 @@
 			class="page-nav-sub-item__link"
 			class:page-nav-sub-item__link--icon={!!item.icon}
 			href={item.href}
-			aria-label={item.ariaLabel ? item.ariaLabel : undefined}
+			aria-label={item.ariaLabel ? item.ariaLabel.params ? $t(item.ariaLabel.key, item.ariaLabel.params) :  $t(item.ariaLabel.key) : undefined}
 			aria-hidden={ariaHidden}
 			tabindex={ariaHidden ? -1 : undefined}
 		>

@@ -6,7 +6,6 @@ import { ContactPageNavItemEnum } from '$lib/menu/contact-page-nav-item.enum';
 import { contactPageNavItems } from '$lib/menu/nav';
 import { nav, setNavItem, setNavItems } from '$stores/nav';
 import { email, phone, socialNetworks } from '$stores/profile';
-import { t } from '$translations';
 import { get } from 'svelte/store';
 
 import type { PageLoad } from './$types';
@@ -26,14 +25,14 @@ export const load: PageLoad = () => {
 			label: emailValue,
 			icon: mailSvg,
 			href: emailValue ? `mailto:${emailValue}` : undefined,
-			ariaLabel: t.get('contact.aria.email')
+			ariaLabel: { key: 'contact.aria.email' }
 		},
 		{
 			id: 'contacts-phone',
 			label: phoneValue,
 			icon: phoneSvg,
 			href: phoneValue ? `tel:${phoneValue}` : undefined,
-			ariaLabel: t.get('contact.aria.phone')
+			ariaLabel: { key: 'contact.aria.phone' }
 		}
 	]);
 
@@ -45,7 +44,10 @@ export const load: PageLoad = () => {
 			label: item.attributes!.title,
 			href: item.attributes!.url,
 			icon: externalLinkSvg,
-			ariaLabel: t.get('contact.aria.social', { social: item.attributes!.title } as never)
+			ariaLabel: {
+				key: 'contact.aria.social',
+				params: { social: item.attributes!.title }
+			}
 		})) ?? []
 	);
 	return {};

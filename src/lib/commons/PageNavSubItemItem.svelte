@@ -20,7 +20,7 @@
 				lang: $locale
 			})}
 			href={getRoute($locale, item.link)}
-			aria-label={item.ariaLabel ? item.ariaLabel : undefined}
+			aria-label={item.ariaLabel ? item.ariaLabel.params ? $t(item.ariaLabel.key, item.ariaLabel.params) :  $t(item.ariaLabel.key) : undefined}
 			aria-hidden={ariaHidden}
 			tabindex={ariaHidden ? -1 : undefined}
 		>
@@ -38,7 +38,7 @@
 		<a
 			class="page-nav-sub-item-item__link"
 			href={item.href}
-			aria-label={item.ariaLabel ? item.ariaLabel : undefined}
+			aria-label={item.ariaLabel?.key ? item.ariaLabel.params ? $t(item.ariaLabel.key, item.ariaLabel.params) :  $t(item.ariaLabel.key) : undefined}
 			aria-hidden={ariaHidden}
 			tabindex={ariaHidden ? -1 : undefined}
 		>
