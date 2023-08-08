@@ -50,7 +50,8 @@
 		line-height: 1.2857;
 		width: fit-content;
 		border-radius: var(--border-radius);
-		transition: background-color var(--transition-duration) var(--transition-easing),
+		transition:
+			background-color var(--transition-duration) var(--transition-easing),
 			color var(--transition-duration) var(--transition-easing),
 			border-color var(--transition-duration) var(--transition-easing),
 			width var(--transition-duration) var(--transition-easing);

@@ -88,7 +88,8 @@
 			border-radius: 0 0 var(--border-radius) var(--border-radius);
 			border: 1px solid var(--lines);
 			box-shadow: 0 4px 4px rgb(0 0 0 / 25%);
-			transition: height var(--transition-duration) var(--transition-easing),
+			transition:
+				height var(--transition-duration) var(--transition-easing),
 				opacity var(--transition-duration) var(--transition-easing);
 			z-index: 10;
 

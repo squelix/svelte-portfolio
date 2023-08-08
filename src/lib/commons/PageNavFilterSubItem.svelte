@@ -49,7 +49,8 @@
 		}
 
 		&__icon {
-			transition: color var(--transition-duration) var(--transition-easing),
+			transition:
+				color var(--transition-duration) var(--transition-easing),
 				opacity var(--transition-duration) var(--transition-easing);
 			color: var(--secondary-1);
 			opacity: 0.4;

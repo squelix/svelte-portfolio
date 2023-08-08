@@ -41,7 +41,8 @@
 		width: var(--size);
 		height: var(--size);
 		cursor: pointer;
-		transition: box-shadow var(--transition-duration) var(--transition-easing),
+		transition:
+			box-shadow var(--transition-duration) var(--transition-easing),
 			background-color var(--transition-duration) var(--transition-easing);
 
 		&:checked {

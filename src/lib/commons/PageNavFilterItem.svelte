@@ -107,7 +107,8 @@
 
 		&__sub-items {
 			overflow: hidden;
-			transition: max-height var(--transition-duration) var(--transition-easing),
+			transition:
+				max-height var(--transition-duration) var(--transition-easing),
 				opacity var(--transition-duration) var(--transition-easing),
 				padding var(--transition-duration) var(--transition-easing),
 				gap var(--transition-duration) var(--transition-easing);

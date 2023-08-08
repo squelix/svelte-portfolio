@@ -35,7 +35,7 @@
 			<span>&nbsp:&nbsp{@html lastPart(line, index)}</span>
 		</span>
 	{:else}
-	<!-- eslint-disable-next-line svelte/no-at-html-tags -->
+		<!-- eslint-disable-next-line svelte/no-at-html-tags -->
 		<span>&nbsp;* {@html line}</span>
 	{/if}
 {/each}

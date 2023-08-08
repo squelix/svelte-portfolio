@@ -89,7 +89,11 @@
 				lang: $locale
 			})}
 			href={getRoute($locale, item.link)}
-			aria-label={item.ariaLabel ? item.ariaLabel.params ? $t(item.ariaLabel.key, item.ariaLabel.params) :  $t(item.ariaLabel.key) : undefined}
+			aria-label={item.ariaLabel
+				? item.ariaLabel.params
+					? $t(item.ariaLabel.key, item.ariaLabel.params)
+					: $t(item.ariaLabel.key)
+				: undefined}
 			aria-hidden={ariaHidden}
 			tabindex={ariaHidden ? -1 : undefined}
 		>
@@ -114,7 +118,11 @@
 			class="page-nav-sub-item__link"
 			class:page-nav-sub-item__link--icon={!!item.icon}
 			href={item.href}
-			aria-label={item.ariaLabel ? item.ariaLabel.params ? $t(item.ariaLabel.key, item.ariaLabel.params) :  $t(item.ariaLabel.key) : undefined}
+			aria-label={item.ariaLabel
+				? item.ariaLabel.params
+					? $t(item.ariaLabel.key, item.ariaLabel.params)
+					: $t(item.ariaLabel.key)
+				: undefined}
 			aria-hidden={ariaHidden}
 			tabindex={ariaHidden ? -1 : undefined}
 		>
@@ -231,7 +239,8 @@
 
 		&__sub-items {
 			overflow: hidden;
-			transition: max-height var(--transition-duration) var(--transition-easing),
+			transition:
+				max-height var(--transition-duration) var(--transition-easing),
 				opacity var(--transition-duration) var(--transition-easing),
 				padding var(--transition-duration) var(--transition-easing),
 				gap var(--transition-duration) var(--transition-easing);
