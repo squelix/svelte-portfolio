@@ -31,6 +31,5 @@
 	},
 	"extensionsToTreatAsEsm": [".svelte", ".ts"],
 	"moduleFileExtensions": ["js", "svelte", "ts"],
-	"setupFilesAfterEnv": ["@testing-library/jest-dom/extend-expect"],
 	"testEnvironment": "jsdom"
 }
