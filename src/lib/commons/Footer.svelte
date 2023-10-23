@@ -109,8 +109,7 @@
 
 		&__socials {
 			display: grid;
-			align-items: center;
-			justify-items: center;
+			place-items: center;
 			align-self: baseline;
 			grid-template-columns: repeat(3, minmax(0, 1fr));
 			grid-column: 2;
