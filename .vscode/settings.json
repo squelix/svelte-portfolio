@@ -6,8 +6,8 @@
 	"editor.formatOnSave": true,
 	"explorer.autoReveal": true,
 	"editor.codeActionsOnSave": {
-		"source.fixAll.eslint": true,
-		"source.organizeImports": true
+		"source.fixAll.eslint": "explicit",
+		"source.organizeImports": "explicit"
 	},
 	"eslint.validate": ["javascript", "svelte", "typescript"],
 
@@ -43,8 +43,8 @@
 		"editor.formatOnSave": true,
 		// Fix and organise imports on save
 		"editor.codeActionsOnSave": {
-			"source.fixAll.eslint": true,
-			"source.fixAll.stylelint": true
+			"source.fixAll.eslint": "explicit",
+			"source.fixAll.stylelint": "explicit"
 		}
 	},
 
@@ -60,7 +60,7 @@
 		"editor.defaultFormatter": "esbenp.prettier-vscode",
 		// Fix and organise imports on save
 		"editor.codeActionsOnSave": {
-			"source.fixAll.stylelint": true
+			"source.fixAll.stylelint": "explicit"
 		}
 	},
 
@@ -89,5 +89,10 @@
 		"watch": false,
 		"onSave": "test-file",
 		"onStartup": ["all-tests"]
+	},
+	"[javascript][typescript]": {
+		"editor.codeActionsOnSave": {
+			"source.fixAll.eslint": "explicit"
+		}
 	}
 }
