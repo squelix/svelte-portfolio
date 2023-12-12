@@ -6,26 +6,21 @@
 	import 'sanitize.css/typography.css';
 	import '../styles/app.scss';
 
-	import { browser, dev } from '$app/environment';
+	import { browser } from '$app/environment';
 	import { page } from '$app/stores';
 	import Footer from '$lib/commons/Footer.svelte';
 	import Header from '$lib/commons/Header.svelte';
-	import { isRouteActive, RoutesEnum } from '$lib/routing';
-	import { webVitals } from '$lib/webvitals';
+	import { RoutesEnum, isRouteActive } from '$lib/routing';
 	import { strapiUri, vercelAnalyticsId } from '$stores/env';
 	import { picture } from '$stores/profile';
 	import { locale } from '$translations';
+	import { injectSpeedInsights } from '@vercel/speed-insights/sveltekit';
 
 	const TAB_KEY = 'Tab';
 
 	$: {
 		if (browser && $vercelAnalyticsId) {
-			webVitals({
-				path: $page.url.pathname,
-				params: $page.params,
-				analyticsId: $vercelAnalyticsId,
-				mode: dev ? 'development' : 'production'
-			});
+			injectSpeedInsights();
 		}
 	}
 
