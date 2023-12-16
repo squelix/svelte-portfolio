@@ -67,10 +67,10 @@
 		});
 	});
 
-	const submitEnhancer: SubmitFunction = ({ data, cancel }) => {
-		const finalEmail = (data.get('email') as string | null)?.trim();
-		const finalMessage = (data.get('message') as string | null)?.trim();
-		const finalName = (data.get('name') as string | null)?.trim();
+	const submitEnhancer: SubmitFunction = ({ formData, cancel }) => {
+		const finalEmail = (formData.get('email') as string | null)?.trim();
+		const finalMessage = (formData.get('message') as string | null)?.trim();
+		const finalName = (formData.get('name') as string | null)?.trim();
 
 		if (
 			!finalEmail ||

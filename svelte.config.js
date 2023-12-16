@@ -19,6 +19,14 @@ const config = {
 		}
 	}),
 	kit: {
+		alias: {
+			$styles: path.join(__dirname, './src/styles'),
+			$translations: path.join(__dirname, './src/translations'),
+			$models: path.join(__dirname, './src/models'),
+			$stores: path.join(__dirname, './src/stores'),
+			$graphql: path.join(__dirname, './src/graphql'),
+			$icons: path.join(__dirname, './src/icons')
+		},
 		inlineStyleThreshold: 1024,
 		adapter: adapter({
 			runtime: 'edge',
