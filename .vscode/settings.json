@@ -35,7 +35,7 @@
 		"editor.defaultFormatter": "esbenp.prettier-vscode",
 		// Fix and organise imports on save
 		"editor.codeActionsOnSave": {
-			"source.fixAll.eslint": true
+			"source.fixAll.eslint": "explicit"
 		}
 	},
 	"[svelte]": {
@@ -52,7 +52,7 @@
 		"editor.defaultFormatter": "esbenp.prettier-vscode",
 		// Fix and organise imports on save
 		"editor.codeActionsOnSave": {
-			"source.fixAll.eslint": true
+			"source.fixAll.eslint": "explicit"
 		}
 	},
 
