@@ -200,6 +200,18 @@ export const config: Config = {
 			key: 'experiences',
 			routes: [Routes[RoutesEnum.AboutProfessionalInfoExperiences]],
 			loader: async () => (await import('./en/experiences.json')).default
+		},
+		{
+			locale: LangEnum.fr_FR,
+			key: 'legals-mentions',
+			routes: [Routes[RoutesEnum.LegalsMentions]],
+			loader: async () => (await import('./fr/legals-mentions.json')).default
+		},
+		{
+			locale: LangEnum.en_GB,
+			key: 'legals-mentions',
+			routes: [Routes[RoutesEnum.LegalsMentions]],
+			loader: async () => (await import('./en/legals-mentions.json')).default
 		}
 	]
 };

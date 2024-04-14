@@ -93,6 +93,7 @@
 		bottom: var(--mobile-main-padding);
 		left: var(--mobile-main-padding);
 		right: var(--mobile-main-padding);
+		background-color: var(--primary-2);
 		font-size: 1rem;
 		line-height: 1.5;
 		color: var(--secondary-1);
@@ -155,10 +156,12 @@
 		}
 
 		@include br.desktop {
-			bottom: var(--desktop-main-padding);
-			left: var(--desktop-main-padding);
-			right: var(--desktop-main-padding);
+			bottom: calc(var(--desktop-main-padding) - 0.0625rem);
+			left: calc(var(--desktop-main-padding) + 0.0625rem);
+			right: calc(var(--desktop-main-padding) + 0.0625rem);
 			grid-template-columns: 9.375rem minmax(0, 1fr);
+			border-radius: 0 0 var(--border-radius) var(--border-radius);
+			border-bottom: 1px solid var(--lines);
 
 			&__socials {
 				grid-template-columns: repeat(auto-fit, minmax(0, 3.0625rem));
@@ -231,6 +234,11 @@
 					}
 				}
 			}
+		}
+
+		@media (1181px <=width <= 1280px) {
+			left: calc(var(--desktop-main-padding) - 3.4375rem + 0.0625rem);
+			right: calc(var(--desktop-main-padding) - 3.4375rem + 0.0625rem);
 		}
 	}
 </style>

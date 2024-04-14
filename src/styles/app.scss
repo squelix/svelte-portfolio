@@ -12,7 +12,7 @@ body {
 	color: var(--secondary-4);
 	font-family: var(--font-family);
 	font-feature-settings: 'calt' 1; /* Enable ligatures for IE 10+, Edge */
-	text-rendering: optimizeLegibility; /* Force ligatures for Webkit, Blink, Gecko */
+	text-rendering: optimizelegibility; /* Force ligatures for Webkit, Blink, Gecko */
 	scroll-behavior: smooth;
 	position: relative;
 }
@@ -22,6 +22,10 @@ body {
 
 	@include br.desktop {
 		padding: var(--desktop-main-padding);
+	}
+
+	@media (1181px <= width <= 1290px) {
+		padding: var(--desktop-main-padding) calc(var(--desktop-main-padding) - 3.4375rem);
 	}
 }
 
@@ -63,7 +67,23 @@ body {
 	transition: transform var(--transition-duration) var(--transition-easing);
 	outline: 2px solid var(--accent-1);
 
-	&:not(input):not(textarea) {
+	&:not(input, textarea) {
 		transform: scale(1.08);
+	}
+}
+
+.inner-html {
+	h2 {
+		font-size: 1.5rem;
+		font-weight: 700;
+		margin-bottom: 1rem;
+	}
+
+	p {
+		margin-bottom: 1.5rem;
+	}
+
+	a {
+		text-decoration: underline;
 	}
 }

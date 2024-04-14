@@ -11,7 +11,7 @@ export type Incremental<T> =
 	| { [P in keyof T]?: P extends ' $fragmentName' | '__typename' ? T[P] : never };
 /** All built-in and custom scalars, mapped to their actual values */
 export type Scalars = {
-	ID: { input: string | number; output: string };
+	ID: { input: string; output: string };
 	String: { input: string; output: string };
 	Boolean: { input: boolean; output: boolean };
 	Int: { input: number; output: number };
@@ -37,6 +37,7 @@ export type BooleanFilterInput = {
 	lt?: InputMaybe<Scalars['Boolean']['input']>;
 	lte?: InputMaybe<Scalars['Boolean']['input']>;
 	ne?: InputMaybe<Scalars['Boolean']['input']>;
+	nei?: InputMaybe<Scalars['Boolean']['input']>;
 	not?: InputMaybe<BooleanFilterInput>;
 	notContains?: InputMaybe<Scalars['Boolean']['input']>;
 	notContainsi?: InputMaybe<Scalars['Boolean']['input']>;
@@ -61,6 +62,7 @@ export type DateFilterInput = {
 	lt?: InputMaybe<Scalars['Date']['input']>;
 	lte?: InputMaybe<Scalars['Date']['input']>;
 	ne?: InputMaybe<Scalars['Date']['input']>;
+	nei?: InputMaybe<Scalars['Date']['input']>;
 	not?: InputMaybe<DateFilterInput>;
 	notContains?: InputMaybe<Scalars['Date']['input']>;
 	notContainsi?: InputMaybe<Scalars['Date']['input']>;
@@ -85,6 +87,7 @@ export type DateTimeFilterInput = {
 	lt?: InputMaybe<Scalars['DateTime']['input']>;
 	lte?: InputMaybe<Scalars['DateTime']['input']>;
 	ne?: InputMaybe<Scalars['DateTime']['input']>;
+	nei?: InputMaybe<Scalars['DateTime']['input']>;
 	not?: InputMaybe<DateTimeFilterInput>;
 	notContains?: InputMaybe<Scalars['DateTime']['input']>;
 	notContainsi?: InputMaybe<Scalars['DateTime']['input']>;
@@ -133,6 +136,7 @@ export type FloatFilterInput = {
 	lt?: InputMaybe<Scalars['Float']['input']>;
 	lte?: InputMaybe<Scalars['Float']['input']>;
 	ne?: InputMaybe<Scalars['Float']['input']>;
+	nei?: InputMaybe<Scalars['Float']['input']>;
 	not?: InputMaybe<FloatFilterInput>;
 	notContains?: InputMaybe<Scalars['Float']['input']>;
 	notContainsi?: InputMaybe<Scalars['Float']['input']>;
@@ -150,6 +154,7 @@ export type GenericMorph =
 	| JobMission
 	| JobSkill
 	| Language
+	| LegalMention
 	| Profile
 	| Project
 	| School
@@ -279,6 +284,7 @@ export type IdFilterInput = {
 	lt?: InputMaybe<Scalars['ID']['input']>;
 	lte?: InputMaybe<Scalars['ID']['input']>;
 	ne?: InputMaybe<Scalars['ID']['input']>;
+	nei?: InputMaybe<Scalars['ID']['input']>;
 	not?: InputMaybe<IdFilterInput>;
 	notContains?: InputMaybe<Scalars['ID']['input']>;
 	notContainsi?: InputMaybe<Scalars['ID']['input']>;
@@ -303,6 +309,7 @@ export type IntFilterInput = {
 	lt?: InputMaybe<Scalars['Int']['input']>;
 	lte?: InputMaybe<Scalars['Int']['input']>;
 	ne?: InputMaybe<Scalars['Int']['input']>;
+	nei?: InputMaybe<Scalars['Int']['input']>;
 	not?: InputMaybe<IntFilterInput>;
 	notContains?: InputMaybe<Scalars['Int']['input']>;
 	notContainsi?: InputMaybe<Scalars['Int']['input']>;
@@ -327,6 +334,7 @@ export type JsonFilterInput = {
 	lt?: InputMaybe<Scalars['JSON']['input']>;
 	lte?: InputMaybe<Scalars['JSON']['input']>;
 	ne?: InputMaybe<Scalars['JSON']['input']>;
+	nei?: InputMaybe<Scalars['JSON']['input']>;
 	not?: InputMaybe<JsonFilterInput>;
 	notContains?: InputMaybe<Scalars['JSON']['input']>;
 	notContainsi?: InputMaybe<Scalars['JSON']['input']>;
@@ -629,6 +637,41 @@ export type LanguageRelationResponseCollection = {
 	data: Array<LanguageEntity>;
 };
 
+export type LegalMention = {
+	__typename?: 'LegalMention';
+	createdAt?: Maybe<Scalars['DateTime']['output']>;
+	locale?: Maybe<Scalars['String']['output']>;
+	localizations?: Maybe<LegalMentionRelationResponseCollection>;
+	publishedAt?: Maybe<Scalars['DateTime']['output']>;
+	text: Scalars['String']['output'];
+	updatedAt?: Maybe<Scalars['DateTime']['output']>;
+};
+
+export type LegalMentionLocalizationsArgs = {
+	publicationState?: InputMaybe<PublicationState>;
+};
+
+export type LegalMentionEntity = {
+	__typename?: 'LegalMentionEntity';
+	attributes?: Maybe<LegalMention>;
+	id?: Maybe<Scalars['ID']['output']>;
+};
+
+export type LegalMentionEntityResponse = {
+	__typename?: 'LegalMentionEntityResponse';
+	data?: Maybe<LegalMentionEntity>;
+};
+
+export type LegalMentionInput = {
+	publishedAt?: InputMaybe<Scalars['DateTime']['input']>;
+	text?: InputMaybe<Scalars['String']['input']>;
+};
+
+export type LegalMentionRelationResponseCollection = {
+	__typename?: 'LegalMentionRelationResponseCollection';
+	data: Array<LegalMentionEntity>;
+};
+
 export type Mutation = {
 	__typename?: 'Mutation';
 	changePassword?: Maybe<UsersPermissionsLoginPayload>;
@@ -637,6 +680,7 @@ export type Mutation = {
 	createJobMissionLocalization?: Maybe<JobMissionEntityResponse>;
 	createJobSkillLocalization?: Maybe<JobSkillEntityResponse>;
 	createLanguageLocalization?: Maybe<LanguageEntityResponse>;
+	createLegalMentionLocalization?: Maybe<LegalMentionEntityResponse>;
 	createProfileLocalization?: Maybe<ProfileEntityResponse>;
 	createProjectLocalization?: Maybe<ProjectEntityResponse>;
 	createSchoolLocalization?: Maybe<SchoolEntityResponse>;
@@ -646,6 +690,7 @@ export type Mutation = {
 	createUploadFolder?: Maybe<UploadFolderEntityResponse>;
 	createUsersPermissionsRole?: Maybe<UsersPermissionsCreateRolePayload>;
 	createUsersPermissionsUser: UsersPermissionsUserEntityResponse;
+	deleteLegalMention?: Maybe<LegalMentionEntityResponse>;
 	deleteUploadFile?: Maybe<UploadFileEntityResponse>;
 	deleteUploadFolder?: Maybe<UploadFolderEntityResponse>;
 	deleteUsersPermissionsRole?: Maybe<UsersPermissionsDeleteRolePayload>;
@@ -658,6 +703,7 @@ export type Mutation = {
 	removeFile?: Maybe<UploadFileEntityResponse>;
 	resetPassword?: Maybe<UsersPermissionsLoginPayload>;
 	updateFileInfo: UploadFileEntityResponse;
+	updateLegalMention?: Maybe<LegalMentionEntityResponse>;
 	updateUploadFile?: Maybe<UploadFileEntityResponse>;
 	updateUploadFolder?: Maybe<UploadFolderEntityResponse>;
 	updateUsersPermissionsRole?: Maybe<UsersPermissionsUpdateRolePayload>;
@@ -697,6 +743,12 @@ export type MutationCreateJobSkillLocalizationArgs = {
 
 export type MutationCreateLanguageLocalizationArgs = {
 	data?: InputMaybe<LanguageInput>;
+	id?: InputMaybe<Scalars['ID']['input']>;
+	locale?: InputMaybe<Scalars['I18NLocaleCode']['input']>;
+};
+
+export type MutationCreateLegalMentionLocalizationArgs = {
+	data?: InputMaybe<LegalMentionInput>;
 	id?: InputMaybe<Scalars['ID']['input']>;
 	locale?: InputMaybe<Scalars['I18NLocaleCode']['input']>;
 };
@@ -745,6 +797,10 @@ export type MutationCreateUsersPermissionsRoleArgs = {
 
 export type MutationCreateUsersPermissionsUserArgs = {
 	data: UsersPermissionsUserInput;
+};
+
+export type MutationDeleteLegalMentionArgs = {
+	locale?: InputMaybe<Scalars['I18NLocaleCode']['input']>;
 };
 
 export type MutationDeleteUploadFileArgs = {
@@ -799,6 +855,11 @@ export type MutationResetPasswordArgs = {
 export type MutationUpdateFileInfoArgs = {
 	id: Scalars['ID']['input'];
 	info?: InputMaybe<FileInfoInput>;
+};
+
+export type MutationUpdateLegalMentionArgs = {
+	data: LegalMentionInput;
+	locale?: InputMaybe<Scalars['I18NLocaleCode']['input']>;
 };
 
 export type MutationUpdateUploadFileArgs = {
@@ -1013,6 +1074,7 @@ export type Query = {
 	jobs?: Maybe<JobEntityResponseCollection>;
 	language?: Maybe<LanguageEntityResponse>;
 	languages?: Maybe<LanguageEntityResponseCollection>;
+	legalMention?: Maybe<LegalMentionEntityResponse>;
 	me?: Maybe<UsersPermissionsMe>;
 	profile?: Maybe<ProfileEntityResponse>;
 	project?: Maybe<ProjectEntityResponse>;
@@ -1110,6 +1172,11 @@ export type QueryLanguagesArgs = {
 	pagination?: InputMaybe<PaginationArg>;
 	publicationState?: InputMaybe<PublicationState>;
 	sort?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+};
+
+export type QueryLegalMentionArgs = {
+	locale?: InputMaybe<Scalars['I18NLocaleCode']['input']>;
+	publicationState?: InputMaybe<PublicationState>;
 };
 
 export type QueryProfileArgs = {
@@ -1520,6 +1587,7 @@ export type StringFilterInput = {
 	lt?: InputMaybe<Scalars['String']['input']>;
 	lte?: InputMaybe<Scalars['String']['input']>;
 	ne?: InputMaybe<Scalars['String']['input']>;
+	nei?: InputMaybe<Scalars['String']['input']>;
 	not?: InputMaybe<StringFilterInput>;
 	notContains?: InputMaybe<Scalars['String']['input']>;
 	notContainsi?: InputMaybe<Scalars['String']['input']>;
@@ -2039,6 +2107,21 @@ export type GetLanguagesQuery = {
 				slug?: string | null;
 			} | null;
 		}>;
+	} | null;
+};
+
+export type GetLegalMentionQueryVariables = Exact<{
+	locale?: InputMaybe<Scalars['I18NLocaleCode']['input']>;
+}>;
+
+export type GetLegalMentionQuery = {
+	__typename?: 'Query';
+	legalMention?: {
+		__typename?: 'LegalMentionEntityResponse';
+		data?: {
+			__typename?: 'LegalMentionEntity';
+			attributes?: { __typename?: 'LegalMention'; text: string } | null;
+		} | null;
 	} | null;
 };
 

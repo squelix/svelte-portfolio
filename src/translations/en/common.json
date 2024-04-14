@@ -4,7 +4,8 @@
 		"home": "_hello",
 		"about": "_about-me",
 		"projects": "_projects",
-		"contact": "_contact-me"
+		"contact": "_contact-me",
+		"legals-mentions": "_legals-mentions"
 	},
 	"footer": "find me in:",
 	"credits": "Credits:",

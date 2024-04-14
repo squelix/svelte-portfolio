@@ -13,13 +13,16 @@ export enum RoutesEnum {
 	AboutProfessionalInfoLanguages = 'languages',
 	AboutProfessionalInfoExperiences = 'experiences',
 	Projects = 'projects',
-	Contact = 'contact'
+	Contact = 'contact',
+	Legals = 'legals',
+	LegalsMentions = 'legals-mentions'
 }
 
 export const MainRoutes: Partial<Record<RoutesEnum, string>> = {
 	[RoutesEnum.Home]: '/',
 	[RoutesEnum.About]: '/about/personal-info/bio',
 	[RoutesEnum.Projects]: '/projects',
+	[RoutesEnum.LegalsMentions]: '/legals/legals-mentions',
 	[RoutesEnum.Contact]: '/contact'
 };
 
@@ -38,7 +41,9 @@ export const Routes: Record<RoutesEnum, string> = {
 	[RoutesEnum.AboutProfessionalInfoLanguages]: '/about/professional-info/languages',
 	[RoutesEnum.AboutProfessionalInfoExperiences]: '/about/professional-info/experiences',
 	[RoutesEnum.Projects]: '/projects',
-	[RoutesEnum.Contact]: '/contact'
+	[RoutesEnum.Contact]: '/contact',
+	[RoutesEnum.Legals]: '/legals',
+	[RoutesEnum.LegalsMentions]: '/legals/legals-mentions'
 };
 
 export const SEORoutes: Partial<Record<RoutesEnum, string>> = {
