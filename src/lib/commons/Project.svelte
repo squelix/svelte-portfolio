@@ -82,6 +82,7 @@
 		&--project {
 			@include font.fontWeight(450);
 
+			display: block;
 			color: var(--secondary-1);
 		}
 
