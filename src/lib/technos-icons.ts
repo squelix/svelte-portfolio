@@ -7,11 +7,15 @@ import gatsby from '$icons/gatsby.svg?raw';
 import html from '$icons/html.svg?raw';
 import ionic from '$icons/ionic.svg?raw';
 import javascript from '$icons/javascript.svg?raw';
+import nestJs from '$icons/nest-js.svg?raw';
+import nextJs from '$icons/next-js.svg?raw';
 import ngxs from '$icons/ng-xs.svg?raw';
+import ngrx from '$icons/ngrx.svg?raw';
 import react from '$icons/react.svg?raw';
 import redux from '$icons/redux.svg?raw';
 import scss from '$icons/scss.svg?raw';
 import svelte from '$icons/svelte.svg?raw';
+import tailwindcss from '$icons/tailwindcss.svg?raw';
 import typescript from '$icons/typescript.svg?raw';
 import vue from '$icons/vue.svg?raw';
 
@@ -29,7 +33,11 @@ export const technosIcons: Record<string, string> = {
 	ionic,
 	vue,
 	redux,
+	ngrx,
+	tailwindcss,
+	['nest-js']: nestJs,
 	['angular-universal']: universal,
 	['c-xna']: xna,
-	['ng-xs']: ngxs
+	['ng-xs']: ngxs,
+	['next-js']: nextJs
 };
