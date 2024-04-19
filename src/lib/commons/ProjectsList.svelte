@@ -20,14 +20,14 @@
 
 	.list {
 		display: grid;
-		grid-template-columns: repeat(auto-fit, minmax(0, 18.75rem));
+		grid-template-columns: repeat(auto-fit, minmax(18.75rem, 1fr));
 		grid-auto-rows: minmax(min-content, max-content);
 		gap: 1.25rem;
 		padding: 0 1.6875rem;
 		margin-top: 1.0625rem;
 
 		@include br.desktop {
-			grid-template-columns: repeat(auto-fit, minmax(0, 23.1469rem));
+			grid-template-columns: repeat(auto-fit, minmax(23.1469rem, 1fr));
 			padding: 1.0625rem 2.375rem 0;
 		}
 	}
