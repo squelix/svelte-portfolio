@@ -124,7 +124,6 @@
 		}
 
 		&__sub-items {
-			overflow: hidden;
 			transition:
 				max-height var(--transition-duration) var(--transition-easing),
 				opacity var(--transition-duration) var(--transition-easing),
