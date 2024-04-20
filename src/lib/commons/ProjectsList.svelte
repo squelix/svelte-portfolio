@@ -27,8 +27,9 @@
 		margin-top: 1.0625rem;
 
 		@include br.desktop {
-			grid-template-columns: repeat(auto-fit, minmax(23.1469rem, 1fr));
+			grid-template-columns: repeat(auto-fit, minmax(0, 23.1469rem));
 			padding: 1.0625rem 2.375rem 0;
+			justify-content: space-around;
 		}
 	}
 </style>

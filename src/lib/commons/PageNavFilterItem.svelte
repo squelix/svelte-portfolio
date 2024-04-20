@@ -33,7 +33,23 @@
 			selectItem();
 		}
 	};
+
+	// eslint-disable-next-line @typescript-eslint/no-explicit-any
+	const resize = (event: any) => {
+		if (event.target.innerWidth > 1180) {
+			if ($navItemOpened !== item.id) {
+				navItemOpened.set(item.id);
+			}
+			return;
+		}
+
+		if ($navItemOpened !== undefined) {
+			navItemOpened.set(undefined);
+		}
+	};
 </script>
+
+<svelte:window on:resize={resize} />
 
 <li class="page-nav-filter-item">
 	<button
@@ -78,6 +94,8 @@
 
 		font-size: 1rem;
 		line-height: 1.3125;
+		max-height: 100%;
+		overflow: hidden;
 
 		&__button {
 			display: flex;
@@ -113,6 +131,12 @@
 				padding var(--transition-duration) var(--transition-easing),
 				gap var(--transition-duration) var(--transition-easing);
 			display: grid;
+			overflow: auto;
+			scrollbar-color: var(--secondary-1) var(--primary-2);
+			scrollbar-width: 10px;
+			padding-bottom: 3.75rem;
+			height: 100%;
+			grid-template-rows: repeat(auto-fit, minmax(1.5rem, 1.5rem));
 
 			&[aria-hidden='true'] {
 				max-height: 0;

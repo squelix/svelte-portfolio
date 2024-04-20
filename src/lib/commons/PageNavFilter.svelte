@@ -9,7 +9,7 @@
 </script>
 
 <nav class="page-nav-filter" aria-label={ariaLabel}>
-	<ul>
+	<ul class="page-nav-filter__list">
 		{#each items as item}
 			<PageNavFilterItem on:updateSelectedFilter {item} {selectedItems} />
 		{/each}
@@ -21,5 +21,13 @@
 
 	.page-nav-filter {
 		@include nav.page-nav;
+
+		height: 100%;
+		overflow: hidden;
+
+		&__list {
+			height: 100%;
+			overflow: hidden;
+		}
 	}
 </style>
