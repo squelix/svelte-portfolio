@@ -76,7 +76,7 @@
 				margin-left: auto;
 
 				.item__link {
-					padding: calc(1.0625rem - 2px) 1.375rem calc(1.0625rem - 2px) 1.375rem;
+					padding: calc(1.0625rem - 2px) 1.375rem;
 				}
 			}
 		}
