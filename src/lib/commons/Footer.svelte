@@ -1,11 +1,11 @@
 <script lang="ts">
 	import Behance from '$icons/behance.svg?raw';
 	import Dribbble from '$icons/dribbble.svg?raw';
-	import Facebook from '$icons/facebook.svg?raw';
 	import Github from '$icons/github.svg?raw';
-	import Twitter from '$icons/twitter.svg?raw';
+	import Linkedin from '$icons/linkedin.svg?raw';
+	import Malt from '$icons/malt.svg?raw';
 	import Icon from '$lib/SvgIcon.svelte';
-	import { facebook, github, twitter } from '$stores/profile';
+	import { github, linkedin, malt } from '$stores/profile';
 	import { t } from '$translations';
 </script>
 
@@ -14,29 +14,29 @@
 	<p class="footer__text">{@html $t('common.footer')}</p>
 
 	<ul class="footer__socials">
-		{#if $twitter?.attributes?.url}
+		{#if $malt?.attributes?.url}
 			<li class="footer__socials__item">
 				<a
 					class="footer__socials__item__link"
-					href={$twitter?.attributes?.url}
+					href={$malt?.attributes?.url}
 					target="_blank"
 					rel="noreferrer noopener"
-					aria-label={$t('common.aria.twitterLabel')}
+					aria-label={$t('common.aria.maltLabel')}
 				>
-					<Icon data={Twitter} width="24px" />
+					<Icon data={Malt} width="24px" />
 				</a>
 			</li>
 		{/if}
-		{#if $facebook?.attributes?.url}
+		{#if $linkedin?.attributes?.url}
 			<li class="footer__socials__item">
 				<a
 					class="footer__socials__item__link"
-					href={$facebook?.attributes?.url}
+					href={$linkedin?.attributes?.url}
 					target="_blank"
 					rel="noreferrer noopener"
-					aria-label={$t('common.aria.facebookLabel')}
+					aria-label={$t('common.aria.linkedinLabel')}
 				>
-					<Icon data={Facebook} width="24px" />
+					<Icon data={Linkedin} width="24px" />
 				</a>
 			</li>
 		{/if}

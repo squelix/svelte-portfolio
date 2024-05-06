@@ -40,8 +40,16 @@ export const twitter = derived(socialNetworks, ($socialNetworks) =>
 	$socialNetworks?.find((social) => social.attributes?.title.toLowerCase().includes('twitter'))
 );
 
+export const malt = derived(socialNetworks, ($socialNetworks) =>
+	$socialNetworks?.find((social) => social.attributes?.title.toLowerCase().includes('malt'))
+);
+
 export const github = derived(socialNetworks, ($socialNetworks) =>
 	$socialNetworks?.find((social) => social.attributes?.title.toLowerCase().includes('github'))
+);
+
+export const linkedin = derived(socialNetworks, ($socialNetworks) =>
+	$socialNetworks?.find((social) => social.attributes?.title.toLowerCase().includes('linkedin'))
 );
 
 export const job = derived(profile, ($profile) => $profile?.profile?.data?.attributes?.job);
