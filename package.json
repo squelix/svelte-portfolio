@@ -10,8 +10,8 @@
 		"url": "https://www.mickael-depardon.com"
 	},
 	"engines": {
-		"node": "18",
-		"pnpm": "8"
+		"node": "20",
+		"pnpm": "9"
 	},
 	"type": "module",
 	"scripts": {
