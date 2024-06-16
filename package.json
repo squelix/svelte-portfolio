@@ -10,8 +10,7 @@
 		"url": "https://www.mickael-depardon.com"
 	},
 	"engines": {
-		"node": "20",
-		"pnpm": "9"
+		"node": "20"
 	},
 	"type": "module",
 	"scripts": {
@@ -30,10 +29,10 @@
 		"precheck": "svelte-kit sync",
 		"check": "svelte-check --tsconfig ./tsconfig.json",
 		"check:watch": "svelte-check --tsconfig ./tsconfig.json --watch",
-		"generate": "graphql-codegen && pnpm format",
+		"generate": "graphql-codegen && npm run format",
 		"pretest": "svelte-kit sync",
 		"test": "cross-env NODE_OPTIONS=--experimental-vm-modules jest src --config jest.config.json",
-		"test:watch": "pnpm test -- --watch",
+		"test:watch": "npm run test -- --watch",
 		"release": "release-it --only-version"
 	},
 	"devDependencies": {

@@ -9,5 +9,5 @@ public
 build
 .netlify
 .vercel
-pnpm-lock.yaml
+package-lock.json
 coverage
