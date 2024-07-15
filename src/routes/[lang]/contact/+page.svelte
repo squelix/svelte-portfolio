@@ -225,6 +225,7 @@
 {/if}
 
 <style lang="scss">
+	/* stylelint-disable no-duplicate-selectors */
 	@use 'lib/mixins/breakpoints' as br;
 	@use 'lib/mixins/font' as font;
 
@@ -261,20 +262,24 @@
 		&__thank-you {
 			@include font.fontWeight(450);
 
-			font-style: normal;
-			font-size: 1.5rem;
-			line-height: 1.2917;
-			margin-bottom: 0.8125rem;
+			& {
+				font-style: normal;
+				font-size: 1.5rem;
+				line-height: 1.2917;
+				margin-bottom: 0.8125rem;
+			}
 		}
 
 		&__message {
 			@include font.fontWeight(450);
 
-			font-style: normal;
-			font-size: 1.125rem;
-			line-height: 1.3333;
-			color: var(--secondary-1);
-			margin-bottom: 1.3125rem;
+			& {
+				font-style: normal;
+				font-size: 1.125rem;
+				line-height: 1.3333;
+				color: var(--secondary-1);
+				margin-bottom: 1.3125rem;
+			}
 		}
 
 		@include br.desktop {
