@@ -36,7 +36,7 @@
 		"release": "release-it --only-version"
 	},
 	"devDependencies": {
-		"@babel/core": "^7.24.8",
+		"@babel/core": "^7.24.9",
 		"@babel/preset-env": "^7.24.8",
 		"@graphql-codegen/cli": "5.0.2",
 		"@graphql-codegen/typescript": "4.0.9",
@@ -51,9 +51,9 @@
 		"@types/accept-language-parser": "^1.5.6",
 		"@types/cookie": "^0.6.0",
 		"@types/jest": "^29.5.12",
-		"@types/node": "^20.14.10",
-		"@typescript-eslint/eslint-plugin": "^7.16.0",
-		"@typescript-eslint/parser": "^7.16.0",
+		"@types/node": "^20.14.11",
+		"@typescript-eslint/eslint-plugin": "^7.16.1",
+		"@typescript-eslint/parser": "^7.16.1",
 		"autoprefixer": "^10.4.19",
 		"babel-jest": "^29.7.0",
 		"cross-env": "^7.0.3",
@@ -67,7 +67,7 @@
 		"postcss": "^8.4.39",
 		"postcss-html": "^1.7.0",
 		"prettier": "^3.3.3",
-		"prettier-plugin-svelte": "^3.2.5",
+		"prettier-plugin-svelte": "^3.2.6",
 		"release-it": "^17.6.0",
 		"saas": "^1.0.0",
 		"sass": "^1.77.8",
@@ -83,7 +83,7 @@
 		"ts-node": "^10.9.2",
 		"tslib": "^2.6.3",
 		"typescript": "^5.5.3",
-		"vite": "^5.3.3"
+		"vite": "^5.3.4"
 	},
 	"dependencies": {
 		"@urql/core": "^4.3.0",
