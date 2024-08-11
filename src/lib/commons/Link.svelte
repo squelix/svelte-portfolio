@@ -28,24 +28,26 @@
 	a {
 		@include font.fontWeight(450);
 
-		border: none;
-		text-align: center;
-		white-space: nowrap;
-		text-overflow: ellipsis;
-		overflow: hidden;
-		cursor: pointer;
-		appearance: none;
-		outline: inherit;
-		padding: 0.625rem 0.875rem;
-		font-size: 0.875rem;
-		line-height: 1.2857;
-		width: fit-content;
-		border-radius: var(--border-radius);
-		transition:
-			background-color var(--transition-duration) var(--transition-easing),
-			color var(--transition-duration) var(--transition-easing),
-			border-color var(--transition-duration) var(--transition-easing),
-			width var(--transition-duration) var(--transition-easing);
+		& {
+			border: none;
+			text-align: center;
+			white-space: nowrap;
+			text-overflow: ellipsis;
+			overflow: hidden;
+			cursor: pointer;
+			appearance: none;
+			outline: inherit;
+			padding: 0.625rem 0.875rem;
+			font-size: 0.875rem;
+			line-height: 1.2857;
+			width: fit-content;
+			border-radius: var(--border-radius);
+			transition:
+				background-color var(--transition-duration) var(--transition-easing),
+				color var(--transition-duration) var(--transition-easing),
+				border-color var(--transition-duration) var(--transition-easing),
+				width var(--transition-duration) var(--transition-easing);
+		}
 
 		&:disabled {
 			cursor: default;

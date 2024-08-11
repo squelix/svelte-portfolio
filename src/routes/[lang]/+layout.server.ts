@@ -1,4 +1,3 @@
-/* eslint-disable @typescript-eslint/restrict-template-expressions, @typescript-eslint/no-unsafe-assignment, @typescript-eslint/no-unsafe-call */
 import { GET_PROFILE_QUERY } from '$graphql/profile';
 import { client } from '$stores/graphql';
 import { get } from 'svelte/store';

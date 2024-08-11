@@ -151,9 +151,11 @@
 	.page-nav-sub-item {
 		@include font.fontWeight(400);
 
-		font-size: 1rem;
-		line-height: 1.3125;
-		color: var(--secondary-1);
+		& {
+			font-size: 1rem;
+			line-height: 1.3125;
+			color: var(--secondary-1);
+		}
 
 		&__link,
 		&__button {
@@ -183,7 +185,7 @@
 			&__label {
 				display: -webkit-box;
 				-webkit-box-orient: vertical;
-				-webkit-line-clamp: 1;
+				line-clamp: 1;
 				overflow: hidden;
 				padding-right: 0.625rem;
 			}

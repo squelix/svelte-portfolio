@@ -1,4 +1,3 @@
-/* eslint-disable @typescript-eslint/no-redundant-type-constituents */
 /* eslint-disable @typescript-eslint/no-explicit-any */
 
 type EventHandler<E extends Event = Event, T extends EventTarget = HTMLElement> = (
@@ -389,7 +388,7 @@ interface DOMAttributes<T extends EventTarget> {
 interface HTMLAttributes<T extends EventTarget> extends AriaAttributes, DOMAttributes<T> {
 	// Standard HTML Attributes
 	class?: string | undefined | null;
-	dataset?: object | undefined | null; // eslint-disable-line
+	dataset?: object | undefined | null;
 	accept?: string | undefined | null;
 	acceptcharset?: string | undefined | null;
 	accesskey?: string | undefined | null;

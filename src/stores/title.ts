@@ -1,5 +1,4 @@
-/* eslint-disable @typescript-eslint/no-non-null-assertion */
-import { itemSelected, nav, navItemSelected, subnav, subNavItemSelected } from '$stores/nav';
+import { itemSelected, nav, navItemSelected, subNavItemSelected, subnav } from '$stores/nav';
 import { derived } from 'svelte/store';
 
 export const aboutTitleItem = derived(

@@ -30,8 +30,10 @@
 		&__name {
 			@include font.fontWeight(400);
 
-			font-size: 1rem;
-			line-height: 1.3125;
+			& {
+				font-size: 1rem;
+				line-height: 1.3125;
+			}
 		}
 
 		@include br.desktop {

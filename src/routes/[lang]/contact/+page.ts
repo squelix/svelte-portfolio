@@ -1,4 +1,3 @@
-/* eslint-disable @typescript-eslint/no-unsafe-assignment, @typescript-eslint/no-non-null-assertion */
 import externalLinkSvg from '$icons/external-link.svg?raw';
 import mailSvg from '$icons/mail.svg?raw';
 import phoneSvg from '$icons/phone.svg?raw';

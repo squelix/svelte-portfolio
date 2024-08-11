@@ -1,5 +1,4 @@
 <script lang="ts">
-	/* eslint-disable @typescript-eslint/no-unsafe-call */
 	export let lines: string[];
 	export let mustSplit = true;
 

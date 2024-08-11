@@ -1,4 +1,3 @@
-/* eslint-disable @typescript-eslint/no-unsafe-assignment, @typescript-eslint/restrict-template-expressions */
 import { GET_HOBBIES_QUERY } from '$graphql/hobbies';
 import { client } from '$stores/graphql';
 import { get } from 'svelte/store';

@@ -1,4 +1,3 @@
-/* eslint-disable @typescript-eslint/restrict-template-expressions, @typescript-eslint/no-unsafe-assignment, @typescript-eslint/no-unsafe-call */
 import { dev } from '$app/environment';
 import { inject } from '@vercel/analytics';
 import dayjs from 'dayjs';

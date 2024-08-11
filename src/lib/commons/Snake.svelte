@@ -1,5 +1,4 @@
 <script lang="ts">
-	/* eslint-disable @typescript-eslint/no-non-null-assertion */
 	import ChevronUpKey from '$icons/chevron-up-key.svg?raw';
 	import Icon from '$lib/SvgIcon.svelte';
 	import { t } from '$translations';
@@ -458,11 +457,13 @@
 			&__keys {
 				@include font.fontWeight(450);
 
-				font-size: 0.875rem;
-				line-height: 1.2857;
-				padding: 0.8125rem;
-				background-color: rgb(1 20 35 / 19%);
-				border-radius: var(--border-radius);
+				& {
+					font-size: 0.875rem;
+					line-height: 1.2857;
+					padding: 0.8125rem;
+					background-color: rgb(1 20 35 / 19%);
+					border-radius: var(--border-radius);
+				}
 
 				&__list {
 					display: grid;

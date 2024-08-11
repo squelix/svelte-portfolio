@@ -1,5 +1,4 @@
 <script lang="ts">
-	/* eslint-disable @typescript-eslint/restrict-template-expressions */
 	import Image from '$lib/commons/Image.svelte';
 	import Link from '$lib/commons/Link.svelte';
 	import TechnoIcon from '$lib/commons/TechnoIcon.svelte';
@@ -82,8 +81,10 @@
 		&--project {
 			@include font.fontWeight(450);
 
-			display: block;
-			color: var(--secondary-1);
+			& {
+				display: block;
+				color: var(--secondary-1);
+			}
 		}
 
 		@include br.desktop {
@@ -118,12 +119,14 @@
 		&__description {
 			@include font.fontWeight(450);
 
-			flex: 1;
-			font-size: 1rem;
-			line-height: 1.3;
-			font-style: normal;
-			margin-bottom: 1.4375rem;
-			color: var(--secondary-1);
+			& {
+				flex: 1;
+				font-size: 1rem;
+				line-height: 1.3;
+				font-style: normal;
+				margin-bottom: 1.4375rem;
+				color: var(--secondary-1);
+			}
 		}
 	}
 

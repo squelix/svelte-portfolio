@@ -1,5 +1,4 @@
 <script lang="ts">
-	/* eslint-disable @typescript-eslint/restrict-template-expressions, @typescript-eslint/no-unsafe-assignment */
 	import { page } from '$app/stores';
 	import { t, locale } from '$translations';
 

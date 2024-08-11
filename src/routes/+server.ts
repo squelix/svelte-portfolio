@@ -1,4 +1,3 @@
-/* eslint-disable @typescript-eslint/no-unsafe-call,  @typescript-eslint/no-unsafe-assignment, @typescript-eslint/restrict-template-expressions */
 import { getLanguage } from '$lib/lang/utils';
 
 import type { RequestHandler } from './$types';

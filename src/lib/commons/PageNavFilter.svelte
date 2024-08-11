@@ -22,8 +22,10 @@
 	.page-nav-filter {
 		@include nav.page-nav;
 
-		height: 100%;
-		overflow: hidden;
+		& {
+			height: 100%;
+			overflow: hidden;
+		}
 
 		&__list {
 			height: 100%;

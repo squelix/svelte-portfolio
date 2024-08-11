@@ -89,19 +89,21 @@
 	.footer {
 		@include font.fontWeight(400);
 
-		position: absolute;
-		bottom: var(--mobile-main-padding);
-		left: var(--mobile-main-padding);
-		right: var(--mobile-main-padding);
-		background-color: var(--primary-2);
-		font-size: 1rem;
-		line-height: 1.5;
-		color: var(--secondary-1);
-		height: 3.0625rem;
-		border-top: 1px solid var(--lines);
-		display: grid;
-		align-items: center;
-		grid-template-columns: repeat(2, minmax(0, 1fr));
+		& {
+			position: absolute;
+			bottom: var(--mobile-main-padding);
+			left: var(--mobile-main-padding);
+			right: var(--mobile-main-padding);
+			background-color: var(--primary-2);
+			font-size: 1rem;
+			line-height: 1.5;
+			color: var(--secondary-1);
+			height: 3.0625rem;
+			border-top: 1px solid var(--lines);
+			display: grid;
+			align-items: center;
+			grid-template-columns: repeat(2, minmax(0, 1fr));
+		}
 
 		&__text {
 			padding: 0.8125rem 0 0.9375rem 1.125rem;

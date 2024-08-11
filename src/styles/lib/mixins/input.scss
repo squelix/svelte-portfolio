@@ -3,9 +3,11 @@
 @mixin label {
 	@include font.fontWeight(450);
 
-	font-size: 1rem;
-	line-height: 1.3125;
-	color: var(--secondary-1);
+	& {
+		font-size: 1rem;
+		line-height: 1.3125;
+		color: var(--secondary-1);
+	}
 }
 
 @mixin input {
@@ -27,7 +29,7 @@
 	&:not(:disabled) {
 		&:focus,
 		&:hover {
-			box-shadow: 0 0 0 2px rgb(96 123 150 / 0.3);
+			box-shadow: 0 0 0 2px rgb(96 123 150 / 30%);
 		}
 	}
 }

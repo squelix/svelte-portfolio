@@ -1,4 +1,3 @@
-/* eslint-disable @typescript-eslint/no-unsafe-assignment, @typescript-eslint/restrict-template-expressions, @typescript-eslint/no-unsafe-call */
 import { GET_SCHOOLS_QUERY } from '$graphql/schools';
 import { client } from '$stores/graphql';
 import { get } from 'svelte/store';

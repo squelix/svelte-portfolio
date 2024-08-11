@@ -9,7 +9,7 @@ const getRoutes = (
 	Object.values(langEnum).flatMap((lang) =>
 		Object.values(routesEnum)
 			.filter((route) => route !== routesEnum.Home)
-			// eslint-disable-next-line @typescript-eslint/no-non-null-assertion
+
 			.map((route) => {
 				const pathRoute = routes[route];
 

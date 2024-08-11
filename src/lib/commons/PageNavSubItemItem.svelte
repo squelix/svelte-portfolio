@@ -79,8 +79,10 @@
 	.page-nav-sub-item-item {
 		@include font.fontWeight(400);
 
-		font-size: 1rem;
-		line-height: 1.3125;
+		& {
+			font-size: 1rem;
+			line-height: 1.3125;
+		}
 
 		&__link {
 			@include link.link(var(--accent-1), 0, var(--secondary-4));
@@ -88,7 +90,9 @@
 			&--active {
 				@include link.linkSelected(var(--accent-1), 0, var(--secondary-4));
 
-				color: var(--secondary-4);
+				& {
+					color: var(--secondary-4);
+				}
 			}
 
 			&__icon {

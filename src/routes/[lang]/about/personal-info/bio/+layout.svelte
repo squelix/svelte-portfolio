@@ -32,9 +32,11 @@
 	.title {
 		@include font.fontWeight(450);
 
-		padding: 2.375rem 1.6875rem 0;
-		font-size: 1rem;
-		line-height: 1.4;
+		& {
+			padding: 2.375rem 1.6875rem 0;
+			font-size: 1rem;
+			line-height: 1.4;
+		}
 
 		&--gray {
 			color: var(--secondary-1);

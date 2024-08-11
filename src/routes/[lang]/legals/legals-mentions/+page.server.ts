@@ -1,4 +1,3 @@
-/* eslint-disable @typescript-eslint/restrict-template-expressions, @typescript-eslint/no-unsafe-assignment, @typescript-eslint/no-unsafe-call */
 import { client } from '$stores/graphql';
 import { get } from 'svelte/store';
 
@@ -14,7 +13,6 @@ export const load: PageServerLoad = async ({ url, fetch }) => {
 	const lang = `${pathname.match(/[^/]+?(?=\/|$)/) || ''}`;
 	const route = pathname.replace(new RegExp(`^/${lang}`), '');
 
-	// eslint-disable-next-line @typescript-eslint/no-redundant-type-constituents
 	let legalsMentions: GetLegalMentionQuery | undefined = undefined;
 
 	try {

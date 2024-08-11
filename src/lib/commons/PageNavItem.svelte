@@ -114,8 +114,10 @@
 	.page-nav-item {
 		@include font.fontWeight(400);
 
-		font-size: 1rem;
-		line-height: 1.3125;
+		& {
+			font-size: 1rem;
+			line-height: 1.3125;
+		}
 
 		&__text,
 		&__button {

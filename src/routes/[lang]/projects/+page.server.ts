@@ -1,4 +1,3 @@
-/* eslint-disable @typescript-eslint/restrict-template-expressions */
 import { GET_PROJECTS_QUERY } from '$graphql/projects';
 import { client } from '$stores/graphql';
 import { get } from 'svelte/store';

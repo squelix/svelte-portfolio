@@ -1,5 +1,4 @@
 <script lang="ts">
-	/* eslint-disable @typescript-eslint/no-unsafe-call */
 	import { page } from '$app/stores';
 	import JobTimelineContent from '$lib/commons/JobTimelineContent.svelte';
 	import PageTimeline from '$lib/commons/PageTimeline.svelte';

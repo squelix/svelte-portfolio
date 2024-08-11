@@ -1,6 +1,5 @@
-/* eslint-disable @typescript-eslint/restrict-template-expressions, @typescript-eslint/no-non-null-assertion */
 import { getLanguage } from '$lib/lang/utils';
-import { AcceptedLanguages, LangEnum } from '$models/langs.enum';
+import { AcceptedLanguages, type LangEnum } from '$models/langs.enum';
 import { locales } from '$translations';
 
 import type { Handle } from '@sveltejs/kit';
@@ -30,7 +29,7 @@ export const handle: Handle = async ({ event, resolve }) => {
 			// Add html `lang` attribute
 			const body = await response.text();
 			return new Response(body.replace(/<html.*>/, `<html lang="${locale}">`), response);
-		} catch (error) {
+		} catch {
 			return response;
 		}
 	}

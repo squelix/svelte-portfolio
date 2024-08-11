@@ -1,4 +1,3 @@
-/* eslint-disable @typescript-eslint/no-non-null-assertion */
 export enum FitEnum {
 	Crop = 'c_crop',
 	Scale = 'c_scale',

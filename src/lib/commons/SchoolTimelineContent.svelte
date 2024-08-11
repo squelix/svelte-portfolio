@@ -1,5 +1,4 @@
 <script lang="ts">
-	/* eslint-disable @typescript-eslint/no-unsafe-return, @typescript-eslint/no-unsafe-call, @typescript-eslint/restrict-template-expressions */
 	import Image from '$lib/commons/Image.svelte';
 	import { t } from '$translations';
 
@@ -52,7 +51,9 @@
 		@include br.mobile {
 			@include link.linkSelected(var(--secondary-4), 0, var(--secondary-4));
 
-			display: inline-block;
+			& {
+				display: inline-block;
+			}
 		}
 	}
 
@@ -63,7 +64,9 @@
 	.title {
 		@include font.fontWeight(450);
 
-		margin-top: 0.5rem;
+		& {
+			margin-top: 0.5rem;
+		}
 	}
 
 	.picture :global(.picture__img) {

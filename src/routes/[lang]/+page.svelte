@@ -98,29 +98,35 @@
 		&__first {
 			@include font.fontWeight(400);
 
-			font-size: 1.125rem;
-			line-height: 1.3333;
-			color: var(--grey);
-			margin-bottom: 0.625rem;
+			& {
+				font-size: 1.125rem;
+				line-height: 1.3333;
+				color: var(--grey);
+				margin-bottom: 0.625rem;
+			}
 		}
 
 		&__name {
 			@include font.fontWeight(400);
 
-			font-size: 3.625rem;
-			line-height: 1;
-			color: var(--grey);
-			text-shadow: 0 4px 4px rgb(0 0 0 / 25%);
-			margin-bottom: 0.3125rem;
+			& {
+				font-size: 3.625rem;
+				line-height: 1;
+				color: var(--grey);
+				text-shadow: 0 4px 4px rgb(0 0 0 / 25%);
+				margin-bottom: 0.3125rem;
+			}
 		}
 
 		&__job {
 			@include font.fontWeight(400);
 
-			font-size: 1.25rem;
-			line-height: 1.3;
-			color: var(--accent-2);
-			margin-top: 0.3125rem;
+			& {
+				font-size: 1.25rem;
+				line-height: 1.3;
+				color: var(--accent-2);
+				margin-top: 0.3125rem;
+			}
 		}
 
 		@include br.desktop {
@@ -131,8 +137,10 @@
 			&__first {
 				@include font.fontWeight(450);
 
-				font-size: 1.125rem;
-				line-height: 1.3333;
+				& {
+					font-size: 1.125rem;
+					line-height: 1.3333;
+				}
 			}
 
 			&__name {
@@ -143,9 +151,11 @@
 			&__job {
 				@include font.fontWeight(450);
 
-				color: var(--secondary-3);
-				font-size: 2rem;
-				line-height: 1.3125;
+				& {
+					color: var(--secondary-3);
+					font-size: 2rem;
+					line-height: 1.3125;
+				}
 			}
 		}
 	}
@@ -153,11 +163,13 @@
 	.github-text {
 		@include font.fontWeight(450);
 
-		padding: 0 1.6875rem;
-		font-size: 0.875rem;
-		line-height: 1.4;
-		color: var(--secondary-1);
-		margin-bottom: 1rem;
+		& {
+			padding: 0 1.6875rem;
+			font-size: 0.875rem;
+			line-height: 1.4;
+			color: var(--secondary-1);
+			margin-bottom: 1rem;
+		}
 
 		@include br.desktop {
 			padding-right: 0;
@@ -167,11 +179,13 @@
 	.github-link {
 		@include font.fontWeight(500);
 
-		padding: 0 1.6875rem;
-		font-size: 0.875rem;
-		line-height: 1.4;
-		color: var(--secondary-4);
-		word-break: break-all;
+		& {
+			padding: 0 1.6875rem;
+			font-size: 0.875rem;
+			line-height: 1.4;
+			color: var(--secondary-4);
+			word-break: break-all;
+		}
 
 		&__const {
 			color: var(--secondary-3);

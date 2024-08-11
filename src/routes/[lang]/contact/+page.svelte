@@ -1,6 +1,4 @@
 <script lang="ts">
-	/* eslint-disable @typescript-eslint/restrict-template-expressions */
-	/* eslint-disable @typescript-eslint/no-misused-promises */
 	import { applyAction, enhance } from '$app/forms';
 	import { page } from '$app/stores';
 	import BorderBottom from '$lib/commons/BorderBottom.svelte';

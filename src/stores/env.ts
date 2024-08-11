@@ -1,4 +1,3 @@
-/* eslint-disable @typescript-eslint/no-unsafe-assignment */
 import {
 	PUBLIC_GRAPHQL_URI,
 	PUBLIC_MAIL_ACCESS_TOKEN,

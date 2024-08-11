@@ -10,7 +10,7 @@
 		"value-keyword-case": "lower",
 		"unit-disallowed-list": [],
 		"no-descending-specificity": true,
-		"no-duplicate-selectors": true,
+		"no-duplicate-selectors": null,
 		"font-family-no-missing-generic-family-keyword": null,
 		"selector-class-pattern": null,
 		"property-no-unknown": [

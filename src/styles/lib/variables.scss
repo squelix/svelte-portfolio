@@ -1,10 +1,5 @@
 :root {
 	--font-family: 'Fira Code', monospace;
-
-	@supports (font-variation-settings: normal) {
-		--font-family: 'Fira Code VF', monospace;
-	}
-
 	--background: #010c15;
 	--primary-1: #01080e;
 	--primary-2: #011627;
@@ -27,4 +22,8 @@
 	--nav-height: 3.5rem;
 	--transition-duration: 175ms;
 	--transition-easing: ease-in-out;
+
+	@supports (font-variation-settings: normal) {
+		--font-family: 'Fira Code VF', monospace;
+	}
 }

@@ -1,5 +1,4 @@
-/* eslint-disable @typescript-eslint/no-non-null-assertion, @typescript-eslint/no-unsafe-return, @typescript-eslint/no-unsafe-call, @typescript-eslint/no-unused-vars */
-import { derived, writable } from 'svelte/store';
+/* eslint-disable @typescript-eslint/no-unused-vars */
 
 import type {
 	GetSchoolsProjectsQuery,
@@ -8,6 +7,7 @@ import type {
 	SchoolProject
 } from '$models/graphql-generated';
 import type { Readable } from 'svelte/store';
+import { derived, writable } from 'svelte/store';
 
 export const schools = writable<GetSchoolsQuery | undefined>();
 

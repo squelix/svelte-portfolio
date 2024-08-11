@@ -1,4 +1,3 @@
-/* eslint-disable @typescript-eslint/restrict-template-expressions */
 import { Routes, RoutesEnum } from '$lib/routing';
 
 import type { RequestHandler } from './$types';

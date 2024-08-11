@@ -1,9 +1,9 @@
-/* eslint-disable @typescript-eslint/no-non-null-assertion, @typescript-eslint/no-unsafe-return, @typescript-eslint/no-unsafe-call, @typescript-eslint/no-unused-vars */
-import { derived, writable } from 'svelte/store';
+/* eslint-disable @typescript-eslint/no-unused-vars */
 
 import type { GetProjectsQuery, Project } from '$models/graphql-generated';
 import type { PageNavFilterItemInterface } from '$models/page-nav-filter-item.interface';
 import type { Readable } from 'svelte/store';
+import { derived, writable } from 'svelte/store';
 
 export const projects = writable<GetProjectsQuery | undefined>();
 

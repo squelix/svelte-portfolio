@@ -92,10 +92,12 @@
 	.page-nav-filter-item {
 		@include font.fontWeight(400);
 
-		font-size: 1rem;
-		line-height: 1.3125;
-		max-height: 100%;
-		overflow: hidden;
+		& {
+			font-size: 1rem;
+			line-height: 1.3125;
+			max-height: 100%;
+			overflow: hidden;
+		}
 
 		&__button {
 			display: flex;
