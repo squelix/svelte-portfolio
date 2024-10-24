@@ -4,25 +4,25 @@
 	import { sineInOut } from 'svelte/easing';
 	import { fade } from 'svelte/transition';
 
-	import type { SvelteInputProps } from '$models/forms/svelte-html-props.interface';
-
-	export let checked: boolean;
-
-	// eslint-disable-next-line @typescript-eslint/no-unused-vars
-	interface $$Props extends SvelteInputProps {
+	type Props = {
 		checked: boolean;
-	}
+		children?: import('svelte').Snippet;
+		// eslint-disable-next-line @typescript-eslint/no-explicit-any
+		[key: string]: any;
+	};
+
+	let { checked = $bindable(), children, ...rest }: Props = $props();
 </script>
 
-<label class:disabled={$$restProps.disabled} class:checked>
-	<input type="checkbox" {...$$restProps} on:change on:input bind:checked />
+<label class:disabled={rest.disabled} class:checked>
+	<input type="checkbox" {...rest} bind:checked />
 	<span>
 		{#if checked}
 			<span class="icon" transition:fade={{ duration: 175, easing: sineInOut }}>
 				<Icon data={Check} />
 			</span>
 		{/if}
-		<slot />
+		{@render children?.()}
 	</span>
 </label>
 

@@ -11,9 +11,13 @@
 
 	import type { PageNavItemInterface } from '$models/page-nav-item.interface';
 
-	export let item: PageNavItemInterface;
-	export let index: number;
-	export let ariaHidden: boolean;
+	type Props = {
+		item: PageNavItemInterface;
+		index: number;
+		ariaHidden: boolean;
+	};
+
+	let { item, index, ariaHidden }: Props = $props();
 
 	const setSelectedItem = (itemId: string) => {
 		if (itemId !== $subNavItemSelected) {
@@ -47,8 +51,8 @@
 			class="btn-clean page-nav-sub-item__button"
 			class:page-nav-sub-item__button--expanded={$subNavItemOpened === item.id}
 			aria-expanded={$subNavItemOpened === item.id}
-			on:click={selectItem}
-			on:keydown={keydown}
+			onclick={selectItem}
+			onkeydown={keydown}
 			tabindex={ariaHidden ? -1 : undefined}
 			aria-hidden={ariaHidden}
 		>

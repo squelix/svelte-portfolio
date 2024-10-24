@@ -1,4 +1,6 @@
 <script lang="ts">
+	/* eslint-disable @typescript-eslint/no-explicit-any */
+
 	import {
 		Timeline,
 		TimelineConnector,
@@ -10,9 +12,21 @@
 
 	// eslint-disable-next-line no-undef
 	type T = $$Generic;
+	type Props = {
+		list: T[];
+		shouldDisplayLastConnector?: boolean;
+		children?: import('svelte').Snippet<[{ item: any; last: boolean }]>;
+		itemSeparator?: import('svelte').Snippet<[{ item: any }]>;
+		itemConnector?: import('svelte').Snippet<[{ item: any }]>;
+	};
 
-	export let list: T[];
-	export let shouldDisplayLastConnector = true;
+	let {
+		list,
+		shouldDisplayLastConnector = true,
+		children,
+		itemSeparator,
+		itemConnector
+	}: Props = $props();
 </script>
 
 <section class="content">
@@ -24,13 +38,13 @@
 					style={'flex: 0; margin-left: 0; margin-right: 0;'}
 				/>
 				<TimelineSeparator style={'color: var(--secondary-1);'}>
-					{#if $$slots['item-separator']}
-						<slot name="item-separator" {item} />
+					{#if itemSeparator}
+						{@render itemSeparator?.({ item })}
 					{:else}
 						<b>◯</b>
 					{/if}
-					{#if $$slots['item-connector']}
-						<slot name="item-connector" {item} />
+					{#if itemConnector}
+						{@render itemConnector?.({ item })}
 					{:else if shouldDisplayLastConnector}
 						<TimelineConnector style={'background-color: var(--secondary-1);'} />
 					{:else if !shouldDisplayLastConnector && i !== list.length - 1}
@@ -38,7 +52,7 @@
 					{/if}
 				</TimelineSeparator>
 				<TimelineContent>
-					<slot {item} last={i === list.length - 1} />
+					{@render children?.({ item, last: i === list.length - 1 })}
 				</TimelineContent>
 			</TimelineItem>
 		{/each}

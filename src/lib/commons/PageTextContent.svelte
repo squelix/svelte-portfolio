@@ -2,9 +2,13 @@
 	import FormattedTextDesktop from '$lib/commons/FormattedTextDesktop.svelte';
 	import FormattedTextMobile from './FormattedTextMobile.svelte';
 
-	export let lines: string[];
-	export let mobileDisplayText: 'inline' | 'per-line' = 'inline';
-	export let mustSplit = true;
+	type Props = {
+		lines: string[];
+		mobileDisplayText?: 'inline' | 'per-line';
+		mustSplit?: boolean;
+	};
+
+	let { lines, mobileDisplayText = 'inline', mustSplit = true }: Props = $props();
 </script>
 
 {#if !!lines && lines.length > 0}

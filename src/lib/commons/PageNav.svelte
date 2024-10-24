@@ -3,8 +3,12 @@
 
 	import type { PageNavItemInterface } from '$models/page-nav-item.interface';
 
-	export let ariaLabel: string;
-	export let items: PageNavItemInterface[];
+	type Props = {
+		ariaLabel: string;
+		items: PageNavItemInterface[];
+	};
+
+	let { ariaLabel, items }: Props = $props();
 </script>
 
 <nav class="page-nav" aria-label={ariaLabel}>

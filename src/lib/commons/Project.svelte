@@ -8,9 +8,13 @@
 
 	import type { Project, SchoolProject } from '$models/graphql-generated';
 
-	export let project: Omit<Project, '__typename'> | Omit<SchoolProject, '__typename'>;
-	export let index: number;
-	export let baseTrad: string;
+	type Props = {
+		project: Omit<Project, '__typename'> | Omit<SchoolProject, '__typename'>;
+		index: number;
+		baseTrad: string;
+	};
+
+	let { project, index, baseTrad }: Props = $props();
 </script>
 
 <li>

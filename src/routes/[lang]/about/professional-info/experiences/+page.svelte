@@ -34,8 +34,8 @@
 <PageTimeline
 	list={$jobsList}
 	shouldDisplayLastConnector={$jobsList.findIndex((job) => !job.endDate) === -1}
-	let:item
-	let:last
 >
-	<JobTimelineContent {item} {last} />
+	{#snippet children({ item, last })}
+		<JobTimelineContent {item} {last} />
+	{/snippet}
 </PageTimeline>

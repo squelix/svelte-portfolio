@@ -2,8 +2,12 @@
 	import Close from '$icons/close.svg?raw';
 	import Icon from '$lib/SvgIcon.svelte';
 
-	export let textDesktop: string;
-	export let textMobile: string;
+	type Props = {
+		textDesktop: string;
+		textMobile: string;
+	};
+
+	let { textDesktop, textMobile }: Props = $props();
 </script>
 
 <h1 class="title">

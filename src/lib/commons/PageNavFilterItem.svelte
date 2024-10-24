@@ -8,8 +8,13 @@
 	import { ENTER_KEY } from '$lib/utils/keys';
 	import type { PageNavFilterItemInterface } from '$models/page-nav-filter-item.interface';
 
-	export let item: PageNavFilterItemInterface;
-	export let selectedItems: string[];
+	type Props = {
+		item: PageNavFilterItemInterface;
+		selectedItems: string[];
+		updateSelectedFilter: (filterId: string) => void;
+	};
+
+	let { item, selectedItems, updateSelectedFilter }: Props = $props();
 
 	const setSelectedItem = (itemId: string) => {
 		if (itemId !== $navItemSelected) {
@@ -49,15 +54,15 @@
 	};
 </script>
 
-<svelte:window on:resize={resize} />
+<svelte:window onresize={resize} />
 
 <li class="page-nav-filter-item">
 	<button
 		type="button"
 		class="btn-clean page-nav-filter-item__button"
 		aria-expanded={$navItemOpened === item.id}
-		on:click={selectItem}
-		on:keydown={keydown}
+		onclick={selectItem}
+		onkeydown={keydown}
 	>
 		<span
 			class="page-nav-filter-item__button__icon"
@@ -77,7 +82,7 @@
 	<ul class="page-nav-filter-item__sub-items" aria-hidden={$navItemOpened !== item.id}>
 		{#each item.items || [] as subItem}
 			<PageNavFilterSubItem
-				on:updateSelectedFilter
+				{updateSelectedFilter}
 				checked={selectedItems.includes(subItem.id)}
 				item={subItem}
 			/>

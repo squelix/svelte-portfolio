@@ -17,9 +17,7 @@
 
 	const textMobile = `_${$t('projects.title') as string}`;
 
-	const updateSelectedFilters = async ({
-		detail: { filterId }
-	}: CustomEvent<{ filterId: string }>) => {
+	const updateSelectedFilter = async (filterId: string) => {
 		const url = new URL($page.url);
 		const actualTechnos = $projectsTechnosFilter ?? [];
 
@@ -71,7 +69,7 @@
 	items={$projectsTechnosListAllFilters}
 	selectedItems={$projectsTechnosFilter ?? []}
 	ariaLabel={$t('projects.aria.nav')}
-	on:updateSelectedFilter={updateSelectedFilters}
+	{updateSelectedFilter}
 />
 
 <BorderBottom />

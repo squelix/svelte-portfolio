@@ -3,8 +3,12 @@
 
 	import type { Project as ProjectType, SchoolProject } from '$models/graphql-generated';
 
-	export let projects: (Omit<ProjectType, '__typename'> | Omit<SchoolProject, '__typename'>)[];
-	export let baseTrad: string;
+	type Props = {
+		projects: (Omit<ProjectType, '__typename'> | Omit<SchoolProject, '__typename'>)[];
+		baseTrad: string;
+	};
+
+	let { projects, baseTrad }: Props = $props();
 </script>
 
 <ul class="list">

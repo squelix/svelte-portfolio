@@ -1,4 +1,6 @@
 <script lang="ts">
+	import { run } from 'svelte/legacy';
+
 	import 'sanitize.css';
 	import 'sanitize.css/assets.css';
 	import 'sanitize.css/forms.css';
@@ -15,14 +17,19 @@
 	import { picture } from '$stores/profile';
 	import { locale } from '$translations';
 	import { injectSpeedInsights } from '@vercel/speed-insights/sveltekit';
+	type Props = {
+		children?: import('svelte').Snippet;
+	};
+
+	let { children }: Props = $props();
 
 	const TAB_KEY = 'Tab';
 
-	$: {
+	run(() => {
 		if (browser && $vercelAnalyticsId) {
 			injectSpeedInsights();
 		}
-	}
+	});
 
 	const toggleOutline = (value: boolean) => {
 		if (!value) {
@@ -68,7 +75,7 @@
 	{/if}
 </svelte:head>
 
-<svelte:window on:mousedown={mouseDownEvent} on:keydown={keyDownEvent} />
+<svelte:window onmousedown={mouseDownEvent} onkeydown={keyDownEvent} />
 
 <Header />
 
@@ -76,7 +83,7 @@
 	class="main"
 	class:main--home={isRouteActive($page.url.pathname, { route: RoutesEnum.Home, lang: $locale })}
 >
-	<slot />
+	{@render children?.()}
 </main>
 
 <Footer />

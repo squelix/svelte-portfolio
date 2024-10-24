@@ -45,7 +45,7 @@ jobs:
         run: "npm list"
 
       - name: "Install dependencies"
-        run: "npm ci"
+        run: "npm ci --force"
 
       - name: "Eslint"
         run: "npm run eslint"
@@ -90,7 +90,7 @@ jobs:
         run: "npm list"
 
       - name: "Install dependencies"
-        run: "npm ci"
+        run: "npm ci --force"
 
       - name: "Stylelint"
         run: "npm run stylelint"
@@ -135,7 +135,7 @@ jobs:
         run: "npm list"
 
       - name: "Install dependencies"
-        run: "npm ci"
+        run: "npm ci --force"
 
       - name: "Prettier"
         run: "npm run prettier"
@@ -180,7 +180,7 @@ jobs:
         run: "npm list"
 
       - name: "Install dependencies"
-        run: "npm ci"
+        run: "npm ci --force"
 
       - name: "Svelte Check"
         run: "npm run check"
@@ -225,7 +225,7 @@ jobs:
         run: "npm list"
 
       - name: "Install dependencies"
-        run: "npm ci"
+        run: "npm ci --force"
 
       - name: "Test"
         run: "npm run test -- --ci"
@@ -271,7 +271,7 @@ jobs:
         run: "npm list"
 
       - name: "Install dependencies"
-        run: "npm ci"
+        run: "npm ci --force"
 
       - name: "Build"
         run: "npm run build"
@@ -313,7 +313,7 @@ jobs:
         run: "npm list"
 
       - name: "Install dependencies"
-        run: "npm ci"
+        run: "npm ci --force"
 
       - name: Install Vercel CLI
         run: npm install -g vercel@latest

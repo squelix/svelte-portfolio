@@ -5,8 +5,12 @@
 
 	import type { Job } from '$models/graphql-generated';
 
-	export let item: Omit<Job, '__typename'>;
-	export let last = false;
+	type Props = {
+		item: Omit<Job, '__typename'>;
+		last?: boolean;
+	};
+
+	let { item, last = false }: Props = $props();
 
 	const getJobSkillsCategories = (): string[] =>
 		[...new Set(item.jobSkills?.data.map((skill) => skill.attributes?.category))]
