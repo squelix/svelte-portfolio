@@ -11,7 +11,7 @@
 
 	import type { RoutesEnum } from '$lib/routing';
 
-	let open = false;
+	let open = $state(false);
 
 	const mainRoutesKeys: RoutesEnum[] = Object.keys(MainRoutes) as RoutesEnum[];
 
@@ -30,8 +30,8 @@
 	<button
 		class="btn-clean nav__btn"
 		aria-expanded={open}
-		on:click={toggleClose}
-		on:keydown={keydown}
+		onclick={toggleClose}
+		onkeydown={keydown}
 		aria-label="Ouvrir le menu de navigation"
 	>
 		<Icon data={open ? Cross : Burger} />
@@ -45,7 +45,7 @@
 				route={MainRoutes[routeKey]}
 				last={index === Object.keys(MainRoutes).length - 1}
 				beforeLast={index === Object.keys(MainRoutes).length - 2}
-				on:closeMenu={() => (open = !open)}
+				closeMenu={() => (open = !open)}
 			/>
 		{/each}
 

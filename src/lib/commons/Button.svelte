@@ -2,27 +2,24 @@
 	import Loader from '$icons/loader.svg?raw';
 	import Icon from '$lib/SvgIcon.svelte';
 
-	import type { SvelteButtonProps } from '$models/forms/svelte-html-props.interface';
-
-	export let style: 'primary' | 'default' | 'ghost' = 'default';
-	export let isLoading = false;
-
-	// eslint-disable-next-line @typescript-eslint/no-unused-vars
-	interface $$Props extends SvelteButtonProps {
+	type Props = {
 		style?: 'primary' | 'default' | 'ghost';
 		isLoading?: boolean;
-	}
+		children?: import('svelte').Snippet;
+		// eslint-disable-next-line @typescript-eslint/no-explicit-any
+		[key: string]: any;
+	};
+
+	let { style = 'default', isLoading = false, children, ...rest }: Props = $props();
 </script>
 
 <button
-	{...$$restProps}
+	{...rest}
 	class:primary={style === 'primary'}
 	class:default={style === 'default'}
 	class:ghost={style === 'ghost'}
-	on:click
-	on:keydown
 >
-	<slot />
+	{@render children?.()}
 	{#if isLoading}
 		<span class="loader">
 			<Icon data={Loader} />

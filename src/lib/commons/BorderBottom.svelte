@@ -1,4 +1,4 @@
-<span class="border-bottom" />
+<span class="border-bottom"></span>
 
 <style lang="scss">
 	@use 'lib/mixins/breakpoints' as br;

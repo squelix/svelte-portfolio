@@ -26,15 +26,15 @@
 	let loaded = false;
 	let token: string | undefined;
 
-	let name = '';
-	let email = '';
-	let message = '';
+	let name = $state('');
+	let email = $state('');
+	let message = $state('');
 
-	let errorMessage: string | undefined;
-	let sending = false;
+	let errorMessage: string | undefined = $state();
+	let sending = $state(false);
 
-	let showConfirmMessage = false;
-	let showForm = true;
+	let showConfirmMessage = $state(false);
+	let showForm = $state(true);
 
 	onMount(() => {
 		intervalLoading = window.setInterval(() => {
@@ -174,7 +174,7 @@
 	<section class="confirm" transition:fade={{ duration: transitionMs, easing: sineInOut }}>
 		<p class="confirm__thank-you">{$t('contact.confirm.thankYou')}</p>
 		<p class="confirm__message">{$t('contact.confirm.message')}</p>
-		<Button type="button" class="confirm__button" on:click={hideConfirmMessage} on:keydown={keydown}
+		<Button type="button" class="confirm__button" onclick={hideConfirmMessage} onkeydown={keydown}
 			>{$t('contact.confirm.button')}</Button
 		>
 	</section>
@@ -191,14 +191,14 @@
 			disabled={sending}
 			autofocus
 			bind:value={name}
-			on:input={clearErrorMessage}
+			oninput={clearErrorMessage}
 			name="name"
 		/>
 		<Input
 			label={`_${$t('contact.form.email')}`}
 			disabled={sending}
 			bind:value={email}
-			on:input={clearErrorMessage}
+			oninput={clearErrorMessage}
 			name="email"
 		/>
 		<Textarea
@@ -206,11 +206,11 @@
 			rows={6}
 			disabled={sending}
 			bind:value={message}
-			on:input={clearErrorMessage}
+			oninput={clearErrorMessage}
 			name="message"
 		/>
 
-		<div id="reCaptcha" class="reCaptcha" class:reCaptcha--disabled={sending} />
+		<div id="reCaptcha" class="reCaptcha" class:reCaptcha--disabled={sending}></div>
 
 		{#if !!errorMessage}
 			<p class="error">{errorMessage}</p>

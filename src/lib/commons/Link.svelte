@@ -1,24 +1,23 @@
 <script lang="ts">
-	import type { SvelteLinkProps } from '$models/forms/svelte-html-props.interface';
-
-	export let style: 'primary' | 'default' | 'ghost' = 'default';
-	export let href: string;
-
-	// eslint-disable-next-line @typescript-eslint/no-unused-vars
-	interface $$Props extends SvelteLinkProps {
+	type Props = {
 		style?: 'primary' | 'default' | 'ghost';
 		href: string;
-	}
+		children?: import('svelte').Snippet;
+		// eslint-disable-next-line @typescript-eslint/no-explicit-any
+		[key: string]: any;
+	};
+
+	let { style = 'default', href, children, ...rest }: Props = $props();
 </script>
 
 <a
-	{...$$restProps}
+	{...rest}
 	class:primary={style === 'primary'}
 	class:default={style === 'default'}
 	class:ghost={style === 'ghost'}
 	{href}
 >
-	<slot />
+	{@render children?.()}
 </a>
 
 <style lang="scss">

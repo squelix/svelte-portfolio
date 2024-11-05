@@ -3,15 +3,20 @@
 
 	import type { PageNavFilterItemInterface } from '$models/page-nav-filter-item.interface';
 
-	export let ariaLabel: string;
-	export let items: PageNavFilterItemInterface[];
-	export let selectedItems: string[];
+	type Props = {
+		ariaLabel: string;
+		items: PageNavFilterItemInterface[];
+		selectedItems: string[];
+		updateSelectedFilter: (filterId: string) => void;
+	};
+
+	let { ariaLabel, items, selectedItems, updateSelectedFilter }: Props = $props();
 </script>
 
 <nav class="page-nav-filter" aria-label={ariaLabel}>
 	<ul class="page-nav-filter__list">
 		{#each items as item}
-			<PageNavFilterItem on:updateSelectedFilter {item} {selectedItems} />
+			<PageNavFilterItem {updateSelectedFilter} {item} {selectedItems} />
 		{/each}
 	</ul>
 </nav>

@@ -2,8 +2,12 @@
 	import Icon from '$lib/SvgIcon.svelte';
 	import { Enum_Techno_Color, type Maybe } from '$models/graphql-generated';
 
-	export let icon: string;
-	export let color: Maybe<Enum_Techno_Color> | undefined;
+	type Props = {
+		icon: string;
+		color: Maybe<Enum_Techno_Color> | undefined;
+	};
+
+	let { icon, color }: Props = $props();
 </script>
 
 <span

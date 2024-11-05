@@ -2,8 +2,7 @@
 	import { page } from '$app/stores';
 	import { t, locale } from '$translations';
 
-	export let status = $page.status;
-	export let error = $page.error;
+	let { status = $page.status, error = $page.error } = $props();
 </script>
 
 <main>

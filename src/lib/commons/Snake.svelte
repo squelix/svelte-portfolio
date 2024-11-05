@@ -8,16 +8,25 @@
 	import type { PositionInterface } from '$models/snake/position.interface';
 	import type { RadiusInterface } from '$models/snake/radius.interface';
 
-	export let boardBorderColor: ColorInterface = { r: 0, g: 0, b: 0, a: 0 };
-	export let boardBackgroundColor: ColorInterface = { r: 0, g: 0, b: 0, a: 0 };
-	export let snakeColor: ColorInterface = { r: 67, g: 217, b: 173, a: 1 };
-	export let snakeBorderColor: ColorInterface | undefined = undefined;
+	type Props = {
+		boardBorderColor?: ColorInterface;
+		boardBackgroundColor?: ColorInterface;
+		snakeColor?: ColorInterface;
+		snakeBorderColor?: ColorInterface | undefined;
+	};
+
+	let {
+		boardBorderColor = { r: 0, g: 0, b: 0, a: 0 },
+		boardBackgroundColor = { r: 0, g: 0, b: 0, a: 0 },
+		snakeColor = { r: 67, g: 217, b: 173, a: 1 },
+		snakeBorderColor = undefined
+	}: Props = $props();
 
 	const width = 238;
 	const height = 405;
 
-	let board: HTMLCanvasElement;
-	let context: CanvasRenderingContext2D | null;
+	let board: HTMLCanvasElement | undefined = $state();
+	let context: CanvasRenderingContext2D | null | undefined;
 	let gameStarted = false;
 	let pause = false;
 	let game: number;
@@ -72,9 +81,11 @@
 			context.strokeStyle = `rgb(${boardBorderColor.r} ${boardBorderColor.g} ${boardBorderColor.b})`;
 		}
 
-		context.clearRect(0, 0, board.width, board.height);
-		context.fillRect(0, 0, board.width, board.height);
-		roundRect(0, 0, board.width, board.height, 8);
+		if (board) {
+			context.clearRect(0, 0, board.width, board.height);
+			context.fillRect(0, 0, board.width, board.height);
+			roundRect(0, 0, board.width, board.height, 8);
+		}
 	};
 
 	const drawSnakePart = (snakePart: PositionInterface, index: number): void => {
@@ -142,8 +153,8 @@
 		if (hasEatenFood) {
 			generateFood();
 		} else {
-			const snakePart = snake.pop()!;
-			clearSnakePart(snakePart);
+			const snakePart = snake.pop();
+			clearSnakePart(snakePart!);
 		}
 	};
 
@@ -208,24 +219,27 @@
 			}
 		}
 		const hitLeftWall = snake[0].x - snakeSquareSize / 2 < 0;
-		const hitRightWall = snake[0].x - snakeSquareSize / 2 > board.width - snakeSquareSize;
-		const hitToptWall = snake[0].y - snakeSquareSize / 2 < 0;
-		const hitBottomWall = snake[0].y - snakeSquareSize / 2 > board.height - snakeSquareSize;
+		const hitRightWall = snake[0].x - snakeSquareSize / 2 > (board?.width ?? 0) - snakeSquareSize;
+		const hitTopWall = snake[0].y - snakeSquareSize / 2 < 0;
+		const hitBottomWall = snake[0].y - snakeSquareSize / 2 > (board?.height ?? 0) - snakeSquareSize;
 
-		return hitLeftWall || hitRightWall || hitToptWall || hitBottomWall;
+		return hitLeftWall || hitRightWall || hitTopWall || hitBottomWall;
 	};
 
 	const randomFood = (min: number, max: number): number =>
 		Math.round((Math.random() * (max - min) + min) / snakeSquareSize) * snakeSquareSize;
 
 	const generateFood = (): void => {
-		foodX = randomFood(snakeSquareSize * 2, board.width - snakeSquareSize * 2);
-		foodY = randomFood(snakeSquareSize * 2, board.height - snakeSquareSize * 2);
-		snake.forEach((part) => {
+		if (board) {
+			foodX = randomFood(snakeSquareSize * 2, board.width - snakeSquareSize * 2);
+			foodY = randomFood(snakeSquareSize * 2, board.height - snakeSquareSize * 2);
+		}
+
+		for (let part of snake) {
 			if (part.x == foodX && part.y == foodY) {
 				generateFood();
 			}
-		});
+		}
 	};
 
 	const drawFood = (): void => {
@@ -372,11 +386,11 @@
 	});
 </script>
 
-<svelte:window on:keydown={handleKey} />
+<svelte:window onkeydown={handleKey} />
 
 <section class="snake" style:grid-template-columns={`${width}px minmax(0,1fr)`}>
 	<div class="snake__canvas-container" style:width={`${width}px`} style:height={`${height}px`}>
-		<canvas bind:this={board} {width} {height} />
+		<canvas bind:this={board} {width} {height}></canvas>
 	</div>
 
 	<div class="snake__board">

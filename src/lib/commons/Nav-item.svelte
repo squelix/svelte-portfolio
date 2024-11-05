@@ -3,19 +3,17 @@
 	import { isBaseRouteActive } from '$lib/routing';
 	import { ENTER_KEY } from '$lib/utils/keys';
 	import { locale } from '$translations';
-	import { createEventDispatcher } from 'svelte';
 
-	export let label: string;
-	export let link: string;
-	export let route: string | undefined;
-	export let last: boolean;
-	export let beforeLast: boolean;
-
-	const dispatch = createEventDispatcher();
-
-	const closeMenu = (): void => {
-		dispatch('closeMenu');
+	type Props = {
+		label: string;
+		link: string;
+		route: string | undefined;
+		last: boolean;
+		beforeLast: boolean;
+		closeMenu: () => void;
 	};
+
+	let { label, link, route, last, beforeLast, closeMenu }: Props = $props();
 
 	const keydown = ({ code }: KeyboardEvent): void => {
 		if (code === ENTER_KEY) {
@@ -28,8 +26,8 @@
 	<a
 		class="item__link"
 		href={`/${$locale}${route ?? ''}`}
-		on:click={closeMenu}
-		on:keydown={keydown}
+		onclick={closeMenu}
+		onkeydown={keydown}
 		class:item__link--selected={isBaseRouteActive($page.url.pathname, {
 			lang: $locale,
 			route: link

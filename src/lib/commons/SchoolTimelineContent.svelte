@@ -4,7 +4,11 @@
 
 	import type { School } from '$models/graphql-generated';
 
-	export let item: Omit<School, '__typename'>;
+	type Props = {
+		item: Omit<School, '__typename'>;
+	};
+
+	let { item }: Props = $props();
 </script>
 
 <header>

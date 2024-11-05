@@ -1,20 +1,18 @@
 <script lang="ts">
-	import type { SvelteTextAreaProps } from '$models/forms/svelte-html-props.interface';
-
-	export let label: string;
-	export let value: string;
-
-	// eslint-disable-next-line @typescript-eslint/no-unused-vars
-	interface $$Props extends SvelteTextAreaProps {
+	type Props = {
 		label: string;
 		value: string;
-	}
+		// eslint-disable-next-line @typescript-eslint/no-explicit-any
+		[key: string]: any;
+	};
+
+	let { label, value = $bindable(), ...rest }: Props = $props();
 </script>
 
 <label>
 	<!-- eslint-disable-next-line svelte/no-at-html-tags -->
 	{@html `${label}&nbsp;:`}
-	<textarea {...$$restProps} on:input bind:value />
+	<textarea {...rest} bind:value></textarea>
 </label>
 
 <style lang="scss">

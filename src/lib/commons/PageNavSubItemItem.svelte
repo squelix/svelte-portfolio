@@ -7,8 +7,12 @@
 
 	import type { PageNavItemInterface } from '$models/page-nav-item.interface';
 
-	export let item: PageNavItemInterface;
-	export let ariaHidden: boolean;
+	type Props = {
+		item: PageNavItemInterface;
+		ariaHidden: boolean;
+	};
+
+	let { item, ariaHidden }: Props = $props();
 </script>
 
 <li class="page-nav-sub-item-item">

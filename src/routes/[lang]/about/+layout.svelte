@@ -8,6 +8,11 @@
 	import { nav } from '$stores/nav';
 	import { aboutTitleItem } from '$stores/title';
 	import { t } from '$translations';
+	type Props = {
+		children?: import('svelte').Snippet;
+	};
+
+	let { children }: Props = $props();
 </script>
 
 <svelte:head>
@@ -40,4 +45,4 @@
 
 <PageNav ariaLabel={$t('about.aria.nav')} items={$nav} />
 
-<slot />
+{@render children?.()}

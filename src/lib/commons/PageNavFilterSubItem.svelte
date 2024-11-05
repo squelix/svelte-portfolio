@@ -3,22 +3,20 @@
 	import Icon from '$lib/SvgIcon.svelte';
 	import { technosIcons } from '$lib/technos-icons';
 	import { t } from '$translations';
-	import { createEventDispatcher } from 'svelte';
 
 	import type { PageNavFilterItemInterface } from '$models/page-nav-filter-item.interface';
 
-	export let item: PageNavFilterItemInterface;
-	export let checked: boolean;
-
-	const dispatch = createEventDispatcher();
-
-	const updateSelectedFilter = (filterId: string): void => {
-		dispatch('updateSelectedFilter', { filterId });
+	type Props = {
+		item: PageNavFilterItemInterface;
+		checked: boolean;
+		updateSelectedFilter: (filterId: string) => void;
 	};
+
+	let { item, checked = $bindable(), updateSelectedFilter }: Props = $props();
 </script>
 
 <li class="page-nav-filter-sub-item">
-	<Checkbox bind:checked on:change={() => updateSelectedFilter(item.id)}>
+	<Checkbox bind:checked onchange={() => updateSelectedFilter(item.id)}>
 		<span class="checkbox" class:checkbox--checked={checked}>
 			<span class="checkbox__icon">
 				<Icon data={technosIcons[item.id]} />

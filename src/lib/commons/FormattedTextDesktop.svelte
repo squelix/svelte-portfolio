@@ -1,6 +1,10 @@
 <script lang="ts">
-	export let lines: string[];
-	export let mustSplit = true;
+	type Props = {
+		lines: string[];
+		mustSplit?: boolean;
+	};
+
+	let { lines, mustSplit = true }: Props = $props();
 
 	let splittedLines: string[][] = [];
 
@@ -22,10 +26,10 @@
 	};
 </script>
 
-<span class="count-line" />
+<span class="count-line"></span>
 <span>/**</span>
 {#each lines as line, index}
-	<span class="count-line" />
+	<span class="count-line"></span>
 	{#if mustSplit}
 		<span class="content-line">
 			<!-- eslint-disable-next-line svelte/no-at-html-tags -->
@@ -38,7 +42,7 @@
 		<span>&nbsp;* {@html line}</span>
 	{/if}
 {/each}
-<span class="count-line" />
+<span class="count-line"></span>
 <span>&nbsp;*/</span>
 
 <style lang="scss">

@@ -9,7 +9,11 @@
 	import { ENTER_KEY } from '$lib/utils/keys';
 	import type { PageNavItemInterface } from '$models/page-nav-item.interface';
 
-	export let item: PageNavItemInterface;
+	type Props = {
+		item: PageNavItemInterface;
+	};
+
+	let { item }: Props = $props();
 
 	const setSelectedItem = (itemId: string) => {
 		if (itemId !== $navItemSelected) {
@@ -43,8 +47,8 @@
 			type="button"
 			class="btn-clean page-nav-item__button"
 			aria-expanded={$navItemOpened === item.id}
-			on:click={selectItem}
-			on:keydown={keydown}
+			onclick={selectItem}
+			onkeydown={keydown}
 		>
 			<span
 				class="page-nav-item__button__icon"

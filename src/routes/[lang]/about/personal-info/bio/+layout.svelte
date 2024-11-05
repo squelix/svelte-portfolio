@@ -2,6 +2,11 @@
 	import LayoutPage from '$lib/commons/LayoutPage.svelte';
 	import { aboutTitleItem, titleItem } from '$stores/title';
 	import { t } from '$translations';
+	type Props = {
+		children?: import('svelte').Snippet;
+	};
+
+	let { children }: Props = $props();
 </script>
 
 <LayoutPage>
@@ -23,7 +28,7 @@
 		</span>
 	</h2>
 
-	<slot />
+	{@render children?.()}
 </LayoutPage>
 
 <style lang="scss">

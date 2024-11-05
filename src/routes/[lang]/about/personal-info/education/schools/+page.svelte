@@ -37,6 +37,8 @@
 	/>
 </svelte:head>
 
-<PageTimeline list={$schoolsList} let:item>
-	<SchoolTimelineContent {item} />
+<PageTimeline list={$schoolsList}>
+	{#snippet children({ item })}
+		<SchoolTimelineContent {item} />
+	{/snippet}
 </PageTimeline>

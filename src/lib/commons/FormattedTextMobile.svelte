@@ -1,6 +1,10 @@
 <script lang="ts">
-	export let lines: string[];
-	export let displayText: 'inline' | 'per-line' = 'inline';
+	type Props = {
+		lines: string[];
+		displayText?: 'inline' | 'per-line';
+	};
+
+	let { lines, displayText = 'inline' }: Props = $props();
 </script>
 
 {#if displayText === 'inline'}
