@@ -2,6 +2,7 @@
 	"extends": "stylelint-config-standard-scss",
 	"plugins": ["stylelint-scss"],
 	"rules": {
+		"scss/at-import-partial-extension": null,
 		"color-named": "always-where-possible",
 		"font-family-name-quotes": "always-where-required",
 		"font-weight-notation": "named-where-possible",
