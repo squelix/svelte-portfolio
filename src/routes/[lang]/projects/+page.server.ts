@@ -1,6 +1,5 @@
 import { GET_PROJECTS_QUERY } from '$graphql/projects';
 import { client } from '$stores/graphql';
-import { get } from 'svelte/store';
 
 import type { GetProjectsQuery, GetProjectsQueryVariables } from '$models/graphql-generated';
 import type { PageServerLoad } from './$types';
@@ -18,7 +17,7 @@ export const load: PageServerLoad = async ({ url, fetch }) => {
 	let projects;
 
 	try {
-		const { data } = await get(client)
+		const { data } = await client
 			.query<GetProjectsQuery, GetProjectsQueryVariables>(
 				GET_PROJECTS_QUERY,
 				{

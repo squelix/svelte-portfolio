@@ -1,6 +1,5 @@
 import { GET_PROFILE_QUERY } from '$graphql/profile';
 import { client } from '$stores/graphql';
-import { get } from 'svelte/store';
 
 import type { GetProfileQuery, GetProfileQueryVariables } from '$models/graphql-generated';
 import type { LayoutServerLoad } from './$types';
@@ -13,7 +12,7 @@ export const load: LayoutServerLoad = async ({ url, fetch }) => {
 	let profile;
 
 	try {
-		const { data } = await get(client)
+		const { data } = await client
 			.query<GetProfileQuery, GetProfileQueryVariables>(
 				GET_PROFILE_QUERY,
 				{

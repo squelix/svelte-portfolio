@@ -1,6 +1,5 @@
 import { GET_HOBBIES_QUERY } from '$graphql/hobbies';
 import { client } from '$stores/graphql';
-import { get } from 'svelte/store';
 
 import type { GetHobbiesQuery, GetHobbiesQueryVariables } from '$models/graphql-generated';
 import type { PageServerLoad } from './$types';
@@ -12,7 +11,7 @@ export const load: PageServerLoad = async ({ url, fetch }) => {
 	let hobbies;
 
 	try {
-		const { data } = await get(client)
+		const { data } = await client
 			.query<GetHobbiesQuery, GetHobbiesQueryVariables>(
 				GET_HOBBIES_QUERY,
 				{

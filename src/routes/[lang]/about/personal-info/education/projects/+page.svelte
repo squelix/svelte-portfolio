@@ -4,8 +4,14 @@
 	import ProjectsList from '$lib/commons/ProjectsList.svelte';
 	import { getRoute, RoutesEnum } from '$lib/routing';
 	import { LangEnum } from '$models/langs.enum';
-	import { schoolsProjectsList } from '$stores/schools';
 	import { locale, t } from '$translations';
+	import type { PageData } from './$types';
+
+	type Props = {
+		data: PageData;
+	};
+
+	let { data }: Props = $props();
 </script>
 
 <svelte:head>
@@ -38,5 +44,5 @@
 </svelte:head>
 
 <LayoutPage>
-	<ProjectsList projects={$schoolsProjectsList} baseTrad="education-projects" />
+	<ProjectsList projects={data.schoolsProjectsList} baseTrad="education-projects" />
 </LayoutPage>

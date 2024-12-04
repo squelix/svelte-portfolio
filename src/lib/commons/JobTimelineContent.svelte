@@ -71,7 +71,7 @@
 	{#if (item?.jobMissions?.data ?? []).length > 0}
 		<h4 class="title">{$t('experiences.missions.title')}&nbsp;:</h4>
 		<ul class="list">
-			{#each item?.jobMissions?.data ?? [] as mission}
+			{#each item?.jobMissions?.data ?? [] as mission, index (mission.attributes?.slug ?? index)}
 				<li>
 					{mission.attributes?.title}
 					{#if mission.attributes?.url && mission.attributes?.urlName}
@@ -88,7 +88,7 @@
 	{#if (groupSkillsByCategories() ?? []).length > 0}
 		<h4 class="title">{$t('experiences.skills.title')}&nbsp;:</h4>
 		<ul class="list">
-			{#each groupSkillsByCategories() ?? [] as categoriesSkills}
+			{#each groupSkillsByCategories() ?? [] as categoriesSkills (categoriesSkills.category)}
 				<li>
 					<span class="skill-category"
 						>{$t(`experiences.skills.categories.${categoriesSkills.category}`)}&nbsp;:

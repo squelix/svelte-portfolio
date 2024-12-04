@@ -4,8 +4,14 @@
 	import PageTimeline from '$lib/commons/PageTimeline.svelte';
 	import { getRoute, RoutesEnum } from '$lib/routing';
 	import { LangEnum } from '$models/langs.enum';
-	import { jobsList } from '$stores/jobs';
 	import { locale, t } from '$translations';
+	import type { PageData } from './$types';
+
+	type Props = {
+		data: PageData;
+	};
+
+	let { data }: Props = $props();
 </script>
 
 <svelte:head>
@@ -32,8 +38,8 @@
 </svelte:head>
 
 <PageTimeline
-	list={$jobsList}
-	shouldDisplayLastConnector={$jobsList.findIndex((job) => !job.endDate) === -1}
+	list={data.jobs}
+	shouldDisplayLastConnector={data.jobs.findIndex((job) => !job.endDate) === -1}
 >
 	{#snippet children({ item, last })}
 		<JobTimelineContent {item} {last} />

@@ -1,6 +1,5 @@
 import { GET_SCHOOLS_PROJECTS_QUERY } from '$graphql/schools-projects';
 import { client } from '$stores/graphql';
-import { get } from 'svelte/store';
 
 import type {
 	GetSchoolsProjectsQuery,
@@ -15,7 +14,7 @@ export const load: PageServerLoad = async ({ url, fetch }) => {
 	let schoolsProjects;
 
 	try {
-		const { data } = await get(client)
+		const { data } = await client
 			.query<GetSchoolsProjectsQuery, GetSchoolsProjectsQueryVariables>(
 				GET_SCHOOLS_PROJECTS_QUERY,
 				{

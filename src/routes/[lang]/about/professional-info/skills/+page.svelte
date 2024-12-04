@@ -3,8 +3,14 @@
 	import PageTextContent from '$lib/commons/PageTextContent.svelte';
 	import { getRoute, RoutesEnum } from '$lib/routing';
 	import { LangEnum } from '$models/langs.enum';
-	import { skillsListBars } from '$stores/skills';
 	import { locale, t } from '$translations';
+	import type { PageData } from './$types';
+
+	type Props = {
+		data: PageData;
+	};
+
+	let { data }: Props = $props();
 </script>
 
 <svelte:head>
@@ -30,4 +36,4 @@
 	/>
 </svelte:head>
 
-<PageTextContent lines={$skillsListBars} mobileDisplayText="per-line" />
+<PageTextContent lines={data.skills} mobileDisplayText="per-line" />

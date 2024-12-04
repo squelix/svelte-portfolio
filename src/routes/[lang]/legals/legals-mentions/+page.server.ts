@@ -1,5 +1,4 @@
 import { client } from '$stores/graphql';
-import { get } from 'svelte/store';
 
 import { GET_LEGALS_MENTIONS_QUERY } from '$graphql/legals-mentions';
 import type {
@@ -16,7 +15,7 @@ export const load: PageServerLoad = async ({ url, fetch }) => {
 	let legalsMentions: GetLegalMentionQuery | undefined = undefined;
 
 	try {
-		const { data } = await get(client)
+		const { data } = await client
 			.query<GetLegalMentionQuery, GetLegalMentionQueryVariables>(
 				GET_LEGALS_MENTIONS_QUERY,
 				{

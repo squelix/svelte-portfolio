@@ -4,8 +4,14 @@
 	import SchoolTimelineContent from '$lib/commons/SchoolTimelineContent.svelte';
 	import { getRoute, RoutesEnum } from '$lib/routing';
 	import { LangEnum } from '$models/langs.enum';
-	import { schoolsList } from '$stores/schools';
 	import { locale, t } from '$translations';
+	import type { PageData } from './$types';
+
+	type Props = {
+		data: PageData;
+	};
+
+	let { data }: Props = $props();
 </script>
 
 <svelte:head>
@@ -37,7 +43,7 @@
 	/>
 </svelte:head>
 
-<PageTimeline list={$schoolsList}>
+<PageTimeline list={data.schoolsList}>
 	{#snippet children({ item })}
 		<SchoolTimelineContent {item} />
 	{/snippet}

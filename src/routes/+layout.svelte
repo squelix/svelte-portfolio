@@ -1,6 +1,4 @@
 <script lang="ts">
-	import { run } from 'svelte/legacy';
-
 	import 'sanitize.css';
 	import 'sanitize.css/assets.css';
 	import 'sanitize.css/forms.css';
@@ -10,13 +8,16 @@
 
 	import { browser } from '$app/environment';
 	import { page } from '$app/stores';
+	import { PUBLIC_STRAPI_URI } from '$env/static/public';
 	import Footer from '$lib/commons/Footer.svelte';
 	import Header from '$lib/commons/Header.svelte';
 	import { RoutesEnum, isRouteActive } from '$lib/routing';
-	import { strapiUri, vercelAnalyticsId } from '$stores/env';
+	import { vercelAnalyticsId } from '$stores/env';
 	import { picture } from '$stores/profile';
 	import { locale } from '$translations';
 	import { injectSpeedInsights } from '@vercel/speed-insights/sveltekit';
+	import { onMount } from 'svelte';
+
 	type Props = {
 		children?: import('svelte').Snippet;
 	};
@@ -25,7 +26,7 @@
 
 	const TAB_KEY = 'Tab';
 
-	run(() => {
+	onMount(() => {
 		if (browser && $vercelAnalyticsId) {
 			injectSpeedInsights();
 		}
@@ -70,8 +71,8 @@
 		<meta name="twitter:image" content={$picture} />
 	{/if}
 
-	{#if !!$strapiUri}
-		<link rel="preconnect" href={$strapiUri} />
+	{#if !!PUBLIC_STRAPI_URI}
+		<link rel="preconnect" href={PUBLIC_STRAPI_URI} />
 	{/if}
 </svelte:head>
 

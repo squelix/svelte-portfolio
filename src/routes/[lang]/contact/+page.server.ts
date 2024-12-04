@@ -1,15 +1,15 @@
-import { mailAccessToken } from '$stores/env';
-import { mailService } from '$stores/services';
-import { get } from 'svelte/store';
+import { PUBLIC_MAIL_ACCESS_TOKEN, PUBLIC_MAIL_URI } from '$env/static/public';
+import { MailService } from '$lib/services/mail.service';
 import type { Actions } from './$types';
 
 export const actions: Actions = {
-	default: async ({ request }) => {
-		const service = get(mailService);
-		const token = get(mailAccessToken);
+	default: async ({ request, fetch }) => {
+		const service = MailService.getInstance(PUBLIC_MAIL_URI);
+		const token = PUBLIC_MAIL_ACCESS_TOKEN;
 		const data: FormData = await request.formData();
 
 		return service.sendMail(
+			fetch,
 			data.get('email')! as string,
 			data.get('message')! as string,
 			data.get('name')! as string,

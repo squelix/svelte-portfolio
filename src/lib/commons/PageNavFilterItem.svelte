@@ -80,7 +80,7 @@
 		</span>
 	</button>
 	<ul class="page-nav-filter-item__sub-items" aria-hidden={$navItemOpened !== item.id}>
-		{#each item.items || [] as subItem}
+		{#each item.items || [] as subItem (subItem.id)}
 			<PageNavFilterSubItem
 				{updateSelectedFilter}
 				checked={selectedItems.includes(subItem.id)}

@@ -12,7 +12,7 @@
 </script>
 
 <ul class="list">
-	{#each projects as project, index}
+	{#each projects as project, index (project.slug)}
 		{#if project}
 			<Project {project} {index} {baseTrad} />
 		{/if}

@@ -1,6 +1,5 @@
 import { GET_LANGUAGES_QUERY } from '$graphql/languages';
 import { client } from '$stores/graphql';
-import { get } from 'svelte/store';
 
 import type { GetLanguagesQuery, GetLanguagesQueryVariables } from '$models/graphql-generated';
 import type { PageServerLoad } from './$types';
@@ -12,7 +11,7 @@ export const load: PageServerLoad = async ({ url, fetch }) => {
 	let languages;
 
 	try {
-		const { data } = await get(client)
+		const { data } = await client
 			.query<GetLanguagesQuery, GetLanguagesQueryVariables>(
 				GET_LANGUAGES_QUERY,
 				{

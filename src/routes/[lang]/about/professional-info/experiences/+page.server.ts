@@ -1,6 +1,5 @@
 import { GET_JOBS_QUERY } from '$graphql/jobs';
 import { client } from '$stores/graphql';
-import { get } from 'svelte/store';
 
 import type { GetJobsQuery, GetJobsQueryVariables } from '$models/graphql-generated';
 import type { PageServerLoad } from './$types';
@@ -12,7 +11,7 @@ export const load: PageServerLoad = async ({ url, fetch }) => {
 	let jobs;
 
 	try {
-		const { data } = await get(client)
+		const { data } = await client
 			.query<GetJobsQuery, GetJobsQueryVariables>(
 				GET_JOBS_QUERY,
 				{

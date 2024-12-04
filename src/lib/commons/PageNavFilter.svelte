@@ -15,7 +15,7 @@
 
 <nav class="page-nav-filter" aria-label={ariaLabel}>
 	<ul class="page-nav-filter__list">
-		{#each items as item}
+		{#each items as item (item.id)}
 			<PageNavFilterItem {updateSelectedFilter} {item} {selectedItems} />
 		{/each}
 	</ul>

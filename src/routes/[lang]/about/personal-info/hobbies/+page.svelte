@@ -3,8 +3,14 @@
 	import PageTextContent from '$lib/commons/PageTextContent.svelte';
 	import { getRoute, RoutesEnum } from '$lib/routing';
 	import { LangEnum } from '$models/langs.enum';
-	import { hobbiesListDisplay } from '$stores/hobbies';
 	import { locale, t } from '$translations';
+	import type { PageData } from './$types';
+
+	type Props = {
+		data: PageData;
+	};
+
+	let { data }: Props = $props();
 </script>
 
 <svelte:head>
@@ -30,6 +36,6 @@
 	/>
 </svelte:head>
 
-{#await $hobbiesListDisplay then value}
+{#await data.hobbies then value}
 	<PageTextContent lines={value} mustSplit={false} mobileDisplayText="per-line" />
 {/await}

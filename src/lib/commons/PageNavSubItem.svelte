@@ -77,7 +77,7 @@
 			</span>
 		</button>
 		<ul class="page-nav-sub-item__sub-items" aria-hidden={$subNavItemOpened !== item.id}>
-			{#each item.items || [] as subItem}
+			{#each item.items || [] as subItem (subItem.id)}
 				<PageNavSubItemItem
 					item={subItem}
 					ariaHidden={$subNavItemOpened !== item.id || ariaHidden}

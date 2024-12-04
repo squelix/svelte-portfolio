@@ -1,9 +1,7 @@
 <script lang="ts">
 	/* eslint-disable @typescript-eslint/no-explicit-any */
 
-	import { imageService } from '$stores/services';
-
-	import type { ImageParams } from '$lib/services/image-cloudinary.service';
+	import { ImageCloudinaryService, type ImageParams } from '$lib/services/image-cloudinary.service';
 
 	type Props = {
 		src: string;
@@ -14,7 +12,7 @@
 
 	let { src, alt = '', params, ...restProps }: Props = $props();
 
-	let images = $derived($imageService.getSrcSet(src, params));
+	let images = ImageCloudinaryService.getInstance().getSrcSet(src, params);
 </script>
 
 <img

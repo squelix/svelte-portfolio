@@ -13,7 +13,7 @@
 
 <nav class="page-nav" aria-label={ariaLabel}>
 	<ul>
-		{#each items as item}
+		{#each items as item (item.id)}
 			<PageNavItem {item} />
 		{/each}
 	</ul>

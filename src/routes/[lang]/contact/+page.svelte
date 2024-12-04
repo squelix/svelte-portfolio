@@ -1,6 +1,7 @@
 <script lang="ts">
 	import { applyAction, enhance } from '$app/forms';
 	import { page } from '$app/stores';
+	import { PUBLIC_RE_CAPTCHA_KEY } from '$env/static/public';
 	import BorderBottom from '$lib/commons/BorderBottom.svelte';
 	import Button from '$lib/commons/Button.svelte';
 	import Input from '$lib/commons/Input.svelte';
@@ -11,7 +12,6 @@
 	import { ENTER_KEY } from '$lib/utils/keys';
 	import { validateEmail } from '$lib/validators';
 	import { LangEnum } from '$models/langs.enum';
-	import { reCaptchaKey } from '$stores/env';
 	import { nav } from '$stores/nav';
 	import { locale, t } from '$translations';
 	import type { SubmitFunction } from '@sveltejs/kit';
@@ -53,7 +53,7 @@
 			const theme = window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
 
 			window.grecaptcha.render('reCaptcha', {
-				sitekey: $reCaptchaKey,
+				sitekey: PUBLIC_RE_CAPTCHA_KEY,
 				theme,
 				hl: $locale,
 				callback: (t: string) => {
@@ -157,7 +157,7 @@
 		href="{$page.url.origin}{getRoute(LangEnum.en_GB, RoutesEnum.Contact)}"
 	/>
 
-	{#if $reCaptchaKey}
+	{#if PUBLIC_RE_CAPTCHA_KEY}
 		<link rel="preconnect" href="https://www.google.com" />
 		<link rel="preconnect" href="https://www.gstatic.com" crossorigin="anonymous" />
 		<script src="https://www.google.com/recaptcha/api.js?render=explicit" async defer></script>

@@ -8,18 +8,20 @@
 	import ProjectsList from '$lib/commons/ProjectsList.svelte';
 	import { getRoute, RoutesEnum } from '$lib/routing';
 	import { LangEnum } from '$models/langs.enum';
-	import {
-		projectsListFiltered,
-		projectsTechnosFilter,
-		projectsTechnosListAllFilters
-	} from '$stores/projects';
 	import { locale, t } from '$translations';
+	import type { PageData } from './$types';
+
+	type Props = {
+		data: PageData;
+	};
+
+	let { data }: Props = $props();
 
 	const textMobile = `_${$t('projects.title') as string}`;
 
 	const updateSelectedFilter = async (filterId: string) => {
 		const url = new URL($page.url);
-		const actualTechnos = $projectsTechnosFilter ?? [];
+		const actualTechnos = data.projectsTechnosFilter ?? [];
 
 		let newTechnos: string[];
 
@@ -59,15 +61,15 @@
 	/>
 </svelte:head>
 
-{#if $projectsTechnosFilter && ($projectsTechnosFilter ?? []).length > 0}
-	<PageTitle textDesktop={$projectsTechnosFilter.join('; ')} {textMobile} />
+{#if data.projectsTechnosFilter && (data.projectsTechnosFilter ?? []).length > 0}
+	<PageTitle textDesktop={data.projectsTechnosFilter.join('; ')} {textMobile} />
 {:else}
 	<PageTitle textDesktop={$t('projects.title')} {textMobile} />
 {/if}
 
 <PageNavFilter
-	items={$projectsTechnosListAllFilters}
-	selectedItems={$projectsTechnosFilter ?? []}
+	items={data.projectsTechnosListAllFilters}
+	selectedItems={data.projectsTechnosFilter ?? []}
 	ariaLabel={$t('projects.aria.nav')}
 	{updateSelectedFilter}
 />
@@ -76,13 +78,13 @@
 
 <h2>
 	//&nbsp;{$t('projects.title')}
-	{#if $projectsTechnosFilter && ($projectsTechnosFilter ?? []).length > 0}
-		<span>/&nbsp;{$projectsTechnosFilter.join('; ')}</span>
+	{#if data.projectsTechnosFilter && (data.projectsTechnosFilter ?? []).length > 0}
+		<span>/&nbsp;{data.projectsTechnosFilter.join('; ')}</span>
 	{/if}
 </h2>
 
 <LayoutPage>
-	<ProjectsList projects={$projectsListFiltered} baseTrad="projects" />
+	<ProjectsList projects={data.projectsListFiltered} baseTrad="projects" />
 </LayoutPage>
 
 <style lang="scss">

@@ -1,11 +1,22 @@
 export class MailService {
+	static #instance: MailService;
+
 	readonly #mailUrl: string;
 
 	constructor(url: string) {
 		this.#mailUrl = url.replace(/\/$/, '');
 	}
 
-	sendMail = async (
+	static getInstance(url: string): MailService {
+		if (!MailService.#instance) {
+			MailService.#instance = new MailService(url);
+		}
+
+		return MailService.#instance;
+	}
+
+	readonly sendMail = async (
+		fetch: typeof global.fetch,
 		email: string,
 		text: string,
 		name: string,

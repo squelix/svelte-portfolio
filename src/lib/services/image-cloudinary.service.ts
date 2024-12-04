@@ -22,10 +22,20 @@ export interface ImageParams {
 }
 
 export class ImageCloudinaryService {
+	static #instance: ImageCloudinaryService;
+
 	readonly #defaultQuality = QualityEnum.Auto;
 	readonly #defaultFormat = FormatEnum.Auto;
 	readonly #defaultFit = FitEnum.Fill;
 	readonly #splitter = '/image/upload/';
+
+	static getInstance(): ImageCloudinaryService {
+		if (!ImageCloudinaryService.#instance) {
+			ImageCloudinaryService.#instance = new ImageCloudinaryService();
+		}
+
+		return ImageCloudinaryService.#instance;
+	}
 
 	readonly optimize = (imageUrl: string, params: ImageParams): string => {
 		this.#validateDimensions(params);
