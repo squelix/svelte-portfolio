@@ -1,6 +1,6 @@
 <script lang="ts">
 	import { goto } from '$app/navigation';
-	import { page } from '$app/stores';
+	import { page } from '$app/state';
 	import BorderBottom from '$lib/commons/BorderBottom.svelte';
 	import LayoutPage from '$lib/commons/LayoutPage.svelte';
 	import PageNavFilter from '$lib/commons/PageNavFilter.svelte';
@@ -20,7 +20,7 @@
 	const textMobile = `_${$t('projects.title') as string}`;
 
 	const updateSelectedFilter = async (filterId: string) => {
-		const url = new URL($page.url);
+		const url = new URL(page.url);
 		const actualTechnos = data.projectsTechnosFilter ?? [];
 
 		let newTechnos: string[];
@@ -48,16 +48,16 @@
 	<meta property="og:description" content={$t('projects.page.description')} />
 	<meta name="twitter:title" content={$t('projects.page.title')} />
 	<meta name="twitter:description" content={$t('projects.page.description')} />
-	<link rel="canonical" href="{$page.url.origin}{getRoute($locale, RoutesEnum.Projects)}" />
+	<link rel="canonical" href="{page.url.origin}{getRoute($locale, RoutesEnum.Projects)}" />
 	<link
 		rel="alternate"
 		hreflang="fr"
-		href="{$page.url.origin}{getRoute(LangEnum.fr_FR, RoutesEnum.Projects)}"
+		href="{page.url.origin}{getRoute(LangEnum.fr_FR, RoutesEnum.Projects)}"
 	/>
 	<link
 		rel="alternate"
 		hreflang="en"
-		href="{$page.url.origin}{getRoute(LangEnum.en_GB, RoutesEnum.Projects)}"
+		href="{page.url.origin}{getRoute(LangEnum.en_GB, RoutesEnum.Projects)}"
 	/>
 </svelte:head>
 

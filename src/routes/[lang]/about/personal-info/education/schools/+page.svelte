@@ -1,5 +1,5 @@
 <script lang="ts">
-	import { page } from '$app/stores';
+	import { page } from '$app/state';
 	import PageTimeline from '$lib/commons/PageTimeline.svelte';
 	import SchoolTimelineContent from '$lib/commons/SchoolTimelineContent.svelte';
 	import { getRoute, RoutesEnum } from '$lib/routing';
@@ -23,23 +23,17 @@
 	<meta name="twitter:description" content={$t('schools.page.description')} />
 	<link
 		rel="canonical"
-		href="{$page.url.origin}{getRoute($locale, RoutesEnum.AboutPersonalInfoEducationSchools)}"
+		href="{page.url.origin}{getRoute($locale, RoutesEnum.AboutPersonalInfoEducationSchools)}"
 	/>
 	<link
 		rel="alternate"
 		hreflang="fr"
-		href="{$page.url.origin}{getRoute(
-			LangEnum.fr_FR,
-			RoutesEnum.AboutPersonalInfoEducationSchools
-		)}"
+		href="{page.url.origin}{getRoute(LangEnum.fr_FR, RoutesEnum.AboutPersonalInfoEducationSchools)}"
 	/>
 	<link
 		rel="alternate"
 		hreflang="en"
-		href="{$page.url.origin}{getRoute(
-			LangEnum.en_GB,
-			RoutesEnum.AboutPersonalInfoEducationSchools
-		)}"
+		href="{page.url.origin}{getRoute(LangEnum.en_GB, RoutesEnum.AboutPersonalInfoEducationSchools)}"
 	/>
 </svelte:head>
 

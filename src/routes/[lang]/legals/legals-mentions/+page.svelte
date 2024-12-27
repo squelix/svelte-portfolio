@@ -1,5 +1,5 @@
 <script lang="ts">
-	import { page } from '$app/stores';
+	import { page } from '$app/state';
 	import { RoutesEnum, getRoute } from '$lib/routing';
 	import { LangEnum } from '$models/langs.enum';
 	import { locale, t } from '$translations';
@@ -19,16 +19,16 @@
 	<meta property="og:description" content={$t('legals-mentions.page.description')} />
 	<meta name="twitter:title" content={$t('legals-mentions.page.title')} />
 	<meta name="twitter:description" content={$t('legals-mentions.page.description')} />
-	<link rel="canonical" href="{$page.url.origin}{getRoute($locale, RoutesEnum.LegalsMentions)}" />
+	<link rel="canonical" href="{page.url.origin}{getRoute($locale, RoutesEnum.LegalsMentions)}" />
 	<link
 		rel="alternate"
 		hreflang="fr"
-		href="{$page.url.origin}{getRoute(LangEnum.fr_FR, RoutesEnum.LegalsMentions)}"
+		href="{page.url.origin}{getRoute(LangEnum.fr_FR, RoutesEnum.LegalsMentions)}"
 	/>
 	<link
 		rel="alternate"
 		hreflang="en"
-		href="{$page.url.origin}{getRoute(LangEnum.en_GB, RoutesEnum.LegalsMentions)}"
+		href="{page.url.origin}{getRoute(LangEnum.en_GB, RoutesEnum.LegalsMentions)}"
 	/>
 </svelte:head>
 

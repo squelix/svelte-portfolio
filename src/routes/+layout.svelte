@@ -7,7 +7,7 @@
 	import '../styles/app.scss';
 
 	import { browser } from '$app/environment';
-	import { page } from '$app/stores';
+	import { page } from '$app/state';
 	import { PUBLIC_STRAPI_URI } from '$env/static/public';
 	import Footer from '$lib/commons/Footer.svelte';
 	import Header from '$lib/commons/Header.svelte';
@@ -56,15 +56,15 @@
 <svelte:head>
 	<meta name="author" content="Mickaël Depardon" />
 	<meta name="robots" content="index,follow" />
-	<meta property="og:url" content="{$page.url.origin}{$page.url.pathname}" />
+	<meta property="og:url" content="{page.url.origin}{page.url.pathname}" />
 	<meta property="og:site_name" content="mickael-depardon.fr" />
 	<meta property="og:type" content="website" />
-	<link rel="canonical" href="{$page.url.origin}{$page.url.pathname}" />
+	<link rel="canonical" href="{page.url.origin}{page.url.pathname}" />
 
 	<meta name="twitter:card" content="summary_large_image" />
 	<meta name="twitter:site" content="@squelix" />
 	<meta name="twitter:creator" content="@squelix" />
-	<meta property="twitter:url" content="{$page.url.origin}{$page.url.pathname}" />
+	<meta property="twitter:url" content="{page.url.origin}{page.url.pathname}" />
 
 	{#if $picture}
 		<meta property="og:image" content={$picture} />
@@ -82,7 +82,7 @@
 
 <main
 	class="main"
-	class:main--home={isRouteActive($page.url.pathname, { route: RoutesEnum.Home, lang: $locale })}
+	class:main--home={isRouteActive(page.url.pathname, { route: RoutesEnum.Home, lang: $locale })}
 >
 	{@render children?.()}
 </main>

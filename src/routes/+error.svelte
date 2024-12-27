@@ -1,8 +1,8 @@
 <script lang="ts">
-	import { page } from '$app/stores';
-	import { t, locale } from '$translations';
+	import { page } from '$app/state';
+	import { locale, t } from '$translations';
 
-	let { status = $page.status, error = $page.error } = $props();
+	let { status = page.status, error = page.error } = $props();
 </script>
 
 <main>

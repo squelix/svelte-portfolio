@@ -1,5 +1,5 @@
 <script lang="ts">
-	import { page } from '$app/stores';
+	import { page } from '$app/state';
 	import { isBaseRouteActive } from '$lib/routing';
 	import { ENTER_KEY } from '$lib/utils/keys';
 	import { locale } from '$translations';
@@ -28,7 +28,7 @@
 		href={`/${$locale}${route ?? ''}`}
 		onclick={closeMenu}
 		onkeydown={keydown}
-		class:item__link--selected={isBaseRouteActive($page.url.pathname, {
+		class:item__link--selected={isBaseRouteActive(page.url.pathname, {
 			lang: $locale,
 			route: link
 		})}>{label}</a

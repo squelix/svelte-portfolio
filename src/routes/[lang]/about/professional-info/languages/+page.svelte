@@ -1,5 +1,5 @@
 <script lang="ts">
-	import { page } from '$app/stores';
+	import { page } from '$app/state';
 	import PageTextContent from '$lib/commons/PageTextContent.svelte';
 	import { getRoute, RoutesEnum } from '$lib/routing';
 	import { LangEnum } from '$models/langs.enum';
@@ -22,17 +22,17 @@
 	<meta name="twitter:description" content={$t('languages.page.description')} />
 	<link
 		rel="canonical"
-		href="{$page.url.origin}{getRoute($locale, RoutesEnum.AboutProfessionalInfoLanguages)}"
+		href="{page.url.origin}{getRoute($locale, RoutesEnum.AboutProfessionalInfoLanguages)}"
 	/>
 	<link
 		rel="alternate"
 		hreflang="fr"
-		href="{$page.url.origin}{getRoute(LangEnum.fr_FR, RoutesEnum.AboutProfessionalInfoLanguages)}"
+		href="{page.url.origin}{getRoute(LangEnum.fr_FR, RoutesEnum.AboutProfessionalInfoLanguages)}"
 	/>
 	<link
 		rel="alternate"
 		hreflang="en"
-		href="{$page.url.origin}{getRoute(LangEnum.en_GB, RoutesEnum.AboutProfessionalInfoLanguages)}"
+		href="{page.url.origin}{getRoute(LangEnum.en_GB, RoutesEnum.AboutProfessionalInfoLanguages)}"
 	/>
 </svelte:head>
 

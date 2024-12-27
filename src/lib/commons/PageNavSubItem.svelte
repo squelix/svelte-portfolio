@@ -1,5 +1,5 @@
 <script lang="ts">
-	import { page } from '$app/stores';
+	import { page } from '$app/state';
 	import Folder from '$icons/folder.svg?raw';
 	import Chevron from '$icons/list-chevron-2.svg?raw';
 	import PageNavSubItemItem from '$lib/commons/PageNavSubItemItem.svelte';
@@ -88,7 +88,7 @@
 		<a
 			class="page-nav-sub-item__link"
 			class:page-nav-sub-item__link--icon={!!item.icon}
-			class:page-nav-sub-item__link--active={isRouteActive($page.url.pathname, {
+			class:page-nav-sub-item__link--active={isRouteActive(page.url.pathname, {
 				route: item.link,
 				lang: $locale
 			})}

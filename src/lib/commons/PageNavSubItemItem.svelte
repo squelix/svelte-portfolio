@@ -1,5 +1,5 @@
 <script lang="ts">
-	import { page } from '$app/stores';
+	import { page } from '$app/state';
 	import Markdown from '$icons/markdown.svg?raw';
 	import { getRoute, isRouteActive } from '$lib/routing';
 	import Icon from '$lib/SvgIcon.svelte';
@@ -19,7 +19,7 @@
 	{#if item.link}
 		<a
 			class="page-nav-sub-item-item__link"
-			class:page-nav-sub-item-item__link--active={isRouteActive($page.url.pathname, {
+			class:page-nav-sub-item-item__link--active={isRouteActive(page.url.pathname, {
 				route: item.link,
 				lang: $locale
 			})}

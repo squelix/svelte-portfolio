@@ -1,5 +1,5 @@
 <script lang="ts">
-	import { page } from '$app/stores';
+	import { page } from '$app/state';
 	import BorderBottom from '$lib/commons/BorderBottom.svelte';
 	import PageNav from '$lib/commons/PageNav.svelte';
 	import PageTitle from '$lib/commons/PageTitle.svelte';
@@ -25,12 +25,12 @@
 	<link
 		rel="alternate"
 		hreflang="fr"
-		href="{$page.url.origin}{getRoute(LangEnum.fr_FR, RoutesEnum.About)}"
+		href="{page.url.origin}{getRoute(LangEnum.fr_FR, RoutesEnum.About)}"
 	/>
 	<link
 		rel="alternate"
 		hreflang="en"
-		href="{$page.url.origin}{getRoute(LangEnum.en_GB, RoutesEnum.About)}"
+		href="{page.url.origin}{getRoute(LangEnum.en_GB, RoutesEnum.About)}"
 	/>
 </svelte:head>
 

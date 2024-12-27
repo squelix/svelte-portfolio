@@ -1,6 +1,6 @@
 <script lang="ts">
 	import { applyAction, enhance } from '$app/forms';
-	import { page } from '$app/stores';
+	import { page } from '$app/state';
 	import { PUBLIC_RE_CAPTCHA_KEY } from '$env/static/public';
 	import BorderBottom from '$lib/commons/BorderBottom.svelte';
 	import Button from '$lib/commons/Button.svelte';
@@ -145,16 +145,16 @@
 	<meta property="og:description" content={$t('contact.page.description')} />
 	<meta name="twitter:title" content={$t('contact.page.title')} />
 	<meta name="twitter:description" content={$t('contact.page.description')} />
-	<link rel="canonical" href="{$page.url.origin}{getRoute($locale, RoutesEnum.Contact)}" />
+	<link rel="canonical" href="{page.url.origin}{getRoute($locale, RoutesEnum.Contact)}" />
 	<link
 		rel="alternate"
 		hreflang="fr"
-		href="{$page.url.origin}{getRoute(LangEnum.fr_FR, RoutesEnum.Contact)}"
+		href="{page.url.origin}{getRoute(LangEnum.fr_FR, RoutesEnum.Contact)}"
 	/>
 	<link
 		rel="alternate"
 		hreflang="en"
-		href="{$page.url.origin}{getRoute(LangEnum.en_GB, RoutesEnum.Contact)}"
+		href="{page.url.origin}{getRoute(LangEnum.en_GB, RoutesEnum.Contact)}"
 	/>
 
 	{#if PUBLIC_RE_CAPTCHA_KEY}
