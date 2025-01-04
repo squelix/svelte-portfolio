@@ -58,8 +58,8 @@
 </div>
 
 <style lang="scss">
-	@use 'lib/mixins/font' as font;
-	@use 'lib/mixins/breakpoints' as br;
+	@use '$styles/lib/mixins/font' as font;
+	@use '$styles/lib/mixins/breakpoints' as br;
 
 	.page {
 		&__right {
@@ -72,7 +72,7 @@
 			gap: 4.6875rem;
 			grid-template-columns: repeat(2, minmax(0, 1fr));
 			grid-template-rows: minmax(0, 1fr);
-			height: fill-available;
+			height: stretch;
 			padding: 0 2rem;
 
 			&__left {

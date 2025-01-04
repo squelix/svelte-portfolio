@@ -10,8 +10,8 @@
 </header>
 
 <style lang="scss">
-	@use 'lib/mixins/breakpoints' as br;
-	@use 'lib/mixins/font' as font;
+	@use '$styles/lib/mixins/breakpoints' as br;
+	@use '$styles/lib/mixins/font' as font;
 
 	.header {
 		position: relative;

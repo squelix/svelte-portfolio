@@ -112,8 +112,8 @@
 </li>
 
 <style lang="scss">
-	@use 'lib/mixins/font' as font;
-	@use 'lib/mixins/breakpoints' as br;
+	@use '$styles/lib/mixins/font' as font;
+	@use '$styles/lib/mixins/breakpoints' as br;
 
 	.page-nav-item {
 		@include font.fontWeight(400);

@@ -1,6 +1,6 @@
-@use 'lib/variables';
-@use 'lib/reset';
-@use 'lib/mixins/breakpoints' as br;
+@use '$styles/lib/variables';
+@use '$styles/lib/reset';
+@use '$styles/lib/mixins/breakpoints' as br;
 
 :where(:root) {
 	cursor: auto;

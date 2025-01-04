@@ -22,7 +22,7 @@
 </nav>
 
 <style lang="scss">
-	@use 'lib/mixins/page-nav' as nav;
+	@use '$styles/lib/mixins/page-nav' as nav;
 
 	.page-nav-filter {
 		@include nav.page-nav;

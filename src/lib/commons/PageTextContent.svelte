@@ -24,7 +24,7 @@
 {/if}
 
 <style lang="scss">
-	@use 'lib/mixins/breakpoints' as br;
+	@use '$styles/lib/mixins/breakpoints' as br;
 
 	.content {
 		color: var(--secondary-1);

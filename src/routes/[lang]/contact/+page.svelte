@@ -224,8 +224,8 @@
 
 <style lang="scss">
 	/* stylelint-disable no-duplicate-selectors */
-	@use 'lib/mixins/breakpoints' as br;
-	@use 'lib/mixins/font' as font;
+	@use '$styles/lib/mixins/breakpoints' as br;
+	@use '$styles/lib/mixins/font' as font;
 
 	form {
 		height: fit-content;

@@ -44,7 +44,7 @@
 </div>
 
 <style lang="scss">
-	@use 'lib/mixins/breakpoints' as br;
+	@use '$styles/lib/mixins/breakpoints' as br;
 
 	.legals {
 		padding: 1.0625rem;

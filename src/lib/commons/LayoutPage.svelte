@@ -13,7 +13,7 @@
 </section>
 
 <style lang="scss">
-	@use 'lib/mixins/breakpoints' as br;
+	@use '$styles/lib/mixins/breakpoints' as br;
 
 	.page-content {
 		grid-row: 2;

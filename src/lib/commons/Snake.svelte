@@ -446,8 +446,8 @@
 
 <style lang="scss">
 	/* stylelint-disable no-descending-specificity */
-	@use 'lib/mixins/breakpoints' as br;
-	@use 'lib/mixins/font' as font;
+	@use '$styles/lib/mixins/breakpoints' as br;
+	@use '$styles/lib/mixins/font' as font;
 
 	.snake {
 		display: grid;

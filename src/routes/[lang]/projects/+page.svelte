@@ -88,7 +88,7 @@
 </LayoutPage>
 
 <style lang="scss">
-	@use 'lib/mixins/breakpoints' as br;
+	@use '$styles/lib/mixins/breakpoints' as br;
 
 	h2 {
 		margin: 2.375rem 0 0;

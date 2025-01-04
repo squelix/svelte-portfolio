@@ -36,8 +36,8 @@
 </li>
 
 <style lang="scss">
-	@use 'lib/mixins/breakpoints' as br;
-	@use 'lib/mixins/link' as link;
+	@use '$styles/lib/mixins/breakpoints' as br;
+	@use '$styles/lib/mixins/link' as link;
 
 	.item {
 		&__link {

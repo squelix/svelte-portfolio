@@ -77,8 +77,8 @@
 </li>
 
 <style lang="scss">
-	@use 'lib/mixins/link' as link;
-	@use 'lib/mixins/font' as font;
+	@use '$styles/lib/mixins/link' as link;
+	@use '$styles/lib/mixins/font' as font;
 
 	.page-nav-sub-item-item {
 		@include font.fontWeight(400);

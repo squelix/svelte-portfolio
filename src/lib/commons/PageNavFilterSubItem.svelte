@@ -34,7 +34,7 @@
 </li>
 
 <style lang="scss">
-	@use 'lib/mixins/font' as font;
+	@use '$styles/lib/mixins/font' as font;
 
 	.checkbox {
 		font-weight: normal;

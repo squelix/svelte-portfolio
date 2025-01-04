@@ -83,8 +83,8 @@
 </footer>
 
 <style lang="scss">
-	@use 'lib/mixins/breakpoints' as br;
-	@use 'lib/mixins/font' as font;
+	@use '$styles/lib/mixins/breakpoints' as br;
+	@use '$styles/lib/mixins/font' as font;
 
 	.footer {
 		@include font.fontWeight(400);
