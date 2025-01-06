@@ -16,7 +16,6 @@ export class MailService {
 		email: string,
 		text: string,
 		name: string,
-		token: string,
 		accessToken: string
 	) => {
 		const response = await fetch(env.MAIL_ENDPOINT ?? '/api/mail', {
@@ -29,8 +28,7 @@ export class MailService {
 				subject: `Contact from ${name} - ${email}`,
 				email,
 				html: `<p>${text}</p>`,
-				text,
-				token
+				text
 			})
 		});
 

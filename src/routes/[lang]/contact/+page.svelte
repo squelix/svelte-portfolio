@@ -1,7 +1,6 @@
 <script lang="ts">
 	import { applyAction, enhance } from '$app/forms';
 	import { page } from '$app/state';
-	import { PUBLIC_RE_CAPTCHA_KEY } from '$env/static/public';
 	import BorderBottom from '$lib/commons/BorderBottom.svelte';
 	import Button from '$lib/commons/Button.svelte';
 	import Input from '$lib/commons/Input.svelte';
@@ -14,18 +13,12 @@
 	import { LangEnum } from '$models/langs.enum';
 	import { nav } from '$stores/nav';
 	import { locale, t } from '$translations';
-	import { onMount } from 'svelte';
 	import { sineInOut } from 'svelte/easing';
 	import { fade } from 'svelte/transition';
 
 	import type { SubmitFunction } from '@sveltejs/kit';
 
 	const transitionMs = 175;
-
-	let intervalLoading: number;
-	let intervalLoaded: number;
-	let loaded = false;
-	let token: string | undefined;
 
 	let name = $state('');
 	let email = $state('');
@@ -36,35 +29,6 @@
 
 	let showConfirmMessage = $state(false);
 	let showForm = $state(true);
-
-	onMount(() => {
-		intervalLoading = window.setInterval(() => {
-			if (!window.grecaptcha?.render) {
-				return;
-			}
-			loaded = true;
-			window.clearInterval(intervalLoading);
-		}, 100);
-
-		intervalLoaded = window.setInterval(() => {
-			if (!loaded) {
-				return;
-			}
-
-			const theme = window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
-
-			window.grecaptcha.render('reCaptcha', {
-				sitekey: PUBLIC_RE_CAPTCHA_KEY,
-				theme,
-				hl: $locale,
-				callback: (t: string) => {
-					token = t;
-				}
-			});
-
-			window.clearInterval(intervalLoaded);
-		});
-	});
 
 	const submitEnhancer: SubmitFunction = ({ formData, cancel }) => {
 		const finalEmail = (formData.get('email') as string | null)?.trim();
@@ -87,12 +51,6 @@
 		if (!validateEmail(finalEmail)) {
 			cancel();
 			errorMessage = $t('contact.form.errors.email') as string;
-			return;
-		}
-
-		if (!token) {
-			cancel();
-			errorMessage = $t('contact.form.errors.captcha') as string;
 			return;
 		}
 
@@ -157,12 +115,6 @@
 		hreflang="en"
 		href="{page.url.origin}{getRoute(LangEnum.en_GB, RoutesEnum.Contact)}"
 	/>
-
-	{#if PUBLIC_RE_CAPTCHA_KEY}
-		<link rel="preconnect" href="https://www.google.com" />
-		<link rel="preconnect" href="https://www.gstatic.com" crossorigin="anonymous" />
-		<script src="https://www.google.com/recaptcha/api.js?render=explicit" async defer></script>
-	{/if}
 </svelte:head>
 
 <PageTitle textDesktop={$t('contact.nav.0')} textMobile={$t('contact.title')} />

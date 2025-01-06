@@ -20,7 +20,6 @@ export const actions: Actions = {
 			data.get('email')! as string,
 			data.get('message')! as string,
 			data.get('name')! as string,
-			data.get('g-recaptcha-response')! as string,
 			token
 		);
 	}
