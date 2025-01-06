@@ -28,6 +28,10 @@ export async function POST(request) {
 		}
 	})
 		.then((response) => response.json())
+		.then((d) => {
+			console.log(d);
+			return d;
+		})
 		.then(({ success }) => success);
 
 	if (!success) {
