@@ -11,6 +11,7 @@ jobs:
     name: "Eslint"
     runs-on: "ubuntu-latest"
     env:
+      MAIL_ENDPOINT: "XXX"
       CONTENTFUL_ACCESS_TOKEN: "XXX"
       CONTENTFUL_SPACE_ID: "XXX"
       MAILJET_APIKEY_PUBLIC: "XXX"
@@ -59,6 +60,7 @@ jobs:
     name: "Stylelint"
     runs-on: "ubuntu-latest"
     env:
+      MAIL_ENDPOINT: "XXX"
       CONTENTFUL_ACCESS_TOKEN: "XXX"
       CONTENTFUL_SPACE_ID: "XXX"
       MAILJET_APIKEY_PUBLIC: "XXX"
@@ -107,6 +109,7 @@ jobs:
     name: "Prettier"
     runs-on: "ubuntu-latest"
     env:
+      MAIL_ENDPOINT: "XXX"
       CONTENTFUL_ACCESS_TOKEN: "XXX"
       CONTENTFUL_SPACE_ID: "XXX"
       MAILJET_APIKEY_PUBLIC: "XXX"
@@ -153,6 +156,7 @@ jobs:
     name: "Svelte Check"
     runs-on: "ubuntu-latest"
     env:
+      MAIL_ENDPOINT: "XXX"
       CONTENTFUL_ACCESS_TOKEN: "XXX"
       CONTENTFUL_SPACE_ID: "XXX"
       MAILJET_APIKEY_PRIVATE: "XXX"
@@ -200,6 +204,7 @@ jobs:
     needs: ["eslint", "prettier", "stylelint", "check"]
     runs-on: "ubuntu-latest"
     env:
+      MAIL_ENDPOINT: "XXX"
       CONTENTFUL_ACCESS_TOKEN: "XXX"
       CONTENTFUL_SPACE_ID: "XXX"
       MAILJET_SENDER_EMAIL: "XXX"

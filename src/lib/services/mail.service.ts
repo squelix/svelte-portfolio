@@ -1,3 +1,5 @@
+import { env } from '$env/dynamic/private';
+
 export class MailService {
 	static #instance: MailService;
 
@@ -11,14 +13,13 @@ export class MailService {
 
 	readonly sendMail = async (
 		fetch: typeof global.fetch,
-		lang: string,
 		email: string,
 		text: string,
 		name: string,
 		token: string,
 		accessToken: string
 	) => {
-		const response = await fetch(`/${lang}/api/mail`, {
+		const response = await fetch(env.MAIL_ENDPOINT ?? '/api/mail', {
 			method: 'post',
 			headers: {
 				'Content-Type': 'application/json',
