@@ -22,10 +22,12 @@ export const POST: RequestHandler = async ({ request, fetch }) => {
 			secret: env.RE_CAPTCHA_PRIVATE_KEY,
 			response: token
 		});
-		const { success } = await fetch('https://www.google.com/recaptcha/api/siteverify', {
-			method: 'POST',
-			body: params
-		}).then((response) => response.json());
+		const { success } = await fetch(
+			`https://www.google.com/recaptcha/api/siteverify?${params.toString()}`,
+			{
+				method: 'POST'
+			}
+		).then((response) => response.json());
 
 		if (!success) {
 			return error(422, 'Captcha not good');
