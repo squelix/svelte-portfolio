@@ -1,6 +1,6 @@
 import { env } from '$env/dynamic/private';
-import sgMail from '@sendgrid/mail';
 import { error } from '@sveltejs/kit';
+import Mailjet from 'node-mailjet';
 
 import type { RequestHandler } from './$types';
 
@@ -35,15 +35,43 @@ export const POST: RequestHandler = async ({ request, fetch }) => {
 		return error(422, 'Captcha not good');
 	}
 
-	sgMail.setApiKey(env.SENDGRID_API_KEY);
-
-	await sgMail.send({
-		to: env.SENDGRID_SENDER,
-		from: env.SENDGRID_SENDER,
-		replyTo: email,
-		subject,
-		text,
-		html
+	const mailJet = new Mailjet({
+		apiKey: env.MAILJET_APIKEY_PUBLIC,
+		apiSecret: env.MAILJET_APIKEY_PRIVATE
 	});
-	return new Response(undefined, { status: 204 });
+
+	const mailResult = await mailJet.post('send', { version: 'v3.1' }).request({
+		Messages: [
+			{
+				From: {
+					Email: env.MAILJET_SENDER_EMAIL,
+					Name: 'Portfolio Contact'
+				},
+				To: [
+					{
+						Email: env.MAILJET_SENDER_EMAIL,
+						Name: 'Portfolio Contact'
+					}
+				],
+				Headers: {
+					'Reply-To': email
+				},
+				Subject: subject,
+				TextPart: text,
+				HTMLPart: html
+			}
+		]
+	});
+
+	// eslint-disable-next-line @typescript-eslint/no-explicit-any
+	const successMail = (mailResult.body as any).Messages.includes(
+		// eslint-disable-next-line @typescript-eslint/no-explicit-any
+		(m: any) => m.Status === 'success'
+	);
+
+	if (successMail) {
+		return new Response(undefined, { status: 204 });
+	}
+
+	return error(500, 'Internal Server Error');
 };
