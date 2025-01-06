@@ -41,5 +41,5 @@ export const load: PageLoad = ({ data: { profile } }) => {
 			}
 		})) ?? []
 	);
-	return {};
+	return { profile };
 };

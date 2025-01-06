@@ -11,13 +11,14 @@ export class MailService {
 
 	readonly sendMail = async (
 		fetch: typeof global.fetch,
+		lang: string,
 		email: string,
 		text: string,
 		name: string,
 		token: string,
 		accessToken: string
 	) => {
-		const response = await fetch('/api/mail', {
+		const response = await fetch(`/${lang}/api/mail`, {
 			method: 'post',
 			headers: {
 				'Content-Type': 'application/json',
