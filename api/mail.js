@@ -20,9 +20,10 @@ export async function POST(request) {
 		secret: process.env.RE_CAPTCHA_PRIVATE_KEY,
 		response: token
 	});
+	console.log(params.toString());
 	const success = await fetch('https://www.google.com/recaptcha/api/siteverify', {
 		method: 'POST',
-		body: params.toString(),
+		body: params,
 		headers: {
 			'Content-Type': 'application/x-www-form-urlencoded; charset=UTF-8'
 		}

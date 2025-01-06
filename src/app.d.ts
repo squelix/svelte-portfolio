@@ -11,10 +11,8 @@ declare namespace App {
 }
 
 interface Window {
-	grecaptcha: {
-		// eslint-disable-next-line @typescript-eslint/no-explicit-any
-		render: (d: string, t: any) => any;
-	};
+	// eslint-disable-next-line @typescript-eslint/no-explicit-any
+	grecaptcha: any;
 }
 
 interface Navigator {
