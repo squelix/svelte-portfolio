@@ -20,7 +20,7 @@ const config = {
 		},
 		inlineStyleThreshold: 1024,
 		adapter: adapter({
-			runtime: 'edge',
+			runtime: 'nodejs22.x',
 			regions: ['cdg1']
 		})
 	}
