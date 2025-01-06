@@ -6,8 +6,6 @@ export async function POST(request) {
 	const accessToken = request.headers.get('x-access-token');
 	const myAccessToken = process.env.MAIL_ACCESS_TOKEN;
 
-	console.log(token, subject, text, html, email, myAccessToken);
-
 	if (!token || !subject || !text || !html || !email) {
 		console.error('Bad Request');
 		return new Response('Bad Request', { status: 400 });
