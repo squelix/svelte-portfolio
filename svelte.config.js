@@ -20,7 +20,8 @@ const config = {
 		},
 		inlineStyleThreshold: 1024,
 		adapter: adapter({
-			runtime: 'nodejs22.x',
+			external: ['@sendgrid/mail'],
+			runtime: 'edge',
 			regions: ['cdg1']
 		})
 	}
