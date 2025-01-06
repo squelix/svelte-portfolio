@@ -1,4 +1,4 @@
-import { PUBLIC_MAIL_ACCESS_TOKEN, PUBLIC_MAIL_URI } from '$env/static/public';
+import { env } from '$env/dynamic/private';
 import { MailService } from '$lib/services/mail.service';
 
 import type { Actions, PageServerLoad } from './$types';
@@ -11,8 +11,8 @@ export const load: PageServerLoad = async ({ parent }) => {
 
 export const actions: Actions = {
 	default: async ({ request, fetch }) => {
-		const service = MailService.getInstance(PUBLIC_MAIL_URI);
-		const token = PUBLIC_MAIL_ACCESS_TOKEN;
+		const service = MailService.getInstance();
+		const token = env.MAIL_ACCESS_TOKEN;
 		const data: FormData = await request.formData();
 
 		return service.sendMail(

@@ -8,7 +8,6 @@
 
 	import { browser } from '$app/environment';
 	import { page } from '$app/state';
-	import { PUBLIC_STRAPI_URI } from '$env/static/public';
 	import Footer from '$lib/commons/Footer.svelte';
 	import Header from '$lib/commons/Header.svelte';
 	import { RoutesEnum, isRouteActive } from '$lib/routing';
@@ -71,10 +70,6 @@
 	{#if data.profile.picture}
 		<meta property="og:image" content={data.profile.picture} />
 		<meta name="twitter:image" content={data.profile.picture} />
-	{/if}
-
-	{#if !!PUBLIC_STRAPI_URI}
-		<link rel="preconnect" href={PUBLIC_STRAPI_URI} />
 	{/if}
 </svelte:head>
 

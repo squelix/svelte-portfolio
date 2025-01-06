@@ -68,6 +68,7 @@
 	},
 	"dependencies": {
 		"@contentful/rich-text-html-renderer": "^17.0.0",
+		"@sendgrid/mail": "^8.1.4",
 		"@urql/core": "^4.3.0",
 		"@vercel/analytics": "^1.4.1",
 		"@vercel/speed-insights": "^1.1.0",

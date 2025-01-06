@@ -1,15 +1,9 @@
 export class MailService {
 	static #instance: MailService;
 
-	readonly #mailUrl: string;
-
-	constructor(url: string) {
-		this.#mailUrl = url.replace(/\/$/, '');
-	}
-
-	static getInstance(url: string): MailService {
+	static getInstance(): MailService {
 		if (!MailService.#instance) {
-			MailService.#instance = new MailService(url);
+			MailService.#instance = new MailService();
 		}
 
 		return MailService.#instance;
@@ -23,7 +17,7 @@ export class MailService {
 		token: string,
 		accessToken: string
 	) => {
-		const response = await fetch(`${this.#mailUrl}/send`, {
+		const response = await fetch('/api/mail', {
 			method: 'post',
 			headers: {
 				'Content-Type': 'application/json',
