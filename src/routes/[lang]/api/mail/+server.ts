@@ -43,6 +43,7 @@ export const POST: RequestHandler = async ({ request, fetch }) => {
 			return new Response(undefined, { status: 204 });
 		}
 	} catch (err) {
+		console.error(err);
 		return error(500, err as string | undefined);
 	}
 };
