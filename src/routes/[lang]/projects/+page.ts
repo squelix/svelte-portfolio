@@ -1,54 +1,45 @@
-import type { Project } from '$models/graphql-generated';
 import { setNavItem } from '$stores/nav';
 
+import type { Project } from '$models/project';
 import type { PageLoad } from './$types';
 
-export const load: PageLoad = ({ data }) => {
-	// projects.set(data.projects);
-	// projectsTechnosFilter.set(data.projectsTechnosFilter);
+export const load: PageLoad = ({ data: { projects, projectsTechnosFilter } }) => {
 	setNavItem('projects');
 
-	const projectsTechnosFilter = data.projectsTechnosFilter;
-	const projectsList = (data.projects?.projects?.data ?? []).map((project) => project.attributes);
 	const projectsTechnosAll = [
 		...new Map(
-			projectsList
-				.flatMap((project) => project?.technos?.data ?? [])
-				.map((item) => [item.attributes?.slug, item])
+			projects.flatMap((project) => project?.technos ?? []).map((item) => [item.slug, item])
 		).values()
 	];
+
 	const projectsTechnosListAllFilters = [
 		{
 			id: 'projects',
 			labelKey: 'projects.title',
 			items: (projectsTechnosAll ?? []).map((techno) => ({
-				id: techno.attributes!.slug,
-				label: techno.attributes!.name
+				id: techno.slug,
+				label: techno.name
 			}))
 		}
 	];
 
-	let projectsListFiltered;
+	let projectsListFiltered: Project[];
 
 	if (!projectsTechnosFilter || projectsTechnosFilter.length === 0) {
-		projectsListFiltered = (projectsList as Project[]).map((project) => {
-			// eslint-disable-next-line @typescript-eslint/no-unused-vars
-			const { __typename, ...p } = project;
-			return p;
-		});
+		projectsListFiltered = projects;
 	} else {
-		projectsListFiltered = (
-			projectsList.filter((project) =>
-				(project?.technos?.data ?? []).some((techno) =>
-					(projectsTechnosFilter ?? []).includes(techno.attributes!.slug)
-				)
-			) as Project[]
-		).map((project) => {
-			// eslint-disable-next-line @typescript-eslint/no-unused-vars
-			const { __typename, ...p } = project;
-			return p;
-		});
+		projectsListFiltered = projects.filter((project) =>
+			(project?.technos ?? []).some((techno) => (projectsTechnosFilter ?? []).includes(techno.slug))
+		);
 	}
 
-	return { projectsTechnosFilter, projectsTechnosListAllFilters, projectsListFiltered };
+	return {
+		projectsTechnosFilter,
+		projectsTechnosListAllFilters,
+		projectsListFiltered: projectsListFiltered.sort((a, b) => {
+			if (a.slug < b.slug) return -1;
+			if (a.slug > b.slug) return 1;
+			return 0;
+		})
+	};
 };

@@ -3,6 +3,8 @@
 	import { RoutesEnum, getRoute } from '$lib/routing';
 	import { LangEnum } from '$models/langs.enum';
 	import { locale, t } from '$translations';
+	import { documentToHtmlString } from '@contentful/rich-text-html-renderer';
+
 	import type { PageData } from './$types';
 
 	type Props = {
@@ -35,10 +37,10 @@
 <div class="legals">
 	<h1 class="legals__title">{$t('legals-mentions.title')}</h1>
 
-	{#if data.legalsMentions?.legalMention?.data?.attributes?.text}
+	{#if data.legalsMentions.text}
 		<div class="inner-html">
 			<!-- eslint-disable-next-line svelte/no-at-html-tags -->
-			{@html data.legalsMentions.legalMention.data.attributes.text}
+			{@html documentToHtmlString(data.legalsMentions.text)}
 		</div>
 	{/if}
 </div>

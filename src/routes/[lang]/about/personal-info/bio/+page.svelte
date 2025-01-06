@@ -3,8 +3,15 @@
 	import PageTextContent from '$lib/commons/PageTextContent.svelte';
 	import { getRoute, RoutesEnum } from '$lib/routing';
 	import { LangEnum } from '$models/langs.enum';
-	import { biographyLines } from '$stores/profile';
 	import { locale, t } from '$translations';
+
+	import type { PageData } from './$types';
+
+	type Props = {
+		data: PageData;
+	};
+
+	let { data }: Props = $props();
 </script>
 
 <svelte:head>
@@ -30,4 +37,4 @@
 	/>
 </svelte:head>
 
-<PageTextContent lines={$biographyLines} mustSplit={false} />
+<PageTextContent lines={data.profile.biographyLines} mustSplit={false} />

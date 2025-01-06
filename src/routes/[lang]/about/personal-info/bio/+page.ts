@@ -3,7 +3,7 @@ import { itemSelected } from '$stores/nav';
 
 import type { PageLoad } from './$types';
 
-export const load: PageLoad = () => {
+export const load: PageLoad = ({ data: { profile } }) => {
 	itemSelected.set(BioNavItemEnum.Biography);
-	return {};
+	return { profile };
 };

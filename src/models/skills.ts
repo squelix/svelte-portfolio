@@ -1,12 +1,9 @@
 import { generateUnicodeBar } from '$lib/unicode-bar';
 
-import type { GetSkillsQuery } from '$models/graphql-generated';
+import type { Skill } from './skill';
 
-export const getSkillsList = (skills: GetSkillsQuery | undefined) =>
-	(skills?.skills?.data ?? []).map((skill) => skill.attributes);
-
-export const getSkillsListBars = (skills: GetSkillsQuery | undefined) =>
-	getSkillsList(skills)
+export const getSkillsListBars = (skills: Skill[]) =>
+	skills
 		.filter((skill) => !!skill)
 		.map((skill) => {
 			if (!skill) {

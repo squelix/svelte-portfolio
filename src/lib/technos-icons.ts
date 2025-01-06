@@ -7,10 +7,10 @@ import gatsby from '$icons/gatsby.svg?raw';
 import html from '$icons/html.svg?raw';
 import ionic from '$icons/ionic.svg?raw';
 import javascript from '$icons/javascript.svg?raw';
-import nestJs from '$icons/nest-js.svg?raw';
-import nextJs from '$icons/next-js.svg?raw';
-import ngxs from '$icons/ng-xs.svg?raw';
+import nestJs from '$icons/nestjs.svg?raw';
+import nextJs from '$icons/nextjs.svg?raw';
 import ngrx from '$icons/ngrx.svg?raw';
+import ngxs from '$icons/ngxs.svg?raw';
 import react from '$icons/react.svg?raw';
 import redux from '$icons/redux.svg?raw';
 import scss from '$icons/scss.svg?raw';
@@ -35,9 +35,9 @@ export const technosIcons: Record<string, string> = {
 	redux,
 	ngrx,
 	tailwindcss,
-	['nest-js']: nestJs,
+	nestjs: nestJs,
 	['angular-universal']: universal,
 	['c-xna']: xna,
-	['ng-xs']: ngxs,
-	['next-js']: nextJs
+	ngxs,
+	nextjs: nextJs
 };

@@ -1,12 +1,9 @@
 import { generateUnicodeBar } from '$lib/unicode-bar';
 
-import type { GetLanguagesQuery } from '$models/graphql-generated';
+import type { Language } from './language';
 
-export const getLanguagesList = (languages: GetLanguagesQuery | undefined) =>
-	(languages?.languages?.data ?? []).map((language) => language.attributes);
-
-export const getLanguagesListBars = (languages: GetLanguagesQuery | undefined) =>
-	getLanguagesList(languages)
+export const getLanguagesListBars = (languages: Language[]) =>
+	languages
 		.filter((language) => !!language)
 		.map((language) => {
 			if (!language) {

@@ -1,10 +1,17 @@
 <script lang="ts">
 	import Nav from '$lib/commons/Nav.svelte';
-	import { dashedName } from '$stores/profile';
+
+	import type { Profile } from '$models/profile';
+
+	type Props = {
+		profile: Profile;
+	};
+
+	let { profile }: Props = $props();
 </script>
 
 <header class="header">
-	<p class="header__name">{$dashedName}</p>
+	<p class="header__name">{profile.dashedName}</p>
 
 	<Nav />
 </header>

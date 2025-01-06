@@ -2,6 +2,7 @@
 	import LayoutPage from '$lib/commons/LayoutPage.svelte';
 	import { aboutTitleItem, titleItem } from '$stores/title';
 	import { t } from '$translations';
+
 	type Props = {
 		children?: import('svelte').Snippet;
 	};

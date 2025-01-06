@@ -8,14 +8,12 @@ import updateLocale from 'dayjs/plugin/updateLocale.js';
 
 import type { LayoutLoad } from './$types';
 
-export const prerender = 'auto';
-
-export const load: LayoutLoad = ({ data }) => {
+export const load: LayoutLoad = ({ data: { lang, route, profile } }) => {
 	inject({ mode: dev ? 'development' : 'production' });
 
 	dayjs.extend(localeData);
 	dayjs.extend(updateLocale);
-	dayjs.locale(data.lang);
+	dayjs.locale(lang);
 	dayjs.updateLocale('en', {
 		months: [
 			'January',
@@ -49,5 +47,5 @@ export const load: LayoutLoad = ({ data }) => {
 		]
 	});
 
-	return {};
+	return { lang, route, profile };
 };

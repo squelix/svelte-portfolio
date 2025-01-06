@@ -1,3 +1,5 @@
+import { getProfile } from '$lib/api/profile/webservice';
+
 import type { LayoutServerLoad } from './$types';
 
 const headers = {
@@ -7,8 +9,7 @@ const headers = {
 	'X-DNS-Prefetch-Control': 'on'
 };
 
-export const load: LayoutServerLoad = ({ setHeaders, request, url }) => {
-	const { pathname } = url;
+export const load: LayoutServerLoad = async ({ setHeaders, request, url: { pathname }, fetch }) => {
 	const lang = `${pathname.match(/[^/]+?(?=\/|$)/) || ''}`;
 
 	for (const [key, value] of Object.entries(headers)) {
@@ -17,5 +18,9 @@ export const load: LayoutServerLoad = ({ setHeaders, request, url }) => {
 		}
 	}
 
-	return { route: pathname.replace(new RegExp(`^/${lang}`), ''), lang };
+	return {
+		route: pathname.replace(new RegExp(`^/${lang}`), ''),
+		lang,
+		profile: await getProfile(lang, fetch)
+	};
 };

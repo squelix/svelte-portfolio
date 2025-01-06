@@ -5,6 +5,7 @@
 	import { getRoute, RoutesEnum } from '$lib/routing';
 	import { LangEnum } from '$models/langs.enum';
 	import { locale, t } from '$translations';
+
 	import type { PageData } from './$types';
 
 	type Props = {

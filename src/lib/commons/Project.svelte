@@ -4,12 +4,13 @@
 	import TechnoIcon from '$lib/commons/TechnoIcon.svelte';
 	import { technosIcons } from '$lib/technos-icons';
 	import { locale, t } from '$translations';
-	import slugify from 'slugify';
+	import slug from 'slug';
 
-	import type { Project, SchoolProject } from '$models/graphql-generated';
+	import type { Project } from '$models/project';
+	import type { SchoolProject } from '$models/school-project';
 
 	type Props = {
-		project: Omit<Project, '__typename'> | Omit<SchoolProject, '__typename'>;
+		project: Project | SchoolProject;
 		index: number;
 		baseTrad: string;
 	};
@@ -21,32 +22,25 @@
 	<p class="title title--desktop">
 		//&nbsp;{$t(`${baseTrad}.card.title`)}&nbsp;{index + 1}
 		<span class="title--project"
-			>//&nbsp;_{slugify(project.title, { locale: $locale, lower: true })}</span
+			>//&nbsp;_{slug(project.title, { locale: $locale, lower: true })}</span
 		>
 	</p>
 
 	<p class="title title--mobile">
 		{$t(`${baseTrad}.card.title`)}&nbsp;{index + 1}
 		<span class="title--project"
-			>/&nbsp;_{slugify(project.title, { locale: $locale, lower: true })}</span
+			>/&nbsp;_{slug(project.title, { locale: $locale, lower: true })}</span
 		>
 	</p>
 
 	<div class="card">
-		{#if project.picture?.data?.attributes}
-			<Image
-				class="card__img"
-				src={project.picture.data?.attributes?.url}
-				params={{ width: 370 }}
-			/>
+		{#if project.picture}
+			<Image class="card__img" src={project.picture} params={{ width: 370 }} />
 		{/if}
 
 		<div class="card__bottom">
-			{#if project.mainTechno?.data?.attributes?.name}
-				<TechnoIcon
-					color={project.mainTechno.data.attributes.color}
-					icon={technosIcons[project.mainTechno.data.attributes.slug]}
-				/>
+			{#if project.mainTechno.name}
+				<TechnoIcon color={project.mainTechno.color} icon={technosIcons[project.mainTechno.slug]} />
 			{/if}
 			<p class="card__description">{project.description}</p>
 			{#if project.url && project.urlName}

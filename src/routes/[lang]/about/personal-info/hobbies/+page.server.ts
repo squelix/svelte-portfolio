@@ -1,30 +1,7 @@
-import { GET_HOBBIES_QUERY } from '$graphql/hobbies';
-import { client } from '$stores/graphql';
+import { getHobbies } from '$lib/api/hobbies/webservice';
 
-import type { GetHobbiesQuery, GetHobbiesQueryVariables } from '$models/graphql-generated';
 import type { PageServerLoad } from './$types';
 
-export const load: PageServerLoad = async ({ url, fetch }) => {
-	const { pathname } = url;
-	const lang = `${pathname.match(/[^/]+?(?=\/|$)/) || ''}`;
-
-	let hobbies;
-
-	try {
-		const { data } = await client
-			.query<GetHobbiesQuery, GetHobbiesQueryVariables>(
-				GET_HOBBIES_QUERY,
-				{
-					locale: lang
-				},
-				{ fetch }
-			)
-			.toPromise();
-
-		hobbies = data;
-	} catch (error) {
-		console.error(error);
-	}
-
-	return { hobbies };
+export const load: PageServerLoad = async ({ fetch, parent }) => {
+	return { hobbies: await parent().then(({ lang }) => getHobbies(lang, fetch)) };
 };

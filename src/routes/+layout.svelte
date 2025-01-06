@@ -13,16 +13,18 @@
 	import Header from '$lib/commons/Header.svelte';
 	import { RoutesEnum, isRouteActive } from '$lib/routing';
 	import { vercelAnalyticsId } from '$stores/env';
-	import { picture } from '$stores/profile';
 	import { locale } from '$translations';
 	import { injectSpeedInsights } from '@vercel/speed-insights/sveltekit';
 	import { onMount } from 'svelte';
 
+	import type { LayoutData } from './$types';
+
 	type Props = {
+		data: LayoutData;
 		children?: import('svelte').Snippet;
 	};
 
-	let { children }: Props = $props();
+	let { children, data }: Props = $props();
 
 	const TAB_KEY = 'Tab';
 
@@ -66,9 +68,9 @@
 	<meta name="twitter:creator" content="@squelix" />
 	<meta property="twitter:url" content="{page.url.origin}{page.url.pathname}" />
 
-	{#if $picture}
-		<meta property="og:image" content={$picture} />
-		<meta name="twitter:image" content={$picture} />
+	{#if data.profile.picture}
+		<meta property="og:image" content={data.profile.picture} />
+		<meta name="twitter:image" content={data.profile.picture} />
 	{/if}
 
 	{#if !!PUBLIC_STRAPI_URI}
@@ -78,7 +80,7 @@
 
 <svelte:window onmousedown={mouseDownEvent} onkeydown={keyDownEvent} />
 
-<Header />
+<Header profile={data.profile} />
 
 <main
 	class="main"
@@ -87,7 +89,7 @@
 	{@render children?.()}
 </main>
 
-<Footer />
+<Footer profile={data.profile} />
 
 <style lang="scss">
 	@use '$styles/lib/mixins/breakpoints' as br;

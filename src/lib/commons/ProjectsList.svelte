@@ -1,10 +1,11 @@
 <script lang="ts">
 	import Project from '$lib/commons/Project.svelte';
 
-	import type { Project as ProjectType, SchoolProject } from '$models/graphql-generated';
+	import type { Project as ProjectType } from '$models/project';
+	import type { SchoolProject } from '$models/school-project';
 
 	type Props = {
-		projects: (Omit<ProjectType, '__typename'> | Omit<SchoolProject, '__typename'>)[];
+		projects: (ProjectType | SchoolProject)[];
 		baseTrad: string;
 	};
 

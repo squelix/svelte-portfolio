@@ -1,11 +1,8 @@
-import type { GetHobbiesQuery } from '$models/graphql-generated';
+import type { Hobby } from './hobby';
 
-export const getHobbiesList = (hobbies: GetHobbiesQuery | undefined) =>
-	(hobbies?.hobbies?.data ?? []).map((hobby) => hobby.attributes);
-
-export const getHobbiesListDisplay = (hobbies: GetHobbiesQuery | undefined) =>
+export const getHobbiesListDisplay = (hobbies: Hobby[]) =>
 	Promise.all(
-		getHobbiesList(hobbies)
+		hobbies
 			.filter((hobby) => !!hobby)
 			.map(async (hobby) => {
 				if (!hobby) {

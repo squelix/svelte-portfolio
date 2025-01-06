@@ -4,7 +4,7 @@ import { itemSelected } from '$stores/nav';
 
 import type { PageLoad } from './$types';
 
-export const load: PageLoad = ({ data }) => {
+export const load: PageLoad = async ({ data }) => {
 	itemSelected.set(PersonalInfoNavItemEnum.Hobbies);
-	return { hobbies: getHobbiesListDisplay(data.hobbies) };
+	return { hobbies: await getHobbiesListDisplay(data.hobbies) };
 };

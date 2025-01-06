@@ -1,11 +1,9 @@
-<script>
-	/**
-	 * @typedef {Object} Props
-	 * @property {import('svelte').Snippet} [children]
-	 */
+<script lang="ts">
+	type Props = {
+		children?: import('svelte').Snippet;
+	};
 
-	/** @type {Props} */
-	let { children } = $props();
+	let { children }: Props = $props();
 </script>
 
 <section class="page-content">

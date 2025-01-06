@@ -3,28 +3,30 @@
 	import { t } from '$translations';
 	import dayjs from 'dayjs';
 
-	import type { Job } from '$models/graphql-generated';
+	import type { Job } from '$models/job';
 
 	type Props = {
-		item: Omit<Job, '__typename'>;
+		item: Job;
 		last?: boolean;
 	};
 
 	let { item, last = false }: Props = $props();
 
-	const getJobSkillsCategories = (): string[] =>
-		[...new Set(item.jobSkills?.data.map((skill) => skill.attributes?.category))]
+	let jobSkillsCategories = $derived(
+		[...new Set((item.jobSkills ?? []).map((skill) => skill.category))]
 			.map((category) => category?.replace('_', ' '))
-			.filter((category) => !!category) as string[];
+			.filter((category) => !!category) as string[]
+	);
 
-	const groupSkillsByCategories = (): { category: string; skills: string[] }[] =>
-		getJobSkillsCategories().map((category) => ({
+	let jobsSkillsByCategories = $derived(
+		jobSkillsCategories.map((category) => ({
 			category,
-			skills: item.jobSkills?.data
-				.filter((skill) => skill.attributes?.category?.replace('_', ' ') === category)
-				.map((skill) => skill.attributes?.name)
+			skills: (item.jobSkills ?? [])
+				.filter((skill) => skill.category?.replace('_', ' ') === category)
+				.map((skill) => skill.name)
 				.filter((skill) => !!skill) as string[]
-		}));
+		}))
+	);
 </script>
 
 <header>
@@ -37,7 +39,7 @@
 	{/if}
 
 	{#if !last}
-		{#if item.picture?.data?.attributes}
+		{#if item.picture}
 			{#if item.pictureUrl}
 				<a
 					class="picture"
@@ -46,19 +48,11 @@
 					rel="noreferrer noopener"
 					aria-label={`${$t('experiences.aria.pictureLink')}${item.companyName}`}
 				>
-					<Image
-						src={item.picture?.data?.attributes?.url}
-						params={{ width: 100 }}
-						class="picture__img"
-					/>
+					<Image src={item.picture} params={{ width: 100 }} class="picture__img" />
 				</a>
 			{:else}
 				<div class="picture">
-					<Image
-						src={item.picture?.data?.attributes?.url}
-						params={{ width: 100 }}
-						class="picture__img"
-					/>
+					<Image src={item.picture} params={{ width: 100 }} class="picture__img" />
 				</div>
 			{/if}
 		{/if}
@@ -68,16 +62,16 @@
 </header>
 
 {#if !last}
-	{#if (item?.jobMissions?.data ?? []).length > 0}
+	{#if (item?.jobMissions ?? []).length > 0}
 		<h4 class="title">{$t('experiences.missions.title')}&nbsp;:</h4>
 		<ul class="list">
-			{#each item?.jobMissions?.data ?? [] as mission, index (mission.attributes?.slug ?? index)}
+			{#each item?.jobMissions ?? [] as mission, index (mission.slug ?? index)}
 				<li>
-					{mission.attributes?.title}
-					{#if mission.attributes?.url && mission.attributes?.urlName}
+					{mission.title}
+					{#if mission.url && mission.urlName}
 						-
-						<a class="link" href={mission.attributes?.url} target="_blank" rel="noreferrer noopener"
-							>{mission.attributes?.urlName}</a
+						<a class="link" href={mission.url} target="_blank" rel="noreferrer noopener"
+							>{mission.urlName}</a
 						>
 					{/if}
 				</li>
@@ -85,10 +79,10 @@
 		</ul>
 	{/if}
 
-	{#if (groupSkillsByCategories() ?? []).length > 0}
+	{#if (jobsSkillsByCategories ?? []).length > 0}
 		<h4 class="title">{$t('experiences.skills.title')}&nbsp;:</h4>
 		<ul class="list">
-			{#each groupSkillsByCategories() ?? [] as categoriesSkills (categoriesSkills.category)}
+			{#each jobsSkillsByCategories ?? [] as categoriesSkills (categoriesSkills.category)}
 				<li>
 					<span class="skill-category"
 						>{$t(`experiences.skills.categories.${categoriesSkills.category}`)}&nbsp;:

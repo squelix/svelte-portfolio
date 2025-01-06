@@ -1,36 +1,16 @@
-import { GET_PROJECTS_QUERY } from '$graphql/projects';
-import { client } from '$stores/graphql';
+import { getProjects } from '$lib/api/projects/webservice';
 
-import type { GetProjectsQuery, GetProjectsQueryVariables } from '$models/graphql-generated';
 import type { PageServerLoad } from './$types';
 
-export const load: PageServerLoad = async ({ url, fetch }) => {
-	const { pathname, searchParams } = url;
-	const lang = `${pathname.match(/[^/]+?(?=\/|$)/) || ''}`;
-
+export const load: PageServerLoad = async ({ url: { searchParams }, fetch, parent }) => {
 	let projectsTechnosFilter: string[] | undefined = undefined;
 
 	if (searchParams.has('techno')) {
 		projectsTechnosFilter = searchParams.getAll('techno').flatMap((techno) => techno.split(','));
 	}
 
-	let projects;
-
-	try {
-		const { data } = await client
-			.query<GetProjectsQuery, GetProjectsQueryVariables>(
-				GET_PROJECTS_QUERY,
-				{
-					locale: lang
-				},
-				{ fetch }
-			)
-			.toPromise();
-
-		projects = data;
-	} catch (error) {
-		console.error(error);
-	}
-
-	return { projects, projectsTechnosFilter };
+	return {
+		projects: await parent().then(({ lang }) => getProjects(lang, fetch)),
+		projectsTechnosFilter
+	};
 };

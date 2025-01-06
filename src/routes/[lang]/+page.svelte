@@ -1,10 +1,20 @@
 <script lang="ts">
 	import { page } from '$app/state';
+	import { getSocialGithub } from '$lib/api/profile/utils';
 	import Snake from '$lib/commons/Snake.svelte';
 	import { getRoute, RoutesEnum } from '$lib/routing';
 	import { LangEnum } from '$models/langs.enum';
-	import { github, job, name } from '$stores/profile';
 	import { locale, t } from '$translations';
+
+	import type { PageData } from './$types';
+
+	type Props = {
+		data: PageData;
+	};
+
+	let { data }: Props = $props();
+
+	let github = $derived(getSocialGithub(data.profile));
 </script>
 
 <svelte:head>
@@ -31,21 +41,20 @@
 	<div class="page__left">
 		<h1 class="title">
 			<span class="title__first">{$t('home.title.first')}</span>
-			<span class="title__name">{$name}</span>
-			<span class="title__job">>&nbsp;{$job}</span>
+			<span class="title__name">{data.profile.name}</span>
+			<span class="title__job">>&nbsp;{data.profile.job}</span>
 		</h1>
 
 		<!-- eslint-disable-next-line svelte/no-at-html-tags -->
 		<p class="github-text">//&nbsp;{@html $t('home.githubText')}</p>
 
-		{#if $github?.attributes?.url}
+		{#if github?.url}
 			<p class="github-link">
 				<span class="github-link__const">const</span>
 				<span class="github-link__var">githubLink</span>
 				=
 				<span class="github-link__link"
-					>&quot;<a href={$github?.attributes?.url} target="_blank" rel="noreferrer noopener"
-						>{$github?.attributes?.url}</a
+					>&quot;<a href={github?.url} target="_blank" rel="noreferrer noopener">{github?.url}</a
 					>&quot;</span
 				>
 			</p>

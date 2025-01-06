@@ -14,10 +14,11 @@
 	import { LangEnum } from '$models/langs.enum';
 	import { nav } from '$stores/nav';
 	import { locale, t } from '$translations';
-	import type { SubmitFunction } from '@sveltejs/kit';
 	import { onMount } from 'svelte';
 	import { sineInOut } from 'svelte/easing';
 	import { fade } from 'svelte/transition';
+
+	import type { SubmitFunction } from '@sveltejs/kit';
 
 	const transitionMs = 175;
 

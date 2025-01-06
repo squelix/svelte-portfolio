@@ -1,7 +1,7 @@
 <script lang="ts">
-	/* eslint-disable @typescript-eslint/no-explicit-any */
+	import { ImageContentfulService, type ImageParams } from '$lib/services/image-contentful.service';
 
-	import { ImageCloudinaryService, type ImageParams } from '$lib/services/image-cloudinary.service';
+	/* eslint-disable @typescript-eslint/no-explicit-any */
 
 	type Props = {
 		src: string;
@@ -12,11 +12,11 @@
 
 	let { src, alt = '', params, ...restProps }: Props = $props();
 
-	let images = ImageCloudinaryService.getInstance().getSrcSet(src, params);
+	let images = ImageContentfulService.getInstance().getSrcSet(src, params);
 </script>
 
 <img
-	style={restProps.style}
+	style="{restProps.style}ImageContentfulService"
 	class={restProps.class}
 	src={images.image1x}
 	srcset={`${images.image1x} 1x, ${images.image2x} 2x, ${images.image3x} 3x, ${images.image4x} 4x`}

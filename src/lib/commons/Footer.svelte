@@ -4,9 +4,21 @@
 	import Github from '$icons/github.svg?raw';
 	import Linkedin from '$icons/linkedin.svg?raw';
 	import Malt from '$icons/malt.svg?raw';
+	import { getSocialGithub, getSocialLinkedIn, getSocialMalt } from '$lib/api/profile/utils';
 	import Icon from '$lib/SvgIcon.svelte';
-	import { github, linkedin, malt } from '$stores/profile';
 	import { t } from '$translations';
+
+	import type { Profile } from '$models/profile';
+
+	type Props = {
+		profile: Profile;
+	};
+
+	let { profile }: Props = $props();
+
+	let github = $derived(getSocialGithub(profile));
+	let linkedIn = $derived(getSocialLinkedIn(profile));
+	let malt = $derived(getSocialMalt(profile));
 </script>
 
 <footer class="footer">
@@ -14,11 +26,11 @@
 	<p class="footer__text">{@html $t('common.footer')}</p>
 
 	<ul class="footer__socials">
-		{#if $malt?.attributes?.url}
+		{#if malt?.url}
 			<li class="footer__socials__item">
 				<a
 					class="footer__socials__item__link"
-					href={$malt?.attributes?.url}
+					href={malt?.url}
 					target="_blank"
 					rel="noreferrer noopener"
 					aria-label={$t('common.aria.maltLabel')}
@@ -27,11 +39,11 @@
 				</a>
 			</li>
 		{/if}
-		{#if $linkedin?.attributes?.url}
+		{#if linkedIn?.url}
 			<li class="footer__socials__item">
 				<a
 					class="footer__socials__item__link"
-					href={$linkedin?.attributes?.url}
+					href={linkedIn?.url}
 					target="_blank"
 					rel="noreferrer noopener"
 					aria-label={$t('common.aria.linkedinLabel')}
@@ -65,11 +77,11 @@
 			</span>
 		</li>
 
-		{#if $github?.attributes?.url}
+		{#if github?.url}
 			<li class="footer__socials__item">
 				<a
 					class="footer__socials__item__link"
-					href={$github?.attributes?.url}
+					href={github?.url}
 					target="_blank"
 					rel="noreferrer noopener"
 					aria-label={$t('common.aria.githubLabel')}

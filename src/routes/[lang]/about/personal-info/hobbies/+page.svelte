@@ -4,6 +4,7 @@
 	import { getRoute, RoutesEnum } from '$lib/routing';
 	import { LangEnum } from '$models/langs.enum';
 	import { locale, t } from '$translations';
+
 	import type { PageData } from './$types';
 
 	type Props = {
@@ -36,6 +37,4 @@
 	/>
 </svelte:head>
 
-{#await data.hobbies then value}
-	<PageTextContent lines={value} mustSplit={false} mobileDisplayText="per-line" />
-{/await}
+<PageTextContent lines={data.hobbies} mustSplit={false} mobileDisplayText="per-line" />

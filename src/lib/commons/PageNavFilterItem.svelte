@@ -2,10 +2,10 @@
 	import Chevron from '$icons/list-chevron.svg?raw';
 	import PageNavFilterSubItem from '$lib/commons/PageNavFilterSubItem.svelte';
 	import Icon from '$lib/SvgIcon.svelte';
+	import { ENTER_KEY } from '$lib/utils/keys';
 	import { navItemOpened, navItemSelected, subNavItemOpened } from '$stores/nav';
 	import { t } from '$translations';
 
-	import { ENTER_KEY } from '$lib/utils/keys';
 	import type { PageNavFilterItemInterface } from '$models/page-nav-filter-item.interface';
 
 	type Props = {

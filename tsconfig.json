@@ -14,21 +14,5 @@
 		"noUnusedParameters": true,
 		"noImplicitAny": true,
 		"noImplicitReturns": true
-		// "paths": {
-		// 	"$lib": ["./src/lib"],
-		// 	"$lib/*": ["./src/lib/*"],
-		// 	"$styles": ["./src/styles"],
-		// 	"$styles/*": ["./src/styles/*"],
-		// 	"$translations": ["./src/translations"],
-		// 	"$translations/*": ["./src/translations/*"],
-		// 	"$models": ["./src/models"],
-		// 	"$models/*": ["./src/models/*"],
-		// 	"$stores": ["./src/stores"],
-		// 	"$stores/*": ["./src/stores/*"],
-		// 	"$graphql": ["./src/graphql"],
-		// 	"$graphql/*": ["./src/graphql/*"],
-		// 	"$icons": ["./src/icons"],
-		// 	"$icons/*": ["./src/icons/*"]
-		// }
 	}
 }

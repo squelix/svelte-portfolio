@@ -2,10 +2,10 @@
 	import Image from '$lib/commons/Image.svelte';
 	import { t } from '$translations';
 
-	import type { School } from '$models/graphql-generated';
+	import type { School } from '$models/school';
 
 	type Props = {
-		item: Omit<School, '__typename'>;
+		item: School;
 	};
 
 	let { item }: Props = $props();
@@ -15,7 +15,7 @@
 	<p class="date">
 		{item?.startYear} - {item?.endYear}
 	</p>
-	{#if item.picture?.data?.attributes}
+	{#if item.picture}
 		{#if item.pictureUrl}
 			<a
 				class="picture"
@@ -24,19 +24,11 @@
 				rel="noreferrer noopener"
 				aria-label={`${$t('schools.aria.pictureLink')}${item.schoolName}`}
 			>
-				<Image
-					src={item.picture?.data?.attributes?.url}
-					params={{ width: 100 }}
-					class="picture__img"
-				/>
+				<Image src={item.picture} params={{ width: 100 }} class="picture__img" />
 			</a>
 		{:else}
 			<div class="picture">
-				<Image
-					src={item.picture?.data?.attributes?.url}
-					params={{ width: 100 }}
-					class="picture__img"
-				/>
+				<Image src={item.picture} params={{ width: 100 }} class="picture__img" />
 			</div>
 		{/if}
 	{/if}

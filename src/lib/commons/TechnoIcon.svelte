@@ -1,10 +1,11 @@
 <script lang="ts">
 	import Icon from '$lib/SvgIcon.svelte';
-	import { Enum_Techno_Color, type Maybe } from '$models/graphql-generated';
+
+	import type { TechnoColor } from '$models/techno';
 
 	type Props = {
 		icon: string;
-		color: Maybe<Enum_Techno_Color> | undefined;
+		color: TechnoColor | undefined;
 	};
 
 	let { icon, color }: Props = $props();
@@ -12,12 +13,12 @@
 
 <span
 	class="techno-icon"
-	class:techno-icon--red={color === Enum_Techno_Color.Red}
-	class:techno-icon--blue={color === Enum_Techno_Color.Blue}
-	class:techno-icon--orange={color === Enum_Techno_Color.Orange}
-	class:techno-icon--pink={color === Enum_Techno_Color.Pink}
-	class:techno-icon--green={color === Enum_Techno_Color.Green}
-	class:techno-icon--dark-green={color === Enum_Techno_Color.DarkGreen}
+	class:techno-icon--red={color === 'red'}
+	class:techno-icon--blue={color === 'blue'}
+	class:techno-icon--orange={color === 'orange'}
+	class:techno-icon--pink={color === 'pink'}
+	class:techno-icon--green={color === 'green'}
+	class:techno-icon--dark-green={color === 'dark_green'}
 >
 	<Icon data={icon} />
 </span>
