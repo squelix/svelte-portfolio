@@ -23,7 +23,7 @@
 		"eslint": "eslint .",
 		"prettier": "prettier --ignore-path .prettierignore --check './**/*.{cjs,js,ts,scss,css,yml,svelte,html,json}'",
 		"stylelint": "stylelint 'src/**/*.{css,scss,svelte}'",
-		"check": "svelte-check --tsconfig ./tsconfig.json",
+		"check": "svelte-kit sync && svelte-check --tsconfig ./tsconfig.json",
 		"check:watch": "svelte-check --tsconfig ./tsconfig.json --watch",
 		"pretest": "svelte-kit sync",
 		"release": "release-it --only-version"
