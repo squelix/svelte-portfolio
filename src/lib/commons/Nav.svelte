@@ -38,7 +38,7 @@
 	</button>
 
 	<ul class="nav__links" class:nav__links--visible={open}>
-		{#each mainRoutesKeys as routeKey, index}
+		{#each mainRoutesKeys as routeKey, index (routeKey)}
 			<NavItem
 				label={$t(`common.nav.${routeKey}`)}
 				link={routeKey}

@@ -30,14 +30,14 @@
 </script>
 
 <section class="content">
-	<Timeline style={'padding: 0; color: var(--secondary-1);'}>
-		{#each list as item, i}
+	<Timeline style="padding: 0; color: var(--secondary-1);">
+		{#each list as item, i (i)}
 			<TimelineItem>
 				<TimelineOppositeContent
 					slot="opposite-content"
-					style={'flex: 0; margin-left: 0; margin-right: 0;'}
+					style="flex: 0; margin-left: 0; margin-right: 0;"
 				/>
-				<TimelineSeparator style={'color: var(--secondary-1);'}>
+				<TimelineSeparator style="color: var(--secondary-1);">
 					{#if itemSeparator}
 						{@render itemSeparator?.({ item })}
 					{:else}
@@ -46,9 +46,9 @@
 					{#if itemConnector}
 						{@render itemConnector?.({ item })}
 					{:else if shouldDisplayLastConnector}
-						<TimelineConnector style={'background-color: var(--secondary-1);'} />
+						<TimelineConnector style="background-color: var(--secondary-1);" />
 					{:else if !shouldDisplayLastConnector && i !== list.length - 1}
-						<TimelineConnector style={'background-color: var(--secondary-1);'} />
+						<TimelineConnector style="background-color: var(--secondary-1);" />
 					{/if}
 				</TimelineSeparator>
 				<TimelineContent>

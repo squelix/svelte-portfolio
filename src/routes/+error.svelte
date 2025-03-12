@@ -1,14 +1,12 @@
 <script lang="ts">
 	import { page } from '$app/state';
 	import { locale, t } from '$translations';
-
-	let { status = page.status, error = page.error } = $props();
 </script>
 
 <main>
-	<h1>{$t('error.shit.happens')} ({status})</h1>
-	<p>{$t(`error.${status}`, { default: $t('error.default') })}</p>
-	<p>{JSON.stringify(error)}</p>
+	<h1>{$t('error.shit.happens')} ({page.status})</h1>
+	<p>{$t(`error.${page.status}`, { default: $t('error.default') })}</p>
+	<p>{JSON.stringify(page.error)}</p>
 	<br />
 	<br />
 

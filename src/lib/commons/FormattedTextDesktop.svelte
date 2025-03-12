@@ -28,7 +28,7 @@
 
 <span class="count-line"></span>
 <span>/**</span>
-{#each lines as line, index}
+{#each lines as line, index (`${line}-${index}`)}
 	<span class="count-line"></span>
 	{#if mustSplit}
 		<span class="content-line">
