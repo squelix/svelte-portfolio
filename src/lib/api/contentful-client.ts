@@ -7,6 +7,9 @@ class ContentfulClient {
 	readonly client: ContentfulClientApi<undefined>;
 
 	constructor(fetch: typeof globalThis.fetch) {
+		if (!env.CONTENTFUL_SPACE_ID || !env.CONTENTFUL_ACCESS_TOKEN) {
+			throw new Error('Missing Contentful credentials');
+		}
 		this.client = createClient({
 			// This is the space ID. A space is like a project folder in Contentful terms
 			space: env.CONTENTFUL_SPACE_ID,
