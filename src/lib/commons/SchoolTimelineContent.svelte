@@ -11,6 +11,8 @@
 	let { item }: Props = $props();
 </script>
 
+<!-- eslint-disable svelte/no-navigation-without-resolve -->
+
 <header>
 	<p class="date">
 		{item?.startYear} - {item?.endYear}

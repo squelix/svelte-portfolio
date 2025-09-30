@@ -22,6 +22,8 @@
 	};
 </script>
 
+<!-- eslint-disable svelte/no-navigation-without-resolve -->
+
 <li class="item" class:item--last={last} class:item--before-last={beforeLast}>
 	<a
 		class="item__link"

@@ -21,6 +21,8 @@
 	let malt = $derived(getSocialMalt(profile));
 </script>
 
+<!-- eslint-disable svelte/no-navigation-without-resolve -->
+
 <footer class="footer">
 	<!-- eslint-disable-next-line svelte/no-at-html-tags -->
 	<p class="footer__text">{@html $t('common.footer')}</p>

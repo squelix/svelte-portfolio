@@ -15,6 +15,8 @@
 	let { item, ariaHidden }: Props = $props();
 </script>
 
+<!-- eslint-disable svelte/no-navigation-without-resolve -->
+
 <li class="page-nav-sub-item-item">
 	{#if item.link}
 		<a

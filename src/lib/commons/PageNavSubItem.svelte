@@ -44,6 +44,8 @@
 	};
 </script>
 
+<!-- eslint-disable svelte/no-navigation-without-resolve -->
+
 <li class="page-nav-sub-item">
 	{#if (item.items || []).length > 0}
 		<button

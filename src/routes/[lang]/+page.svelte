@@ -17,6 +17,8 @@
 	let github = $derived(getSocialGithub(data.profile));
 </script>
 
+<!-- eslint-disable svelte/no-navigation-without-resolve -->
+
 <svelte:head>
 	<title>{$t('home.page.title')}</title>
 	<meta name="description" content={$t('home.page.description')} />

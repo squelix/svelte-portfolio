@@ -1,4 +1,5 @@
 <script lang="ts">
+	/* eslint-disable svelte/no-navigation-without-resolve */
 	import { goto } from '$app/navigation';
 	import { page } from '$app/state';
 	import BorderBottom from '$lib/commons/BorderBottom.svelte';
@@ -41,6 +42,8 @@
 		await goto(url);
 	};
 </script>
+
+<!-- eslint-disable svelte/no-navigation-without-resolve -->
 
 <svelte:head>
 	<title>{$t('projects.page.title')}</title>

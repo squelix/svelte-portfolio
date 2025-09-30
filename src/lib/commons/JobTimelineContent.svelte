@@ -29,6 +29,8 @@
 	);
 </script>
 
+<!-- eslint-disable svelte/no-navigation-without-resolve -->
+
 <header>
 	{#if last}
 		<p class="date">{dayjs(item?.startDate).format('MMMM YYYY')}</p>
