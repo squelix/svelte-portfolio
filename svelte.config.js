@@ -19,7 +19,41 @@ const config = {
 		},
 		adapter: adapter({
 			runtime: 'nodejs22.x',
-			regions: ['cdg1']
+			regions: ['cdg1'],
+			images: {
+				formats: ['image/webp', 'image/avif'],
+				minimumCacheTTL: 2678400, // 31 days
+				remotePatterns: [
+					{
+						protocol: 'https',
+						hostname: 'images.unsplash.com'
+					},
+					{
+						protocol: 'https',
+						hostname: 'images.ctfassets.net'
+					},
+					{
+						protocol: 'https',
+						hostname: 'picsum.photos'
+					},
+					{
+						protocol: 'http',
+						hostname: '127.0.0.1'
+					},
+					{
+						protocol: 'http',
+						hostname: 'localhost'
+					},
+					{
+						protocol: 'https',
+						hostname: 'res.cloudinary.com'
+					},
+					{
+						protocol: 'https',
+						hostname: 'storage.googleapis.com'
+					}
+				]
+			}
 		})
 	}
 };

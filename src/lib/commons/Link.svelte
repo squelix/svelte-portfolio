@@ -10,6 +10,8 @@
 	let { style = 'default', href, children, ...rest }: Props = $props();
 </script>
 
+<!-- eslint-disable svelte/no-navigation-without-resolve -->
+
 <a
 	{...rest}
 	class:primary={style === 'primary'}
