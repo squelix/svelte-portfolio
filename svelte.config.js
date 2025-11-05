@@ -21,6 +21,7 @@ const config = {
 			runtime: 'nodejs22.x',
 			regions: ['cdg1'],
 			images: {
+				sizes: [32, 48, 64, 96, 128, 256, 384],
 				formats: ['image/webp', 'image/avif'],
 				minimumCacheTTL: 2678400, // 31 days
 				remotePatterns: [
