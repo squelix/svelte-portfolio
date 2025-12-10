@@ -25,10 +25,10 @@ jobs:
       - name: "Check out Git repository"
         uses: "actions/checkout@v4"
 
-      - name: "Use Node.js 22"
+      - name: "Use Node.js 24"
         uses: "actions/setup-node@v4"
         with:
-          node-version: 22
+          node-version: 24
           cache: 'npm'
 
       - name: Cache node modules
@@ -74,10 +74,10 @@ jobs:
       - name: "Check out Git repository"
         uses: "actions/checkout@v4"
 
-      - name: "Use Node.js 22"
+      - name: "Use Node.js 24"
         uses: "actions/setup-node@v4"
         with:
-          node-version: 22
+          node-version: 24
           cache: 'npm'
 
       - name: Cache node modules
@@ -121,10 +121,10 @@ jobs:
       - name: "Check out Git repository"
         uses: "actions/checkout@v4"
 
-      - name: "Use Node.js 22"
+      - name: "Use Node.js 24"
         uses: "actions/setup-node@v4"
         with:
-          node-version: 22
+          node-version: 24
           cache: 'npm'
 
       - name: Cache node modules
@@ -168,10 +168,10 @@ jobs:
       - name: "Check out Git repository"
         uses: "actions/checkout@v4"
 
-      - name: "Use Node.js 22"
+      - name: "Use Node.js 24"
         uses: "actions/setup-node@v4"
         with:
-          node-version: 22
+          node-version: 24
           cache: "npm"
 
       - name: Cache node modules
@@ -216,10 +216,10 @@ jobs:
       - name: "Check out Git repository"
         uses: "actions/checkout@v4"
 
-      - name: "Use Node.js 22"
+      - name: "Use Node.js 24"
         uses: "actions/setup-node@v4"
         with:
-          node-version: 22
+          node-version: 24
           cache: "npm"
 
       - name: Cache node modules
