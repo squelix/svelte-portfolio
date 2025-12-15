@@ -12,7 +12,7 @@
 
 	let { src, alt = '', params, ...restProps }: Props = $props();
 
-	let images = ImageContentfulService.getInstance().getSrcSet(src, params);
+	let images = $derived(ImageContentfulService.getInstance().getSrcSet(src, params));
 </script>
 
 <img
