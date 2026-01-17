@@ -138,6 +138,10 @@
 		}
 
 		&__button {
+			&__text {
+				margin-left: 0.75rem;
+			}
+
 			&__icon {
 				display: inline-flex;
 				width: 0.375rem;
@@ -147,10 +151,6 @@
 				&--expanded {
 					transform: rotate(90deg);
 				}
-			}
-
-			&__text {
-				margin-left: 0.75rem;
 			}
 		}
 

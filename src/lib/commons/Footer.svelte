@@ -144,12 +144,12 @@
 					margin: auto;
 					transition: color var(--transition-duration) var(--transition-easing);
 
-					&:not(.footer__credit__item):hover {
-						color: var(--secondary-4);
-					}
-
 					&__text {
 						display: none;
+					}
+
+					&:not(.footer__credit__item):hover {
+						color: var(--secondary-4);
 					}
 				}
 			}

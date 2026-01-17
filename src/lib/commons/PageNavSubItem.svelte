@@ -207,18 +207,6 @@
 		}
 
 		&__button {
-			&__icon-chevron {
-				color: var(--secondary-1);
-				display: inline-flex;
-				width: 0.5rem;
-				height: 0.75rem;
-				transition: transform var(--transition-duration) var(--transition-easing);
-
-				&--expanded {
-					transform: rotate(90deg);
-				}
-			}
-
 			&__icon-folder {
 				--color-folder-0: var(--accent-3);
 				--color-folder-1: var(--accent-2);
@@ -242,6 +230,18 @@
 
 			&--expanded {
 				color: var(--secondary-4);
+			}
+
+			&__icon-chevron {
+				color: var(--secondary-1);
+				display: inline-flex;
+				width: 0.5rem;
+				height: 0.75rem;
+				transition: transform var(--transition-duration) var(--transition-easing);
+
+				&--expanded {
+					transform: rotate(90deg);
+				}
 			}
 		}
 
