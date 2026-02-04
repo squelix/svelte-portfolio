@@ -6,15 +6,11 @@
 	import 'sanitize.css/typography.css';
 	import '../styles/app.scss';
 
-	import { browser } from '$app/environment';
 	import { page } from '$app/state';
 	import Footer from '$lib/commons/Footer.svelte';
 	import Header from '$lib/commons/Header.svelte';
 	import { RoutesEnum, isRouteActive } from '$lib/routing';
-	import { vercelAnalyticsId } from '$stores/env';
 	import { locale } from '$translations';
-	import { injectSpeedInsights } from '@vercel/speed-insights/sveltekit';
-	import { onMount } from 'svelte';
 
 	import type { LayoutData } from './$types';
 
@@ -26,12 +22,6 @@
 	let { children, data }: Props = $props();
 
 	const TAB_KEY = 'Tab';
-
-	onMount(() => {
-		if (browser && $vercelAnalyticsId) {
-			injectSpeedInsights();
-		}
-	});
 
 	const toggleOutline = (value: boolean) => {
 		if (!value) {
