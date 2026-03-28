@@ -32,7 +32,7 @@
 		aria-expanded={open}
 		onclick={toggleClose}
 		onkeydown={keydown}
-		aria-label="Ouvrir le menu de navigation"
+		aria-label={$t('common.aria.openNav')}
 	>
 		<Icon data={open ? Cross : Burger} />
 	</button>

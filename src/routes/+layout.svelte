@@ -48,8 +48,9 @@
 	<meta name="author" content="Mickaël Depardon" />
 	<meta name="robots" content="index,follow" />
 	<meta property="og:url" content="{page.url.origin}{page.url.pathname}" />
-	<meta property="og:site_name" content="mickael-depardon.fr" />
+	<meta property="og:site_name" content={data.profile.name} />
 	<meta property="og:type" content="website" />
+	<meta property="og:locale" content={$locale === 'fr' ? 'fr_FR' : 'en_GB'} />
 	<link rel="canonical" href="{page.url.origin}{page.url.pathname}" />
 
 	<meta name="twitter:card" content="summary_large_image" />

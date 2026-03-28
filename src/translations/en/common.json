@@ -10,6 +10,7 @@
 	"footer": "find me in:",
 	"credits": "Credits:",
 	"aria": {
+		"openNav": "Open navigation menu",
 		"creditLabelDribble": "Designer's Dribble Link",
 		"creditLabelBehance": "Designer's Behance Link",
 		"twitterLabel": "My Twitter link",

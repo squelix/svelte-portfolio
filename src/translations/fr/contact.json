@@ -18,7 +18,8 @@
 		"errors": {
 			"captcha": "Veuillez vérifier que vous n'êtes pas un robot",
 			"fields": "Veuillez remplir tous les champs",
-			"email": "L'adresse email n'est pas valide"
+			"email": "L'adresse email n'est pas valide",
+			"send": "Une erreur est survenue lors de l'envoi. Veuillez réessayer."
 		}
 	},
 	"title": "_me-contacter",

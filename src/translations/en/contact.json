@@ -18,7 +18,8 @@
 		"errors": {
 			"captcha": "Please verify that you are not a robot",
 			"fields": "Please fill all the fields",
-			"email": "Email is not valid"
+			"email": "Email is not valid",
+			"send": "An error occurred while sending. Please try again."
 		}
 	},
 	"title": "_contact-me",
