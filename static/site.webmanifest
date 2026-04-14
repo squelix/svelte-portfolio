@@ -1,0 +1,21 @@
+{
+	"name": "Mickaël Depardon",
+	"short_name": "M.Depardon",
+	"description": "Portfolio de Mickaël Depardon, développeur web full-stack",
+	"start_url": "/",
+	"display": "browser",
+	"background_color": "#010c15",
+	"theme_color": "#010c15",
+	"icons": [
+		{
+			"src": "/favicons/apple-touch-icon.png",
+			"sizes": "180x180",
+			"type": "image/png"
+		},
+		{
+			"src": "/favicons/favicon-32x32.png",
+			"sizes": "32x32",
+			"type": "image/png"
+		}
+	]
+}

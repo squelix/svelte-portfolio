@@ -10,6 +10,7 @@
 	import Footer from '$lib/commons/Footer.svelte';
 	import Header from '$lib/commons/Header.svelte';
 	import { RoutesEnum, isRouteActive } from '$lib/routing';
+	import { buildJsonLdScript, buildWebSiteJsonLd } from '$lib/seo/structured-data';
 	import { locale } from '$translations';
 
 	import type { LayoutData } from './$types';
@@ -20,6 +21,10 @@
 	};
 
 	let { children, data }: Props = $props();
+
+	let websiteJsonLd = $derived(
+		buildJsonLdScript(buildWebSiteJsonLd(data.profile, page.url.origin))
+	);
 
 	const TAB_KEY = 'Tab';
 
@@ -51,8 +56,7 @@
 	<meta property="og:site_name" content={data.profile.name} />
 	<meta property="og:type" content="website" />
 	<meta property="og:locale" content={$locale === 'fr' ? 'fr_FR' : 'en_GB'} />
-	<link rel="canonical" href="{page.url.origin}{page.url.pathname}" />
-
+	<meta property="og:locale:alternate" content={$locale === 'fr' ? 'en_GB' : 'fr_FR'} />
 	<meta name="twitter:card" content="summary_large_image" />
 	<meta name="twitter:site" content="@squelix" />
 	<meta name="twitter:creator" content="@squelix" />
@@ -62,6 +66,8 @@
 		<meta property="og:image" content={data.profile.picture} />
 		<meta name="twitter:image" content={data.profile.picture} />
 	{/if}
+	<!-- eslint-disable-next-line svelte/no-at-html-tags -->
+	{@html websiteJsonLd}
 </svelte:head>
 
 <svelte:window onmousedown={mouseDownEvent} onkeydown={keyDownEvent} />

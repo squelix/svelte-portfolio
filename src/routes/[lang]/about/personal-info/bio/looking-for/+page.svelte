@@ -35,6 +35,11 @@
 		hreflang="en"
 		href="{page.url.origin}{getRoute(LangEnum.en_GB, RoutesEnum.AboutPersonalInfoBioLookingFor)}"
 	/>
+	<link
+		rel="alternate"
+		hreflang="x-default"
+		href="{page.url.origin}{getRoute(LangEnum.fr_FR, RoutesEnum.AboutPersonalInfoBioLookingFor)}"
+	/>
 </svelte:head>
 
 <PageTextContent lines={data.profile.jobSearchLines} mustSplit={false} />

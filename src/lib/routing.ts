@@ -56,7 +56,8 @@ export const SEORoutes: Partial<Record<RoutesEnum, string>> = {
 	[RoutesEnum.AboutProfessionalInfoLanguages]: '/about/professional-info/languages',
 	[RoutesEnum.AboutProfessionalInfoExperiences]: '/about/professional-info/experiences',
 	[RoutesEnum.Projects]: '/projects',
-	[RoutesEnum.Contact]: '/contact'
+	[RoutesEnum.Contact]: '/contact',
+	[RoutesEnum.LegalsMentions]: '/legals/legals-mentions'
 };
 
 export const getRoute = (lang: string, route: string, params?: Record<string, string>): string => {

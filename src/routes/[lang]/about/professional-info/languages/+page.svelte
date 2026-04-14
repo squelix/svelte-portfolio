@@ -35,6 +35,11 @@
 		hreflang="en"
 		href="{page.url.origin}{getRoute(LangEnum.en_GB, RoutesEnum.AboutProfessionalInfoLanguages)}"
 	/>
+	<link
+		rel="alternate"
+		hreflang="x-default"
+		href="{page.url.origin}{getRoute(LangEnum.fr_FR, RoutesEnum.AboutProfessionalInfoLanguages)}"
+	/>
 </svelte:head>
 
 <PageTextContent lines={data.languages} mobileDisplayText="per-line" />

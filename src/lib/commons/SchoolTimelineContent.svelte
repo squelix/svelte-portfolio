@@ -26,11 +26,21 @@
 				rel="noreferrer noopener"
 				aria-label={`${$t('schools.aria.pictureLink')}${item.schoolName}`}
 			>
-				<Image src={item.picture} params={{ width: 100 }} class="picture__img" />
+				<Image
+					src={item.picture}
+					params={{ width: 100 }}
+					class="picture__img"
+					alt={item.schoolName.name}
+				/>
 			</a>
 		{:else}
 			<div class="picture">
-				<Image src={item.picture} params={{ width: 100 }} class="picture__img" />
+				<Image
+					src={item.picture}
+					params={{ width: 100 }}
+					class="picture__img"
+					alt={item.schoolName.name}
+				/>
 			</div>
 		{/if}
 	{/if}

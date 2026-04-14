@@ -35,7 +35,7 @@
 
 	<div class="card">
 		{#if project.picture}
-			<Image class="card__img" src={project.picture} params={{ width: 370 }} />
+			<Image class="card__img" src={project.picture} params={{ width: 370 }} alt={project.title} />
 		{/if}
 
 		<div class="card__bottom">

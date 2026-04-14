@@ -97,9 +97,19 @@
 			}
 		</style>
 
+		<link rel="preconnect" href="https://images.ctfassets.net" crossorigin />
+		<link rel="dns-prefetch" href="https://images.ctfassets.net" />
+		<link
+			rel="preload"
+			href="%sveltekit.assets%/font/woff2/FiraCode-VF.woff2"
+			as="font"
+			type="font/woff2"
+			crossorigin
+		/>
+		<link rel="manifest" href="%sveltekit.assets%/site.webmanifest" />
 		%sveltekit.head%
 	</head>
-	<body>
+	<body data-sveltekit-preload-data="hover">
 		<div style="display: contents">%sveltekit.body%</div>
 	</body>
 </html>

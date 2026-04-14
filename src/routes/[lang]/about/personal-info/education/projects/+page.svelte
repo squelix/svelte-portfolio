@@ -42,6 +42,14 @@
 			RoutesEnum.AboutPersonalInfoEducationProjects
 		)}"
 	/>
+	<link
+		rel="alternate"
+		hreflang="x-default"
+		href="{page.url.origin}{getRoute(
+			LangEnum.fr_FR,
+			RoutesEnum.AboutPersonalInfoEducationProjects
+		)}"
+	/>
 </svelte:head>
 
 <LayoutPage>

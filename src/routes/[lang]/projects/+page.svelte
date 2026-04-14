@@ -63,6 +63,11 @@
 		hreflang="en"
 		href="{page.url.origin}{getRoute(LangEnum.en_GB, RoutesEnum.Projects)}"
 	/>
+	<link
+		rel="alternate"
+		hreflang="x-default"
+		href="{page.url.origin}{getRoute(LangEnum.fr_FR, RoutesEnum.Projects)}"
+	/>
 </svelte:head>
 
 {#if data.projectsTechnosFilter && (data.projectsTechnosFilter ?? []).length > 0}

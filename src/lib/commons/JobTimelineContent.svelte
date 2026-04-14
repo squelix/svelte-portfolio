@@ -50,11 +50,21 @@
 					rel="noreferrer noopener"
 					aria-label={`${$t('experiences.aria.pictureLink')}${item.companyName}`}
 				>
-					<Image src={item.picture} params={{ width: 100 }} class="picture__img" />
+					<Image
+						src={item.picture}
+						params={{ width: 100 }}
+						class="picture__img"
+						alt={item.companyName}
+					/>
 				</a>
 			{:else}
 				<div class="picture">
-					<Image src={item.picture} params={{ width: 100 }} class="picture__img" />
+					<Image
+						src={item.picture}
+						params={{ width: 100 }}
+						class="picture__img"
+						alt={item.companyName}
+					/>
 				</div>
 			{/if}
 		{/if}

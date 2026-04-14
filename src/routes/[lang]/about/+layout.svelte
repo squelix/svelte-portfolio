@@ -1,10 +1,7 @@
 <script lang="ts">
-	import { page } from '$app/state';
 	import BorderBottom from '$lib/commons/BorderBottom.svelte';
 	import PageNav from '$lib/commons/PageNav.svelte';
 	import PageTitle from '$lib/commons/PageTitle.svelte';
-	import { getRoute, RoutesEnum } from '$lib/routing';
-	import { LangEnum } from '$models/langs.enum';
 	import { nav } from '$stores/nav';
 	import { aboutTitleItem } from '$stores/title';
 	import { t } from '$translations';
@@ -22,16 +19,6 @@
 	<meta property="og:description" content={$t('about.page.description')} />
 	<meta name="twitter:title" content={$t('about.page.title')} />
 	<meta name="twitter:description" content={$t('about.page.description')} />
-	<link
-		rel="alternate"
-		hreflang="fr"
-		href="{page.url.origin}{getRoute(LangEnum.fr_FR, RoutesEnum.About)}"
-	/>
-	<link
-		rel="alternate"
-		hreflang="en"
-		href="{page.url.origin}{getRoute(LangEnum.en_GB, RoutesEnum.About)}"
-	/>
 </svelte:head>
 
 {#if $aboutTitleItem?.labelKey && !$aboutTitleItem?.label}

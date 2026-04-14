@@ -3,6 +3,7 @@
 	import { getSocialGithub } from '$lib/api/profile/utils';
 	import Snake from '$lib/commons/Snake.svelte';
 	import { getRoute, RoutesEnum } from '$lib/routing';
+	import { buildJsonLdScript, buildPersonJsonLd } from '$lib/seo/structured-data';
 	import { LangEnum } from '$models/langs.enum';
 	import { locale, t } from '$translations';
 
@@ -15,6 +16,7 @@
 	let { data }: Props = $props();
 
 	let github = $derived(getSocialGithub(data.profile));
+	let personJsonLd = $derived(buildJsonLdScript(buildPersonJsonLd(data.profile, page.url.origin)));
 </script>
 
 <!-- eslint-disable svelte/no-navigation-without-resolve -->
@@ -37,6 +39,13 @@
 		hreflang="en"
 		href="{page.url.origin}{getRoute(LangEnum.en_GB, RoutesEnum.Home)}"
 	/>
+	<link
+		rel="alternate"
+		hreflang="x-default"
+		href="{page.url.origin}{getRoute(LangEnum.fr_FR, RoutesEnum.Home)}"
+	/>
+	<!-- eslint-disable-next-line svelte/no-at-html-tags -->
+	{@html personJsonLd}
 </svelte:head>
 
 <div class="page">

@@ -1,66 +1,64 @@
 import type { RoutesEnum } from '$lib/routing';
 import type { LangEnum } from '$models/langs.enum';
 
-const getRoutes = (
-	langEnum: typeof LangEnum,
-	routesEnum: typeof RoutesEnum,
-	routes: Partial<Record<RoutesEnum, string>>
-): string[] =>
-	Object.values(langEnum).flatMap((lang) =>
-		Object.values(routesEnum)
-			.filter((route) => route !== routesEnum.Home)
+const LASTMOD = new Date().toISOString().split('T')[0];
 
-			.map((route) => {
-				const pathRoute = routes[route];
+const getRoutePriority = (routeKey: string): string => {
+	if (routeKey === 'legals-mentions') return '0.5';
+	return '0.8';
+};
 
-				return pathRoute ? `/${lang}${pathRoute}` : undefined;
-			})
-			.filter((route): route is string => route !== undefined)
-	);
+const buildUrlPair = (origin: string, frPath: string, enPath: string, priority: string): string => {
+	const frLoc = `${origin}${frPath}`;
+	const enLoc = `${origin}${enPath}`;
+	const entry = (loc: string): string =>
+		[
+			'<url>',
+			`<loc>${loc}</loc>`,
+			`<lastmod>${LASTMOD}</lastmod>`,
+			'<changefreq>weekly</changefreq>',
+			`<priority>${priority}</priority>`,
+			`<xhtml:link rel="alternate" hreflang="fr" href="${frLoc}"/>`,
+			`<xhtml:link rel="alternate" hreflang="en" href="${enLoc}"/>`,
+			`<xhtml:link rel="alternate" hreflang="x-default" href="${frLoc}"/>`,
+			'</url>'
+		].join('\n');
+	return `${entry(frLoc)}\n${entry(enLoc)}`;
+};
 
 export const getRobotsTxtString = (
-	langEnum: typeof LangEnum,
-	routesEnum: typeof RoutesEnum,
-	routes: Partial<Record<RoutesEnum, string>>,
+	_langEnum: typeof LangEnum,
+	_routesEnum: typeof RoutesEnum,
+	_routes: Partial<Record<RoutesEnum, string>>,
 	url: URL
-): string =>
-	[
-		'User-agent: *',
-		...[
-			'/',
-			`/${langEnum.fr_FR}`,
-			`/${langEnum.en_GB}`,
-			...getRoutes(langEnum, routesEnum, routes)
-		].map((route) => `Allow: ${route}`),
-		`Sitemap: ${url.origin}/sitemap.xml`
-	].join('\n');
+): string => ['User-agent: *', 'Allow: /', `Sitemap: ${url.origin}/sitemap.xml`].join('\n');
 
 export const getSitemapXmlString = (
 	langEnum: typeof LangEnum,
-	routesEnum: typeof RoutesEnum,
+	_routesEnum: typeof RoutesEnum,
 	routes: Partial<Record<RoutesEnum, string>>,
 	url: URL
 ): string => {
-	const routesStr = [
-		`/${langEnum.fr_FR}`,
-		`/${langEnum.en_GB}`,
-		...getRoutes(langEnum, routesEnum, routes)
-	]
-		.map(
-			(route) =>
-				`<url>\n<loc>${url.origin}${route}</loc>\n<changefreq>weekly</changefreq>\n<priority>1.0</priority>\n</url>`
+	const homePair = buildUrlPair(url.origin, `/${langEnum.fr_FR}`, `/${langEnum.en_GB}`, '1.0');
+
+	const routePairs = Object.entries(routes)
+		.filter((entry): entry is [string, string] => !!entry[1])
+		.map(([routeKey, path]) =>
+			buildUrlPair(
+				url.origin,
+				`/${langEnum.fr_FR}${path}`,
+				`/${langEnum.en_GB}${path}`,
+				getRoutePriority(routeKey)
+			)
 		)
 		.join('\n');
 
-	return `<?xml version="1.0" encoding="UTF-8" ?>
-		<urlset
-		xmlns="https://www.sitemaps.org/schemas/sitemap/0.9"
-		xmlns:xhtml="https://www.w3.org/1999/xhtml"
-		xmlns:mobile="https://www.google.com/schemas/sitemap-mobile/1.0"
-		xmlns:news="https://www.google.com/schemas/sitemap-news/0.9"
-		xmlns:image="https://www.google.com/schemas/sitemap-image/1.1"
-		xmlns:video="https://www.google.com/schemas/sitemap-video/1.1"
-	>
-		${routesStr}
-	</urlset>`.trim();
+	return `<?xml version="1.0" encoding="UTF-8"?>
+<urlset
+  xmlns="https://www.sitemaps.org/schemas/sitemap/0.9"
+  xmlns:xhtml="https://www.w3.org/1999/xhtml"
+>
+${homePair}
+${routePairs}
+</urlset>`;
 };

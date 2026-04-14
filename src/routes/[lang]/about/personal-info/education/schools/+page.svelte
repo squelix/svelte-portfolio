@@ -36,6 +36,11 @@
 		hreflang="en"
 		href="{page.url.origin}{getRoute(LangEnum.en_GB, RoutesEnum.AboutPersonalInfoEducationSchools)}"
 	/>
+	<link
+		rel="alternate"
+		hreflang="x-default"
+		href="{page.url.origin}{getRoute(LangEnum.fr_FR, RoutesEnum.AboutPersonalInfoEducationSchools)}"
+	/>
 </svelte:head>
 
 <PageTimeline list={data.schoolsList}>

@@ -115,6 +115,11 @@
 		hreflang="en"
 		href="{page.url.origin}{getRoute(LangEnum.en_GB, RoutesEnum.Contact)}"
 	/>
+	<link
+		rel="alternate"
+		hreflang="x-default"
+		href="{page.url.origin}{getRoute(LangEnum.fr_FR, RoutesEnum.Contact)}"
+	/>
 </svelte:head>
 
 <PageTitle textDesktop={$t('contact.nav.0')} textMobile={$t('contact.title')} />

@@ -28,7 +28,15 @@ export const handle: Handle = async ({ event, resolve }) => {
 		try {
 			// Add html `lang` attribute
 			const body = await response.text();
-			return new Response(body.replace(/<html.*>/, `<html lang="${locale}">`), response);
+			const htmlResponse = new Response(
+				body.replace(/<html.*>/, `<html lang="${locale}">`),
+				response
+			);
+			htmlResponse.headers.set('X-Content-Type-Options', 'nosniff');
+			htmlResponse.headers.set('X-Frame-Options', 'DENY');
+			htmlResponse.headers.set('Referrer-Policy', 'strict-origin-when-cross-origin');
+			htmlResponse.headers.set('Permissions-Policy', 'camera=(), microphone=(), geolocation=()');
+			return htmlResponse;
 		} catch {
 			return response;
 		}
