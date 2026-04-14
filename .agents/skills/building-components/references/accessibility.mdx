@@ -44,31 +44,31 @@ Every interactive element must be keyboard accessible. Users should be able to n
 ```tsx
 // ✅ Complete keyboard support
 function Menu() {
-	const handleKeyDown = (e: React.KeyboardEvent) => {
-		switch (e.key) {
-			case 'ArrowDown':
-				focusNextItem();
-				break;
-			case 'ArrowUp':
-				focusPreviousItem();
-				break;
-			case 'Home':
-				focusFirstItem();
-				break;
-			case 'End':
-				focusLastItem();
-				break;
-			case 'Escape':
-				closeMenu();
-				break;
-		}
-	};
+  const handleKeyDown = (e: React.KeyboardEvent) => {
+    switch (e.key) {
+      case "ArrowDown":
+        focusNextItem();
+        break;
+      case "ArrowUp":
+        focusPreviousItem();
+        break;
+      case "Home":
+        focusFirstItem();
+        break;
+      case "End":
+        focusLastItem();
+        break;
+      case "Escape":
+        closeMenu();
+        break;
+    }
+  };
 
-	return (
-		<div role="menu" onKeyDown={handleKeyDown}>
-			{/* menu items */}
-		</div>
-	);
+  return (
+    <div role="menu" onKeyDown={handleKeyDown}>
+      {/* menu items */}
+    </div>
+  );
 }
 ```
 
@@ -99,19 +99,19 @@ Support users with visual impairments through proper contrast, focus indicators,
 ```css
 /* ✅ Visible focus indicators */
 button:focus-visible {
-	outline: 2px solid var(--color-focus);
-	outline-offset: 2px;
+  outline: 2px solid var(--color-focus);
+  outline-offset: 2px;
 }
 
 /* ✅ Sufficient color contrast (4.5:1 for normal text, 3:1 for large text) */
 .text {
-	color: #333; /* Against white: 12.6:1 ratio */
-	background: white;
+  color: #333; /* Against white: 12.6:1 ratio */
+  background: white;
 }
 
 /* ✅ Responsive text sizing */
 .text {
-	font-size: 1rem; /* Respects user preferences */
+  font-size: 1rem; /* Respects user preferences */
 }
 ```
 
@@ -220,76 +220,80 @@ Modals require careful focus management and keyboard trapping:
 
 ```tsx
 function Modal({ isOpen, onClose, children }) {
-	const modalRef = useRef<HTMLDivElement>(null);
-	const previousFocus = useRef<HTMLElement | null>(null);
+  const modalRef = useRef<HTMLDivElement>(null);
+  const previousFocus = useRef<HTMLElement | null>(null);
 
-	useEffect(() => {
-		if (isOpen) {
-			// Store current focus
-			previousFocus.current = document.activeElement as HTMLElement;
+  useEffect(() => {
+    if (isOpen) {
+      // Store current focus
+      previousFocus.current = document.activeElement as HTMLElement;
 
-			// Focus first focusable element in modal
-			const firstFocusable = modalRef.current?.querySelector<HTMLElement>(
-				'button, [href], input, select, textarea, [tabindex]:not([tabindex="-1"])',
-			);
-			firstFocusable?.focus();
+      // Focus first focusable element in modal
+      const firstFocusable = modalRef.current?.querySelector<HTMLElement>(
+        'button, [href], input, select, textarea, [tabindex]:not([tabindex="-1"])',
+      );
+      firstFocusable?.focus();
 
-			// Prevent body scroll
-			document.body.style.overflow = 'hidden';
-		} else {
-			// Restore focus
-			previousFocus.current?.focus();
-			document.body.style.overflow = '';
-		}
+      // Prevent body scroll
+      document.body.style.overflow = "hidden";
+    } else {
+      // Restore focus
+      previousFocus.current?.focus();
+      document.body.style.overflow = "";
+    }
 
-		return () => {
-			document.body.style.overflow = '';
-		};
-	}, [isOpen]);
+    return () => {
+      document.body.style.overflow = "";
+    };
+  }, [isOpen]);
 
-	const handleKeyDown = (e: React.KeyboardEvent) => {
-		if (e.key === 'Escape') {
-			onClose();
-		}
+  const handleKeyDown = (e: React.KeyboardEvent) => {
+    if (e.key === "Escape") {
+      onClose();
+    }
 
-		if (e.key === 'Tab') {
-			// Trap focus within modal
-			const focusables = modalRef.current?.querySelectorAll<HTMLElement>(
-				'button, [href], input, select, textarea, [tabindex]:not([tabindex="-1"])',
-			);
+    if (e.key === "Tab") {
+      // Trap focus within modal
+      const focusables = modalRef.current?.querySelectorAll<HTMLElement>(
+        'button, [href], input, select, textarea, [tabindex]:not([tabindex="-1"])',
+      );
 
-			if (focusables && focusables.length > 0) {
-				const firstFocusable = focusables[0];
-				const lastFocusable = focusables[focusables.length - 1];
+      if (focusables && focusables.length > 0) {
+        const firstFocusable = focusables[0];
+        const lastFocusable = focusables[focusables.length - 1];
 
-				if (e.shiftKey && document.activeElement === firstFocusable) {
-					e.preventDefault();
-					lastFocusable.focus();
-				} else if (!e.shiftKey && document.activeElement === lastFocusable) {
-					e.preventDefault();
-					firstFocusable.focus();
-				}
-			}
-		}
-	};
+        if (e.shiftKey && document.activeElement === firstFocusable) {
+          e.preventDefault();
+          lastFocusable.focus();
+        } else if (!e.shiftKey && document.activeElement === lastFocusable) {
+          e.preventDefault();
+          firstFocusable.focus();
+        }
+      }
+    }
+  };
 
-	if (!isOpen) return null;
+  if (!isOpen) return null;
 
-	return (
-		<div
-			role="dialog"
-			aria-modal="true"
-			aria-labelledby="modal-title"
-			ref={modalRef}
-			onKeyDown={handleKeyDown}
-			className="modal"
-		>
-			<button onClick={onClose} aria-label="Close dialog" className="close-button">
-				×
-			</button>
-			{children}
-		</div>
-	);
+  return (
+    <div
+      role="dialog"
+      aria-modal="true"
+      aria-labelledby="modal-title"
+      ref={modalRef}
+      onKeyDown={handleKeyDown}
+      className="modal"
+    >
+      <button
+        onClick={onClose}
+        aria-label="Close dialog"
+        className="close-button"
+      >
+        ×
+      </button>
+      {children}
+    </div>
+  );
 }
 ```
 
@@ -299,79 +303,84 @@ Dropdowns need proper ARIA attributes and keyboard navigation:
 
 ```tsx
 function DropdownMenu({ items }) {
-	const [isOpen, setIsOpen] = useState(false);
-	const [selectedIndex, setSelectedIndex] = useState(-1);
-	const menuRef = useRef<HTMLUListElement>(null);
+  const [isOpen, setIsOpen] = useState(false);
+  const [selectedIndex, setSelectedIndex] = useState(-1);
+  const menuRef = useRef<HTMLUListElement>(null);
 
-	const handleKeyDown = (e: React.KeyboardEvent) => {
-		switch (e.key) {
-			case 'ArrowDown':
-				e.preventDefault();
-				if (!isOpen) {
-					setIsOpen(true);
-					setSelectedIndex(0);
-				} else {
-					setSelectedIndex((prev) => (prev < items.length - 1 ? prev + 1 : 0));
-				}
-				break;
+  const handleKeyDown = (e: React.KeyboardEvent) => {
+    switch (e.key) {
+      case "ArrowDown":
+        e.preventDefault();
+        if (!isOpen) {
+          setIsOpen(true);
+          setSelectedIndex(0);
+        } else {
+          setSelectedIndex((prev) => (prev < items.length - 1 ? prev + 1 : 0));
+        }
+        break;
 
-			case 'ArrowUp':
-				e.preventDefault();
-				if (isOpen) {
-					setSelectedIndex((prev) => (prev > 0 ? prev - 1 : items.length - 1));
-				}
-				break;
+      case "ArrowUp":
+        e.preventDefault();
+        if (isOpen) {
+          setSelectedIndex((prev) => (prev > 0 ? prev - 1 : items.length - 1));
+        }
+        break;
 
-			case 'Enter':
-			case ' ':
-				e.preventDefault();
-				if (!isOpen) {
-					setIsOpen(true);
-				} else if (selectedIndex >= 0) {
-					items[selectedIndex].onClick();
-					setIsOpen(false);
-				}
-				break;
+      case "Enter":
+      case " ":
+        e.preventDefault();
+        if (!isOpen) {
+          setIsOpen(true);
+        } else if (selectedIndex >= 0) {
+          items[selectedIndex].onClick();
+          setIsOpen(false);
+        }
+        break;
 
-			case 'Escape':
-				setIsOpen(false);
-				setSelectedIndex(-1);
-				break;
-		}
-	};
+      case "Escape":
+        setIsOpen(false);
+        setSelectedIndex(-1);
+        break;
+    }
+  };
 
-	return (
-		<div className="dropdown">
-			<button
-				aria-haspopup="true"
-				aria-expanded={isOpen}
-				aria-controls="dropdown-menu"
-				onKeyDown={handleKeyDown}
-				onClick={() => setIsOpen(!isOpen)}
-			>
-				Menu
-			</button>
+  return (
+    <div className="dropdown">
+      <button
+        aria-haspopup="true"
+        aria-expanded={isOpen}
+        aria-controls="dropdown-menu"
+        onKeyDown={handleKeyDown}
+        onClick={() => setIsOpen(!isOpen)}
+      >
+        Menu
+      </button>
 
-			{isOpen && (
-				<ul id="dropdown-menu" role="menu" ref={menuRef} onKeyDown={handleKeyDown}>
-					{items.map((item, index) => (
-						<li
-							key={item.id}
-							role="menuitem"
-							tabIndex={-1}
-							aria-selected={index === selectedIndex}
-							onClick={() => {
-								item.onClick();
-								setIsOpen(false);
-							}}
-						>
-							{item.label}
-						</li>
-					))}
-				</ul>
-			)}
-		</div>
-	);
+      {isOpen && (
+        <ul
+          id="dropdown-menu"
+          role="menu"
+          ref={menuRef}
+          onKeyDown={handleKeyDown}
+        >
+          {items.map((item, index) => (
+            <li
+              key={item.id}
+              role="menuitem"
+              tabIndex={-1}
+              aria-selected={index === selectedIndex}
+              onClick={() => {
+                item.onClick();
+                setIsOpen(false);
+              }}
+            >
+              {item.label}
+            </li>
+          ))}
+        </ul>
+      )}
+    </div>
+  );
 }
 ```
 
@@ -381,69 +390,69 @@ Tab interfaces require specific ARIA patterns and keyboard navigation:
 
 ```tsx
 function Tabs({ tabs, defaultTab = 0 }) {
-	const [activeTab, setActiveTab] = useState(defaultTab);
+  const [activeTab, setActiveTab] = useState(defaultTab);
 
-	const handleKeyDown = (e: React.KeyboardEvent, index: number) => {
-		let newIndex = index;
+  const handleKeyDown = (e: React.KeyboardEvent, index: number) => {
+    let newIndex = index;
 
-		switch (e.key) {
-			case 'ArrowLeft':
-				newIndex = index > 0 ? index - 1 : tabs.length - 1;
-				break;
-			case 'ArrowRight':
-				newIndex = index < tabs.length - 1 ? index + 1 : 0;
-				break;
-			case 'Home':
-				newIndex = 0;
-				break;
-			case 'End':
-				newIndex = tabs.length - 1;
-				break;
-			default:
-				return;
-		}
+    switch (e.key) {
+      case "ArrowLeft":
+        newIndex = index > 0 ? index - 1 : tabs.length - 1;
+        break;
+      case "ArrowRight":
+        newIndex = index < tabs.length - 1 ? index + 1 : 0;
+        break;
+      case "Home":
+        newIndex = 0;
+        break;
+      case "End":
+        newIndex = tabs.length - 1;
+        break;
+      default:
+        return;
+    }
 
-		e.preventDefault();
-		setActiveTab(newIndex);
+    e.preventDefault();
+    setActiveTab(newIndex);
 
-		// Focus the newly selected tab
-		const tabElement = document.getElementById(`tab-${newIndex}`);
-		tabElement?.focus();
-	};
+    // Focus the newly selected tab
+    const tabElement = document.getElementById(`tab-${newIndex}`);
+    tabElement?.focus();
+  };
 
-	return (
-		<div className="tabs">
-			<div role="tablist" aria-label="Tabs">
-				{tabs.map((tab, index) => (
-					<button
-						key={tab.id}
-						id={`tab-${index}`}
-						role="tab"
-						aria-selected={activeTab === index}
-						aria-controls={`panel-${index}`}
-						tabIndex={activeTab === index ? 0 : -1}
-						onClick={() => setActiveTab(index)}
-						onKeyDown={(e) => handleKeyDown(e, index)}
-					>
-						{tab.label}
-					</button>
-				))}
-			</div>
+  return (
+    <div className="tabs">
+      <div role="tablist" aria-label="Tabs">
+        {tabs.map((tab, index) => (
+          <button
+            key={tab.id}
+            id={`tab-${index}`}
+            role="tab"
+            aria-selected={activeTab === index}
+            aria-controls={`panel-${index}`}
+            tabIndex={activeTab === index ? 0 : -1}
+            onClick={() => setActiveTab(index)}
+            onKeyDown={(e) => handleKeyDown(e, index)}
+          >
+            {tab.label}
+          </button>
+        ))}
+      </div>
 
-			{tabs.map((tab, index) => (
-				<div
-					key={tab.id}
-					id={`panel-${index}`}
-					role="tabpanel"
-					aria-labelledby={`tab-${index}`}
-					hidden={activeTab !== index}
-					tabIndex={0}
-				>
-					{tab.content}
-				</div>
-			))}
-		</div>
-	);
+      {tabs.map((tab, index) => (
+        <div
+          key={tab.id}
+          id={`panel-${index}`}
+          role="tabpanel"
+          aria-labelledby={`tab-${index}`}
+          hidden={activeTab !== index}
+          tabIndex={0}
+        >
+          {tab.content}
+        </div>
+      ))}
+    </div>
+  );
 }
 ```
 
@@ -453,47 +462,57 @@ Forms need clear labels, error messages, and validation feedback:
 
 ```tsx
 function AccessibleForm() {
-	const [errors, setErrors] = useState({});
+  const [errors, setErrors] = useState({});
 
-	return (
-		<form aria-label="Contact form">
-			<div className="form-group">
-				<label htmlFor="email">
-					Email Address
-					<span aria-label="required">*</span>
-				</label>
-				<input
-					id="email"
-					type="email"
-					aria-required="true"
-					aria-invalid={!!errors.email}
-					aria-describedby={errors.email ? 'email-error' : 'email-help'}
-				/>
-				<span id="email-help" className="help-text">
-					We'll never share your email
-				</span>
-				{errors.email && (
-					<span id="email-error" role="alert" className="error">
-						{errors.email}
-					</span>
-				)}
-			</div>
+  return (
+    <form aria-label="Contact form">
+      <div className="form-group">
+        <label htmlFor="email">
+          Email Address
+          <span aria-label="required">*</span>
+        </label>
+        <input
+          id="email"
+          type="email"
+          aria-required="true"
+          aria-invalid={!!errors.email}
+          aria-describedby={errors.email ? "email-error" : "email-help"}
+        />
+        <span id="email-help" className="help-text">
+          We'll never share your email
+        </span>
+        {errors.email && (
+          <span id="email-error" role="alert" className="error">
+            {errors.email}
+          </span>
+        )}
+      </div>
 
-			<fieldset>
-				<legend>Notification Preferences</legend>
-				<div>
-					<input id="notify-email" type="checkbox" name="notifications" value="email" />
-					<label htmlFor="notify-email">Email notifications</label>
-				</div>
-				<div>
-					<input id="notify-sms" type="checkbox" name="notifications" value="sms" />
-					<label htmlFor="notify-sms">SMS notifications</label>
-				</div>
-			</fieldset>
+      <fieldset>
+        <legend>Notification Preferences</legend>
+        <div>
+          <input
+            id="notify-email"
+            type="checkbox"
+            name="notifications"
+            value="email"
+          />
+          <label htmlFor="notify-email">Email notifications</label>
+        </div>
+        <div>
+          <input
+            id="notify-sms"
+            type="checkbox"
+            name="notifications"
+            value="sms"
+          />
+          <label htmlFor="notify-sms">SMS notifications</label>
+        </div>
+      </fieldset>
 
-			<button type="submit">Submit</button>
-		</form>
-	);
+      <button type="submit">Submit</button>
+    </form>
+  );
 }
 ```
 
@@ -506,18 +525,18 @@ Show focus indicators only for keyboard navigation:
 ```css
 /* Remove default outline */
 *:focus {
-	outline: none;
+  outline: none;
 }
 
 /* Show outline only for keyboard focus */
 *:focus-visible {
-	outline: 2px solid var(--color-focus);
-	outline-offset: 2px;
+  outline: 2px solid var(--color-focus);
+  outline-offset: 2px;
 }
 
 /* Custom focus styles for specific components */
 .button:focus-visible {
-	box-shadow: 0 0 0 3px rgba(66, 153, 225, 0.5);
+  box-shadow: 0 0 0 3px rgba(66, 153, 225, 0.5);
 }
 ```
 
@@ -527,40 +546,41 @@ Keep focus within a specific region:
 
 ```tsx
 function useFocusTrap(ref: React.RefObject<HTMLElement>, isActive: boolean) {
-	useEffect(() => {
-		if (!isActive || !ref.current) return;
+  useEffect(() => {
+    if (!isActive || !ref.current) return;
 
-		const element = ref.current;
-		const focusableSelector =
-			'a[href], button, textarea, input[type="text"], input[type="radio"], input[type="checkbox"], select, [tabindex]:not([tabindex="-1"])';
+    const element = ref.current;
+    const focusableSelector =
+      'a[href], button, textarea, input[type="text"], input[type="radio"], input[type="checkbox"], select, [tabindex]:not([tabindex="-1"])';
 
-		const focusableElements = element.querySelectorAll<HTMLElement>(focusableSelector);
-		const firstFocusable = focusableElements[0];
-		const lastFocusable = focusableElements[focusableElements.length - 1];
+    const focusableElements =
+      element.querySelectorAll<HTMLElement>(focusableSelector);
+    const firstFocusable = focusableElements[0];
+    const lastFocusable = focusableElements[focusableElements.length - 1];
 
-		const handleTabKey = (e: KeyboardEvent) => {
-			if (e.key !== 'Tab') return;
+    const handleTabKey = (e: KeyboardEvent) => {
+      if (e.key !== "Tab") return;
 
-			if (e.shiftKey) {
-				if (document.activeElement === firstFocusable) {
-					e.preventDefault();
-					lastFocusable?.focus();
-				}
-			} else {
-				if (document.activeElement === lastFocusable) {
-					e.preventDefault();
-					firstFocusable?.focus();
-				}
-			}
-		};
+      if (e.shiftKey) {
+        if (document.activeElement === firstFocusable) {
+          e.preventDefault();
+          lastFocusable?.focus();
+        }
+      } else {
+        if (document.activeElement === lastFocusable) {
+          e.preventDefault();
+          firstFocusable?.focus();
+        }
+      }
+    };
 
-		element.addEventListener('keydown', handleTabKey);
-		firstFocusable?.focus();
+    element.addEventListener("keydown", handleTabKey);
+    firstFocusable?.focus();
 
-		return () => {
-			element.removeEventListener('keydown', handleTabKey);
-		};
-	}, [ref, isActive]);
+    return () => {
+      element.removeEventListener("keydown", handleTabKey);
+    };
+  }, [ref, isActive]);
 }
 ```
 
@@ -570,17 +590,17 @@ Return focus to the appropriate element after interactions:
 
 ```tsx
 function useRestoreFocus() {
-	const previousFocus = useRef<HTMLElement | null>(null);
+  const previousFocus = useRef<HTMLElement | null>(null);
 
-	const saveFocus = () => {
-		previousFocus.current = document.activeElement as HTMLElement;
-	};
+  const saveFocus = () => {
+    previousFocus.current = document.activeElement as HTMLElement;
+  };
 
-	const restoreFocus = () => {
-		previousFocus.current?.focus();
-	};
+  const restoreFocus = () => {
+    previousFocus.current?.focus();
+  };
 
-	return { saveFocus, restoreFocus };
+  return { saveFocus, restoreFocus };
 }
 ```
 
@@ -611,18 +631,23 @@ Announce dynamic content changes to screen readers:
 
 ```tsx
 function ProgressBar({ value, max = 100 }) {
-	return (
-		<div
-			role="progressbar"
-			aria-valuenow={value}
-			aria-valuemin={0}
-			aria-valuemax={max}
-			aria-label="Upload progress"
-		>
-			<div className="progress-fill" style={{ width: `${(value / max) * 100}%` }} />
-			<span className="sr-only">{Math.round((value / max) * 100)}% complete</span>
-		</div>
-	);
+  return (
+    <div
+      role="progressbar"
+      aria-valuenow={value}
+      aria-valuemin={0}
+      aria-valuemax={max}
+      aria-label="Upload progress"
+    >
+      <div
+        className="progress-fill"
+        style={{ width: `${(value / max) * 100}%` }}
+      />
+      <span className="sr-only">
+        {Math.round((value / max) * 100)}% complete
+      </span>
+    </div>
+  );
 }
 ```
 
@@ -635,20 +660,20 @@ Follow WCAG guidelines for color contrast:
 ```css
 /* Normal text (< 18pt or < 14pt bold) */
 .text {
-	color: #595959; /* 7:1 ratio against white */
-	background: white;
+  color: #595959; /* 7:1 ratio against white */
+  background: white;
 }
 
 /* Large text (≥ 18pt or ≥ 14pt bold) */
 .heading {
-	color: #767676; /* 4.5:1 ratio against white */
-	font-size: 1.5rem;
-	font-weight: bold;
+  color: #767676; /* 4.5:1 ratio against white */
+  font-size: 1.5rem;
+  font-weight: bold;
 }
 
 /* Non-text elements (icons, borders) */
 .icon {
-	color: #949494; /* 3:1 ratio against white */
+  color: #949494; /* 3:1 ratio against white */
 }
 ```
 
@@ -688,24 +713,24 @@ Ensure touch targets are large enough:
 ```css
 /* Minimum 44x44px for iOS, 48x48dp for Android */
 .button {
-	min-height: 44px;
-	min-width: 44px;
-	padding: 12px 16px;
+  min-height: 44px;
+  min-width: 44px;
+  padding: 12px 16px;
 }
 
 /* Add invisible touch area for small icons */
 .icon-button {
-	position: relative;
-	padding: 8px;
+  position: relative;
+  padding: 8px;
 }
 
 .icon-button::before {
-	content: '';
-	position: absolute;
-	top: -8px;
-	right: -8px;
-	bottom: -8px;
-	left: -8px;
+  content: "";
+  position: absolute;
+  top: -8px;
+  right: -8px;
+  bottom: -8px;
+  left: -8px;
 }
 ```
 
@@ -719,8 +744,8 @@ Allow users to zoom:
 
 <!-- ❌ Prevents zooming -->
 <meta
-	name="viewport"
-	content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no"
+  name="viewport"
+  content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no"
 />
 ```
 

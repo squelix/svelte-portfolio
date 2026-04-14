@@ -31,8 +31,8 @@ Expectations:
 - Versioning favors stability; breaking changes are rare and documented.
 
 <Callout>
-	The terms primitive and component are typically used interchangeably across the web, but they are
-	not the same.
+  The terms primitive and component are typically used interchangeably across
+  the web, but they are not the same.
 </Callout>
 
 ### 1.2 Component
@@ -90,14 +90,14 @@ Expectations.
 - Accepts data via props; never hides data behind fetches without a documented adapter.
 
 <AuthorNote
-	name="Rob Austin"
-	role="Founder of shadcnblocks.com"
-	githubUsername="JugglerX"
-	link="https://www.shadcnblocks.com/"
+  name="Rob Austin"
+  role="Founder of shadcnblocks.com"
+  githubUsername="JugglerX"
+  link="https://www.shadcnblocks.com/"
 >
-	Blocks are typically not reusable like a component. You don't import them, but they typically
-	import components and primitives. This makes them good candidates for a [Registry](/registry)
-	distribution method.
+  Blocks are typically not reusable like a component. You don't import them, but
+  they typically import components and primitives. This makes them good
+  candidates for a [Registry](/registry) distribution method.
 </AuthorNote>
 
 ### 1.5 Page
@@ -172,7 +172,7 @@ A function child used to delegate rendering while the parent supplies state/data
 
 ```tsx
 <ParentComponent data={data}>
-	{(item) => <ChildComponent key={item.id} {...item} />}
+  {(item) => <ChildComponent key={item.id} {...item} />}
 </ParentComponent>
 ```
 

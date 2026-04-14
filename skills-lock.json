@@ -1,0 +1,35 @@
+{
+	"version": 1,
+	"skills": {
+		"accessibility-compliance": {
+			"source": "wshobson/agents",
+			"sourceType": "github",
+			"computedHash": "36d3b046163c42251732b3127c042f6b8eb7d91fcbf7ef9ae79fde79e9c99369"
+		},
+		"building-components": {
+			"source": "vercel/components.build",
+			"sourceType": "github",
+			"computedHash": "20889af7cb9b3abca1e38824f7fffaa873eb0cc4d45187967b97bd85462cf934"
+		},
+		"svelte5-best-practices": {
+			"source": "ejirocodes/agent-skills",
+			"sourceType": "github",
+			"computedHash": "bfcbba3d355aede6f6be9720f195206d4dcaa7c152787ea00c06cb4a1ac44ba4"
+		},
+		"sveltekit-structure": {
+			"source": "spences10/svelte-skills-kit",
+			"sourceType": "github",
+			"computedHash": "a935fd51b32e4e37d23286c04748825a6a193ef74d9980385449aa4f80646f9d"
+		},
+		"vercel-cli": {
+			"source": "vercel/vercel",
+			"sourceType": "github",
+			"computedHash": "00a4868de90e83c00a950b04b8cc8ff217bbc6874371ff1d9b44b832a0d85011"
+		},
+		"web-design-guidelines": {
+			"source": "vercel-labs/agent-skills",
+			"sourceType": "github",
+			"computedHash": "f3bc47f890f42a44db1007ab390709ec368e4b8c089baee6b0007182236ac474"
+		}
+	}
+}

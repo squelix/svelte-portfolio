@@ -19,17 +19,17 @@ Uncontrolled state is when the component manages its own state internally. This 
 For example, here's a simple `Stepper` component that manages its own state internally:
 
 ```tsx title="stepper.tsx"
-import { useState } from 'react';
+import { useState } from "react";
 
 export const Stepper = () => {
-	const [value, setValue] = useState(0);
+  const [value, setValue] = useState(0);
 
-	return (
-		<div>
-			<p>{value}</p>
-			<button onClick={() => setValue(value + 1)}>Increment</button>
-		</div>
-	);
+  return (
+    <div>
+      <p>{value}</p>
+      <button onClick={() => setValue(value + 1)}>Increment</button>
+    </div>
+  );
 };
 ```
 
@@ -41,15 +41,15 @@ Let's rework the `Stepper` component to be controlled by the parent component:
 
 ```tsx title="stepper.tsx"
 type StepperProps = {
-	value: number;
-	setValue: (value: number) => void;
+  value: number;
+  setValue: (value: number) => void;
 };
 
 export const Stepper = ({ value, setValue }: StepperProps) => (
-	<div>
-		<p>{value}</p>
-		<button onClick={() => setValue(value + 1)}>Increment</button>
-	</div>
+  <div>
+    <p>{value}</p>
+    <button onClick={() => setValue(value + 1)}>Increment</button>
+  </div>
 );
 ```
 
@@ -70,26 +70,30 @@ This lightweight hook gives you the same state management patterns used internal
 The hook accepts three main parameters and returns a tuple with the current value and setter. Let's use it to merge the controlled and uncontrolled state of the `Stepper` component:
 
 ```tsx title="stepper.tsx"
-import { useControllableState } from '@radix-ui/react-use-controllable-state';
+import { useControllableState } from "@radix-ui/react-use-controllable-state";
 
 type StepperProps = {
-	value: number;
-	defaultValue: number;
-	onValueChange: (value: number) => void;
+  value: number;
+  defaultValue: number;
+  onValueChange: (value: number) => void;
 };
 
-export const Stepper = ({ value: controlledValue, defaultValue, onValueChange }: StepperProps) => {
-	const [value, setValue] = useControllableState({
-		prop: controlledValue, // The controlled value prop
-		defaultProp: defaultValue, // Default value for uncontrolled mode
-		onChange: onValueChange, // Called when value changes
-	});
+export const Stepper = ({
+  value: controlledValue,
+  defaultValue,
+  onValueChange,
+}: StepperProps) => {
+  const [value, setValue] = useControllableState({
+    prop: controlledValue, // The controlled value prop
+    defaultProp: defaultValue, // Default value for uncontrolled mode
+    onChange: onValueChange, // Called when value changes
+  });
 
-	return (
-		<div>
-			<p>{value}</p>
-			<button onClick={() => setValue(value + 1)}>Increment</button>
-		</div>
-	);
+  return (
+    <div>
+      <p>{value}</p>
+      <button onClick={() => setValue(value + 1)}>Increment</button>
+    </div>
+  );
 };
 ```
