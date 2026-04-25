@@ -10,48 +10,55 @@ const securityHeaders = {
 	'X-Frame-Options': 'DENY',
 	'X-DNS-Prefetch-Control': 'on',
 	'Referrer-Policy': 'strict-origin-when-cross-origin',
-	'Permissions-Policy': 'camera=(), microphone=(), geolocation=()',
+	'Permissions-Policy': 'camera=(), microphone=(), geolocation=()'
+};
+
+const cacheHeaders = {
 	'Cache-Control': 's-maxage=86400, stale-while-revalidate=86400',
 	'Vercel-CDN-Cache-Control': 's-maxage=86400, stale-while-revalidate=86400',
 	'CDN-Cache-Control': 's-maxage=86400, stale-while-revalidate=86400'
 };
 
+function applySecurityHeaders(response: Response): Response {
+	for (const [header, value] of Object.entries(securityHeaders)) {
+		response.headers.set(header, value);
+	}
+	return response;
+}
+
+function applyCacheHeaders(response: Response): Response {
+	for (const [header, value] of Object.entries(cacheHeaders)) {
+		response.headers.set(header, value);
+	}
+	return response;
+}
+
 export const handle: Handle = async ({ event, resolve }) => {
 	const { url, request } = event;
 	const { pathname } = url;
 
-	const response = await resolve(event);
-
-	for (const [header, value] of Object.entries(securityHeaders)) {
-		if (!response.headers.has(header)) {
-			response.headers.set(header, value);
-		}
-	}
-
 	if (['robots.txt', 'sitemap.xml'].some((path) => pathname.includes(path))) {
-		return response;
+		return applyCacheHeaders(applySecurityHeaders(await resolve(event)));
 	}
 
 	const lang = `${pathname.match(/[^/]+?(?=\/|$)/) || ''}`;
 	const route = pathname.replace(new RegExp(`^/${lang}`), '');
 
-	// If this request is a route request
 	if (AcceptedLanguages.includes(lang as unknown as LangEnum)) {
-		// Get defined locales
 		const supportedLocales = locales.get();
-
-		// Get locale from `pathname`.
 		const locale: string = supportedLocales.find((l) => pathname.startsWith(`/${l}`))!;
 
-		return resolve(event, {
+		const response = await resolve(event, {
 			transformPageChunk: ({ html }) => html.replace('%lang%', locale)
 		});
+		return applyCacheHeaders(applySecurityHeaders(response));
 	}
 
-	return new Response(undefined, {
+	const redirect = new Response(undefined, {
 		status: 301,
 		headers: {
 			Location: `/${getLanguage(request.headers.get('accept-language'))}${route}`
 		}
 	});
+	return applySecurityHeaders(redirect);
 };
