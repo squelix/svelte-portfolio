@@ -41,7 +41,7 @@ const config = {
 		csp: {
 			directives: {
 				'default-src': ['self'],
-				'script-src': isDev ? ['self', 'unsafe-inline', 'unsafe-eval'] : ['self', 'unsafe-inline'],
+				'script-src': isDev ? ['self', 'unsafe-inline', 'unsafe-eval'] : ['self'],
 				'style-src': ['self', 'unsafe-inline'],
 				'img-src': ['self', 'blob:', 'data:', 'images.ctfassets.net', 'res.cloudinary.com'],
 				'font-src': ['self'],
