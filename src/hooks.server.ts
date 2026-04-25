@@ -4,11 +4,29 @@ import { locales } from '$translations';
 
 import type { Handle } from '@sveltejs/kit';
 
+const securityHeaders = {
+	'Strict-Transport-Security': 'max-age=31536000; includeSubDomains; preload',
+	'X-Content-Type-Options': 'nosniff',
+	'X-Frame-Options': 'DENY',
+	'X-DNS-Prefetch-Control': 'on',
+	'Referrer-Policy': 'strict-origin-when-cross-origin',
+	'Permissions-Policy': 'camera=(), microphone=(), geolocation=()',
+	'Cache-Control': 's-maxage=86400, stale-while-revalidate=86400',
+	'Vercel-CDN-Cache-Control': 's-maxage=86400, stale-while-revalidate=86400',
+	'CDN-Cache-Control': 's-maxage=86400, stale-while-revalidate=86400'
+};
+
 export const handle: Handle = async ({ event, resolve }) => {
 	const { url, request } = event;
 	const { pathname } = url;
 
 	const response = await resolve(event);
+
+	for (const [header, value] of Object.entries(securityHeaders)) {
+		if (!response.headers.has(header)) {
+			response.headers.set(header, value);
+		}
+	}
 
 	if (['robots.txt', 'sitemap.xml'].some((path) => pathname.includes(path))) {
 		return response;
@@ -25,21 +43,9 @@ export const handle: Handle = async ({ event, resolve }) => {
 		// Get locale from `pathname`.
 		const locale: string = supportedLocales.find((l) => pathname.startsWith(`/${l}`))!;
 
-		try {
-			// Add html `lang` attribute
-			const body = await response.text();
-			const htmlResponse = new Response(
-				body.replace(/<html.*>/, `<html lang="${locale}">`),
-				response
-			);
-			htmlResponse.headers.set('X-Content-Type-Options', 'nosniff');
-			htmlResponse.headers.set('X-Frame-Options', 'DENY');
-			htmlResponse.headers.set('Referrer-Policy', 'strict-origin-when-cross-origin');
-			htmlResponse.headers.set('Permissions-Policy', 'camera=(), microphone=(), geolocation=()');
-			return htmlResponse;
-		} catch {
-			return response;
-		}
+		return resolve(event, {
+			transformPageChunk: ({ html }) => html.replace('%lang%', locale)
+		});
 	}
 
 	return new Response(undefined, {

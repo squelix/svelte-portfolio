@@ -6,6 +6,8 @@ import { fileURLToPath } from 'url';
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
 
+const isDev = process.env.NODE_ENV === 'development';
+
 /** @type {import('@sveltejs/kit').Config} */
 const config = {
 	preprocess: vitePreprocess({ script: true, style: true }),
@@ -18,7 +20,7 @@ const config = {
 			$icons: path.join(__dirname, './src/icons')
 		},
 		adapter: adapter({
-			runtime: 'nodejs22.x',
+			runtime: 'nodejs24.x',
 			regions: ['cdg1'],
 			images: {
 				sizes: [32, 48, 64, 96, 128, 256, 384],
@@ -27,35 +29,29 @@ const config = {
 				remotePatterns: [
 					{
 						protocol: 'https',
-						hostname: 'images.unsplash.com'
-					},
-					{
-						protocol: 'https',
 						hostname: 'images.ctfassets.net'
 					},
 					{
 						protocol: 'https',
-						hostname: 'picsum.photos'
-					},
-					{
-						protocol: 'http',
-						hostname: '127.0.0.1'
-					},
-					{
-						protocol: 'http',
-						hostname: 'localhost'
-					},
-					{
-						protocol: 'https',
 						hostname: 'res.cloudinary.com'
-					},
-					{
-						protocol: 'https',
-						hostname: 'storage.googleapis.com'
 					}
 				]
 			}
-		})
+		}),
+		csp: {
+			directives: {
+				'default-src': ['self'],
+				'script-src': isDev ? ['self', 'unsafe-inline', 'unsafe-eval'] : ['self', 'unsafe-inline'],
+				'style-src': ['self', 'unsafe-inline'],
+				'img-src': ['self', 'blob:', 'data:', 'images.ctfassets.net', 'res.cloudinary.com'],
+				'font-src': ['self'],
+				'object-src': ['self'],
+				'base-uri': ['self'],
+				'form-action': ['self'],
+				'frame-ancestors': ['none'],
+				'upgrade-insecure-requests': true
+			}
+		}
 	}
 };
 

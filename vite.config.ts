@@ -4,10 +4,7 @@ import type { UserConfig } from 'vite';
 
 const config: UserConfig = {
 	plugins: [sveltekit()],
-	envPrefix: ['PUBLIC', 'VERCEL'],
-	build: {
-		sourcemap: true
-	}
+	envPrefix: ['PUBLIC', 'VERCEL']
 };
 
 export default config;
