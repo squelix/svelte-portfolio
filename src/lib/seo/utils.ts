@@ -31,7 +31,13 @@ export const getRobotsTxtString = (
 	_routesEnum: typeof RoutesEnum,
 	_routes: Partial<Record<RoutesEnum, string>>,
 	url: URL
-): string => ['User-agent: *', 'Allow: /', `Sitemap: ${url.origin}/sitemap.xml`].join('\n');
+): string =>
+	[
+		'User-agent: *',
+		'Allow: /',
+		`Sitemap: ${url.origin}/sitemap.xml`,
+		'Content-Signal: ai-train=no, search=yes, ai-input=no'
+	].join('\n');
 
 export const getSitemapXmlString = (
 	langEnum: typeof LangEnum,
