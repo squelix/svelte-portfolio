@@ -3,7 +3,6 @@ import { createClient, type ContentfulClientApi } from 'contentful';
 import { getFetchAdapter } from './axios-fetch-adapter';
 
 class ContentfulClient {
-	private static instance?: ContentfulClient;
 	readonly client: ContentfulClientApi<undefined>;
 
 	constructor(fetch: typeof globalThis.fetch) {
@@ -19,14 +18,7 @@ class ContentfulClient {
 		});
 	}
 
-	private static getInstance = (fetch: typeof globalThis.fetch) => {
-		if (!this.instance) {
-			this.instance = new ContentfulClient(fetch);
-		}
-		return this.instance;
-	};
-
-	static getClient = (fetch: typeof globalThis.fetch) => this.getInstance(fetch).client;
+	static getClient = (fetch: typeof globalThis.fetch) => new ContentfulClient(fetch).client;
 }
 
 export default ContentfulClient;
