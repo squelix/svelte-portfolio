@@ -58,16 +58,7 @@ interface AriaAttributes {
 	'aria-controls'?: string | undefined | null;
 	/** Indicates the element that represents the current item within a container or set of related elements. */
 	'aria-current'?:
-		| boolean
-		| 'false'
-		| 'true'
-		| 'page'
-		| 'step'
-		| 'location'
-		| 'date'
-		| 'time'
-		| undefined
-		| null;
+		boolean | 'false' | 'true' | 'page' | 'step' | 'location' | 'date' | 'time' | undefined | null;
 	/**
 	 * Identifies the element (or elements) that describes the object.
 	 * @see aria-labelledby
@@ -107,16 +98,7 @@ interface AriaAttributes {
 	'aria-grabbed'?: boolean | 'false' | 'true' | undefined | null;
 	/** Indicates the availability and type of interactive popup element, such as menu or dialog, that can be triggered by an element. */
 	'aria-haspopup'?:
-		| boolean
-		| 'false'
-		| 'true'
-		| 'menu'
-		| 'listbox'
-		| 'tree'
-		| 'grid'
-		| 'dialog'
-		| undefined
-		| null;
+		boolean | 'false' | 'true' | 'menu' | 'listbox' | 'tree' | 'grid' | 'dialog' | undefined | null;
 	/**
 	 * Indicates whether the element is exposed to an accessibility API.
 	 * @see aria-disabled.
@@ -447,15 +429,7 @@ interface HTMLAttributes<T extends EventTarget> extends AriaAttributes, DOMAttri
 	draggable?: boolean | 'true' | 'false' | undefined | null;
 	enctype?: string | undefined | null;
 	enterkeyhint?:
-		| 'enter'
-		| 'done'
-		| 'go'
-		| 'next'
-		| 'previous'
-		| 'search'
-		| 'send'
-		| undefined
-		| null;
+		'enter' | 'done' | 'go' | 'next' | 'previous' | 'search' | 'send' | undefined | null;
 	for?: string | undefined | null;
 	form?: string | undefined | null;
 	formaction?: string | undefined | null;
