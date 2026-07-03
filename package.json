@@ -31,7 +31,7 @@
 	"devDependencies": {
 		"@eslint/js": "^10.0.1",
 		"@sveltejs/adapter-vercel": "^6.3.4",
-		"@sveltejs/kit": "^2.69.0",
+		"@sveltejs/kit": "^2.69.1",
 		"@sveltejs/vite-plugin-svelte": "^7.1.2",
 		"@sveltekit-i18n/base": "^1.3.8",
 		"@sveltekit-i18n/parser-default": "^1.1.1",
