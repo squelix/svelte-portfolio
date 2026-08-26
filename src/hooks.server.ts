@@ -1,8 +1,17 @@
+import { env } from '$env/dynamic/private';
 import { getLanguage } from '$lib/lang/utils';
 import { AcceptedLanguages, type LangEnum } from '$models/langs.enum';
 import { locales } from '$translations';
 
 import type { Handle } from '@sveltejs/kit';
+
+const UMAMI_SCRIPT =
+	'<script defer src="https://cloud.umami.is/script.js" data-website-id="3205f35c-3290-47ae-9a5b-0e5ede38a303"></script>';
+
+function getUmamiScript(): string {
+	const vercelEnv = env.VERCEL_ENV ?? env.VITE_VERCEL_ENV;
+	return vercelEnv === 'production' ? UMAMI_SCRIPT : '';
+}
 
 const securityHeaders = {
 	'Strict-Transport-Security': 'max-age=31536000; includeSubDomains; preload',
@@ -49,7 +58,8 @@ export const handle: Handle = async ({ event, resolve }) => {
 		const locale: string = supportedLocales.find((l) => pathname.startsWith(`/${l}`))!;
 
 		const response = await resolve(event, {
-			transformPageChunk: ({ html }) => html.replace('%lang%', locale)
+			transformPageChunk: ({ html }) =>
+				html.replace('%lang%', locale).replace('%umami%', getUmamiScript())
 		});
 		return applyCacheHeaders(applySecurityHeaders(response));
 	}

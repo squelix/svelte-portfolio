@@ -41,7 +41,10 @@ const config = {
 		csp: {
 			directives: {
 				'default-src': ['self'],
-				'script-src': isDev ? ['self', 'unsafe-inline', 'unsafe-eval'] : ['self'],
+				'script-src': isDev
+					? ['self', 'unsafe-inline', 'unsafe-eval', 'cloud.umami.is']
+					: ['self', 'cloud.umami.is'],
+				'connect-src': ['self', 'cloud.umami.is', 'gateway.umami.is'],
 				'style-src': ['self', 'unsafe-inline'],
 				'img-src': ['self', 'blob:', 'data:', 'images.ctfassets.net', 'res.cloudinary.com'],
 				'font-src': ['self'],
