@@ -21,13 +21,11 @@ export const config: Config = {
 		{
 			locale: LangEnum.fr_FR,
 			key: 'error',
-			routes: ['error'],
 			loader: async () => (await import('./fr/error.json')).default
 		},
 		{
 			locale: LangEnum.en_GB,
 			key: 'error',
-			routes: ['error'],
 			loader: async () => (await import('./en/error.json')).default
 		},
 		{
