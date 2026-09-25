@@ -3,9 +3,11 @@
 	import Markdown from '$icons/markdown.svg?raw';
 	import { getRoute, isRouteActive } from '$lib/routing';
 	import Icon from '$lib/SvgIcon.svelte';
-	import { locale, t } from '$translations';
+	import { getI18n } from '$translations';
 
 	import type { PageNavItemInterface } from '$models/page-nav-item.interface';
+
+	const i18n = getI18n();
 
 	type Props = {
 		item: PageNavItemInterface;
@@ -23,13 +25,13 @@
 			class="page-nav-sub-item-item__link"
 			class:page-nav-sub-item-item__link--active={isRouteActive(page.url.pathname, {
 				route: item.link,
-				lang: $locale
+				lang: i18n.locale!
 			})}
-			href={getRoute($locale, item.link)}
+			href={getRoute(i18n.locale!, item.link)}
 			aria-label={item.ariaLabel
 				? item.ariaLabel.params
-					? $t(item.ariaLabel.key, item.ariaLabel.params)
-					: $t(item.ariaLabel.key)
+					? i18n.t(item.ariaLabel.key, item.ariaLabel.params)
+					: i18n.t(item.ariaLabel.key)
 				: undefined}
 			aria-hidden={ariaHidden}
 			tabindex={ariaHidden ? -1 : undefined}
@@ -38,7 +40,7 @@
 				<Icon data={Markdown} width="100%" />
 			</span>
 			{#if item.labelKey && !item.label}
-				{$t(item.labelKey)}
+				{i18n.t(item.labelKey)}
 			{/if}
 			{#if item.label && !item.labelKey}
 				{item.label}
@@ -50,8 +52,8 @@
 			href={item.href}
 			aria-label={item.ariaLabel?.key
 				? item.ariaLabel.params
-					? $t(item.ariaLabel.key, item.ariaLabel.params)
-					: $t(item.ariaLabel.key)
+					? i18n.t(item.ariaLabel.key, item.ariaLabel.params)
+					: i18n.t(item.ariaLabel.key)
 				: undefined}
 			aria-hidden={ariaHidden}
 			tabindex={ariaHidden ? -1 : undefined}
@@ -60,7 +62,7 @@
 				<Icon data={Markdown} width="100%" />
 			</span>
 			{#if item.labelKey && !item.label}
-				{$t(item.labelKey)}
+				{i18n.t(item.labelKey)}
 			{/if}
 			{#if item.label && !item.labelKey}
 				{item.label}
@@ -69,7 +71,7 @@
 	{:else}
 		<p>
 			{#if item.labelKey && !item.label}
-				{$t(item.labelKey)}
+				{i18n.t(item.labelKey)}
 			{/if}
 			{#if item.label && !item.labelKey}
 				{item.label}

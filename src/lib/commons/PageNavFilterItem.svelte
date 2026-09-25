@@ -4,9 +4,11 @@
 	import Icon from '$lib/SvgIcon.svelte';
 	import { ENTER_KEY } from '$lib/utils/keys';
 	import { navItemOpened, navItemSelected, subNavItemOpened } from '$stores/nav';
-	import { t } from '$translations';
+	import { getI18n } from '$translations';
 
 	import type { PageNavFilterItemInterface } from '$models/page-nav-filter-item.interface';
+
+	const i18n = getI18n();
 
 	type Props = {
 		item: PageNavFilterItemInterface;
@@ -72,7 +74,7 @@
 		</span>
 		<span class="page-nav-filter-item__button__text">
 			{#if item.labelKey && !item.label}
-				{$t(item.labelKey)}
+				{i18n.t(item.labelKey)}
 			{/if}
 			{#if item.label && !item.labelKey}
 				{item.label}

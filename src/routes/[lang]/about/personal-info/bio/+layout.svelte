@@ -1,7 +1,9 @@
 <script lang="ts">
 	import LayoutPage from '$lib/commons/LayoutPage.svelte';
 	import { aboutTitleItem, titleItem } from '$stores/title';
-	import { t } from '$translations';
+	import { getI18n } from '$translations';
+
+	const i18n = getI18n();
 
 	type Props = {
 		children?: import('svelte').Snippet;
@@ -13,7 +15,7 @@
 <LayoutPage>
 	<h2 class="display-only-mobile title">
 		{#if $aboutTitleItem?.labelKey && !$aboutTitleItem?.label}
-			//&nbsp;{$t($aboutTitleItem.labelKey)}
+			//&nbsp;{i18n.t($aboutTitleItem.labelKey)}
 		{/if}
 		{#if !$aboutTitleItem?.labelKey && $aboutTitleItem?.label}
 			//&nbsp;{$titleItem.label}
@@ -21,7 +23,7 @@
 
 		<span class="title--gray">
 			{#if $titleItem?.labelKey && !$titleItem?.label}
-				/&nbsp;{$t($titleItem.labelKey)}
+				/&nbsp;{i18n.t($titleItem.labelKey)}
 			{/if}
 			{#if !$titleItem?.labelKey && $titleItem?.label}
 				/&nbsp;{$titleItem.label}

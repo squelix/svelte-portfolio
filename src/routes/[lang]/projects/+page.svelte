@@ -9,9 +9,11 @@
 	import ProjectsList from '$lib/commons/ProjectsList.svelte';
 	import { getRoute, RoutesEnum } from '$lib/routing';
 	import { LangEnum } from '$models/langs.enum';
-	import { locale, t } from '$translations';
+	import { getI18n } from '$translations';
 
 	import type { PageData } from './$types';
+
+	const i18n = getI18n();
 
 	type Props = {
 		data: PageData;
@@ -19,7 +21,7 @@
 
 	let { data }: Props = $props();
 
-	const textMobile = `_${$t('projects.title') as string}`;
+	const textMobile = `_${i18n.t('projects.title') as string}`;
 
 	const updateSelectedFilter = async (filterId: string) => {
 		const url = new URL(page.url);
@@ -46,13 +48,13 @@
 <!-- eslint-disable svelte/no-navigation-without-resolve -->
 
 <svelte:head>
-	<title>{$t('projects.page.title')}</title>
-	<meta name="description" content={$t('projects.page.description')} />
-	<meta property="og:title" content={$t('projects.page.title')} />
-	<meta property="og:description" content={$t('projects.page.description')} />
-	<meta name="twitter:title" content={$t('projects.page.title')} />
-	<meta name="twitter:description" content={$t('projects.page.description')} />
-	<link rel="canonical" href="{page.url.origin}{getRoute($locale, RoutesEnum.Projects)}" />
+	<title>{i18n.t('projects.page.title')}</title>
+	<meta name="description" content={i18n.t('projects.page.description')} />
+	<meta property="og:title" content={i18n.t('projects.page.title')} />
+	<meta property="og:description" content={i18n.t('projects.page.description')} />
+	<meta name="twitter:title" content={i18n.t('projects.page.title')} />
+	<meta name="twitter:description" content={i18n.t('projects.page.description')} />
+	<link rel="canonical" href="{page.url.origin}{getRoute(i18n.locale!, RoutesEnum.Projects)}" />
 	<link
 		rel="alternate"
 		hreflang="fr"
@@ -73,20 +75,20 @@
 {#if data.projectsTechnosFilter && (data.projectsTechnosFilter ?? []).length > 0}
 	<PageTitle textDesktop={data.projectsTechnosFilter.join('; ')} {textMobile} />
 {:else}
-	<PageTitle textDesktop={$t('projects.title')} {textMobile} />
+	<PageTitle textDesktop={i18n.t('projects.title')} {textMobile} />
 {/if}
 
 <PageNavFilter
 	items={data.projectsTechnosListAllFilters}
 	selectedItems={data.projectsTechnosFilter ?? []}
-	ariaLabel={$t('projects.aria.nav')}
+	ariaLabel={i18n.t('projects.aria.nav')}
 	{updateSelectedFilter}
 />
 
 <BorderBottom />
 
 <h2>
-	//&nbsp;{$t('projects.title')}
+	//&nbsp;{i18n.t('projects.title')}
 	{#if data.projectsTechnosFilter && (data.projectsTechnosFilter ?? []).length > 0}
 		<span>/&nbsp;{data.projectsTechnosFilter.join('; ')}</span>
 	{/if}

@@ -1,8 +1,10 @@
 <script lang="ts">
 	import Image from '$lib/commons/Image.svelte';
-	import { t } from '$translations';
+	import { getI18n } from '$translations';
 
 	import type { School } from '$models/school';
+
+	const i18n = getI18n();
 
 	type Props = {
 		item: School;
@@ -24,7 +26,7 @@
 				href={item.pictureUrl}
 				target="_blank"
 				rel="noreferrer noopener"
-				aria-label={`${$t('schools.aria.pictureLink')}${item.schoolName}`}
+				aria-label={`${i18n.t('schools.aria.pictureLink')}${item.schoolName}`}
 			>
 				<Image
 					src={item.picture}

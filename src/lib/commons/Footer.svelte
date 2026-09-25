@@ -6,9 +6,11 @@
 	import Malt from '$icons/malt.svg?raw';
 	import { getSocialGithub, getSocialLinkedIn, getSocialMalt } from '$lib/api/profile/utils';
 	import Icon from '$lib/SvgIcon.svelte';
-	import { t } from '$translations';
+	import { getI18n } from '$translations';
 
 	import type { Profile } from '$models/profile';
+
+	const i18n = getI18n();
 
 	type Props = {
 		profile: Profile;
@@ -25,7 +27,7 @@
 
 <footer class="footer">
 	<!-- eslint-disable-next-line svelte/no-at-html-tags -->
-	<p class="footer__text">{@html $t('common.footer')}</p>
+	<p class="footer__text">{@html i18n.t('common.footer')}</p>
 
 	<ul class="footer__socials">
 		{#if malt?.url}
@@ -35,7 +37,7 @@
 					href={malt?.url}
 					target="_blank"
 					rel="noreferrer noopener"
-					aria-label={$t('common.aria.maltLabel')}
+					aria-label={i18n.t('common.aria.maltLabel')}
 				>
 					<Icon data={Malt} width="24px" />
 				</a>
@@ -48,7 +50,7 @@
 					href={linkedIn?.url}
 					target="_blank"
 					rel="noreferrer noopener"
-					aria-label={$t('common.aria.linkedinLabel')}
+					aria-label={i18n.t('common.aria.linkedinLabel')}
 				>
 					<Icon data={Linkedin} width="24px" />
 				</a>
@@ -57,13 +59,13 @@
 
 		<li class="footer__socials__item footer__credit">
 			<span class="footer__socials__item__link footer__credit__item">
-				{$t('common.credits')}
+				{i18n.t('common.credits')}
 				<a
 					class="footer__credit__item__link"
 					href="https://www.behance.net/darelova"
 					target="_blank"
 					rel="noreferrer noopener"
-					aria-label={$t('common.aria.creditLabelBehance')}
+					aria-label={i18n.t('common.aria.creditLabelBehance')}
 				>
 					<Icon data={Behance} width="24px" />
 				</a>
@@ -72,7 +74,7 @@
 					href="https://dribbble.com/YankaD"
 					target="_blank"
 					rel="noreferrer noopener"
-					aria-label={$t('common.aria.creditLabelDribble')}
+					aria-label={i18n.t('common.aria.creditLabelDribble')}
 				>
 					<Icon data={Dribbble} width="24px" />
 				</a>
@@ -86,7 +88,7 @@
 					href={github?.url}
 					target="_blank"
 					rel="noreferrer noopener"
-					aria-label={$t('common.aria.githubLabel')}
+					aria-label={i18n.t('common.aria.githubLabel')}
 				>
 					<span class="footer__socials__item__link__text">@squelix</span>
 					<Icon data={Github} width="24px" />

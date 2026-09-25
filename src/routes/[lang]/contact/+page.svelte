@@ -12,11 +12,13 @@
 	import { validateEmail } from '$lib/validators';
 	import { LangEnum } from '$models/langs.enum';
 	import { nav } from '$stores/nav';
-	import { locale, t } from '$translations';
+	import { getI18n } from '$translations';
 	import { sineInOut } from 'svelte/easing';
 	import { fade } from 'svelte/transition';
 
 	import type { SubmitFunction } from '@sveltejs/kit';
+
+	const i18n = getI18n();
 
 	const transitionMs = 175;
 
@@ -44,13 +46,13 @@
 			finalMessage.length === 0
 		) {
 			cancel();
-			errorMessage = $t('contact.form.errors.fields') as string;
+			errorMessage = i18n.t('contact.form.errors.fields') as string;
 			return;
 		}
 
 		if (!validateEmail(finalEmail)) {
 			cancel();
-			errorMessage = $t('contact.form.errors.email') as string;
+			errorMessage = i18n.t('contact.form.errors.email') as string;
 			return;
 		}
 
@@ -98,13 +100,13 @@
 </script>
 
 <svelte:head>
-	<title>{$t('contact.page.title')}</title>
-	<meta name="description" content={$t('contact.page.description')} />
-	<meta property="og:title" content={$t('contact.page.title')} />
-	<meta property="og:description" content={$t('contact.page.description')} />
-	<meta name="twitter:title" content={$t('contact.page.title')} />
-	<meta name="twitter:description" content={$t('contact.page.description')} />
-	<link rel="canonical" href="{page.url.origin}{getRoute($locale, RoutesEnum.Contact)}" />
+	<title>{i18n.t('contact.page.title')}</title>
+	<meta name="description" content={i18n.t('contact.page.description')} />
+	<meta property="og:title" content={i18n.t('contact.page.title')} />
+	<meta property="og:description" content={i18n.t('contact.page.description')} />
+	<meta name="twitter:title" content={i18n.t('contact.page.title')} />
+	<meta name="twitter:description" content={i18n.t('contact.page.description')} />
+	<link rel="canonical" href="{page.url.origin}{getRoute(i18n.locale!, RoutesEnum.Contact)}" />
 	<link
 		rel="alternate"
 		hreflang="fr"
@@ -122,18 +124,18 @@
 	/>
 </svelte:head>
 
-<PageTitle textDesktop={$t('contact.nav.0')} textMobile={$t('contact.title')} />
+<PageTitle textDesktop={i18n.t('contact.nav.0')} textMobile={i18n.t('contact.title')} />
 
 <BorderBottom />
 
-<PageNav ariaLabel={$t('contact.aria.nav')} items={$nav} />
+<PageNav ariaLabel={i18n.t('contact.aria.nav')} items={$nav} />
 
 {#if showConfirmMessage}
 	<section class="confirm" transition:fade={{ duration: transitionMs, easing: sineInOut }}>
-		<p class="confirm__thank-you">{$t('contact.confirm.thankYou')}</p>
-		<p class="confirm__message">{$t('contact.confirm.message')}</p>
+		<p class="confirm__thank-you">{i18n.t('contact.confirm.thankYou')}</p>
+		<p class="confirm__message">{i18n.t('contact.confirm.message')}</p>
 		<Button type="button" class="confirm__button" onclick={hideConfirmMessage} onkeydown={keydown}
-			>{$t('contact.confirm.button')}</Button
+			>{i18n.t('contact.confirm.button')}</Button
 		>
 	</section>
 {/if}
@@ -145,7 +147,7 @@
 		use:enhance={submitEnhancer}
 	>
 		<Input
-			label={`_${$t('contact.form.name')}`}
+			label={`_${i18n.t('contact.form.name')}`}
 			disabled={sending}
 			autofocus
 			bind:value={name}
@@ -153,14 +155,14 @@
 			name="name"
 		/>
 		<Input
-			label={`_${$t('contact.form.email')}`}
+			label={`_${i18n.t('contact.form.email')}`}
 			disabled={sending}
 			bind:value={email}
 			oninput={clearErrorMessage}
 			name="email"
 		/>
 		<Textarea
-			label={`_${$t('contact.form.message')}`}
+			label={`_${i18n.t('contact.form.message')}`}
 			rows={6}
 			disabled={sending}
 			bind:value={message}
@@ -175,7 +177,7 @@
 		{/if}
 
 		<Button type="submit" disabled={sending} isLoading={sending}>
-			{$t('contact.form.submit')}
+			{i18n.t('contact.form.submit')}
 		</Button>
 	</form>
 {/if}

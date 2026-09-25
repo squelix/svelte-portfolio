@@ -5,9 +5,11 @@
 	import { getRoute, RoutesEnum } from '$lib/routing';
 	import { buildJsonLdScript, buildPersonJsonLd } from '$lib/seo/structured-data';
 	import { LangEnum } from '$models/langs.enum';
-	import { locale, t } from '$translations';
+	import { getI18n } from '$translations';
 
 	import type { PageData } from './$types';
+
+	const i18n = getI18n();
 
 	type Props = {
 		data: PageData;
@@ -22,13 +24,13 @@
 <!-- eslint-disable svelte/no-navigation-without-resolve -->
 
 <svelte:head>
-	<title>{$t('home.page.title')}</title>
-	<meta name="description" content={$t('home.page.description')} />
-	<meta property="og:title" content={$t('home.page.title')} />
-	<meta property="og:description" content={$t('home.page.description')} />
-	<meta name="twitter:title" content={$t('home.page.title')} />
-	<meta name="twitter:description" content={$t('home.page.description')} />
-	<link rel="canonical" href="{page.url.origin}{getRoute($locale, RoutesEnum.Home)}" />
+	<title>{i18n.t('home.page.title')}</title>
+	<meta name="description" content={i18n.t('home.page.description')} />
+	<meta property="og:title" content={i18n.t('home.page.title')} />
+	<meta property="og:description" content={i18n.t('home.page.description')} />
+	<meta name="twitter:title" content={i18n.t('home.page.title')} />
+	<meta name="twitter:description" content={i18n.t('home.page.description')} />
+	<link rel="canonical" href="{page.url.origin}{getRoute(i18n.locale!, RoutesEnum.Home)}" />
 	<link
 		rel="alternate"
 		hreflang="fr"
@@ -51,13 +53,13 @@
 <div class="page">
 	<div class="page__left">
 		<h1 class="title">
-			<span class="title__first">{$t('home.title.first')}</span>
+			<span class="title__first">{i18n.t('home.title.first')}</span>
 			<span class="title__name">{data.profile.name}</span>
 			<span class="title__job">>&nbsp;{data.profile.job}</span>
 		</h1>
 
 		<!-- eslint-disable-next-line svelte/no-at-html-tags -->
-		<p class="github-text">//&nbsp;{@html $t('home.githubText')}</p>
+		<p class="github-text">//&nbsp;{@html i18n.t('home.githubText')}</p>
 
 		{#if github?.url}
 			<p class="github-link">

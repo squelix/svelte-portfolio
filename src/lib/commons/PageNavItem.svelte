@@ -5,9 +5,11 @@
 	import Icon from '$lib/SvgIcon.svelte';
 	import { ENTER_KEY } from '$lib/utils/keys';
 	import { navItemOpened, navItemSelected, subNavItemOpened } from '$stores/nav';
-	import { locale, t } from '$translations';
+	import { getI18n } from '$translations';
 
 	import type { PageNavItemInterface } from '$models/page-nav-item.interface';
+
+	const i18n = getI18n();
 
 	type Props = {
 		item: PageNavItemInterface;
@@ -60,7 +62,7 @@
 			</span>
 			<span class="page-nav-item__button__text">
 				{#if item.labelKey && !item.label}
-					{$t(item.labelKey)}
+					{i18n.t(item.labelKey)}
 				{/if}
 				{#if item.label && !item.labelKey}
 					{item.label}
@@ -78,14 +80,14 @@
 			href={item.href}
 			aria-label={item.ariaLabel
 				? item.ariaLabel.params
-					? $t(item.ariaLabel.key, item.ariaLabel.params)
-					: $t(item.ariaLabel.key)
+					? i18n.t(item.ariaLabel.key, item.ariaLabel.params)
+					: i18n.t(item.ariaLabel.key)
 				: undefined}
 			aria-hidden={$navItemOpened !== item.id}
 			tabindex={$navItemOpened !== item.id ? -1 : undefined}
 		>
 			{#if item.labelKey && !item.label}
-				{$t(item.labelKey)}
+				{i18n.t(item.labelKey)}
 			{/if}
 			{#if item.label && !item.labelKey}
 				{item.label}
@@ -94,17 +96,17 @@
 	{:else if item.link}
 		<a
 			class="page-nav-item__text"
-			href={getRoute($locale, item.link)}
+			href={getRoute(i18n.locale!, item.link)}
 			aria-label={item.ariaLabel
 				? item.ariaLabel.params
-					? $t(item.ariaLabel.key, item.ariaLabel.params)
-					: $t(item.ariaLabel.key)
+					? i18n.t(item.ariaLabel.key, item.ariaLabel.params)
+					: i18n.t(item.ariaLabel.key)
 				: undefined}
 			aria-hidden={$navItemOpened !== item.id}
 			tabindex={$navItemOpened !== item.id ? -1 : undefined}
 		>
 			{#if item.labelKey && !item.label}
-				{$t(item.labelKey)}
+				{i18n.t(item.labelKey)}
 			{/if}
 			{#if item.label && !item.labelKey}
 				{item.label}

@@ -2,7 +2,9 @@
 	import { page } from '$app/state';
 	import { isBaseRouteActive } from '$lib/routing';
 	import { ENTER_KEY } from '$lib/utils/keys';
-	import { locale } from '$translations';
+	import { getI18n } from '$translations';
+
+	const i18n = getI18n();
 
 	type Props = {
 		label: string;
@@ -27,11 +29,11 @@
 <li class="item" class:item--last={last} class:item--before-last={beforeLast}>
 	<a
 		class="item__link"
-		href={`/${$locale}${route ?? ''}`}
+		href={`/${i18n.locale}${route ?? ''}`}
 		onclick={closeMenu}
 		onkeydown={keydown}
 		class:item__link--selected={isBaseRouteActive(page.url.pathname, {
-			lang: $locale,
+			lang: i18n.locale!,
 			route: link
 		})}>{label}</a
 	>

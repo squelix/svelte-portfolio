@@ -2,9 +2,11 @@
 	import Checkbox from '$lib/commons/Checkbox.svelte';
 	import Icon from '$lib/SvgIcon.svelte';
 	import { technosIcons } from '$lib/technos-icons';
-	import { t } from '$translations';
+	import { getI18n } from '$translations';
 
 	import type { PageNavFilterItemInterface } from '$models/page-nav-filter-item.interface';
+
+	const i18n = getI18n();
 
 	type Props = {
 		item: PageNavFilterItemInterface;
@@ -23,7 +25,7 @@
 			</span>
 			<span class="checkbox__text">
 				{#if item.labelKey && !item.label}
-					{$t(item.labelKey)}
+					{i18n.t(item.labelKey)}
 				{/if}
 				{#if item.label && !item.labelKey}
 					{item.label}

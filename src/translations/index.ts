@@ -1,13 +1,12 @@
 import { Routes, RoutesEnum } from '$lib/routing';
 import { LangEnum } from '$models/langs.enum';
-import i18n from '@sveltekit-i18n/base';
-import parser from '@sveltekit-i18n/parser-default';
+import { createContext } from 'svelte';
+import { I18n } from 'sveltekit-i18n';
 
-import type { Config } from '@sveltekit-i18n/parser-default';
+import type { Config } from 'sveltekit-i18n';
 
 export const config: Config = {
 	fallbackLocale: LangEnum.en_GB,
-	parser: parser(),
 	loaders: [
 		{
 			locale: LangEnum.fr_FR,
@@ -218,6 +217,8 @@ export const config: Config = {
 
 export const defaultLocale = LangEnum.fr_FR;
 
-export const { t, locale, locales, loading, loadTranslations, getTranslationProps } = new i18n(
-	config
-);
+export const createI18n = () => new I18n(config);
+
+export type AppI18n = ReturnType<typeof createI18n>;
+
+export const [getI18n, setI18n] = createContext<AppI18n>();

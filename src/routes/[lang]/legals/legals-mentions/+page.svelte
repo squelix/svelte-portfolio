@@ -2,10 +2,12 @@
 	import { page } from '$app/state';
 	import { RoutesEnum, getRoute } from '$lib/routing';
 	import { LangEnum } from '$models/langs.enum';
-	import { locale, t } from '$translations';
+	import { getI18n } from '$translations';
 	import { documentToHtmlString } from '@contentful/rich-text-html-renderer';
 
 	import type { PageData } from './$types';
+
+	const i18n = getI18n();
 
 	type Props = {
 		data: PageData;
@@ -15,13 +17,16 @@
 </script>
 
 <svelte:head>
-	<title>{$t('legals-mentions.page.title')}</title>
-	<meta name="description" content={$t('legals-mentions.page.description')} />
-	<meta property="og:title" content={$t('legals-mentions.page.title')} />
-	<meta property="og:description" content={$t('legals-mentions.page.description')} />
-	<meta name="twitter:title" content={$t('legals-mentions.page.title')} />
-	<meta name="twitter:description" content={$t('legals-mentions.page.description')} />
-	<link rel="canonical" href="{page.url.origin}{getRoute($locale, RoutesEnum.LegalsMentions)}" />
+	<title>{i18n.t('legals-mentions.page.title')}</title>
+	<meta name="description" content={i18n.t('legals-mentions.page.description')} />
+	<meta property="og:title" content={i18n.t('legals-mentions.page.title')} />
+	<meta property="og:description" content={i18n.t('legals-mentions.page.description')} />
+	<meta name="twitter:title" content={i18n.t('legals-mentions.page.title')} />
+	<meta name="twitter:description" content={i18n.t('legals-mentions.page.description')} />
+	<link
+		rel="canonical"
+		href="{page.url.origin}{getRoute(i18n.locale!, RoutesEnum.LegalsMentions)}"
+	/>
 	<link
 		rel="alternate"
 		hreflang="fr"
@@ -40,7 +45,7 @@
 </svelte:head>
 
 <div class="legals">
-	<h1 class="legals__title">{$t('legals-mentions.title')}</h1>
+	<h1 class="legals__title">{i18n.t('legals-mentions.title')}</h1>
 
 	{#if data.legalsMentions.text}
 		<div class="inner-html">

@@ -1,9 +1,11 @@
 <script lang="ts">
 	import Image from '$lib/commons/Image.svelte';
-	import { t } from '$translations';
+	import { getI18n } from '$translations';
 	import dayjs from 'dayjs';
 
 	import type { Job } from '$models/job';
+
+	const i18n = getI18n();
 
 	type Props = {
 		item: Job;
@@ -37,7 +39,7 @@
 	{:else if item?.endDate}
 		<p class="date">{dayjs(item?.endDate).format('MMMM YYYY')}</p>
 	{:else}
-		<p class="date">{$t('experiences.todayText')}</p>
+		<p class="date">{i18n.t('experiences.todayText')}</p>
 	{/if}
 
 	{#if !last}
@@ -48,7 +50,7 @@
 					href={item.pictureUrl}
 					target="_blank"
 					rel="noreferrer noopener"
-					aria-label={`${$t('experiences.aria.pictureLink')}${item.companyName}`}
+					aria-label={`${i18n.t('experiences.aria.pictureLink')}${item.companyName}`}
 				>
 					<Image
 						src={item.picture}
@@ -75,7 +77,7 @@
 
 {#if !last}
 	{#if (item?.jobMissions ?? []).length > 0}
-		<h4 class="title">{$t('experiences.missions.title')}&nbsp;:</h4>
+		<h4 class="title">{i18n.t('experiences.missions.title')}&nbsp;:</h4>
 		<ul class="list">
 			{#each item?.jobMissions ?? [] as mission, index (mission.slug ?? index)}
 				<li>
@@ -92,12 +94,12 @@
 	{/if}
 
 	{#if (jobsSkillsByCategories ?? []).length > 0}
-		<h4 class="title">{$t('experiences.skills.title')}&nbsp;:</h4>
+		<h4 class="title">{i18n.t('experiences.skills.title')}&nbsp;:</h4>
 		<ul class="list">
 			{#each jobsSkillsByCategories ?? [] as categoriesSkills (categoriesSkills.category)}
 				<li>
 					<span class="skill-category"
-						>{$t(`experiences.skills.categories.${categoriesSkills.category}`)}&nbsp;:
+						>{i18n.t(`experiences.skills.categories.${categoriesSkills.category}`)}&nbsp;:
 					</span>
 					<span>{categoriesSkills.skills.join(', ')}</span>
 				</li>

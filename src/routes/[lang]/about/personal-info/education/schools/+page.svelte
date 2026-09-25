@@ -4,9 +4,11 @@
 	import SchoolTimelineContent from '$lib/commons/SchoolTimelineContent.svelte';
 	import { getRoute, RoutesEnum } from '$lib/routing';
 	import { LangEnum } from '$models/langs.enum';
-	import { locale, t } from '$translations';
+	import { getI18n } from '$translations';
 
 	import type { PageData } from './$types';
+
+	const i18n = getI18n();
 
 	type Props = {
 		data: PageData;
@@ -16,15 +18,15 @@
 </script>
 
 <svelte:head>
-	<title>{$t('schools.page.title')}</title>
-	<meta name="description" content={$t('schools.page.description')} />
-	<meta property="og:title" content={$t('schools.page.title')} />
-	<meta property="og:description" content={$t('schools.page.description')} />
-	<meta name="twitter:title" content={$t('schools.page.title')} />
-	<meta name="twitter:description" content={$t('schools.page.description')} />
+	<title>{i18n.t('schools.page.title')}</title>
+	<meta name="description" content={i18n.t('schools.page.description')} />
+	<meta property="og:title" content={i18n.t('schools.page.title')} />
+	<meta property="og:description" content={i18n.t('schools.page.description')} />
+	<meta name="twitter:title" content={i18n.t('schools.page.title')} />
+	<meta name="twitter:description" content={i18n.t('schools.page.description')} />
 	<link
 		rel="canonical"
-		href="{page.url.origin}{getRoute($locale, RoutesEnum.AboutPersonalInfoEducationSchools)}"
+		href="{page.url.origin}{getRoute(i18n.locale!, RoutesEnum.AboutPersonalInfoEducationSchools)}"
 	/>
 	<link
 		rel="alternate"

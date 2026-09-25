@@ -11,7 +11,7 @@
 	import Header from '$lib/commons/Header.svelte';
 	import { RoutesEnum, isRouteActive } from '$lib/routing';
 	import { buildJsonLdScript, buildWebSiteJsonLd } from '$lib/seo/structured-data';
-	import { locale } from '$translations';
+	import { setI18n } from '$translations';
 
 	import type { LayoutData } from './$types';
 
@@ -21,6 +21,10 @@
 	};
 
 	let { children, data }: Props = $props();
+
+	// The client instance is a singleton (see +layout.ts), so capturing the initial value is intended.
+	// svelte-ignore state_referenced_locally
+	const i18n = setI18n(data.i18n);
 
 	let websiteJsonLd = $derived(
 		buildJsonLdScript(buildWebSiteJsonLd(data.profile, page.url.origin))
@@ -55,8 +59,8 @@
 	<meta property="og:url" content="{page.url.origin}{page.url.pathname}" />
 	<meta property="og:site_name" content={data.profile.name} />
 	<meta property="og:type" content="website" />
-	<meta property="og:locale" content={$locale === 'fr' ? 'fr_FR' : 'en_GB'} />
-	<meta property="og:locale:alternate" content={$locale === 'fr' ? 'en_GB' : 'fr_FR'} />
+	<meta property="og:locale" content={i18n.locale === 'fr' ? 'fr_FR' : 'en_GB'} />
+	<meta property="og:locale:alternate" content={i18n.locale === 'fr' ? 'en_GB' : 'fr_FR'} />
 	<meta name="twitter:card" content="summary_large_image" />
 	<meta name="twitter:site" content="@squelix" />
 	<meta name="twitter:creator" content="@squelix" />
@@ -76,7 +80,10 @@
 
 <main
 	class="main"
-	class:main--home={isRouteActive(page.url.pathname, { route: RoutesEnum.Home, lang: $locale })}
+	class:main--home={isRouteActive(page.url.pathname, {
+		route: RoutesEnum.Home,
+		lang: i18n.locale!
+	})}
 >
 	{@render children?.()}
 </main>

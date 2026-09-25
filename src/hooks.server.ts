@@ -1,7 +1,6 @@
 import { env } from '$env/dynamic/private';
 import { getLanguage } from '$lib/lang/utils';
 import { AcceptedLanguages, type LangEnum } from '$models/langs.enum';
-import { locales } from '$translations';
 
 import type { Handle } from '@sveltejs/kit';
 
@@ -54,12 +53,9 @@ export const handle: Handle = async ({ event, resolve }) => {
 	const route = pathname.replace(new RegExp(`^/${lang}`), '');
 
 	if (AcceptedLanguages.includes(lang as unknown as LangEnum)) {
-		const supportedLocales = locales.get();
-		const locale: string = supportedLocales.find((l) => pathname.startsWith(`/${l}`))!;
-
 		const response = await resolve(event, {
 			transformPageChunk: ({ html }) =>
-				html.replace('%lang%', locale).replace('%umami%', getUmamiScript())
+				html.replace('%lang%', lang).replace('%umami%', getUmamiScript())
 		});
 		return applyCacheHeaders(applySecurityHeaders(response));
 	}

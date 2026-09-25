@@ -4,7 +4,9 @@
 	import PageTitle from '$lib/commons/PageTitle.svelte';
 	import { nav } from '$stores/nav';
 	import { aboutTitleItem } from '$stores/title';
-	import { t } from '$translations';
+	import { getI18n } from '$translations';
+
+	const i18n = getI18n();
 	type Props = {
 		children?: import('svelte').Snippet;
 	};
@@ -13,23 +15,23 @@
 </script>
 
 <svelte:head>
-	<title>{$t('about.page.title')}</title>
-	<meta name="description" content={$t('about.page.description')} />
-	<meta property="og:title" content={$t('about.page.title')} />
-	<meta property="og:description" content={$t('about.page.description')} />
-	<meta name="twitter:title" content={$t('about.page.title')} />
-	<meta name="twitter:description" content={$t('about.page.description')} />
+	<title>{i18n.t('about.page.title')}</title>
+	<meta name="description" content={i18n.t('about.page.description')} />
+	<meta property="og:title" content={i18n.t('about.page.title')} />
+	<meta property="og:description" content={i18n.t('about.page.description')} />
+	<meta name="twitter:title" content={i18n.t('about.page.title')} />
+	<meta name="twitter:description" content={i18n.t('about.page.description')} />
 </svelte:head>
 
 {#if $aboutTitleItem?.labelKey && !$aboutTitleItem?.label}
-	<PageTitle textDesktop={$t($aboutTitleItem.labelKey)} textMobile={$t('about.title')} />
+	<PageTitle textDesktop={i18n.t($aboutTitleItem.labelKey)} textMobile={i18n.t('about.title')} />
 {/if}
 {#if !$aboutTitleItem?.labelKey && $aboutTitleItem?.label}
-	<PageTitle textDesktop={$aboutTitleItem.label} textMobile={$t('about.title')} />
+	<PageTitle textDesktop={$aboutTitleItem.label} textMobile={i18n.t('about.title')} />
 {/if}
 
 <BorderBottom />
 
-<PageNav ariaLabel={$t('about.aria.nav')} items={$nav} />
+<PageNav ariaLabel={i18n.t('about.aria.nav')} items={$nav} />
 
 {@render children?.()}

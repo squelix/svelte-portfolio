@@ -1,12 +1,14 @@
 <script lang="ts">
 	import ChevronUpKey from '$icons/chevron-up-key.svg?raw';
 	import Icon from '$lib/SvgIcon.svelte';
-	import { t } from '$translations';
+	import { getI18n } from '$translations';
 	import { onDestroy, onMount } from 'svelte';
 
 	import type { ColorInterface } from '$models/color';
 	import type { PositionInterface } from '$models/snake/position.interface';
 	import type { RadiusInterface } from '$models/snake/radius.interface';
+
+	const i18n = getI18n();
 
 	type Props = {
 		boardBorderColor?: ColorInterface;
@@ -396,15 +398,15 @@
 	<div class="snake__board">
 		<div class="snake__board__keys">
 			<!-- eslint-disable-next-line svelte/no-at-html-tags -->
-			<div class="snake__board__keys__text">{@html $t('home.snake.keyboards')}</div>
+			<div class="snake__board__keys__text">{@html i18n.t('home.snake.keyboards')}</div>
 			<!-- eslint-disable-next-line svelte/no-at-html-tags -->
-			<div class="snake__board__keys__text">{@html $t('home.snake.pause')}</div>
+			<div class="snake__board__keys__text">{@html i18n.t('home.snake.pause')}</div>
 			<!-- eslint-disable-next-line svelte/no-at-html-tags -->
-			<div class="snake__board__keys__text">{@html $t('home.snake.start')}</div>
+			<div class="snake__board__keys__text">{@html i18n.t('home.snake.start')}</div>
 			<!-- eslint-disable-next-line svelte/no-at-html-tags -->
-			<div class="snake__board__keys__text">{@html $t('home.snake.restart')}</div>
+			<div class="snake__board__keys__text">{@html i18n.t('home.snake.restart')}</div>
 			<!-- eslint-disable-next-line svelte/no-at-html-tags -->
-			<div class="snake__board__keys__text">{@html $t('home.snake.play')}</div>
+			<div class="snake__board__keys__text">{@html i18n.t('home.snake.play')}</div>
 			<div class="snake__board__keys__list">
 				<span class="snake__board__keys__list__item snake__board__keys__list__item--up">
 					<span class="snake__board__keys__list__item__icon">

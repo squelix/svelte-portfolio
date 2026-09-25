@@ -3,11 +3,13 @@
 	import Link from '$lib/commons/Link.svelte';
 	import TechnoIcon from '$lib/commons/TechnoIcon.svelte';
 	import { technosIcons } from '$lib/technos-icons';
-	import { locale, t } from '$translations';
+	import { getI18n } from '$translations';
 	import slug from 'slug';
 
 	import type { Project } from '$models/project';
 	import type { SchoolProject } from '$models/school-project';
+
+	const i18n = getI18n();
 
 	type Props = {
 		project: Project | SchoolProject;
@@ -20,16 +22,16 @@
 
 <li>
 	<p class="title title--desktop">
-		//&nbsp;{$t(`${baseTrad}.card.title`)}&nbsp;{index + 1}
+		//&nbsp;{i18n.t(`${baseTrad}.card.title`)}&nbsp;{index + 1}
 		<span class="title--project"
-			>//&nbsp;_{slug(project.title, { locale: $locale, lower: true })}</span
+			>//&nbsp;_{slug(project.title, { locale: i18n.locale, lower: true })}</span
 		>
 	</p>
 
 	<p class="title title--mobile">
-		{$t(`${baseTrad}.card.title`)}&nbsp;{index + 1}
+		{i18n.t(`${baseTrad}.card.title`)}&nbsp;{index + 1}
 		<span class="title--project"
-			>/&nbsp;_{slug(project.title, { locale: $locale, lower: true })}</span
+			>/&nbsp;_{slug(project.title, { locale: i18n.locale, lower: true })}</span
 		>
 	</p>
 
@@ -46,9 +48,9 @@
 			{#if project.url && project.urlName}
 				<Link
 					href={project.url}
-					aria-label={`${$t('projects.aria.card')} ${project.urlName}`}
+					aria-label={`${i18n.t('projects.aria.card')} ${project.urlName}`}
 					target="_blank"
-					rel="noreferrer noopener">{$t(`${baseTrad}.card.link`)}</Link
+					rel="noreferrer noopener">{i18n.t(`${baseTrad}.card.link`)}</Link
 				>
 			{/if}
 		</div>

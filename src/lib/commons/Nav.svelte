@@ -7,9 +7,11 @@
 	import { MainRoutes } from '$lib/routing';
 	import Icon from '$lib/SvgIcon.svelte';
 	import { ENTER_KEY } from '$lib/utils/keys';
-	import { t } from '$translations';
+	import { getI18n } from '$translations';
 
 	import type { RoutesEnum } from '$lib/routing';
+
+	const i18n = getI18n();
 
 	let open = $state(false);
 
@@ -32,7 +34,7 @@
 		aria-expanded={open}
 		onclick={toggleClose}
 		onkeydown={keydown}
-		aria-label={$t('common.aria.openNav')}
+		aria-label={i18n.t('common.aria.openNav')}
 	>
 		<Icon data={open ? Cross : Burger} />
 	</button>
@@ -40,7 +42,7 @@
 	<ul class="nav__links" class:nav__links--visible={open}>
 		{#each mainRoutesKeys as routeKey, index (routeKey)}
 			<NavItem
-				label={$t(`common.nav.${routeKey}`)}
+				label={i18n.t(`common.nav.${routeKey}`)}
 				link={routeKey}
 				route={MainRoutes[routeKey]}
 				last={index === Object.keys(MainRoutes).length - 1}
@@ -50,12 +52,12 @@
 		{/each}
 
 		<li class="nav__credit">
-			{$t('common.credits')}
+			{i18n.t('common.credits')}
 			<a
 				href="https://www.behance.net/darelova"
 				target="_blank"
 				rel="noreferrer noopener"
-				aria-label={$t('common.aria.creditLabelBehance')}
+				aria-label={i18n.t('common.aria.creditLabelBehance')}
 			>
 				<Icon data={Behance} width="24px" />
 			</a>
@@ -63,7 +65,7 @@
 				href="https://dribbble.com/YankaD"
 				target="_blank"
 				rel="noreferrer noopener"
-				aria-label={$t('common.aria.creditLabelDribble')}
+				aria-label={i18n.t('common.aria.creditLabelDribble')}
 			>
 				<Icon data={Dribbble} width="24px" />
 			</a>
