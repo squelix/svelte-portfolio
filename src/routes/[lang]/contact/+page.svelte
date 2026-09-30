@@ -144,6 +144,9 @@
 	<form
 		transition:fade={{ duration: transitionMs, easing: sineInOut }}
 		method="POST"
+		novalidate
+		toolname="sendContactMessage"
+		tooldescription={i18n.t('contact.webmcp.description')}
 		use:enhance={submitEnhancer}
 	>
 		<Input
@@ -153,6 +156,9 @@
 			bind:value={name}
 			oninput={clearErrorMessage}
 			name="name"
+			autocomplete="name"
+			required
+			toolparamdescription={i18n.t('contact.webmcp.params.name')}
 		/>
 		<Input
 			label={`_${i18n.t('contact.form.email')}`}
@@ -160,6 +166,10 @@
 			bind:value={email}
 			oninput={clearErrorMessage}
 			name="email"
+			type="email"
+			autocomplete="email"
+			required
+			toolparamdescription={i18n.t('contact.webmcp.params.email')}
 		/>
 		<Textarea
 			label={`_${i18n.t('contact.form.message')}`}
@@ -168,6 +178,8 @@
 			bind:value={message}
 			oninput={clearErrorMessage}
 			name="message"
+			required
+			toolparamdescription={i18n.t('contact.webmcp.params.message')}
 		/>
 
 		<div id="reCaptcha" class="reCaptcha" class:reCaptcha--disabled={sending}></div>

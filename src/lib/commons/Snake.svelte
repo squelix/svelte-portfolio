@@ -433,16 +433,16 @@
 	</div>
 
 	<span class="snake__bolt snake__bolt--top-left">
-		<img src="/svg/bolt-top-left.svg" width="22px" alt="" role="presentation" />
+		<img src="/svg/bolt-top-left.svg" width="22" height="22" alt="" role="presentation" />
 	</span>
 	<span class="snake__bolt snake__bolt--top-right">
-		<img src="/svg/bolt-top-right.svg" width="22px" alt="" role="presentation" />
+		<img src="/svg/bolt-top-right.svg" width="22" height="22" alt="" role="presentation" />
 	</span>
 	<span class="snake__bolt snake__bolt--bottom-right">
-		<img src="/svg/bolt-bottom-right.svg" width="22px" alt="" role="presentation" />
+		<img src="/svg/bolt-bottom-right.svg" width="22" height="22" alt="" role="presentation" />
 	</span>
 	<span class="snake__bolt snake__bolt--bottom-left">
-		<img src="/svg/bolt-bottom-left.svg" width="22px" alt="" role="presentation" />
+		<img src="/svg/bolt-bottom-left.svg" width="22" height="22" alt="" role="presentation" />
 	</span>
 </section>
 

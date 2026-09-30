@@ -6,6 +6,12 @@
 			"sourceType": "github",
 			"computedHash": "36d3b046163c42251732b3127c042f6b8eb7d91fcbf7ef9ae79fde79e9c99369"
 		},
+		"ai-seo": {
+			"source": "coreyhaines31/marketingskills",
+			"sourceType": "github",
+			"skillPath": "skills/ai-seo/SKILL.md",
+			"computedHash": "2b2dc6fe6156b9338e1b181670b1c3e2b215d980327f3bbd5aff9d069decd56d"
+		},
 		"building-components": {
 			"source": "vercel/components.build",
 			"sourceType": "github",

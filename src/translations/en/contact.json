@@ -22,6 +22,14 @@
 			"send": "An error occurred while sending. Please try again."
 		}
 	},
+	"webmcp": {
+		"description": "Send a message to Mickaël Depardon, developer. The person reviews and confirms before sending.",
+		"params": {
+			"name": "Full name of the person writing",
+			"email": "Email address where the reply should be sent",
+			"message": "Content of the message to send"
+		}
+	},
 	"title": "_contact-me",
 	"confirm": {
 		"thankYou": "Thank you! 🤘",
