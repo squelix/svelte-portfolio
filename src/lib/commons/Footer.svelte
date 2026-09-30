@@ -21,6 +21,8 @@
 	let github = $derived(getSocialGithub(profile));
 	let linkedIn = $derived(getSocialLinkedIn(profile));
 	let malt = $derived(getSocialMalt(profile));
+
+	const githubHandle = '@squelix';
 </script>
 
 <!-- eslint-disable svelte/no-navigation-without-resolve -->
@@ -88,9 +90,9 @@
 					href={github?.url}
 					target="_blank"
 					rel="noreferrer noopener"
-					aria-label={i18n.t('common.aria.githubLabel')}
+					aria-label={`${githubHandle}, ${i18n.t('common.aria.githubLabel')}`}
 				>
-					<span class="footer__socials__item__link__text">@squelix</span>
+					<span class="footer__socials__item__link__text">{githubHandle}</span>
 					<Icon data={Github} width="24px" />
 				</a>
 			</li>
