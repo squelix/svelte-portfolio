@@ -1,5 +1,6 @@
 import type { RoutesEnum } from '$lib/routing';
 import type { LangEnum } from '$models/langs.enum';
+import type { Profile } from '$models/profile';
 
 const LASTMOD = new Date().toISOString().split('T')[0];
 
@@ -67,4 +68,77 @@ export const getSitemapXmlString = (
 ${homePair}
 ${routePairs}
 </urlset>`;
+};
+
+export type PageMeta = { title: string; description?: string };
+
+const LLMS_DEFAULT_NAME = 'Mickaël Depardon';
+
+const LLMS_PAGE_SECTIONS: Record<string, string> = {
+	en: 'Pages (English)',
+	fr: 'Pages (Français)'
+};
+
+// "Biography - Portfolio and CV of Mickaël Depardon" -> "Biography"
+const cleanTitle = (title: string): string => title.split(' - ')[0].trim();
+
+// "Portfolio and CV of Mickaël Depardon. Page presenting my biography." -> "Page presenting my biography."
+const cleanDescription = (description = ''): string =>
+	description.replace(/^[^.]+\.\s*/, '').trim() || description.trim();
+
+// A bio line starting with "#" must not become a second H1.
+const sanitizeLine = (line: string): string => line.trim().replace(/^#+\s*/, '');
+
+const toLlmsLink = (url: string, meta: PageMeta): string => {
+	const description = cleanDescription(meta.description);
+	const link = `- [${cleanTitle(meta.title)}](${url})`;
+	return description ? `${link}: ${description}` : link;
+};
+
+export const getLlmsTxtString = (
+	langEnum: typeof LangEnum,
+	routes: Partial<Record<RoutesEnum, string>>,
+	getPageMeta: (lang: string, routeKey: string) => PageMeta | undefined,
+	profile: Profile | undefined,
+	url: URL
+): string => {
+	const name = profile?.name ?? LLMS_DEFAULT_NAME;
+	const summary = [profile?.job, 'Bilingual (French / English) portfolio and CV.']
+		.filter(Boolean)
+		.join('. ');
+	const bio = (profile?.biographyLines ?? []).map(sanitizeLine).filter(Boolean).join(' ');
+
+	const pagesSection = (lang: string): string[] => {
+		const links: string[] = [];
+		const home = getPageMeta(lang, 'home');
+		if (home?.title) links.push(toLlmsLink(`${url.origin}/${lang}`, home));
+
+		Object.entries(routes)
+			.filter((entry): entry is [string, string] => !!entry[1])
+			.forEach(([routeKey, path]) => {
+				const meta = getPageMeta(lang, routeKey);
+				if (meta?.title) links.push(toLlmsLink(`${url.origin}/${lang}${path}`, meta));
+			});
+
+		return [`## ${LLMS_PAGE_SECTIONS[lang] ?? lang}`, '', ...links, ''];
+	};
+
+	const socials = (profile?.socialNetworks ?? [])
+		.filter((social) => !!social.url)
+		.map((social) => `- [${social.title}](${social.url})`);
+
+	return [
+		`# ${name}`,
+		'',
+		`> ${summary}`,
+		'',
+		...(bio ? [bio, ''] : []),
+		...pagesSection(langEnum.en_GB),
+		...pagesSection(langEnum.fr_FR),
+		...(socials.length ? ['## Profiles', '', ...socials, ''] : []),
+		'## Optional',
+		'',
+		`- [Sitemap](${url.origin}/sitemap.xml)`,
+		''
+	].join('\n');
 };

@@ -45,7 +45,7 @@ export const handle: Handle = async ({ event, resolve }) => {
 	const { url, request } = event;
 	const { pathname } = url;
 
-	if (['robots.txt', 'sitemap.xml'].some((path) => pathname.includes(path))) {
+	if (/^\/(robots\.txt|sitemap\.xml|llms\.txt)\/?$/.test(pathname)) {
 		return applyCacheHeaders(applySecurityHeaders(await resolve(event)));
 	}
 
