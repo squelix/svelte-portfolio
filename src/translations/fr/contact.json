@@ -22,6 +22,14 @@
 			"send": "Une erreur est survenue lors de l'envoi. Veuillez réessayer."
 		}
 	},
+	"webmcp": {
+		"description": "Envoyer un message à Mickaël Depardon, développeur. La personne relit puis valide l'envoi.",
+		"params": {
+			"name": "Nom complet de la personne qui écrit",
+			"email": "Adresse email où recevoir la réponse",
+			"message": "Contenu du message à envoyer"
+		}
+	},
 	"title": "_me-contacter",
 	"confirm": {
 		"thankYou": "Merci! 🤘",
