@@ -37,7 +37,7 @@ export const getRobotsTxtString = (
 		'User-agent: *',
 		'Allow: /',
 		`Sitemap: ${url.origin}/sitemap.xml`,
-		'Content-Signal: ai-train=no, search=yes, ai-input=no'
+		'Content-Signal: ai-train=no, search=yes, ai-input=yes'
 	].join('\n');
 
 export const getSitemapXmlString = (
