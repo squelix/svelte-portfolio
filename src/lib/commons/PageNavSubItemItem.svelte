@@ -1,11 +1,11 @@
 <script lang="ts">
 	import { page } from '$app/state';
-	import Markdown from '$icons/markdown.svg?raw';
-	import { getRoute, isRouteActive } from '$lib/routing';
-	import Icon from '$lib/SvgIcon.svelte';
-	import { getI18n } from '$translations';
+	import Markdown from '#icons/markdown.svg?raw';
+	import { getRoute, isRouteActive } from '#lib/routing.js';
+	import Icon from '#lib/SvgIcon.svelte';
+	import { getI18n } from '#translations';
 
-	import type { PageNavItemInterface } from '$models/page-nav-item.interface';
+	import type { PageNavItemInterface } from '#models/page-nav-item.interface.js';
 
 	const i18n = getI18n();
 

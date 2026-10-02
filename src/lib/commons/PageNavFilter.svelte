@@ -1,7 +1,7 @@
 <script lang="ts">
-	import PageNavFilterItem from '$lib/commons/PageNavFilterItem.svelte';
+	import PageNavFilterItem from '#lib/commons/PageNavFilterItem.svelte';
 
-	import type { PageNavFilterItemInterface } from '$models/page-nav-filter-item.interface';
+	import type { PageNavFilterItemInterface } from '#models/page-nav-filter-item.interface.js';
 
 	type Props = {
 		ariaLabel: string;

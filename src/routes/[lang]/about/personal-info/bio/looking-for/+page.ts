@@ -1,5 +1,5 @@
-import { BioNavItemEnum } from '$lib/menu/bio-nav-item.enum';
-import { itemSelected } from '$stores/nav';
+import { BioNavItemEnum } from '#lib/menu/bio-nav-item.enum.js';
+import { itemSelected } from '#stores/nav.js';
 
 import type { PageLoad } from './$types';
 

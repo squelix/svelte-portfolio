@@ -8,7 +8,7 @@ export const getHobbiesListDisplay = (hobbies: Hobby[]) =>
 				if (!hobby) {
 					return undefined;
 				}
-				const icon = await import(`$icons/${hobby.icon}.svg?raw`);
+				const icon = await import(`#icons/${hobby.icon}.svg?raw`);
 				if (hobby.description) {
 					return `${icon.default} ${hobby.name}: ${hobby.description}`;
 				}

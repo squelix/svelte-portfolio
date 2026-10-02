@@ -1,4 +1,4 @@
-import { getProjects } from '$lib/api/projects/webservice';
+import { getProjects } from '#lib/api/projects/webservice.js';
 
 import type { PageServerLoad } from './$types';
 

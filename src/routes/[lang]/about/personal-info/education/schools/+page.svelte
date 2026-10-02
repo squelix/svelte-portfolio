@@ -1,10 +1,10 @@
 <script lang="ts">
 	import { page } from '$app/state';
-	import PageTimeline from '$lib/commons/PageTimeline.svelte';
-	import SchoolTimelineContent from '$lib/commons/SchoolTimelineContent.svelte';
-	import { getRoute, RoutesEnum } from '$lib/routing';
-	import { LangEnum } from '$models/langs.enum';
-	import { getI18n } from '$translations';
+	import PageTimeline from '#lib/commons/PageTimeline.svelte';
+	import SchoolTimelineContent from '#lib/commons/SchoolTimelineContent.svelte';
+	import { getRoute, RoutesEnum } from '#lib/routing.js';
+	import { LangEnum } from '#models/langs.enum.js';
+	import { getI18n } from '#translations';
 
 	import type { PageData } from './$types';
 

@@ -1,22 +1,20 @@
 <script lang="ts">
-	import { applyAction, enhance } from '$app/forms';
+	import { applyAction, enhance, type SubmitFunction } from '$app/forms';
 	import { page } from '$app/state';
-	import BorderBottom from '$lib/commons/BorderBottom.svelte';
-	import Button from '$lib/commons/Button.svelte';
-	import Input from '$lib/commons/Input.svelte';
-	import PageNav from '$lib/commons/PageNav.svelte';
-	import PageTitle from '$lib/commons/PageTitle.svelte';
-	import Textarea from '$lib/commons/Textarea.svelte';
-	import { RoutesEnum, getRoute } from '$lib/routing';
-	import { ENTER_KEY } from '$lib/utils/keys';
-	import { validateEmail } from '$lib/validators';
-	import { LangEnum } from '$models/langs.enum';
-	import { nav } from '$stores/nav';
-	import { getI18n } from '$translations';
+	import BorderBottom from '#lib/commons/BorderBottom.svelte';
+	import Button from '#lib/commons/Button.svelte';
+	import Input from '#lib/commons/Input.svelte';
+	import PageNav from '#lib/commons/PageNav.svelte';
+	import PageTitle from '#lib/commons/PageTitle.svelte';
+	import Textarea from '#lib/commons/Textarea.svelte';
+	import { RoutesEnum, getRoute } from '#lib/routing.js';
+	import { ENTER_KEY } from '#lib/utils/keys.js';
+	import { validateEmail } from '#lib/validators.js';
+	import { LangEnum } from '#models/langs.enum.js';
+	import { nav } from '#stores/nav.js';
+	import { getI18n } from '#translations';
 	import { sineInOut } from 'svelte/easing';
 	import { fade } from 'svelte/transition';
-
-	import type { SubmitFunction } from '@sveltejs/kit';
 
 	const i18n = getI18n();
 

@@ -3,7 +3,7 @@ import slug from 'slug';
 import ContentfulClient from '../contentful-client';
 import { getPictureUrl } from '../utils';
 
-import type { School } from '$models/school';
+import type { School } from '#models/school.js';
 
 export const getSchools = async (lang: string, fetch: typeof globalThis.fetch) => {
 	const response = await ContentfulClient.getClient(fetch).getEntries({

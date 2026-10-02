@@ -2,7 +2,7 @@
 import slug from 'slug';
 import ContentfulClient from '../contentful-client';
 
-import type { SchoolProject } from '$models/school-project';
+import type { SchoolProject } from '#models/school-project.js';
 import { getPictureUrl, getTechno } from '../utils';
 
 export const getSchoolProjects = async (lang: string, fetch: typeof globalThis.fetch) => {

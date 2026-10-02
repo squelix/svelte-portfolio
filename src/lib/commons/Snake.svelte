@@ -1,12 +1,12 @@
 <script lang="ts">
-	import ChevronUpKey from '$icons/chevron-up-key.svg?raw';
-	import Icon from '$lib/SvgIcon.svelte';
-	import { getI18n } from '$translations';
+	import ChevronUpKey from '#icons/chevron-up-key.svg?raw';
+	import Icon from '#lib/SvgIcon.svelte';
+	import { getI18n } from '#translations';
 	import { onDestroy, onMount } from 'svelte';
 
-	import type { ColorInterface } from '$models/color';
-	import type { PositionInterface } from '$models/snake/position.interface';
-	import type { RadiusInterface } from '$models/snake/radius.interface';
+	import type { ColorInterface } from '#models/color.js';
+	import type { PositionInterface } from '#models/snake/position.interface.js';
+	import type { RadiusInterface } from '#models/snake/radius.interface.js';
 
 	const i18n = getI18n();
 

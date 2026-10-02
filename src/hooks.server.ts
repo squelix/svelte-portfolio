@@ -1,14 +1,14 @@
-import { env } from '$env/dynamic/private';
-import { getLanguage } from '$lib/lang/utils';
-import { AcceptedLanguages, type LangEnum } from '$models/langs.enum';
+import { VERCEL_ENV, VITE_VERCEL_ENV } from '$app/env/private';
+import { getLanguage } from '#lib/lang/utils.js';
+import { AcceptedLanguages, type LangEnum } from '#models/langs.enum.js';
 
-import type { Handle } from '@sveltejs/kit';
+import type { Handle } from '@sveltejs/kit/hooks';
 
 const UMAMI_SCRIPT =
 	'<script defer src="https://cloud.umami.is/script.js" data-website-id="3205f35c-3290-47ae-9a5b-0e5ede38a303"></script>';
 
 function getUmamiScript(): string {
-	const vercelEnv = env.VERCEL_ENV ?? env.VITE_VERCEL_ENV;
+	const vercelEnv = VERCEL_ENV ?? VITE_VERCEL_ENV;
 	return vercelEnv === 'production' ? UMAMI_SCRIPT : '';
 }
 

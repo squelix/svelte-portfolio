@@ -1,6 +1,6 @@
-import { setNavItem } from '$stores/nav';
+import { setNavItem } from '#stores/nav.js';
 
-import type { Project } from '$models/project';
+import type { Project } from '#models/project.js';
 import type { PageLoad } from './$types';
 
 export const load: PageLoad = ({ data: { projects, projectsTechnosFilter } }) => {

@@ -1,4 +1,4 @@
-import { UnicodeBarStyle, UnicodeBarStyleEnum } from '$models/unicode-bar-style.enum';
+import { UnicodeBarStyle, UnicodeBarStyleEnum } from '#models/unicode-bar-style.enum.js';
 
 const repeatToBuildBar = (str: string, i: number): string => {
 	let r = '';

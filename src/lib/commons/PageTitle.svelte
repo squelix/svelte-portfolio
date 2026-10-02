@@ -1,6 +1,6 @@
 <script lang="ts">
-	import Close from '$icons/close.svg?raw';
-	import Icon from '$lib/SvgIcon.svelte';
+	import Close from '#icons/close.svg?raw';
+	import Icon from '#lib/SvgIcon.svelte';
 
 	type Props = {
 		textDesktop: string;

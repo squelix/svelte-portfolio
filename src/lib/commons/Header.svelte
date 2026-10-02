@@ -1,7 +1,7 @@
 <script lang="ts">
-	import Nav from '$lib/commons/Nav.svelte';
+	import Nav from '#lib/commons/Nav.svelte';
 
-	import type { Profile } from '$models/profile';
+	import type { Profile } from '#models/profile.js';
 
 	type Props = {
 		profile: Profile;

@@ -1,5 +1,5 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
-import type { Profile } from '$models/profile';
+import type { Profile } from '#models/profile.js';
 import slug from 'slug';
 import ContentfulClient from '../contentful-client';
 import { getPictureUrl } from '../utils';

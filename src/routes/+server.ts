@@ -1,4 +1,4 @@
-import { getLanguage } from '$lib/lang/utils';
+import { getLanguage } from '#lib/lang/utils.js';
 
 import type { RequestHandler } from './$types';
 

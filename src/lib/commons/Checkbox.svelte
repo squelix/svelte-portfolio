@@ -1,6 +1,6 @@
 <script lang="ts">
-	import Check from '$icons/check.svg?raw';
-	import Icon from '$lib/SvgIcon.svelte';
+	import Check from '#icons/check.svg?raw';
+	import Icon from '#lib/SvgIcon.svelte';
 	import { sineInOut } from 'svelte/easing';
 	import { fade } from 'svelte/transition';
 

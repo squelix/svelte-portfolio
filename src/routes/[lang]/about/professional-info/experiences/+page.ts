@@ -1,6 +1,6 @@
-import { ProfessionalInfoNavItemEnum } from '$lib/menu/professional-info-nav-item.enum';
-import { getJobsList } from '$models/jobs';
-import { setSubNavItem } from '$stores/nav';
+import { ProfessionalInfoNavItemEnum } from '#lib/menu/professional-info-nav-item.enum.js';
+import { getJobsList } from '#models/jobs.js';
+import { setSubNavItem } from '#stores/nav.js';
 
 import type { PageLoad } from './$types';
 

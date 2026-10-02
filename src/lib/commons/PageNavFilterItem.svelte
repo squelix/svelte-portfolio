@@ -1,12 +1,12 @@
 <script lang="ts">
-	import Chevron from '$icons/list-chevron.svg?raw';
-	import PageNavFilterSubItem from '$lib/commons/PageNavFilterSubItem.svelte';
-	import Icon from '$lib/SvgIcon.svelte';
-	import { ENTER_KEY } from '$lib/utils/keys';
-	import { navItemOpened, navItemSelected, subNavItemOpened } from '$stores/nav';
-	import { getI18n } from '$translations';
+	import Chevron from '#icons/list-chevron.svg?raw';
+	import PageNavFilterSubItem from '#lib/commons/PageNavFilterSubItem.svelte';
+	import Icon from '#lib/SvgIcon.svelte';
+	import { ENTER_KEY } from '#lib/utils/keys.js';
+	import { navItemOpened, navItemSelected, subNavItemOpened } from '#stores/nav.js';
+	import { getI18n } from '#translations';
 
-	import type { PageNavFilterItemInterface } from '$models/page-nav-filter-item.interface';
+	import type { PageNavFilterItemInterface } from '#models/page-nav-filter-item.interface.js';
 
 	const i18n = getI18n();
 

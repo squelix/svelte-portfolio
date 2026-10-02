@@ -1,4 +1,4 @@
-import { getSkills } from '$lib/api/skills/webservice';
+import { getSkills } from '#lib/api/skills/webservice.js';
 
 import type { PageServerLoad } from './$types';
 

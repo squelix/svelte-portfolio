@@ -1,4 +1,4 @@
-import type { Profile } from '$models/profile';
+import type { Profile } from '#models/profile.js';
 
 export const serializeJsonLd = (data: Record<string, unknown>): string =>
 	JSON.stringify(data).replace(/</g, '\\u003c');

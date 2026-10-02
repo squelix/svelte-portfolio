@@ -1,4 +1,4 @@
-import { AcceptedLanguages, LangEnum } from '$models/langs.enum';
+import { AcceptedLanguages, LangEnum } from '#models/langs.enum.js';
 import { parse } from 'accept-language-parser';
 
 export const getLanguage = (acceptLanguage?: string | null): string =>
