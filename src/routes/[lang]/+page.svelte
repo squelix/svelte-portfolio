@@ -1,9 +1,9 @@
 <script lang="ts">
 	import { page } from '$app/state';
-	import { getSocialGithub } from '$lib/api/profile/utils';
-	import Snake from '$lib/commons/Snake.svelte';
-	import { getRoute, RoutesEnum } from '$lib/routing';
-	import { buildJsonLdScript, buildPersonJsonLd } from '$lib/seo/structured-data';
+	import { getSocialGithub } from '#lib/api/profile/utils.js';
+	import Snake from '#lib/commons/Snake.svelte';
+	import { getRoute, RoutesEnum } from '#lib/routing.js';
+	import { buildJsonLdScript, buildPersonJsonLd } from '#lib/seo/structured-data.js';
 	import { LangEnum } from '$models/langs.enum';
 	import { getI18n } from '$translations';
 

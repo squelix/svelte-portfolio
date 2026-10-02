@@ -1,5 +1,5 @@
-import { bioNavItems } from '$lib/menu/nav';
-import { PersonalInfoNavItemEnum } from '$lib/menu/personal-info-nav-item.enum';
+import { bioNavItems } from '#lib/menu/nav.js';
+import { PersonalInfoNavItemEnum } from '#lib/menu/personal-info-nav-item.enum.js';
 import { setSubNavItem, subnav } from '$stores/nav';
 
 import type { LayoutLoad } from './$types';

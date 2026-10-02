@@ -1,4 +1,4 @@
-import { Routes, RoutesEnum } from '$lib/routing';
+import { Routes, RoutesEnum } from '#lib/routing.js';
 
 import type { RequestHandler } from './$types';
 

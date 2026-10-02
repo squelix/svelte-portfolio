@@ -1,4 +1,4 @@
-import { getHobbies } from '$lib/api/hobbies/webservice';
+import { getHobbies } from '#lib/api/hobbies/webservice.js';
 
 import type { PageServerLoad } from './$types';
 

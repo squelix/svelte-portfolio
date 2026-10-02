@@ -1,8 +1,8 @@
 <script lang="ts">
 	import { page } from '$app/state';
-	import LayoutPage from '$lib/commons/LayoutPage.svelte';
-	import ProjectsList from '$lib/commons/ProjectsList.svelte';
-	import { getRoute, RoutesEnum } from '$lib/routing';
+	import LayoutPage from '#lib/commons/LayoutPage.svelte';
+	import ProjectsList from '#lib/commons/ProjectsList.svelte';
+	import { getRoute, RoutesEnum } from '#lib/routing.js';
 	import { LangEnum } from '$models/langs.enum';
 	import { getI18n } from '$translations';
 

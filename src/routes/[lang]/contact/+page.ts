@@ -1,8 +1,8 @@
 import externalLinkSvg from '$icons/external-link.svg?raw';
 import mailSvg from '$icons/mail.svg?raw';
 import phoneSvg from '$icons/phone.svg?raw';
-import { ContactPageNavItemEnum } from '$lib/menu/contact-page-nav-item.enum';
-import { contactPageNavItems } from '$lib/menu/nav';
+import { ContactPageNavItemEnum } from '#lib/menu/contact-page-nav-item.enum.js';
+import { contactPageNavItems } from '#lib/menu/nav.js';
 import { nav, setNavItem, setNavItems } from '$stores/nav';
 
 import type { PageLoad } from './$types';

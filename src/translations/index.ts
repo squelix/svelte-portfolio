@@ -1,4 +1,4 @@
-import { Routes, RoutesEnum } from '$lib/routing';
+import { Routes, RoutesEnum } from '#lib/routing.js';
 import { LangEnum } from '$models/langs.enum';
 import { createContext } from 'svelte';
 import { I18n } from 'sveltekit-i18n';

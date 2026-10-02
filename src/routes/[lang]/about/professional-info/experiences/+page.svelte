@@ -1,8 +1,8 @@
 <script lang="ts">
 	import { page } from '$app/state';
-	import JobTimelineContent from '$lib/commons/JobTimelineContent.svelte';
-	import PageTimeline from '$lib/commons/PageTimeline.svelte';
-	import { getRoute, RoutesEnum } from '$lib/routing';
+	import JobTimelineContent from '#lib/commons/JobTimelineContent.svelte';
+	import PageTimeline from '#lib/commons/PageTimeline.svelte';
+	import { getRoute, RoutesEnum } from '#lib/routing.js';
 	import { LangEnum } from '$models/langs.enum';
 	import { getI18n } from '$translations';
 

@@ -1,5 +1,5 @@
-import { env } from '$env/dynamic/private';
-import { MailService } from '$lib/services/mail.service';
+import { MAIL_ACCESS_TOKEN } from '$app/env/private';
+import { MailService } from '#lib/services/mail.service.js';
 
 import type { Actions, PageServerLoad } from './$types';
 
@@ -12,7 +12,7 @@ export const load: PageServerLoad = async ({ parent }) => {
 export const actions: Actions = {
 	default: async ({ request, fetch }) => {
 		const service = MailService.getInstance();
-		const token = env.MAIL_ACCESS_TOKEN;
+		const token = MAIL_ACCESS_TOKEN;
 		const data: FormData = await request.formData();
 
 		return service.sendMail(

@@ -1,5 +1,5 @@
 <script lang="ts">
-	import Image from '$lib/commons/Image.svelte';
+	import Image from '#lib/commons/Image.svelte';
 	import { getI18n } from '$translations';
 
 	import type { School } from '$models/school';

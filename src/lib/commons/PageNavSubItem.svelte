@@ -2,10 +2,10 @@
 	import { page } from '$app/state';
 	import Folder from '$icons/folder.svg?raw';
 	import Chevron from '$icons/list-chevron-2.svg?raw';
-	import PageNavSubItemItem from '$lib/commons/PageNavSubItemItem.svelte';
-	import { getRoute, isRouteActive } from '$lib/routing';
-	import Icon from '$lib/SvgIcon.svelte';
-	import { ENTER_KEY } from '$lib/utils/keys';
+	import PageNavSubItemItem from '#lib/commons/PageNavSubItemItem.svelte';
+	import { getRoute, isRouteActive } from '#lib/routing.js';
+	import Icon from '#lib/SvgIcon.svelte';
+	import { ENTER_KEY } from '#lib/utils/keys.js';
 	import { subNavItemOpened, subNavItemSelected } from '$stores/nav';
 	import { getI18n } from '$translations';
 

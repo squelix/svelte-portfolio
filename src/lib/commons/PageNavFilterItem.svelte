@@ -1,8 +1,8 @@
 <script lang="ts">
 	import Chevron from '$icons/list-chevron.svg?raw';
-	import PageNavFilterSubItem from '$lib/commons/PageNavFilterSubItem.svelte';
-	import Icon from '$lib/SvgIcon.svelte';
-	import { ENTER_KEY } from '$lib/utils/keys';
+	import PageNavFilterSubItem from '#lib/commons/PageNavFilterSubItem.svelte';
+	import Icon from '#lib/SvgIcon.svelte';
+	import { ENTER_KEY } from '#lib/utils/keys.js';
 	import { navItemOpened, navItemSelected, subNavItemOpened } from '$stores/nav';
 	import { getI18n } from '$translations';
 

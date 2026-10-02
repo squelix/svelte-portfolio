@@ -1,4 +1,4 @@
-import { getJobs } from '$lib/api/jobs/webservice';
+import { getJobs } from '#lib/api/jobs/webservice.js';
 
 import type { PageServerLoad } from './$types';
 

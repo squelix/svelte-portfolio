@@ -1,4 +1,4 @@
-import { generateUnicodeBar } from '$lib/unicode-bar';
+import { generateUnicodeBar } from '#lib/unicode-bar.js';
 
 import type { Language } from './language';
 

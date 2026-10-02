@@ -1,7 +1,7 @@
 <script lang="ts">
-	import Checkbox from '$lib/commons/Checkbox.svelte';
-	import Icon from '$lib/SvgIcon.svelte';
-	import { technosIcons } from '$lib/technos-icons';
+	import Checkbox from '#lib/commons/Checkbox.svelte';
+	import Icon from '#lib/SvgIcon.svelte';
+	import { technosIcons } from '#lib/technos-icons.js';
 	import { getI18n } from '$translations';
 
 	import type { PageNavFilterItemInterface } from '$models/page-nav-filter-item.interface';

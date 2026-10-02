@@ -1,4 +1,4 @@
-import { ProfessionalInfoNavItemEnum } from '$lib/menu/professional-info-nav-item.enum';
+import { ProfessionalInfoNavItemEnum } from '#lib/menu/professional-info-nav-item.enum.js';
 import { getSkillsListBars } from '$models/skills';
 import { setSubNavItem } from '$stores/nav';
 

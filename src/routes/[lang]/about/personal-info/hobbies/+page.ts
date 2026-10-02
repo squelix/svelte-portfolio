@@ -1,4 +1,4 @@
-import { PersonalInfoNavItemEnum } from '$lib/menu/personal-info-nav-item.enum';
+import { PersonalInfoNavItemEnum } from '#lib/menu/personal-info-nav-item.enum.js';
 import { getHobbiesListDisplay } from '$models/hobbies';
 import { itemSelected } from '$stores/nav';
 

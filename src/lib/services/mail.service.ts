@@ -1,4 +1,4 @@
-import { env } from '$env/dynamic/private';
+import { MAIL_ENDPOINT } from '$app/env/private';
 
 export class MailService {
 	static #instance: MailService;
@@ -18,7 +18,7 @@ export class MailService {
 		name: string,
 		accessToken: string
 	) => {
-		const response = await fetch(env.MAIL_ENDPOINT ?? '/api/mail', {
+		const response = await fetch(MAIL_ENDPOINT ?? '/api/mail', {
 			method: 'post',
 			headers: {
 				'Content-Type': 'application/json',

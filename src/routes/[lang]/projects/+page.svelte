@@ -1,13 +1,12 @@
 <script lang="ts">
-	/* eslint-disable svelte/no-navigation-without-resolve */
 	import { goto } from '$app/navigation';
 	import { page } from '$app/state';
-	import BorderBottom from '$lib/commons/BorderBottom.svelte';
-	import LayoutPage from '$lib/commons/LayoutPage.svelte';
-	import PageNavFilter from '$lib/commons/PageNavFilter.svelte';
-	import PageTitle from '$lib/commons/PageTitle.svelte';
-	import ProjectsList from '$lib/commons/ProjectsList.svelte';
-	import { getRoute, RoutesEnum } from '$lib/routing';
+	import BorderBottom from '#lib/commons/BorderBottom.svelte';
+	import LayoutPage from '#lib/commons/LayoutPage.svelte';
+	import PageNavFilter from '#lib/commons/PageNavFilter.svelte';
+	import PageTitle from '#lib/commons/PageTitle.svelte';
+	import ProjectsList from '#lib/commons/ProjectsList.svelte';
+	import { getRoute, RoutesEnum } from '#lib/routing.js';
 	import { LangEnum } from '$models/langs.enum';
 	import { getI18n } from '$translations';
 
@@ -24,7 +23,7 @@
 	const textMobile = `_${i18n.t('projects.title') as string}`;
 
 	const updateSelectedFilter = async (filterId: string) => {
-		const url = new URL(page.url);
+		const url = new URL(page.url.href);
 		const actualTechnos = data.projectsTechnosFilter ?? [];
 
 		let newTechnos: string[];

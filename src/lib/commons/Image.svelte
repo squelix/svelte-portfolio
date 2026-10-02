@@ -1,5 +1,8 @@
 <script lang="ts">
-	import { ImageContentfulService, type ImageParams } from '$lib/services/image-contentful.service';
+	import {
+		ImageContentfulService,
+		type ImageParams
+	} from '#lib/services/image-contentful.service.js';
 
 	/* eslint-disable @typescript-eslint/no-explicit-any */
 

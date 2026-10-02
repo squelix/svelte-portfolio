@@ -1,9 +1,9 @@
-import { getProfile } from '$lib/api/profile/webservice';
-import { SEORoutes } from '$lib/routing';
-import { getLlmsTxtString } from '$lib/seo/utils';
+import { getProfile } from '#lib/api/profile/webservice.js';
+import { SEORoutes } from '#lib/routing.js';
+import { getLlmsTxtString } from '#lib/seo/utils.js';
 import { LangEnum } from '$models/langs.enum';
 
-import type { PageMeta } from '$lib/seo/utils';
+import type { PageMeta } from '#lib/seo/utils.js';
 import type { Profile } from '$models/profile';
 import type { RequestHandler } from './$types';
 

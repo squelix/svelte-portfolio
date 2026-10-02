@@ -1,5 +1,5 @@
-import { RoutesEnum, SEORoutes } from '$lib/routing';
-import { getSitemapXmlString } from '$lib/seo/utils';
+import { RoutesEnum, SEORoutes } from '#lib/routing.js';
+import { getSitemapXmlString } from '#lib/seo/utils.js';
 import { LangEnum } from '$models/langs.enum';
 
 import type { RequestHandler } from './$types';

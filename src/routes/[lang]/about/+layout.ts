@@ -1,4 +1,4 @@
-import { aboutPageNavItems } from '$lib/menu/nav';
+import { aboutPageNavItems } from '#lib/menu/nav.js';
 import { nav } from '$stores/nav';
 
 import type { LayoutLoad } from './$types';

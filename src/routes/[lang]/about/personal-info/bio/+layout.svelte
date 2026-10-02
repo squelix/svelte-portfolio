@@ -1,5 +1,5 @@
 <script lang="ts">
-	import LayoutPage from '$lib/commons/LayoutPage.svelte';
+	import LayoutPage from '#lib/commons/LayoutPage.svelte';
 	import { aboutTitleItem, titleItem } from '$stores/title';
 	import { getI18n } from '$translations';
 

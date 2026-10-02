@@ -1,5 +1,5 @@
 <script lang="ts">
-	import PageNavItem from '$lib/commons/PageNavItem.svelte';
+	import PageNavItem from '#lib/commons/PageNavItem.svelte';
 
 	import type { PageNavItemInterface } from '$models/page-nav-item.interface';
 

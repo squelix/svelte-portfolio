@@ -1,4 +1,4 @@
-import type { RoutesEnum } from '$lib/routing';
+import type { RoutesEnum } from '#lib/routing.js';
 import type { LangEnum } from '$models/langs.enum';
 import type { Profile } from '$models/profile';
 

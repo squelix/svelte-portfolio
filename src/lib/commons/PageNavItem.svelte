@@ -1,9 +1,9 @@
 <script lang="ts">
 	import Chevron from '$icons/list-chevron.svg?raw';
-	import PageNavSubItem from '$lib/commons/PageNavSubItem.svelte';
-	import { getRoute } from '$lib/routing';
-	import Icon from '$lib/SvgIcon.svelte';
-	import { ENTER_KEY } from '$lib/utils/keys';
+	import PageNavSubItem from '#lib/commons/PageNavSubItem.svelte';
+	import { getRoute } from '#lib/routing.js';
+	import Icon from '#lib/SvgIcon.svelte';
+	import { ENTER_KEY } from '#lib/utils/keys.js';
 	import { navItemOpened, navItemSelected, subNavItemOpened } from '$stores/nav';
 	import { getI18n } from '$translations';
 

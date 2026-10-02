@@ -44,6 +44,8 @@ Routes are defined centrally in `src/lib/routing.ts` using the `RoutesEnum` enum
 
 ### Environment Variables
 
+Server-side variables must be declared in `src/env.ts` (`defineEnvVars`) and imported from `$app/env/private`.
+
 | Variable                  | Used in                     |
 | ------------------------- | --------------------------- |
 | `CONTENTFUL_SPACE_ID`     | Contentful client           |

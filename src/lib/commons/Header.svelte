@@ -1,5 +1,5 @@
 <script lang="ts">
-	import Nav from '$lib/commons/Nav.svelte';
+	import Nav from '#lib/commons/Nav.svelte';
 
 	import type { Profile } from '$models/profile';
 

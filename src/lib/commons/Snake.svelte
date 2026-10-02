@@ -1,6 +1,6 @@
 <script lang="ts">
 	import ChevronUpKey from '$icons/chevron-up-key.svg?raw';
-	import Icon from '$lib/SvgIcon.svelte';
+	import Icon from '#lib/SvgIcon.svelte';
 	import { getI18n } from '$translations';
 	import { onDestroy, onMount } from 'svelte';
 

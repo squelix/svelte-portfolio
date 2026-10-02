@@ -1,4 +1,4 @@
-import { getLanguages } from '$lib/api/languages/webservice';
+import { getLanguages } from '#lib/api/languages/webservice.js';
 
 import type { PageServerLoad } from './$types';
 

@@ -1,4 +1,4 @@
-import { getLegalMentions } from '$lib/api/legals/webservice';
+import { getLegalMentions } from '#lib/api/legals/webservice.js';
 
 import type { PageServerLoad } from './$types';
 

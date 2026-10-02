@@ -1,5 +1,5 @@
 <script lang="ts">
-	import FormattedTextDesktop from '$lib/commons/FormattedTextDesktop.svelte';
+	import FormattedTextDesktop from '#lib/commons/FormattedTextDesktop.svelte';
 	import FormattedTextMobile from './FormattedTextMobile.svelte';
 
 	type Props = {

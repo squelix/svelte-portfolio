@@ -1,4 +1,4 @@
-import { getSchoolProjects } from '$lib/api/school-projects/webservice';
+import { getSchoolProjects } from '#lib/api/school-projects/webservice.js';
 
 import type { PageServerLoad } from './$types';
 

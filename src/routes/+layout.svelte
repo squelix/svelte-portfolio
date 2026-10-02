@@ -7,10 +7,10 @@
 	import '../styles/app.scss';
 
 	import { page } from '$app/state';
-	import Footer from '$lib/commons/Footer.svelte';
-	import Header from '$lib/commons/Header.svelte';
-	import { RoutesEnum, isRouteActive } from '$lib/routing';
-	import { buildJsonLdScript, buildWebSiteJsonLd } from '$lib/seo/structured-data';
+	import Footer from '#lib/commons/Footer.svelte';
+	import Header from '#lib/commons/Header.svelte';
+	import { RoutesEnum, isRouteActive } from '#lib/routing.js';
+	import { buildJsonLdScript, buildWebSiteJsonLd } from '#lib/seo/structured-data.js';
 	import { setI18n } from '$translations';
 
 	import type { LayoutData } from './$types';

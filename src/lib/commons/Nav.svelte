@@ -3,13 +3,13 @@
 	import Burger from '$icons/burger.svg?raw';
 	import Cross from '$icons/cross.svg?raw';
 	import Dribbble from '$icons/dribbble.svg?raw';
-	import NavItem from '$lib/commons/Nav-item.svelte';
-	import { MainRoutes } from '$lib/routing';
-	import Icon from '$lib/SvgIcon.svelte';
-	import { ENTER_KEY } from '$lib/utils/keys';
+	import NavItem from '#lib/commons/Nav-item.svelte';
+	import { MainRoutes } from '#lib/routing.js';
+	import Icon from '#lib/SvgIcon.svelte';
+	import { ENTER_KEY } from '#lib/utils/keys.js';
 	import { getI18n } from '$translations';
 
-	import type { RoutesEnum } from '$lib/routing';
+	import type { RoutesEnum } from '#lib/routing.js';
 
 	const i18n = getI18n();
 

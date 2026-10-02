@@ -1,5 +1,5 @@
 <script lang="ts">
-	import PageNavFilterItem from '$lib/commons/PageNavFilterItem.svelte';
+	import PageNavFilterItem from '#lib/commons/PageNavFilterItem.svelte';
 
 	import type { PageNavFilterItemInterface } from '$models/page-nav-filter-item.interface';
 

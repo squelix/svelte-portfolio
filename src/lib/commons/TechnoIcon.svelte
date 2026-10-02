@@ -1,5 +1,5 @@
 <script lang="ts">
-	import Icon from '$lib/SvgIcon.svelte';
+	import Icon from '#lib/SvgIcon.svelte';
 
 	import type { TechnoColor } from '$models/techno';
 

@@ -4,8 +4,8 @@
 	import Github from '$icons/github.svg?raw';
 	import Linkedin from '$icons/linkedin.svg?raw';
 	import Malt from '$icons/malt.svg?raw';
-	import { getSocialGithub, getSocialLinkedIn, getSocialMalt } from '$lib/api/profile/utils';
-	import Icon from '$lib/SvgIcon.svelte';
+	import { getSocialGithub, getSocialLinkedIn, getSocialMalt } from '#lib/api/profile/utils.js';
+	import Icon from '#lib/SvgIcon.svelte';
 	import { getI18n } from '$translations';
 
 	import type { Profile } from '$models/profile';
