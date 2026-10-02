@@ -1,7 +1,7 @@
 <script lang="ts">
 	import PageNavItem from '#lib/commons/PageNavItem.svelte';
 
-	import type { PageNavItemInterface } from '$models/page-nav-item.interface';
+	import type { PageNavItemInterface } from '#models/page-nav-item.interface.js';
 
 	type Props = {
 		ariaLabel: string;

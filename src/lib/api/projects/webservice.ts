@@ -2,7 +2,7 @@
 import slug from 'slug';
 import ContentfulClient from '../contentful-client';
 
-import type { Project } from '$models/project';
+import type { Project } from '#models/project.js';
 import { getPictureUrl, getTechno } from '../utils';
 
 export const getProjects = async (lang: string, fetch: typeof globalThis.fetch) => {

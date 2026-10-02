@@ -1,6 +1,6 @@
 <script lang="ts">
 	import { page } from '$app/state';
-	import { getI18n } from '$translations';
+	import { getI18n } from '#translations';
 
 	const i18n = getI18n();
 

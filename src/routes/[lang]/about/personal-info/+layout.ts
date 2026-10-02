@@ -1,5 +1,5 @@
 import { AboutPageNavItemEnum } from '#lib/menu/about-page-nav-item.enum.js';
-import { setNavItem } from '$stores/nav';
+import { setNavItem } from '#stores/nav.js';
 
 import type { LayoutLoad } from './$types';
 

@@ -1,8 +1,8 @@
 <script lang="ts">
 	import { page } from '$app/state';
 	import { RoutesEnum, getRoute } from '#lib/routing.js';
-	import { LangEnum } from '$models/langs.enum';
-	import { getI18n } from '$translations';
+	import { LangEnum } from '#models/langs.enum.js';
+	import { getI18n } from '#translations';
 	import { documentToHtmlString } from '@contentful/rich-text-html-renderer';
 
 	import type { PageData } from './$types';

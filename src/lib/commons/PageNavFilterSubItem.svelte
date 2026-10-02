@@ -2,9 +2,9 @@
 	import Checkbox from '#lib/commons/Checkbox.svelte';
 	import Icon from '#lib/SvgIcon.svelte';
 	import { technosIcons } from '#lib/technos-icons.js';
-	import { getI18n } from '$translations';
+	import { getI18n } from '#translations';
 
-	import type { PageNavFilterItemInterface } from '$models/page-nav-filter-item.interface';
+	import type { PageNavFilterItemInterface } from '#models/page-nav-filter-item.interface.js';
 
 	const i18n = getI18n();
 

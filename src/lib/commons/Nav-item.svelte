@@ -2,7 +2,7 @@
 	import { page } from '$app/state';
 	import { isBaseRouteActive } from '#lib/routing.js';
 	import { ENTER_KEY } from '#lib/utils/keys.js';
-	import { getI18n } from '$translations';
+	import { getI18n } from '#translations';
 
 	const i18n = getI18n();
 

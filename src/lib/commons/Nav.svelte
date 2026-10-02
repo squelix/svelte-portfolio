@@ -1,13 +1,13 @@
 <script lang="ts">
-	import Behance from '$icons/behance.svg?raw';
-	import Burger from '$icons/burger.svg?raw';
-	import Cross from '$icons/cross.svg?raw';
-	import Dribbble from '$icons/dribbble.svg?raw';
+	import Behance from '#icons/behance.svg?raw';
+	import Burger from '#icons/burger.svg?raw';
+	import Cross from '#icons/cross.svg?raw';
+	import Dribbble from '#icons/dribbble.svg?raw';
 	import NavItem from '#lib/commons/Nav-item.svelte';
 	import { MainRoutes } from '#lib/routing.js';
 	import Icon from '#lib/SvgIcon.svelte';
 	import { ENTER_KEY } from '#lib/utils/keys.js';
-	import { getI18n } from '$translations';
+	import { getI18n } from '#translations';
 
 	import type { RoutesEnum } from '#lib/routing.js';
 

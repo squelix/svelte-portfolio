@@ -10,9 +10,9 @@
 	import { RoutesEnum, getRoute } from '#lib/routing.js';
 	import { ENTER_KEY } from '#lib/utils/keys.js';
 	import { validateEmail } from '#lib/validators.js';
-	import { LangEnum } from '$models/langs.enum';
-	import { nav } from '$stores/nav';
-	import { getI18n } from '$translations';
+	import { LangEnum } from '#models/langs.enum.js';
+	import { nav } from '#stores/nav.js';
+	import { getI18n } from '#translations';
 	import { sineInOut } from 'svelte/easing';
 	import { fade } from 'svelte/transition';
 

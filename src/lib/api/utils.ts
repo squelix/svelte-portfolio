@@ -1,6 +1,6 @@
 import slug from 'slug';
 
-import type { Techno } from '$models/techno';
+import type { Techno } from '#models/techno.js';
 
 export const getPictureUrl = (picture: string) =>
 	picture.startsWith('http') ? picture : `https:${picture}`;

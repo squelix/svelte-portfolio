@@ -88,6 +88,10 @@
 	},
 	"imports": {
 		"#lib": "./src/lib/index.js",
-		"#lib/*": "./src/lib/*"
+		"#lib/*": "./src/lib/*",
+		"#models/*": "./src/models/*",
+		"#stores/*": "./src/stores/*",
+		"#translations": "./src/translations/index.js",
+		"#icons/*": "./src/icons/*"
 	}
 }

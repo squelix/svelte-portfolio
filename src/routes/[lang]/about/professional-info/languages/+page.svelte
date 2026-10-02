@@ -2,8 +2,8 @@
 	import { page } from '$app/state';
 	import PageTextContent from '#lib/commons/PageTextContent.svelte';
 	import { getRoute, RoutesEnum } from '#lib/routing.js';
-	import { LangEnum } from '$models/langs.enum';
-	import { getI18n } from '$translations';
+	import { LangEnum } from '#models/langs.enum.js';
+	import { getI18n } from '#translations';
 
 	import type { PageData } from './$types';
 

@@ -1,5 +1,5 @@
 <script lang="ts">
-	import Loader from '$icons/loader.svg?raw';
+	import Loader from '#icons/loader.svg?raw';
 	import Icon from '#lib/SvgIcon.svelte';
 
 	type Props = {

@@ -1,4 +1,4 @@
-import type { Profile } from '$models/profile';
+import type { Profile } from '#models/profile.js';
 
 export const getSocialGithub = (profile: Profile) =>
 	profile.socialNetworks.find((social) => social?.title.toLowerCase().includes('github'));

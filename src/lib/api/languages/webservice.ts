@@ -2,7 +2,7 @@
 import slug from 'slug';
 import ContentfulClient from '../contentful-client';
 
-import type { Language } from '$models/language';
+import type { Language } from '#models/language.js';
 
 export const getLanguages = async (lang: string, fetch: typeof globalThis.fetch) => {
 	const response = await ContentfulClient.getClient(fetch).getEntries({

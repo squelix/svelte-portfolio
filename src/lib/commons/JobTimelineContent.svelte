@@ -1,9 +1,9 @@
 <script lang="ts">
 	import Image from '#lib/commons/Image.svelte';
-	import { getI18n } from '$translations';
+	import { getI18n } from '#translations';
 	import dayjs from 'dayjs';
 
-	import type { Job } from '$models/job';
+	import type { Job } from '#models/job.js';
 
 	const i18n = getI18n();
 

@@ -4,8 +4,8 @@
 	import Snake from '#lib/commons/Snake.svelte';
 	import { getRoute, RoutesEnum } from '#lib/routing.js';
 	import { buildJsonLdScript, buildPersonJsonLd } from '#lib/seo/structured-data.js';
-	import { LangEnum } from '$models/langs.enum';
-	import { getI18n } from '$translations';
+	import { LangEnum } from '#models/langs.enum.js';
+	import { getI18n } from '#translations';
 
 	import type { PageData } from './$types';
 

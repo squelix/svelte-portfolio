@@ -1,6 +1,6 @@
 import type { RoutesEnum } from '#lib/routing.js';
-import type { LangEnum } from '$models/langs.enum';
-import type { Profile } from '$models/profile';
+import type { LangEnum } from '#models/langs.enum.js';
+import type { Profile } from '#models/profile.js';
 
 const LASTMOD = new Date().toISOString().split('T')[0];
 

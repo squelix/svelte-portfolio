@@ -1,14 +1,14 @@
 <script lang="ts">
-	import Behance from '$icons/behance.svg?raw';
-	import Dribbble from '$icons/dribbble.svg?raw';
-	import Github from '$icons/github.svg?raw';
-	import Linkedin from '$icons/linkedin.svg?raw';
-	import Malt from '$icons/malt.svg?raw';
+	import Behance from '#icons/behance.svg?raw';
+	import Dribbble from '#icons/dribbble.svg?raw';
+	import Github from '#icons/github.svg?raw';
+	import Linkedin from '#icons/linkedin.svg?raw';
+	import Malt from '#icons/malt.svg?raw';
 	import { getSocialGithub, getSocialLinkedIn, getSocialMalt } from '#lib/api/profile/utils.js';
 	import Icon from '#lib/SvgIcon.svelte';
-	import { getI18n } from '$translations';
+	import { getI18n } from '#translations';
 
-	import type { Profile } from '$models/profile';
+	import type { Profile } from '#models/profile.js';
 
 	const i18n = getI18n();
 

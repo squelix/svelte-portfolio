@@ -1,10 +1,10 @@
 import { getProfile } from '#lib/api/profile/webservice.js';
 import { SEORoutes } from '#lib/routing.js';
 import { getLlmsTxtString } from '#lib/seo/utils.js';
-import { LangEnum } from '$models/langs.enum';
+import { LangEnum } from '#models/langs.enum.js';
 
 import type { PageMeta } from '#lib/seo/utils.js';
-import type { Profile } from '$models/profile';
+import type { Profile } from '#models/profile.js';
 import type { RequestHandler } from './$types';
 
 // Page titles/descriptions come from the translation files: no network call needed.

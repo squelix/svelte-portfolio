@@ -1,4 +1,4 @@
-import Markdown from '$icons/markdown.svg?raw';
+import Markdown from '#icons/markdown.svg?raw';
 import { AboutPageNavItemEnum } from '#lib/menu/about-page-nav-item.enum.js';
 import { BioNavItemEnum } from '#lib/menu/bio-nav-item.enum.js';
 import { ContactPageNavItemEnum } from '#lib/menu/contact-page-nav-item.enum.js';
@@ -7,7 +7,7 @@ import { PersonalInfoNavItemEnum } from '#lib/menu/personal-info-nav-item.enum.j
 import { ProfessionalInfoNavItemEnum } from '#lib/menu/professional-info-nav-item.enum.js';
 import { RoutesEnum } from '#lib/routing.js';
 
-import type { PageNavItemInterface } from '$models/page-nav-item.interface';
+import type { PageNavItemInterface } from '#models/page-nav-item.interface.js';
 
 export const educationNavItems: PageNavItemInterface[] = [
 	{

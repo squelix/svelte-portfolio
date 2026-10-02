@@ -1,5 +1,5 @@
 import { getProfile } from '#lib/api/profile/webservice.js';
-import { createI18n } from '$translations';
+import { createI18n } from '#translations';
 
 import type { LayoutServerLoad } from './$types';
 

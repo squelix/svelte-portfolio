@@ -1,5 +1,5 @@
 import { browser } from '$app/env';
-import { createI18n, type AppI18n } from '$translations';
+import { createI18n, type AppI18n } from '#translations';
 import dayjs from 'dayjs';
 import 'dayjs/locale/en.js';
 import 'dayjs/locale/fr.js';

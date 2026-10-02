@@ -3,8 +3,8 @@
 	import LayoutPage from '#lib/commons/LayoutPage.svelte';
 	import ProjectsList from '#lib/commons/ProjectsList.svelte';
 	import { getRoute, RoutesEnum } from '#lib/routing.js';
-	import { LangEnum } from '$models/langs.enum';
-	import { getI18n } from '$translations';
+	import { LangEnum } from '#models/langs.enum.js';
+	import { getI18n } from '#translations';
 
 	import type { PageData } from './$types';
 

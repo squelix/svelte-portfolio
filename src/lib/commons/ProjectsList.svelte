@@ -1,8 +1,8 @@
 <script lang="ts">
 	import Project from '#lib/commons/Project.svelte';
 
-	import type { Project as ProjectType } from '$models/project';
-	import type { SchoolProject } from '$models/school-project';
+	import type { Project as ProjectType } from '#models/project.js';
+	import type { SchoolProject } from '#models/school-project.js';
 
 	type Props = {
 		projects: (ProjectType | SchoolProject)[];

@@ -1,4 +1,4 @@
-import { itemSelected, nav, navItemSelected, subNavItemSelected, subnav } from '$stores/nav';
+import { itemSelected, nav, navItemSelected, subNavItemSelected, subnav } from '#stores/nav.js';
 import { derived } from 'svelte/store';
 
 export const aboutTitleItem = derived([navItemSelected, nav], ([$navItemSelected, $nav]) =>

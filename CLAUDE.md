@@ -33,6 +33,10 @@ Routes are defined centrally in `src/lib/routing.ts` using the `RoutesEnum` enum
 - `src/lib/api/*/webservice.ts` — per-domain fetch functions called from `+page.server.ts` load functions
 - All API responses are transformed through `src/lib/api/utils.ts` helpers
 
+### Import Aliases
+
+TS/Svelte imports use Node subpath imports declared in `package.json` `imports`: `#lib/*`, `#models/*`, `#stores/*`, `#icons/*` and `#translations`. Add the `.js` extension for TS modules (`#models/langs.enum.js`). SCSS uses `$styles/...`, a Vite `resolve.alias` in `vite.config.ts` (Sass can't resolve `#` imports).
+
 ### Key Directories
 
 - `src/lib/commons/` — shared Svelte UI components (Nav, Header, Footer, PageNav, forms, etc.)

@@ -1,6 +1,6 @@
 import { ProfessionalInfoNavItemEnum } from '#lib/menu/professional-info-nav-item.enum.js';
-import { getLanguagesListBars } from '$models/languages';
-import { setSubNavItem } from '$stores/nav';
+import { getLanguagesListBars } from '#models/languages.js';
+import { setSubNavItem } from '#stores/nav.js';
 
 import type { PageLoad } from './$types';
 

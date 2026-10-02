@@ -1,6 +1,6 @@
 import { VERCEL_ENV, VITE_VERCEL_ENV } from '$app/env/private';
 import { getLanguage } from '#lib/lang/utils.js';
-import { AcceptedLanguages, type LangEnum } from '$models/langs.enum';
+import { AcceptedLanguages, type LangEnum } from '#models/langs.enum.js';
 
 import type { Handle } from '@sveltejs/kit/hooks';
 

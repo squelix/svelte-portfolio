@@ -2,9 +2,9 @@
 	import BorderBottom from '#lib/commons/BorderBottom.svelte';
 	import PageNav from '#lib/commons/PageNav.svelte';
 	import PageTitle from '#lib/commons/PageTitle.svelte';
-	import { nav } from '$stores/nav';
-	import { aboutTitleItem } from '$stores/title';
-	import { getI18n } from '$translations';
+	import { nav } from '#stores/nav.js';
+	import { aboutTitleItem } from '#stores/title.js';
+	import { getI18n } from '#translations';
 
 	const i18n = getI18n();
 	type Props = {

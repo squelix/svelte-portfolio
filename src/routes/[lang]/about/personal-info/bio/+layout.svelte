@@ -1,7 +1,7 @@
 <script lang="ts">
 	import LayoutPage from '#lib/commons/LayoutPage.svelte';
-	import { aboutTitleItem, titleItem } from '$stores/title';
-	import { getI18n } from '$translations';
+	import { aboutTitleItem, titleItem } from '#stores/title.js';
+	import { getI18n } from '#translations';
 
 	const i18n = getI18n();
 

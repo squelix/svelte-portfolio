@@ -3,11 +3,11 @@
 	import Link from '#lib/commons/Link.svelte';
 	import TechnoIcon from '#lib/commons/TechnoIcon.svelte';
 	import { technosIcons } from '#lib/technos-icons.js';
-	import { getI18n } from '$translations';
+	import { getI18n } from '#translations';
 	import slug from 'slug';
 
-	import type { Project } from '$models/project';
-	import type { SchoolProject } from '$models/school-project';
+	import type { Project } from '#models/project.js';
+	import type { SchoolProject } from '#models/school-project.js';
 
 	const i18n = getI18n();
 

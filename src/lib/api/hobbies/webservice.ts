@@ -2,7 +2,7 @@
 import slug from 'slug';
 import ContentfulClient from '../contentful-client';
 
-import type { Hobby } from '$models/hobby';
+import type { Hobby } from '#models/hobby.js';
 
 export const getHobbies = async (lang: string, fetch: typeof globalThis.fetch) => {
 	const response = await ContentfulClient.getClient(fetch).getEntries({

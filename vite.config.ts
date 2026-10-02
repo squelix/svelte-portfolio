@@ -15,13 +15,6 @@ const config: UserConfig = {
 	plugins: [
 		sveltekit({
 			preprocess: vitePreprocess({ script: true, style: true }),
-			alias: {
-				$styles: path.join(__dirname, './src/styles'),
-				$translations: path.join(__dirname, './src/translations'),
-				$models: path.join(__dirname, './src/models'),
-				$stores: path.join(__dirname, './src/stores'),
-				$icons: path.join(__dirname, './src/icons')
-			},
 			adapter: adapter({
 				runtime: 'nodejs24.x',
 				regions: ['cdg1'],
@@ -60,6 +53,12 @@ const config: UserConfig = {
 			}
 		})
 	],
+	resolve: {
+		// Sass `@use` can't resolve `#` subpath imports, so styles keep a Vite alias
+		alias: {
+			$styles: path.join(__dirname, './src/styles')
+		}
+	},
 	envPrefix: ['PUBLIC', 'VERCEL']
 };
 
