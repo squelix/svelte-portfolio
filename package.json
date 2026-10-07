@@ -31,13 +31,13 @@
 	"devDependencies": {
 		"@eslint/js": "^10.0.1",
 		"@sveltejs/adapter-vercel": "^7.0.0",
-		"@sveltejs/kit": "^3.0.0",
+		"@sveltejs/kit": "^3.0.1",
 		"@sveltejs/vite-plugin-svelte": "^7.3.1",
 		"@types/accept-language-parser": "^1.5.8",
 		"@types/node": "^24.10.2",
 		"@types/slug": "^5.0.9",
-		"@typescript-eslint/eslint-plugin": "^8.71.0",
-		"@typescript-eslint/parser": "^8.71.0",
+		"@typescript-eslint/eslint-plugin": "^8.71.1",
+		"@typescript-eslint/parser": "^8.71.1",
 		"autoprefixer": "^10.6.1",
 		"concurrently": "^10.0.5",
 		"eslint": "^10.12.0",
@@ -53,14 +53,14 @@
 		"stylelint": "^17.16.0",
 		"stylelint-config-standard-scss": "^17.0.0",
 		"stylelint-scss": "^7.3.0",
-		"svelte": "^5.57.1",
+		"svelte": "^5.57.2",
 		"svelte-check": "^4.7.6",
 		"svelte-preprocess": "^6.0.5",
 		"sveltekit-i18n": "^3.3.0",
 		"ts-node": "^10.9.2",
 		"tslib": "^2.8.1",
 		"typescript": "^6.0.3",
-		"vite": "^8.3.2",
+		"vite": "^8.3.3",
 		"vite-plugin-node-polyfills": "^0.28.0"
 	},
 	"dependencies": {
@@ -75,10 +75,11 @@
 		"sanitize.css": "^13.0.0",
 		"slug": "^12.0.1",
 		"svelte-vertical-timeline": "^2.0.0",
-		"typescript-eslint": "^8.71.0"
+		"typescript-eslint": "^8.71.1"
 	},
 	"overrides": {
-		"undici": "7.30.0"
+		"undici": "7.30.0",
+		"shell-quote": "1.12.0"
 	},
 	"allowScripts": {
 		"svelte-preprocess@6.0.5": true,
