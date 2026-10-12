@@ -1,6 +1,4 @@
 <script lang="ts">
-	import { goto } from '$app/navigation';
-	import { page } from '$app/state';
 	import BorderBottom from '#lib/commons/BorderBottom.svelte';
 	import LayoutPage from '#lib/commons/LayoutPage.svelte';
 	import PageNavFilter from '#lib/commons/PageNavFilter.svelte';
@@ -9,6 +7,8 @@
 	import { getRoute, RoutesEnum } from '#lib/routing.js';
 	import { LangEnum } from '#models/langs.enum.js';
 	import { getI18n } from '#translations';
+	import { goto } from '$app/navigation';
+	import { page } from '$app/state';
 
 	import type { PageData } from './$types';
 
@@ -40,6 +40,7 @@
 			url.searchParams.delete('techno');
 		}
 
+		// eslint-disable-next-line svelte/no-navigation-without-resolve
 		await goto(url);
 	};
 </script>
