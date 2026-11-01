@@ -10,7 +10,7 @@
 		"url": "https://www.mickael-depardon.com"
 	},
 	"engines": {
-		"node": "24"
+		"node": "26"
 	},
 	"type": "module",
 	"scripts": {
@@ -34,7 +34,7 @@
 		"@sveltejs/kit": "^3.1.1",
 		"@sveltejs/vite-plugin-svelte": "^7.3.1",
 		"@types/accept-language-parser": "^1.5.8",
-		"@types/node": "^24.10.2",
+		"@types/node": "^26.6.6",
 		"@types/slug": "^5.0.9",
 		"@typescript-eslint/eslint-plugin": "^8.72.1",
 		"@typescript-eslint/parser": "^8.72.1",

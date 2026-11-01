@@ -16,10 +16,11 @@ const config: UserConfig = {
 		sveltekit({
 			preprocess: vitePreprocess({ script: true, style: true }),
 			adapter: adapter({
-				runtime: 'nodejs24.x',
+				runtime: 'nodejs26.x',
 				regions: ['cdg1'],
 				images: {
 					sizes: [32, 48, 64, 96, 128, 256, 384],
+					domains: [],
 					formats: ['image/webp', 'image/avif'],
 					minimumCacheTTL: 2678400, // 31 days
 					remotePatterns: [
