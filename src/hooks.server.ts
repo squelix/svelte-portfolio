@@ -1,5 +1,6 @@
 import { VERCEL_ENV, VITE_VERCEL_ENV } from '$app/env/private';
 import { getLanguage } from '#lib/lang/utils.js';
+import { cdnCacheHeaders } from '#lib/server/isr.js';
 import { AcceptedLanguages, LangEnum } from '#models/langs.enum.js';
 
 import type { Handle } from '@sveltejs/kit/hooks';
@@ -21,12 +22,6 @@ const securityHeaders = {
 	'Permissions-Policy': 'camera=(), microphone=(), geolocation=()'
 };
 
-const cacheHeaders = {
-	'Cache-Control': 's-maxage=86400, stale-while-revalidate=86400',
-	'Vercel-CDN-Cache-Control': 's-maxage=86400, stale-while-revalidate=86400',
-	'CDN-Cache-Control': 's-maxage=86400, stale-while-revalidate=86400'
-};
-
 function applySecurityHeaders(response: Response): Response {
 	for (const [header, value] of Object.entries(securityHeaders)) {
 		response.headers.set(header, value);
@@ -35,7 +30,7 @@ function applySecurityHeaders(response: Response): Response {
 }
 
 function applyCacheHeaders(response: Response): Response {
-	for (const [header, value] of Object.entries(cacheHeaders)) {
+	for (const [header, value] of Object.entries(cdnCacheHeaders)) {
 		response.headers.set(header, value);
 	}
 	return response;
@@ -57,7 +52,11 @@ export const handle: Handle = async ({ event, resolve }) => {
 			transformPageChunk: ({ html }) =>
 				html.replace('%lang%', lang).replace('%umami%', getUmamiScript())
 		});
-		// No CDN cache headers here: [lang] pages are cached by Vercel ISR, which manages Cache-Control.
+		// ISR pages get their Cache-Control from Vercel. A path that matches no route can't be served
+		// by an ISR function, so its 404 keeps the CDN cache; non-ISR routes set their own headers.
+		if (event.route.id === null) {
+			applyCacheHeaders(response);
+		}
 		return applySecurityHeaders(response);
 	}
 

@@ -1,4 +1,5 @@
 import { Routes, RoutesEnum } from '#lib/routing.js';
+import { cdnCacheHeaders } from '#lib/server/isr.js';
 
 import type { RequestHandler } from './$types';
 
@@ -9,6 +10,7 @@ export const GET: RequestHandler = ({ url }) => {
 	return new Response(undefined, {
 		status: 301,
 		headers: {
+			...cdnCacheHeaders,
 			Location: `/${lang}${Routes[RoutesEnum.AboutProfessionalInfoSkills]}`
 		}
 	});
