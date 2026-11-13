@@ -50,14 +50,19 @@ TS/Svelte imports use Node subpath imports declared in `package.json` `imports`:
 
 Server-side variables must be declared in `src/env.ts` (`defineEnvVars`) and imported from `$app/env/private`.
 
-| Variable                  | Used in                     |
-| ------------------------- | --------------------------- |
-| `CONTENTFUL_SPACE_ID`     | Contentful client           |
-| `CONTENTFUL_ACCESS_TOKEN` | Contentful client           |
-| `MAIL_ACCESS_TOKEN`       | `api/mail.js` (auth header) |
-| `MAILJET_APIKEY_PUBLIC`   | `api/mail.js`               |
-| `MAILJET_APIKEY_PRIVATE`  | `api/mail.js`               |
-| `MAILJET_SENDER_EMAIL`    | `api/mail.js`               |
+| Variable                  | Used in                                                      |
+| ------------------------- | ------------------------------------------------------------ |
+| `CONTENTFUL_SPACE_ID`     | Contentful client                                            |
+| `CONTENTFUL_ACCESS_TOKEN` | Contentful client                                            |
+| `MAIL_ACCESS_TOKEN`       | `api/mail.js` (auth header)                                  |
+| `MAILJET_APIKEY_PUBLIC`   | `api/mail.js`                                                |
+| `MAILJET_APIKEY_PRIVATE`  | `api/mail.js`                                                |
+| `MAILJET_SENDER_EMAIL`    | `api/mail.js`                                                |
+| `BYPASS_TOKEN`            | `src/lib/server/isr.ts` (ISR bypass/revalidation, ≥32 chars) |
+
+### Caching (ISR)
+
+Pages under `[lang]` use Vercel ISR (1 h expiration) via `config` in `src/routes/[lang]/+layout.server.ts`; shared settings live in `src/lib/server/isr.ts`. Overrides must spread `isrConfig` (config merge is shallow). Pages with form actions opt out (`isr: false`), and any query param a page reads must be listed in `allowQuery`. Force a refresh with `curl -I -H "x-prerender-revalidate: $BYPASS_TOKEN" <url>` — it only refreshes that exact host + path (other langs, `?techno=` variants and other domains keep their cache until expiration).
 
 ### Adding a New Page
 
