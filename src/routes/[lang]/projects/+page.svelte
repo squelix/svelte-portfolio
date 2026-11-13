@@ -35,7 +35,8 @@
 		}
 
 		if (newTechnos.length > 0) {
-			url.searchParams.set('techno', newTechnos.join(','));
+			// Sorted so each selection has a single URL, hence a single ISR cache entry
+			url.searchParams.set('techno', newTechnos.sort().join(','));
 		} else {
 			url.searchParams.delete('techno');
 		}
