@@ -8,12 +8,9 @@ import type { Actions, PageServerLoad } from './$types';
 // Form action POST: incompatible with ISR
 export const config: Config = { isr: false };
 
-// Not ISR, so the GET is cached by the CDN instead.
-export const load: PageServerLoad = async ({ parent, setHeaders }) => {
+// Not ISR, so the GET is cached by the CDN instead. `profile` comes from the root layout.
+export const load: PageServerLoad = ({ setHeaders }) => {
 	setHeaders(cdnCacheHeaders);
-	return {
-		profile: await parent().then(({ profile }) => profile)
-	};
 };
 
 export const actions: Actions = {

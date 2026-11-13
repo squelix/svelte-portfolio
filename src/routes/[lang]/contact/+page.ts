@@ -7,7 +7,9 @@ import { nav, setNavItem, setNavItems } from '#stores/nav.js';
 
 import type { PageLoad } from './$types';
 
-export const load: PageLoad = ({ data: { profile } }) => {
+export const load: PageLoad = async ({ parent }) => {
+	const { profile } = await parent();
+
 	setNavItem(ContactPageNavItemEnum.Contacts);
 	nav.set(contactPageNavItems);
 
