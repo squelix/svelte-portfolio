@@ -1,4 +1,4 @@
-import { Routes } from '#lib/routing.js';
+import { RouteQueryParams, Routes, type RoutesEnum } from '#lib/routing.js';
 import { AcceptedLanguages, DEFAULT_LANG, type LangEnum } from '#models/langs.enum.js';
 import { parse } from 'accept-language-parser';
 
@@ -25,6 +25,20 @@ const pageSegments = new Set(
 		.filter(Boolean)
 );
 
+/**
+ * Query to put in a cached redirect from a path whose route (language prefix stripped) is `route`.
+ * ISR caches that redirect per path + the matched route's `allowQuery` params, so only those params
+ * may be forwarded: any other param would be frozen into the cached Location for every visitor.
+ */
+const cacheSafeQuery = (route: string, search: string): string => {
+	const routeKey = (Object.keys(Routes) as RoutesEnum[]).find((key) => Routes[key] === route);
+	const allowed = (routeKey && RouteQueryParams[routeKey]) || [];
+	const query = new URLSearchParams(
+		[...new URLSearchParams(search)].filter(([name]) => allowed.includes(name))
+	).toString();
+	return query ? `?${query}` : '';
+};
+
 export interface LangRedirect {
 	status: 301 | 302;
 	location: string;
@@ -34,8 +48,9 @@ export interface LangRedirect {
 /**
  * Where to send a request whose first segment isn't an accepted language.
  *
- * Only `/` may depend on Accept-Language: any other path can match a `[lang]` ISR route, and Vercel
- * ISR caches the redirect per path for every visitor, so it must be derived from the URL alone.
+ * Only `/` (served by the non-ISR catch-all, never cached) may depend on Accept-Language and forward
+ * its whole query. Any other path can match a `[lang]` ISR route, and Vercel ISR caches the redirect
+ * for every visitor, so it must be derived from the path and the cache-key params alone.
  */
 export const getLangRedirect = (
 	pathname: string,
@@ -51,20 +66,22 @@ export const getLangRedirect = (
 	}
 
 	const { lang, route } = splitLangPath(pathname);
+	// The first segment is matched as `[lang]`, so the cache key is the one of `route`'s page.
+	const query = cacheSafeQuery(route, search);
 
 	// Case or region variant of an accepted language: `/FR`, `/fr-FR`, `/en_gb`…
 	const variant = AcceptedLanguages.find(
 		(accepted) => accepted === lang.toLowerCase().split(/[-_]/)[0]
 	);
 	if (variant) {
-		return { status: 301, location: `/${variant}${route}${search}` };
+		return { status: 301, location: `/${variant}${route}${query}` };
 	}
 
 	// No language prefix (`/projects`): keep the whole path.
 	if (pageSegments.has(lang)) {
-		return { status: 301, location: `/${DEFAULT_LANG}${pathname}${search}` };
+		return { status: 301, location: `/${DEFAULT_LANG}${pathname}${query}` };
 	}
 
 	// Unknown language prefix (`/de/projects`): replace it.
-	return { status: 301, location: `/${DEFAULT_LANG}${route}${search}` };
+	return { status: 301, location: `/${DEFAULT_LANG}${route}${query}` };
 };

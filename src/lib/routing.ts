@@ -46,6 +46,12 @@ export const Routes: Record<RoutesEnum, string> = {
 	[RoutesEnum.LegalsMentions]: '/legals/legals-mentions'
 };
 
+// Query params a page reads. They are its ISR `allowQuery` (cache key), so they are also the only
+// params a cached redirect to that page may forward.
+export const RouteQueryParams: Partial<Record<RoutesEnum, string[]>> = {
+	[RoutesEnum.Projects]: ['techno']
+};
+
 export const SEORoutes: Partial<Record<RoutesEnum, string>> = {
 	[RoutesEnum.AboutPersonalInfoBio]: '/about/personal-info/bio',
 	[RoutesEnum.AboutPersonalInfoBioLookingFor]: '/about/personal-info/bio/looking-for',

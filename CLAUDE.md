@@ -62,7 +62,7 @@ Server-side variables must be declared in `src/env.ts` (`defineEnvVars`) and imp
 
 ### Caching (ISR)
 
-Pages under `[lang]` use Vercel ISR (1 h expiration) via `config` in `src/routes/[lang]/+layout.server.ts`; shared settings live in `src/lib/server/isr.ts`. Overrides must spread `isrConfig` (config merge is shallow). Pages with form actions opt out (`isr: false`), and any query param a page reads must be listed in `allowQuery`. Responses that never come from an ISR function (non-ISR pages via `setHeaders`, `+server.ts` redirects, unmatched 404s in the hook) set `cdnCacheHeaders` instead; never set them on ISR pages. Force a refresh with `curl -I -H "x-prerender-revalidate: $BYPASS_TOKEN" <url>` — it only refreshes that exact host + path (other langs, `?techno=` variants and other domains keep their cache until expiration).
+Pages under `[lang]` use Vercel ISR (1 h expiration) via `config` in `src/routes/[lang]/+layout.server.ts`; shared settings live in `src/lib/server/isr.ts`. Overrides must spread `isrConfig` (config merge is shallow). Pages with form actions opt out (`isr: false`), and any query param a page reads must be declared in `RouteQueryParams` (`src/lib/routing.ts`), which feeds its `allowQuery` and the only params cached language redirects may forward (anything else would be frozen into the cached `Location`). Responses that never come from an ISR function (non-ISR pages via `setHeaders`, `+server.ts` redirects, unmatched 404s in the hook) set `cdnCacheHeaders` instead; never set them on ISR pages. Force a refresh with `curl -I -H "x-prerender-revalidate: $BYPASS_TOKEN" <url>` — it only refreshes that exact host + path (other langs, `?techno=` variants and other domains keep their cache until expiration).
 
 ### Adding a New Page
 
