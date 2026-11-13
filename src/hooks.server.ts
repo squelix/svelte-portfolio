@@ -1,7 +1,7 @@
 import { VERCEL_ENV, VITE_VERCEL_ENV } from '$app/env/private';
-import { getLanguage } from '#lib/lang/utils.js';
+import { getLangRedirect, splitLangPath } from '#lib/lang/utils.js';
 import { cdnCacheHeaders } from '#lib/server/isr.js';
-import { AcceptedLanguages, LangEnum } from '#models/langs.enum.js';
+import { AcceptedLanguages, type LangEnum } from '#models/langs.enum.js';
 
 import type { Handle } from '@sveltejs/kit/hooks';
 
@@ -44,10 +44,9 @@ export const handle: Handle = async ({ event, resolve }) => {
 		return applyCacheHeaders(applySecurityHeaders(await resolve(event)));
 	}
 
-	const lang = `${pathname.match(/[^/]+?(?=\/|$)/) || ''}`;
-	const route = pathname.replace(new RegExp(`^/${lang}`), '');
+	const { lang } = splitLangPath(pathname);
 
-	if (AcceptedLanguages.includes(lang as unknown as LangEnum)) {
+	if (AcceptedLanguages.includes(lang as LangEnum)) {
 		const response = await resolve(event, {
 			transformPageChunk: ({ html }) =>
 				html.replace('%lang%', lang).replace('%umami%', getUmamiScript())
@@ -60,17 +59,14 @@ export const handle: Handle = async ({ event, resolve }) => {
 		return applySecurityHeaders(response);
 	}
 
-	// Any path other than `/` can match an ISR route ([lang] patterns), and Vercel ISR caches 301s
-	// regardless of Accept-Language: fall back to a fixed language so the cached redirect is right
-	// for everyone. `/` is not ISR, so it keeps browser language detection.
-	const targetLang =
-		pathname === '/' ? getLanguage(request.headers.get('accept-language')) : LangEnum.en_GB;
-
-	const redirect = new Response(undefined, {
-		status: 301,
-		headers: {
-			Location: `/${targetLang}${route}`
-		}
-	});
-	return applySecurityHeaders(redirect);
+	const { status, location, vary } = getLangRedirect(
+		pathname,
+		url.search,
+		request.headers.get('accept-language')
+	);
+	const headers = new Headers({ Location: location });
+	if (vary) {
+		headers.set('Vary', vary);
+	}
+	return applySecurityHeaders(new Response(undefined, { status, headers }));
 };
