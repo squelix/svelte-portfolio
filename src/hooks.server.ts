@@ -1,6 +1,6 @@
 import { VERCEL_ENV, VITE_VERCEL_ENV } from '$app/env/private';
 import { getLanguage } from '#lib/lang/utils.js';
-import { AcceptedLanguages, type LangEnum } from '#models/langs.enum.js';
+import { AcceptedLanguages, LangEnum } from '#models/langs.enum.js';
 
 import type { Handle } from '@sveltejs/kit/hooks';
 
@@ -60,10 +60,16 @@ export const handle: Handle = async ({ event, resolve }) => {
 		return applyCacheHeaders(applySecurityHeaders(response));
 	}
 
+	// Any path other than `/` can match an ISR route ([lang] patterns), and Vercel ISR caches 301s
+	// regardless of Accept-Language: fall back to a fixed language so the cached redirect is right
+	// for everyone. `/` is not ISR, so it keeps browser language detection.
+	const targetLang =
+		pathname === '/' ? getLanguage(request.headers.get('accept-language')) : LangEnum.en_GB;
+
 	const redirect = new Response(undefined, {
 		status: 301,
 		headers: {
-			Location: `/${getLanguage(request.headers.get('accept-language'))}${route}`
+			Location: `/${targetLang}${route}`
 		}
 	});
 	return applySecurityHeaders(redirect);
