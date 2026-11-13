@@ -57,7 +57,8 @@ export const handle: Handle = async ({ event, resolve }) => {
 			transformPageChunk: ({ html }) =>
 				html.replace('%lang%', lang).replace('%umami%', getUmamiScript())
 		});
-		return applyCacheHeaders(applySecurityHeaders(response));
+		// No CDN cache headers here: [lang] pages are cached by Vercel ISR, which manages Cache-Control.
+		return applySecurityHeaders(response);
 	}
 
 	// Any path other than `/` can match an ISR route ([lang] patterns), and Vercel ISR caches 301s

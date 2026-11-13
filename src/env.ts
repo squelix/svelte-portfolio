@@ -9,5 +9,7 @@ export const variables = defineEnvVars({
 	MAIL_ACCESS_TOKEN: { schema: optional },
 	MAIL_ENDPOINT: { schema: optional },
 	VERCEL_ENV: { schema: optional },
-	VITE_VERCEL_ENV: { schema: optional }
+	VITE_VERCEL_ENV: { schema: optional },
+	// ISR bypass/revalidation token (>= 32 chars), read at build time
+	BYPASS_TOKEN: { schema: optional }
 });

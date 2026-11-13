@@ -1,7 +1,11 @@
 import { MAIL_ACCESS_TOKEN } from '$app/env/private';
 import { MailService } from '#lib/services/mail.service.js';
 
+import type { Config } from '@sveltejs/adapter-vercel';
 import type { Actions, PageServerLoad } from './$types';
+
+// Form action POST: incompatible with ISR
+export const config: Config = { isr: false };
 
 export const load: PageServerLoad = async ({ parent }) => {
 	return {
