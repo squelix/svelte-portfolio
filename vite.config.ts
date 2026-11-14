@@ -56,6 +56,11 @@ const config: UserConfig = {
 			}
 		})
 	],
+	ssr: {
+		// Its "import" entry is an ESM `.js` file in a package without `"type": "module"`, so Node
+		// loads it as CommonJS on Vercel and the named import fails (500 on SSR). Bundle it instead.
+		noExternal: ['@contentful/rich-text-html-renderer']
+	},
 	resolve: {
 		// Sass `@use` can't resolve `#` subpath imports, so styles keep a Vite alias
 		alias: {
