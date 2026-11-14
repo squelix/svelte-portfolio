@@ -35,9 +35,9 @@
 
 <header>
 	{#if last}
-		<p class="date">{dayjs(item?.startDate).format('MMMM YYYY')}</p>
+		<p class="date">{dayjs(item?.startDate).locale(i18n.locale!).format('MMMM YYYY')}</p>
 	{:else if item?.endDate}
-		<p class="date">{dayjs(item?.endDate).format('MMMM YYYY')}</p>
+		<p class="date">{dayjs(item?.endDate).locale(i18n.locale!).format('MMMM YYYY')}</p>
 	{:else}
 		<p class="date">{i18n.t('experiences.todayText')}</p>
 	{/if}
