@@ -33,6 +33,10 @@ Routes are defined centrally in `src/lib/routing.ts` using the `RoutesEnum` enum
 - `src/lib/api/*/webservice.ts` — per-domain fetch functions called from `+page.server.ts` load functions
 - All API responses are transformed through `src/lib/api/utils.ts` helpers
 
+### SSR state
+
+Server code runs concurrent requests in the same module instance, and ISR caches the resulting HTML for 1 h, so never keep per-request state at module level (stores, `dayjs.locale()`, singletons holding request data). Nav state (`src/stores/nav.ts`) is returned by universal loads as `NavData` and turned into per-request stores by `src/routes/[lang]/+layout.svelte` (`getNavState()` in components). Dates take the locale per call: `dayjs(date).locale(i18n.locale!)`.
+
 ### Import Aliases
 
 TS/Svelte imports use Node subpath imports declared in `package.json` `imports`: `#lib/*`, `#models/*`, `#stores/*`, `#icons/*` and `#translations`. Add the `.js` extension for TS modules (`#models/langs.enum.js`). SCSS uses `$styles/...`, a Vite `resolve.alias` in `vite.config.ts` (Sass can't resolve `#` imports).
@@ -42,7 +46,7 @@ TS/Svelte imports use Node subpath imports declared in `package.json` `imports`:
 - `src/lib/commons/` — shared Svelte UI components (Nav, Header, Footer, PageNav, forms, etc.)
 - `src/lib/api/` — Contentful API layer, one subfolder per content type
 - `src/models/` — TypeScript type definitions (`.d.ts` and `.ts`)
-- `src/stores/` — Svelte stores for nav state, page title, and env vars
+- `src/stores/` — per-request nav state (context) and env vars
 - `src/icons/` — SVG icon assets used via `SvgIcon.svelte`
 - `api/mail.js` — Vercel serverless function for contact form email (uses Mailjet)
 
@@ -62,7 +66,7 @@ Server-side variables must be declared in `src/env.ts` (`defineEnvVars`) and imp
 
 ### Caching (ISR)
 
-Pages under `[lang]` use Vercel ISR (1 h expiration) via `config` in `src/routes/[lang]/+layout.server.ts`; shared settings live in `src/lib/server/isr.ts`. Overrides must spread `isrConfig` (config merge is shallow). Pages with form actions opt out (`isr: false`), and any query param a page reads must be declared in `RouteQueryParams` (`src/lib/routing.ts`), which feeds its `allowQuery` and the only params cached language redirects may forward (anything else would be frozen into the cached `Location`). Responses that never come from an ISR function (non-ISR pages via `setHeaders`, `+server.ts` redirects, unmatched 404s in the hook) set `cdnCacheHeaders` instead; never set them on ISR pages. Force a refresh with `curl -I -H "x-prerender-revalidate: $BYPASS_TOKEN" <url>` — it only refreshes that exact host + path (other langs, `?techno=` variants and other domains keep their cache until expiration).
+Pages under `[lang]` use Vercel ISR (1 h expiration) via `config` in `src/routes/[lang]/+layout.server.ts`; shared settings live in `src/lib/server/isr.ts`. Overrides must spread `isrConfig` (config merge is shallow). Pages with form actions opt out (`isr: false`), and any query param a page reads must be declared in `RouteQueryParams` (`src/lib/routing.ts`), which feeds its `allowQuery` and the only params cached language redirects forward. Vercel strips every param missing from `allowQuery` before the function runs, so a page never sees it. Responses that never come from an ISR function (non-ISR pages via `setHeaders`, `+server.ts` redirects, unmatched 404s in the hook) set `cdnCacheHeaders` instead; never set them on ISR pages. Force a refresh with `curl -I -H "x-prerender-revalidate: $BYPASS_TOKEN" <url>` — it only refreshes that exact host + path (other langs, `?techno=` variants and other domains keep their cache until expiration).
 
 ### Adding a New Page
 

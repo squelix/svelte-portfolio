@@ -27,8 +27,9 @@ const pageSegments = new Set(
 
 /**
  * Query to put in a cached redirect from a path whose route (language prefix stripped) is `route`.
- * ISR caches that redirect per path + the matched route's `allowQuery` params, so only those params
- * may be forwarded: any other param would be frozen into the cached Location for every visitor.
+ * ISR caches that redirect per path + the matched route's `allowQuery` params. Vercel strips every
+ * other param before the function runs (measured on a preview), so forwarding only these keeps the
+ * redirect correct on any host instead of relying on that.
  */
 const cacheSafeQuery = (route: string, search: string): string => {
 	const routeKey = (Object.keys(Routes) as RoutesEnum[]).find((key) => Routes[key] === route);
