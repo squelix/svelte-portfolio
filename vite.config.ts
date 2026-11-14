@@ -36,6 +36,8 @@ const config: UserConfig = {
 				}
 			}),
 			csp: {
+				// Hashes, not nonces: an ISR page is cached with its HTML, so a nonce would be shared by every visitor.
+				mode: 'hash',
 				directives: {
 					'default-src': ['self'],
 					'script-src': isDev
