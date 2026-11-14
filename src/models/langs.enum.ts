@@ -9,3 +9,5 @@ export enum LocaleEnum {
 }
 
 export const AcceptedLanguages: LangEnum[] = [LangEnum.fr_FR, LangEnum.en_GB];
+
+export const DEFAULT_LANG = LangEnum.en_GB;

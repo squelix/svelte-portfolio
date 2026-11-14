@@ -4,12 +4,13 @@
 	import { getRoute } from '#lib/routing.js';
 	import Icon from '#lib/SvgIcon.svelte';
 	import { ENTER_KEY } from '#lib/utils/keys.js';
-	import { navItemOpened, navItemSelected, subNavItemOpened } from '#stores/nav.js';
+	import { getNavState } from '#stores/nav.js';
 	import { getI18n } from '#translations';
 
 	import type { PageNavItemInterface } from '#models/page-nav-item.interface.js';
 
 	const i18n = getI18n();
+	const { navItemOpened, navItemSelected, subNavItemOpened } = getNavState();
 
 	type Props = {
 		item: PageNavItemInterface;

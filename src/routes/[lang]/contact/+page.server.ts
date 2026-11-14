@@ -1,12 +1,16 @@
 import { MAIL_ACCESS_TOKEN } from '$app/env/private';
+import { cdnCacheHeaders } from '#lib/server/isr.js';
 import { MailService } from '#lib/services/mail.service.js';
 
+import type { Config } from '@sveltejs/adapter-vercel';
 import type { Actions, PageServerLoad } from './$types';
 
-export const load: PageServerLoad = async ({ parent }) => {
-	return {
-		profile: await parent().then(({ profile }) => profile)
-	};
+// Form action POST: incompatible with ISR
+export const config: Config = { isr: false };
+
+// Not ISR, so the GET is cached by the CDN instead. `profile` comes from the root layout.
+export const load: PageServerLoad = ({ setHeaders }) => {
+	setHeaders(cdnCacheHeaders);
 };
 
 export const actions: Actions = {

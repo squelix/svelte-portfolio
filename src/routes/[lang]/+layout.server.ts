@@ -1,9 +1,7 @@
-import type { LayoutServerLoad } from './$types';
+import { isrConfig } from '#lib/server/isr.js';
 
-export const load: LayoutServerLoad = async ({ url: { pathname }, parent }) => {
-	return {
-		route: await parent().then(({ lang }) => pathname.replace(new RegExp(`^/${lang}`), '')),
-		lang: await parent().then(({ lang }) => lang),
-		profile: await parent().then(({ profile }) => profile)
-	};
-};
+import type { Config } from '@sveltejs/adapter-vercel';
+
+// Applies ISR to every page under [lang]; +server.ts endpoints don't inherit layout config.
+// No load here: `lang`, `route` and `profile` already come from the root layout.
+export const config: Config = { isr: isrConfig };

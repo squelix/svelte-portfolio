@@ -36,6 +36,8 @@ const config: UserConfig = {
 				}
 			}),
 			csp: {
+				// Hashes, not nonces: an ISR page is cached with its HTML, so a nonce would be shared by every visitor.
+				mode: 'hash',
 				directives: {
 					'default-src': ['self'],
 					'script-src': isDev
@@ -54,6 +56,11 @@ const config: UserConfig = {
 			}
 		})
 	],
+	ssr: {
+		// Its "import" entry is an ESM `.js` file in a package without `"type": "module"`, so Node
+		// loads it as CommonJS on Vercel and the named import fails (500 on SSR). Bundle it instead.
+		noExternal: ['@contentful/rich-text-html-renderer']
+	},
 	resolve: {
 		// Sass `@use` can't resolve `#` subpath imports, so styles keep a Vite alias
 		alias: {

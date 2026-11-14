@@ -1,11 +1,11 @@
 import { getProfile } from '#lib/api/profile/webservice.js';
+import { splitLangPath } from '#lib/lang/utils.js';
 import { createI18n } from '#translations';
 
 import type { LayoutServerLoad } from './$types';
 
 export const load: LayoutServerLoad = async ({ url: { pathname }, fetch }) => {
-	const lang = `${pathname.match(/[^/]+?(?=\/|$)/) || ''}`;
-	const route = pathname.replace(new RegExp(`^/${lang}`), '');
+	const { lang, route } = splitLangPath(pathname);
 
 	// Per-request instance: a module-level singleton would leak one visitor's locale into another's page.
 	const i18n = createI18n();

@@ -1,5 +1,6 @@
 import { VERCEL_ENV, VITE_VERCEL_ENV } from '$app/env/private';
-import { getLanguage } from '#lib/lang/utils.js';
+import { getLangRedirect, splitLangPath } from '#lib/lang/utils.js';
+import { cdnCacheHeaders } from '#lib/server/isr.js';
 import { AcceptedLanguages, type LangEnum } from '#models/langs.enum.js';
 
 import type { Handle } from '@sveltejs/kit/hooks';
@@ -21,12 +22,6 @@ const securityHeaders = {
 	'Permissions-Policy': 'camera=(), microphone=(), geolocation=()'
 };
 
-const cacheHeaders = {
-	'Cache-Control': 's-maxage=86400, stale-while-revalidate=86400',
-	'Vercel-CDN-Cache-Control': 's-maxage=86400, stale-while-revalidate=86400',
-	'CDN-Cache-Control': 's-maxage=86400, stale-while-revalidate=86400'
-};
-
 function applySecurityHeaders(response: Response): Response {
 	for (const [header, value] of Object.entries(securityHeaders)) {
 		response.headers.set(header, value);
@@ -35,7 +30,7 @@ function applySecurityHeaders(response: Response): Response {
 }
 
 function applyCacheHeaders(response: Response): Response {
-	for (const [header, value] of Object.entries(cacheHeaders)) {
+	for (const [header, value] of Object.entries(cdnCacheHeaders)) {
 		response.headers.set(header, value);
 	}
 	return response;
@@ -49,22 +44,29 @@ export const handle: Handle = async ({ event, resolve }) => {
 		return applyCacheHeaders(applySecurityHeaders(await resolve(event)));
 	}
 
-	const lang = `${pathname.match(/[^/]+?(?=\/|$)/) || ''}`;
-	const route = pathname.replace(new RegExp(`^/${lang}`), '');
+	const { lang } = splitLangPath(pathname);
 
-	if (AcceptedLanguages.includes(lang as unknown as LangEnum)) {
+	if (AcceptedLanguages.includes(lang as LangEnum)) {
 		const response = await resolve(event, {
 			transformPageChunk: ({ html }) =>
 				html.replace('%lang%', lang).replace('%umami%', getUmamiScript())
 		});
-		return applyCacheHeaders(applySecurityHeaders(response));
+		// ISR pages get their Cache-Control from Vercel. A path that matches no route can't be served
+		// by an ISR function, so its 404 keeps the CDN cache; non-ISR routes set their own headers.
+		if (event.route.id === null) {
+			applyCacheHeaders(response);
+		}
+		return applySecurityHeaders(response);
 	}
 
-	const redirect = new Response(undefined, {
-		status: 301,
-		headers: {
-			Location: `/${getLanguage(request.headers.get('accept-language'))}${route}`
-		}
-	});
-	return applySecurityHeaders(redirect);
+	const { status, location, vary } = getLangRedirect(
+		pathname,
+		url.search,
+		request.headers.get('accept-language')
+	);
+	const headers = new Headers({ Location: location });
+	if (vary) {
+		headers.set('Vary', vary);
+	}
+	return applySecurityHeaders(new Response(undefined, { status, headers }));
 };

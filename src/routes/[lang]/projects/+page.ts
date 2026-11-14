@@ -1,11 +1,7 @@
-import { setNavItem } from '#stores/nav.js';
-
 import type { Project } from '#models/project.js';
 import type { PageLoad } from './$types';
 
 export const load: PageLoad = ({ data: { projects, projectsTechnosFilter } }) => {
-	setNavItem('projects');
-
 	const projectsTechnosAll = [
 		...new Map(
 			projects.flatMap((project) => project?.technos ?? []).map((item) => [item.slug, item])
@@ -34,6 +30,7 @@ export const load: PageLoad = ({ data: { projects, projectsTechnosFilter } }) =>
 	}
 
 	return {
+		navItemSelected: 'projects',
 		projectsTechnosFilter,
 		projectsTechnosListAllFilters,
 		projectsListFiltered: projectsListFiltered.sort((a, b) => {

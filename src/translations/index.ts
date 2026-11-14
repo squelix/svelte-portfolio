@@ -1,12 +1,12 @@
 import { Routes, RoutesEnum } from '#lib/routing.js';
-import { LangEnum } from '#models/langs.enum.js';
+import { DEFAULT_LANG, LangEnum } from '#models/langs.enum.js';
 import { createContext } from 'svelte';
 import { I18n } from 'sveltekit-i18n';
 
 import type { Config } from 'sveltekit-i18n';
 
 export const config: Config = {
-	fallbackLocale: LangEnum.en_GB,
+	fallbackLocale: DEFAULT_LANG,
 	loaders: [
 		{
 			locale: LangEnum.fr_FR,
