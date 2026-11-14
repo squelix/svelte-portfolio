@@ -11,12 +11,13 @@
 	import { ENTER_KEY } from '#lib/utils/keys.js';
 	import { validateEmail } from '#lib/validators.js';
 	import { LangEnum } from '#models/langs.enum.js';
-	import { nav } from '#stores/nav.js';
+	import { getNavState } from '#stores/nav.js';
 	import { getI18n } from '#translations';
 	import { sineInOut } from 'svelte/easing';
 	import { fade } from 'svelte/transition';
 
 	const i18n = getI18n();
+	const { nav } = getNavState();
 
 	const transitionMs = 175;
 

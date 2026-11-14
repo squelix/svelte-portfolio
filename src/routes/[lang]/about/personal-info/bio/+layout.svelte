@@ -1,9 +1,10 @@
 <script lang="ts">
 	import LayoutPage from '#lib/commons/LayoutPage.svelte';
-	import { aboutTitleItem, titleItem } from '#stores/title.js';
+	import { getNavState } from '#stores/nav.js';
 	import { getI18n } from '#translations';
 
 	const i18n = getI18n();
+	const { aboutTitleItem, titleItem } = getNavState();
 
 	type Props = {
 		children?: import('svelte').Snippet;
@@ -18,7 +19,7 @@
 			//&nbsp;{i18n.t($aboutTitleItem.labelKey)}
 		{/if}
 		{#if !$aboutTitleItem?.labelKey && $aboutTitleItem?.label}
-			//&nbsp;{$titleItem.label}
+			//&nbsp;{$aboutTitleItem.label}
 		{/if}
 
 		<span class="title--gray">

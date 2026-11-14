@@ -2,11 +2,12 @@
 	import BorderBottom from '#lib/commons/BorderBottom.svelte';
 	import PageNav from '#lib/commons/PageNav.svelte';
 	import PageTitle from '#lib/commons/PageTitle.svelte';
-	import { nav } from '#stores/nav.js';
-	import { aboutTitleItem } from '#stores/title.js';
+	import { getNavState } from '#stores/nav.js';
 	import { getI18n } from '#translations';
 
 	const i18n = getI18n();
+	const { nav, aboutTitleItem } = getNavState();
+
 	type Props = {
 		children?: import('svelte').Snippet;
 	};
