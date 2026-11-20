@@ -23,16 +23,16 @@
 <li>
 	<p class="title title--desktop">
 		//&nbsp;{i18n.t(`${baseTrad}.card.title`)}&nbsp;{index + 1}
-		<span class="title--project"
-			>//&nbsp;_{slug(project.title, { locale: i18n.locale, lower: true })}</span
-		>
+		<span class="title--project">
+			//&nbsp;_{slug(project.title, { locale: i18n.locale, lower: true })}
+		</span>
 	</p>
 
 	<p class="title title--mobile">
 		{i18n.t(`${baseTrad}.card.title`)}&nbsp;{index + 1}
-		<span class="title--project"
-			>/&nbsp;_{slug(project.title, { locale: i18n.locale, lower: true })}</span
-		>
+		<span class="title--project">
+			/&nbsp;_{slug(project.title, { locale: i18n.locale, lower: true })}
+		</span>
 	</p>
 
 	<div class="card">
@@ -50,8 +50,10 @@
 					href={project.url}
 					aria-label={`${i18n.t('projects.aria.card')} ${project.urlName}`}
 					target="_blank"
-					rel="noreferrer noopener">{i18n.t(`${baseTrad}.card.link`)}</Link
+					rel="noreferrer noopener"
 				>
+					{i18n.t(`${baseTrad}.card.link`)}
+				</Link>
 			{/if}
 		</div>
 	</div>

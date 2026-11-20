@@ -66,10 +66,11 @@
 				<span class="github-link__const">const</span>
 				<span class="github-link__var">githubLink</span>
 				=
-				<span class="github-link__link"
-					>&quot;<a href={github?.url} target="_blank" rel="noreferrer noopener">{github?.url}</a
-					>&quot;</span
-				>
+				<span class="github-link__link">
+					&quot;<a href={github?.url} target="_blank" rel="noreferrer noopener">
+						{github?.url}
+					</a>&quot;
+				</span>
 			</p>
 		{/if}
 	</div>

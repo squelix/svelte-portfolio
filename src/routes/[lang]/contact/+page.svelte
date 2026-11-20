@@ -133,9 +133,9 @@
 	<section class="confirm" transition:fade={{ duration: transitionMs, easing: sineInOut }}>
 		<p class="confirm__thank-you">{i18n.t('contact.confirm.thankYou')}</p>
 		<p class="confirm__message">{i18n.t('contact.confirm.message')}</p>
-		<Button type="button" class="confirm__button" onclick={hideConfirmMessage} onkeydown={keydown}
-			>{i18n.t('contact.confirm.button')}</Button
-		>
+		<Button type="button" class="confirm__button" onclick={hideConfirmMessage} onkeydown={keydown}>
+			{i18n.t('contact.confirm.button')}
+		</Button>
 	</section>
 {/if}
 

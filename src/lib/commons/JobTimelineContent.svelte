@@ -84,9 +84,9 @@
 					{mission.title}
 					{#if mission.url && mission.urlName}
 						-
-						<a class="link" href={mission.url} target="_blank" rel="noreferrer noopener"
-							>{mission.urlName}</a
-						>
+						<a class="link" href={mission.url} target="_blank" rel="noreferrer noopener">
+							{mission.urlName}
+						</a>
 					{/if}
 				</li>
 			{/each}
@@ -98,8 +98,8 @@
 		<ul class="list">
 			{#each jobsSkillsByCategories ?? [] as categoriesSkills (categoriesSkills.category)}
 				<li>
-					<span class="skill-category"
-						>{i18n.t(`experiences.skills.categories.${categoriesSkills.category}`)}&nbsp;:
+					<span class="skill-category">
+						{i18n.t(`experiences.skills.categories.${categoriesSkills.category}`)}&nbsp;:
 					</span>
 					<span>{categoriesSkills.skills.join(', ')}</span>
 				</li>

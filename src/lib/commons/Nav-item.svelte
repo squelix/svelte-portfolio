@@ -35,8 +35,10 @@
 		class:item__link--selected={isBaseRouteActive(page.url.pathname, {
 			lang: i18n.locale!,
 			route: link
-		})}>{label}</a
+		})}
 	>
+		{label}
+	</a>
 </li>
 
 <style lang="scss">
