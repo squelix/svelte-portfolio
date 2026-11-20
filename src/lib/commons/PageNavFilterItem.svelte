@@ -105,6 +105,10 @@
 			line-height: 1.3125;
 			max-height: 100%;
 			overflow: hidden;
+
+			// The sub-items list scrolls inside the space left below the button
+			display: flex;
+			flex-direction: column;
 		}
 
 		&__button {
@@ -144,7 +148,8 @@
 			scrollbar-color: var(--secondary-1) var(--primary-2);
 			scrollbar-width: 10px;
 			padding-bottom: 3.75rem;
-			height: 100%;
+			flex: 1 1 auto;
+			min-height: 0;
 			grid-template-rows: repeat(auto-fit, minmax(1.5rem, 1.5rem));
 
 			&[aria-hidden='true'] {
