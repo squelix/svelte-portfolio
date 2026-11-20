@@ -1,5 +1,6 @@
 export type JobSkill = {
 	slug: string;
 	name: string;
-	category: 'Frontend Technique' | 'Frontend Global' | 'Backend' | 'Devops' | 'Mobile' | 'BI ';
+	category:
+		'Frontend Technique' | 'Frontend Global' | 'Backend' | 'Devops' | 'Mobile' | 'BI' | 'IA';
 };
